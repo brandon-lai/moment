@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Partly cloudy over Washington, 43 degrees</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>:root{--bg:#111418;--fg:#e6e9ec;--muted:#9199a3;--accent:#facc15;--accent-2:#38bdf8;--surface:#191d23;--line:#2b3139;color-scheme:dark;--font-display:'Archivo Black',sans-serif;--font-body:'Archivo',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;--radius:2px;--gap:1}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:16.5px;line-height:1.55;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.05;letter-spacing:-.01em;margin:0 0 calc(.5em*var(--gap));text-wrap:balance}
+h1{font-size:clamp(34px,6.4vw,84px)}h2{font-size:clamp(24px,3.6vw,44px)}h3{font-size:clamp(18px,2.2vw,24px)}
+p{margin:0 0 calc(1em*var(--gap));max-width:68ch;text-wrap:pretty}
+a{color:var(--accent);text-underline-offset:.18em}
+button{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--fg);border-radius:var(--radius);padding:.55em 1em;cursor:pointer}
+button:hover{background:var(--fg);color:var(--bg)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=range]{accent-color:var(--accent);width:100%}
+table{border-collapse:collapse;width:100%}td,th{padding:.45em .6em;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85em}
+svg{max-width:100%;height:auto}canvas{max-width:100%;display:block}
+img{max-width:100%}
+.m-kicker{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .9em}
+.m-big{font-family:var(--font-display);font-size:clamp(56px,13vw,170px);line-height:.88;letter-spacing:-.03em;font-weight:400}
+.m-lead{font-size:1.25em;line-height:1.4;max-width:40ch}
+.m-muted{color:var(--muted)}.m-accent{color:var(--accent)}.m-accent-2{color:var(--accent-2)}
+.m-mono{font-family:var(--font-mono)}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:calc(16px*var(--gap))}
+.m-row{display:flex;flex-wrap:wrap;gap:calc(12px*var(--gap));align-items:baseline}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:calc(18px*var(--gap))}
+.m-stat{display:flex;flex-direction:column;gap:.2em}.m-stat b{font-family:var(--font-display);font-size:clamp(28px,4.6vw,52px);line-height:1;font-weight:400}
+.m-rule{border:0;border-top:1px solid var(--line);margin:calc(24px*var(--gap)) 0}
+.m-chip{display:inline-block;font-family:var(--font-mono);font-size:.78rem;padding:.25em .6em;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.m-list{list-style:none;padding:0;margin:0}.m-list li{padding:.6em 0;border-bottom:1px solid var(--line)}
+.m-bars{display:flex;align-items:flex-end;gap:3px;height:120px}.m-bars i{flex:1;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px}
+main>section{scroll-margin-top:16px}
+main>section{animation:m-in .9s cubic-bezier(.2,.7,.2,1) both}@keyframes m-in{from{opacity:0;transform:translateY(8px)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#m-building{position:fixed;left:12px;bottom:12px;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;z-index:5}
+#m-building::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:m-pulse 1.2s ease-in-out infinite}
+@keyframes m-pulse{50%{opacity:.25}}
+.m-earlier{font-family:var(--font-mono);font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
+main{padding:0}main>section{min-height:88vh;padding:clamp(28px,7vw,110px) clamp(16px,6vw,96px);display:flex;flex-direction:column;justify-content:center}main>section:nth-child(even){background:var(--surface)}</style>
+<script>window.MOMENT={"live":"http://localhost:8788/live/38.91,-77.04","tz":"America/New_York","place":"Washington","eu":false};(()=>{const EU=false;let lastY=scrollY,lastT=performance.now(),speed=0,taps=0,idle=0,lastAct=performance.now(),hov=new Set(),bottom=false;
+const desc=e=>{const el=e.closest&&e.closest('[data-m],button,a,svg,canvas,table,li,figure,h2,h3');if(!el)return null;return(el.getAttribute('data-m')||el.tagName.toLowerCase()+(el.className&&typeof el.className==='string'?'.'+el.className.split(' ')[0]:'')).slice(0,40)};
+const act=()=>{lastAct=performance.now()};
+addEventListener('scroll',()=>{const t=performance.now(),dy=Math.abs(scrollY-lastY);speed=.7*speed+.3*(dy/Math.max(16,t-lastT)*1000);lastY=scrollY;lastT=t;act();const b=innerHeight+scrollY>=document.documentElement.scrollHeight-40;if(b&&!bottom){bottom=true;parent.postMessage({type:'moment:bottom'},'*')}},{passive:true});
+addEventListener('pointerover',e=>{if(EU)return;const d=desc(e.target);if(d&&hov.size<12)hov.add(d)},{passive:true});
+addEventListener('pointerdown',()=>{taps++;act()},{passive:true});addEventListener('keydown',act);
+const onScreen=()=>{let best=null,area=0;for(const s of document.querySelectorAll('main>section')){const r=s.getBoundingClientRect(),v=Math.max(0,Math.min(innerHeight,r.bottom)-Math.max(0,r.top));if(v>area){area=v;best=s.id||null}}return best};
+setInterval(()=>{idle=performance.now()-lastAct;if(EU)return;parent.postMessage({type:'moment:interaction',section:onScreen(),scrollSpeed:Math.round(speed),hovered:[...hov],taps,idleMs:Math.round(idle),atBottom:bottom},'*');hov.clear();speed*=.5},2000);
+})();</script>
+</head><body class="layout-full-bleed motion-gentle density-balanced">
+<div id="m-building" role="status">Writing this page</div>
+<main>
+<section id="sky-now">
+<p class="m-kicker">Washington · Monday · 8:20 a.m.</p>
+<h2 class="m-big">Partly cloudy this morning</h2>
+<p class="m-lead">It is 43°F (6°C) outside. The sun came up at 6:53 a.m. and some of it is getting through.</p>
+<div class="sky-stage">
+<svg id="sky-now-svg" viewBox="0 0 800 320" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Sun low behind drifting clouds over a flat horizon">
+<defs>
+<radialGradient id="sky-now-glow" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="var(--accent)" stop-opacity="0.55"/>
+<stop offset="100%" stop-color="var(--accent)" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="560" cy="210" r="150" fill="url(#sky-now-glow)"/>
+<circle cx="560" cy="210" r="38" fill="var(--accent)"/>
+<g id="sky-now-c1" fill="var(--muted)" opacity="0.55">
+<ellipse cx="200" cy="120" rx="90" ry="22"/>
+<ellipse cx="250" cy="105" rx="60" ry="24"/>
+<ellipse cx="150" cy="128" rx="55" ry="16"/>
+</g>
+<g id="sky-now-c2" fill="var(--fg)" opacity="0.28">
+<ellipse cx="520" cy="190" rx="110" ry="24"/>
+<ellipse cx="570" cy="174" rx="70" ry="26"/>
+<ellipse cx="460" cy="200" rx="60" ry="16"/>
+</g>
+<g id="sky-now-c3" fill="var(--muted)" opacity="0.4">
+<ellipse cx="660" cy="80" rx="80" ry="16"/>
+<ellipse cx="700" cy="70" rx="50" ry="16"/>
+</g>
+<rect x="0" y="262" width="800" height="58" fill="var(--surface)"/>
+<line x1="0" y1="262" x2="800" y2="262" stroke="var(--line)" stroke-width="2"/>
+</svg>
+</div>
+<div class="m-row sky-facts">
+<div class="m-stat"><b>43°F</b><span>6°C right now</span></div>
+<div class="m-stat"><b>6:53 a.m.</b><span>sunrise</span></div>
+<div class="m-stat"><b>4:55 p.m.</b><span>sunset</span></div>
+</div>
+<p class="m-muted">Dry for now. Rain chance this hour is 9%.</p>
+<style>
+#sky-now{padding:clamp(2rem,6vw,5rem) clamp(1.25rem,5vw,4rem);min-height:90vh;display:flex;flex-direction:column;gap:var(--gap);justify-content:center}
+#sky-now h2{margin:0;line-height:0.95}
+#sky-now .m-lead{max-width:34rem;margin:0}
+#sky-now .sky-stage{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:color-mix(in srgb,var(--accent-2) 12%,var(--bg))}
+#sky-now .sky-stage svg{display:block;width:100%;height:auto;max-height:46vh;min-height:180px}
+#sky-now .sky-facts{gap:calc(var(--gap)*2)}
+#sky-now .m-muted{margin:0}
+</style>
+</section><section id="next-hours">
+<p class="m-kicker">Next twelve hours</p>
+<h2 class="m-big">Overcast, rising to 51°F</h2>
+<p class="m-lead">It starts at 43°F (6°C) and climbs steadily through the morning. By 3 p.m. it peaks at 51°F (11°C), then eases to 47°F (8°C) by 7 p.m.</p>
+<div class="nh-chart">
+<svg id="nh-svg" viewBox="0 0 720 260" role="img" aria-label="Hourly temperature from 7 a.m. to 7 p.m., rising from 42 to 51 degrees Fahrenheit and easing to 47"></svg>
+</div>
+<div class="m-row nh-stats">
+<div class="m-stat"><b>43°F</b><span>8 a.m., 6°C</span></div>
+<div class="m-stat"><b>48°F</b><span>noon, 9°C</span></div>
+<div class="m-stat"><b>51°F</b><span>3 p.m., 11°C</span></div>
+<div class="m-stat"><b>47°F</b><span>7 p.m., 8°C</span></div>
+</div>
+<p class="m-muted">Rain chances stay low all day, 19% at the highest. Sunset is at 4:55 p.m.</p>
+<style>
+#next-hours{padding:clamp(48px,10vh,120px) clamp(20px,6vw,96px);background:var(--surface);min-height:90vh;display:flex;flex-direction:column;justify-content:center;gap:var(--gap)}
+#next-hours h2{margin:0;font-family:var(--font-display);line-height:1;max-width:14ch}
+#next-hours .m-lead{max-width:56ch;margin:0}
+#next-hours .nh-chart{width:100%;max-width:900px}
+#next-hours svg{width:100%;height:auto;display:block;overflow:visible}
+#next-hours .nh-stats{gap:clamp(20px,4vw,56px)}
+#next-hours .m-muted{margin:0}
+#next-hours .nh-lbl{font-family:var(--font-mono);font-size:11px;fill:var(--muted)}
+#next-hours .nh-t{font-family:var(--font-mono);font-size:12px;fill:var(--fg)}
+</style>
+</section></main>
+<style>#m-building{display:none}</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+<script>(()=>{try{
+(function(){
+var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!reduce&&window.anime){
+anime({targets:'#sky-now-c1',translateX:[-30,40],duration:26000,direction:'alternate',loop:true,easing:'easeInOutSine'});
+anime({targets:'#sky-now-c2',translateX:[30,-50],duration:32000,direction:'alternate',loop:true,easing:'easeInOutSine'});
+anime({targets:'#sky-now-c3',translateX:[-20,30],duration:38000,direction:'alternate',loop:true,easing:'easeInOutSine'});
+}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var data=[[7,42],[8,43],[9,44],[10,45],[11,48],[12,48],[13,50],[14,50],[15,51],[16,51],[17,49],[18,47],[19,47]];
+var svg=document.getElementById('nh-svg');
+var ns='http://www.w3.org/2000/svg';
+var W=720,H=260,l=24,r=24,t=36,b=40;
+var x=function(h){return l+(h-7)/12*(W-l-r)};
+var y=function(v){return t+(51-v)/(51-40)*(H-t-b)};
+function el(n,a){var e=document.createElementNS(ns,n);for(var k in a)e.setAttribute(k,a[k]);return e}
+var d='';data.forEach(function(p,i){d+=(i?'L':'M')+x(p[0]).toFixed(1)+','+y(p[1]).toFixed(1)});
+var area=el('path',{d:d+'L'+x(19)+','+(H-b)+'L'+x(7)+','+(H-b)+'Z',fill:'var(--accent)',opacity:'0.14'});
+svg.appendChild(area);
+svg.appendChild(el('line',{x1:l,x2:W-r,y1:H-b,y2:H-b,stroke:'var(--line)'}));
+var line=el('path',{d:d,fill:'none',stroke:'var(--accent)','stroke-width':3,'stroke-linejoin':'round','stroke-linecap':'round'});
+svg.appendChild(line);
+data.forEach(function(p){
+var h=p[0];
+if(h%3===1||h===19){
+var lab=h===12?'12p':(h>12?(h-12)+'p':h+'a');
+var tx=el('text',{x:x(h),y:H-b+22,'text-anchor':'middle','class':'nh-lbl'});tx.textContent=lab;svg.appendChild(tx);
+}
+if(h===8||h===12||h===15||h===19){
+svg.appendChild(el('circle',{cx:x(h),cy:y(p[1]),r:5,fill:'var(--bg)',stroke:'var(--accent-2)','stroke-width':2}));
+var tv=el('text',{x:x(h),y:y(p[1])-14,'text-anchor':'middle','class':'nh-t'});tv.textContent=p[1]+'°';svg.appendChild(tv);
+}
+});
+var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!reduce&&window.anime){
+var len=line.getTotalLength();
+line.style.strokeDasharray=len;line.style.strokeDashoffset=len;
+area.style.opacity=0;
+var started=false;
+function go(){if(started)return;started=true;
+anime({targets:line,strokeDashoffset:[len,0],duration:2200,easing:'easeInOutSine'});
+anime({targets:area,opacity:[0,0.14],duration:2200,easing:'linear'});}
+if('IntersectionObserver' in window){
+new IntersectionObserver(function(e,o){if(e[0].isIntersecting){go();o.disconnect()}},{threshold:0.3}).observe(svg);
+}else go();
+}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>parent.postMessage({type:'moment:complete'},'*')</script>
+</body></html>

@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Clear Friday evening in Barcelona, 16°</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:wght@400;700&family=Public+Sans:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>:root{--bg:#101826;--fg:#eef3f9;--muted:#9fb0c6;--accent:#93c5fd;--accent-2:#fca5a5;--surface:#172235;--line:#273650;color-scheme:dark;--font-display:'Newsreader',serif;--font-body:'Public Sans',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;--radius:2px;--gap:1}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:16.5px;line-height:1.55;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;line-height:1.05;letter-spacing:-.01em;margin:0 0 calc(.5em*var(--gap));text-wrap:balance}
+h1{font-size:clamp(34px,6.4vw,84px)}h2{font-size:clamp(24px,3.6vw,44px)}h3{font-size:clamp(18px,2.2vw,24px)}
+p{margin:0 0 calc(1em*var(--gap));max-width:68ch;text-wrap:pretty}
+a{color:var(--accent);text-underline-offset:.18em}
+button{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--fg);border-radius:var(--radius);padding:.55em 1em;cursor:pointer}
+button:hover{background:var(--fg);color:var(--bg)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=range]{accent-color:var(--accent);width:100%}
+table{border-collapse:collapse;width:100%}td,th{padding:.45em .6em;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85em}
+svg{max-width:100%;height:auto}canvas{max-width:100%;display:block}
+img{max-width:100%}
+.m-kicker{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .9em}
+.m-big{font-family:var(--font-display);font-size:clamp(56px,13vw,170px);line-height:.88;letter-spacing:-.03em;font-weight:700}
+.m-lead{font-size:1.25em;line-height:1.4;max-width:40ch}
+.m-muted{color:var(--muted)}.m-accent{color:var(--accent)}.m-accent-2{color:var(--accent-2)}
+.m-mono{font-family:var(--font-mono)}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:calc(16px*var(--gap))}
+.m-row{display:flex;flex-wrap:wrap;gap:calc(12px*var(--gap));align-items:baseline}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:calc(18px*var(--gap))}
+.m-stat{display:flex;flex-direction:column;gap:.2em}.m-stat b{font-family:var(--font-display);font-size:clamp(28px,4.6vw,52px);line-height:1;font-weight:700}
+.m-rule{border:0;border-top:1px solid var(--line);margin:calc(24px*var(--gap)) 0}
+.m-chip{display:inline-block;font-family:var(--font-mono);font-size:.78rem;padding:.25em .6em;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.m-list{list-style:none;padding:0;margin:0}.m-list li{padding:.6em 0;border-bottom:1px solid var(--line)}
+.m-bars{display:flex;align-items:flex-end;gap:3px;height:120px}.m-bars i{flex:1;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px}
+main>section{scroll-margin-top:16px}
+main>section{animation:m-in .5s cubic-bezier(.2,.7,.2,1) both}@keyframes m-in{from{opacity:0;transform:translateY(18px)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#m-building{position:fixed;left:12px;bottom:12px;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;z-index:5}
+#m-building::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:m-pulse 1.2s ease-in-out infinite}
+@keyframes m-pulse{50%{opacity:.25}}
+.m-earlier{font-family:var(--font-mono);font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
+main{max-width:1240px;margin:0 auto;padding:clamp(16px,3vw,40px)}main>section:first-child{border-bottom:3px double var(--fg);padding-bottom:18px}main>section{padding:clamp(18px,3vw,32px) 0;border-bottom:1px solid var(--line)}@media(min-width:900px){main>section .m-columns,main>section>p{column-count:2;column-gap:40px;column-rule:1px solid var(--line)}}</style>
+<script>window.MOMENT={"live":"http://localhost:8788/live/41.39,2.16","tz":"Europe/Madrid","place":"Barcelona","eu":true};(()=>{const EU=true;let lastY=scrollY,lastT=performance.now(),speed=0,taps=0,idle=0,lastAct=performance.now(),hov=new Set(),bottom=false;
+const desc=e=>{const el=e.closest&&e.closest('[data-m],button,a,svg,canvas,table,li,figure,h2,h3');if(!el)return null;return(el.getAttribute('data-m')||el.tagName.toLowerCase()+(el.className&&typeof el.className==='string'?'.'+el.className.split(' ')[0]:'')).slice(0,40)};
+const act=()=>{lastAct=performance.now()};
+addEventListener('scroll',()=>{const t=performance.now(),dy=Math.abs(scrollY-lastY);speed=.7*speed+.3*(dy/Math.max(16,t-lastT)*1000);lastY=scrollY;lastT=t;act();const b=innerHeight+scrollY>=document.documentElement.scrollHeight-40;if(b&&!bottom){bottom=true;parent.postMessage({type:'moment:bottom'},'*')}},{passive:true});
+addEventListener('pointerover',e=>{if(EU)return;const d=desc(e.target);if(d&&hov.size<12)hov.add(d)},{passive:true});
+addEventListener('pointerdown',()=>{taps++;act()},{passive:true});addEventListener('keydown',act);
+const onScreen=()=>{let best=null,area=0;for(const s of document.querySelectorAll('main>section')){const r=s.getBoundingClientRect(),v=Math.max(0,Math.min(innerHeight,r.bottom)-Math.max(0,r.top));if(v>area){area=v;best=s.id||null}}return best};
+setInterval(()=>{idle=performance.now()-lastAct;if(EU)return;parent.postMessage({type:'moment:interaction',section:onScreen(),scrollSpeed:Math.round(speed),hovered:[...hov],taps,idleMs:Math.round(idle),atBottom:bottom},'*');hov.clear();speed*=.5},2000);
+})();</script>
+</head><body class="layout-broadsheet motion-lively density-balanced">
+<div id="m-building" role="status">Writing this page</div>
+<main>
+<section id="tonight-weather">
+<p class="m-kicker">Barcelona · Friday 20 November · 8:30 p.m.</p>
+<h2>Clear and 16° right now</h2>
+<p class="m-lead">The sky is clear and the air is 16°. Nothing in the forecast changes that before morning.</p>
+<div class="tw-cols">
+<div class="tw-col">
+<p class="m-kicker">The next hours</p>
+<p>It holds at 16° through 9 p.m., then eases down. By 10 p.m. it is 14°, by midnight 12°, and from 2 a.m. to 4 a.m. it sits at 11°. It starts climbing again after that, to 13° by 7 a.m.</p>
+</div>
+<div class="tw-col">
+<p class="m-kicker">Rain</p>
+<p>No rain is expected in any hour through 7 a.m. The chance never goes above 20%, and the forecast amount is zero every hour. Sunset was at 5:29 p.m. and sunrise is at 7:46 a.m., so the dark hours are the dry ones.</p>
+</div>
+<div class="tw-col">
+<p class="m-kicker">What it means</p>
+<p>Plan to be outside. Early on you will not need much more than a light layer. Later, once it drops to 11°, you will.</p>
+</div>
+</div>
+<figure class="tw-fig">
+<svg id="tw-chart" viewBox="0 0 600 140" role="img" aria-label="Temperature from 7 p.m. to 7 a.m., falling from 16 degrees to 11 and rising to 13"></svg>
+<figcaption class="m-muted m-mono">Temperature, 7 p.m. to 7 a.m. Range 11° to 16°.</figcaption>
+</figure>
+<style>
+#tonight-weather{border-top:3px double var(--line);padding-top:var(--gap)}
+#tonight-weather h2{font-family:var(--font-display);font-size:clamp(2rem,6vw,3.6rem);line-height:1.02;margin:.2em 0 .3em}
+#tonight-weather .tw-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;margin-top:var(--gap)}
+#tonight-weather .tw-col{padding:0 1.2rem;border-left:1px solid var(--line)}
+#tonight-weather .tw-col:first-child{border-left:0;padding-left:0}
+#tonight-weather .tw-col p:last-child{margin:.4em 0 0}
+#tonight-weather .tw-fig{margin:var(--gap) 0 0;border-top:1px solid var(--line);padding-top:.8rem}
+#tonight-weather svg{width:100%;height:auto;display:block}
+#tonight-weather .tw-line{fill:none;stroke:var(--accent);stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}
+#tonight-weather .tw-area{fill:color-mix(in srgb,var(--accent) 14%,transparent)}
+#tonight-weather .tw-lab{fill:var(--muted);font-family:var(--font-mono);font-size:11px}
+@media(max-width:600px){#tonight-weather .tw-col{border-left:0;padding:.8rem 0;border-top:1px solid var(--line)}#tonight-weather .tw-col:first-child{border-top:0}}
+</style>
+</section><section id="first-steps">
+<p class="m-kicker">Section two · The next hour</p>
+<h2>What to do first</h2>
+<p class="m-lead">Go out. It is 16° and clear at 8:30 p.m., and the chance of rain stays between 16% and 19% through 9 p.m. Nothing in the sky is asking you to stay in.</p>
+<div class="fs-cols">
+<div class="fs-col">
+<p class="m-kicker m-accent">8:30 p.m. · Eat</p>
+<p>Eat first, and eat outside if a table is going. At 16° you can sit out in a jacket, and this is the warmest the night will be. By 10 p.m. it is 14°.</p>
+</div>
+<div class="fs-col">
+<p class="m-kicker m-accent">9:30 p.m. · Head out</p>
+<p>Walk after dinner, not before. The drop is gentle: 16° at 9, 14° at 10, 13° at 11. Bring one layer and you are set until midnight.</p>
+</div>
+<div class="fs-col">
+<p class="m-kicker m-accent">Or · Stay in</p>
+<p>Fair enough, but weather is not the reason. The sky is clear all night, so staying in is a choice, not a forecast.</p>
+</div>
+</div>
+<div class="fs-chart">
+<p class="m-kicker">Temperature, next four hours</p>
+<svg id="fs-svg" viewBox="0 0 400 110" role="img" aria-label="Temperature falls from 16 degrees at 8 p.m. to 13 degrees at 11 p.m.">
+<line x1="20" y1="90" x2="380" y2="90" stroke="var(--line)" />
+<polyline id="fs-line" fill="none" stroke="var(--accent)" stroke-width="2.5" points="20,20 140,20 260,50 380,70" />
+<g fill="var(--accent)">
+<circle cx="20" cy="20" r="4"/><circle cx="140" cy="20" r="4"/><circle cx="260" cy="50" r="4"/><circle cx="380" cy="70" r="4"/>
+</g>
+<g class="m-mono" fill="var(--fg)" font-size="11" text-anchor="middle">
+<text x="20" y="12" text-anchor="start">16°</text><text x="140" y="12">16°</text><text x="260" y="42">14°</text><text x="380" y="62" text-anchor="end">13°</text>
+</g>
+<g class="m-mono" fill="var(--muted)" font-size="10" text-anchor="middle">
+<text x="20" y="106" text-anchor="start">8 p.m.</text><text x="140" y="106">9 p.m.</text><text x="260" y="106">10 p.m.</text><text x="380" y="106" text-anchor="end">11 p.m.</text>
+</g>
+</svg>
+</div>
+<style>
+#first-steps .fs-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;margin:var(--gap) 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+#first-steps .fs-col{padding:1rem 1.25rem 1.25rem 0;margin-right:1.25rem;border-right:1px solid var(--line)}
+#first-steps .fs-col:last-child{border-right:none;margin-right:0}
+#first-steps .fs-col p{margin:.4rem 0 0}
+#first-steps .fs-chart{max-width:520px}
+#first-steps svg{width:100%;height:auto;display:block}
+@media (max-width:640px){#first-steps .fs-col{border-right:none;margin-right:0;border-bottom:1px solid var(--line)}#first-steps .fs-col:last-child{border-bottom:none}}
+</style>
+</section><section id="late-hours">
+<p class="m-kicker">Section three · After midnight</p>
+<h2>Shaping the late hours</h2>
+<p class="m-lead">Midnight is 12° and clear. It is a Friday, the weekend has started, and nothing in the forecast closes the night early.</p>
+
+<div class="lh-cols">
+<div class="lh-col">
+<h3>Midnight to 2 a.m.</h3>
+<p>12° at midnight and 12° at 1 a.m. The rain chance sits at 7% to 18%, and no rain is forecast in either hour. A jacket is enough. Stay out if you are having a good time, and keep one layer in reach for the walk home.</p>
+</div>
+<div class="lh-col">
+<h3>2 a.m. to 4 a.m.</h3>
+<p>This is the cold stretch: 11° for three hours running. Still dry, still clear. If you are walking back in these hours, put the warmer layer on before you leave, not halfway there.</p>
+</div>
+<div class="lh-col">
+<h3>5 a.m. onward</h3>
+<p>It starts to warm, 12° at 5 a.m. and 13° by 6 and 7. Sunrise is at 7:46 a.m. If you are still up, you can watch the sky turn clear and light.</p>
+</div>
+</div>
+
+<div class="lh-chart" aria-label="Temperature from midnight to 7 a.m.">
+<p class="m-kicker">Temperature, midnight to 7 a.m.</p>
+<div class="m-bars" id="lh-bars">
+<i style="height:60%"></i><i style="height:60%"></i><i style="height:40%"></i><i style="height:40%"></i><i style="height:40%"></i><i style="height:60%"></i><i style="height:80%"></i><i style="height:80%"></i>
+</div>
+<div class="lh-axis m-mono"><span>12 a.m. · 12°</span><span>3 a.m. · 11°</span><span>7 a.m. · 13°</span></div>
+</div>
+
+<p class="lh-close">Dry all night, so the only thing that decides when you go home is you.</p>
+
+<style>
+#late-hours{border-top:2px solid var(--fg);padding-top:var(--gap)}
+#late-hours h2{font-family:var(--font-display);margin:.2em 0 .4em}
+#late-hours .lh-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;margin:var(--gap) 0}
+#late-hours .lh-col{padding:0 var(--gap) 0 0;margin-right:var(--gap);border-right:1px solid var(--line)}
+#late-hours .lh-col:last-child{border-right:0;margin-right:0}
+#late-hours h3{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 .5em;font-family:var(--font-body)}
+#late-hours .lh-col p{margin:0;color:var(--fg)}
+#late-hours .lh-chart{border-top:1px solid var(--line);padding-top:var(--gap);max-width:520px}
+#late-hours .m-bars{height:90px}
+#late-hours .m-bars i{transform-origin:bottom}
+#late-hours .lh-axis{display:flex;justify-content:space-between;gap:8px;font-size:.7rem;color:var(--muted);margin-top:.5em;flex-wrap:wrap}
+#late-hours .lh-close{font-family:var(--font-display);font-size:1.3rem;margin-top:var(--gap);border-top:1px solid var(--line);padding-top:var(--gap)}
+@media (max-width:640px){#late-hours .lh-col{border-right:0;margin-right:0;padding-bottom:var(--gap);border-bottom:1px solid var(--line)}#late-hours .lh-col:last-child{border-bottom:0}}
+</style>
+</section></main>
+<style>#m-building{display:none}</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+<script>(()=>{try{
+(function(){
+var svg=document.getElementById('tw-chart');
+if(!svg)return;
+var t=[16,16,16,14,13,12,12,11,11,11,12,13,13];
+var lab=['7p','8p','9p','10p','11p','12a','1a','2a','3a','4a','5a','6a','7a'];
+var x0=20,x1=580,top=20,bot=100;
+var pts=t.map(function(v,i){return [x0+(x1-x0)*i/(t.length-1),top+(16-v)/5*(bot-top)];});
+var d=pts.map(function(p,i){return (i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1);}).join(' ');
+var ns='http://www.w3.org/2000/svg';
+function el(n,a){var e=document.createElementNS(ns,n);for(var k in a)e.setAttribute(k,a[k]);return e;}
+svg.appendChild(el('path',{d:d+' L'+x1+' 120 L'+x0+' 120 Z','class':'tw-area'}));
+var line=el('path',{d:d,'class':'tw-line'});
+svg.appendChild(line);
+pts.forEach(function(p,i){
+if(i%2===0){var tx=el('text',{x:p[0],y:135,'class':'tw-lab','text-anchor':'middle'});tx.textContent=lab[i];svg.appendChild(tx);}
+});
+[[0,16],[7,11],[12,13]].forEach(function(a){
+var p=pts[a[0]];
+var tx=el('text',{x:Math.min(Math.max(p[0],24),576),y:p[1]-8,'class':'tw-lab','text-anchor':'middle'});
+tx.textContent=a[1]+'°';svg.appendChild(tx);
+});
+var still=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!still&&window.anime){
+var len=line.getTotalLength();
+line.style.strokeDasharray=len;line.style.strokeDashoffset=len;
+anime({targets:line,strokeDashoffset:[len,0],duration:1600,easing:'easeInOutQuad'});
+}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var line=document.getElementById('fs-line');
+if(!line||!window.anime)return;
+if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+var len=line.getTotalLength();
+line.style.strokeDasharray=len;
+line.style.strokeDashoffset=len;
+anime({targets:line,strokeDashoffset:[len,0],duration:1400,easing:'easeOutCubic',delay:300});
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var bars=document.querySelectorAll('#lh-bars i');
+if(!bars.length)return;
+if(window.matchMedia('(prefers-reduced-motion: reduce)').matches||typeof anime==='undefined')return;
+anime({targets:bars,scaleY:[0,1],delay:anime.stagger(70),duration:700,easing:'easeOutCubic'});
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>parent.postMessage({type:'moment:complete'},'*')</script>
+</body></html>

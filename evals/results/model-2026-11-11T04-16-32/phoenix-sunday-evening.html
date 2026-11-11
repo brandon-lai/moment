@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Phoenix at dusk: the clear, warm evening</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&family=Karla:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>:root{--bg:#0a0f0a;--fg:#c8f7c5;--muted:#7fa77b;--accent:#5cff3a;--accent-2:#ffd166;--surface:#101810;--line:#1f2e1f;color-scheme:dark;--font-display:'EB Garamond',serif;--font-body:'Karla',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;--radius:2px;--gap:0.7}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:15px;line-height:1.55;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;line-height:1.05;letter-spacing:-.01em;margin:0 0 calc(.5em*var(--gap));text-wrap:balance}
+h1{font-size:clamp(34px,6.4vw,84px)}h2{font-size:clamp(24px,3.6vw,44px)}h3{font-size:clamp(18px,2.2vw,24px)}
+p{margin:0 0 calc(1em*var(--gap));max-width:68ch;text-wrap:pretty}
+a{color:var(--accent);text-underline-offset:.18em}
+button{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--fg);border-radius:var(--radius);padding:.55em 1em;cursor:pointer}
+button:hover{background:var(--fg);color:var(--bg)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=range]{accent-color:var(--accent);width:100%}
+table{border-collapse:collapse;width:100%}td,th{padding:.45em .6em;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85em}
+svg{max-width:100%;height:auto}canvas{max-width:100%;display:block}
+img{max-width:100%}
+.m-kicker{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .9em}
+.m-big{font-family:var(--font-display);font-size:clamp(56px,13vw,170px);line-height:.88;letter-spacing:-.03em;font-weight:700}
+.m-lead{font-size:1.25em;line-height:1.4;max-width:40ch}
+.m-muted{color:var(--muted)}.m-accent{color:var(--accent)}.m-accent-2{color:var(--accent-2)}
+.m-mono{font-family:var(--font-mono)}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:calc(16px*var(--gap))}
+.m-row{display:flex;flex-wrap:wrap;gap:calc(12px*var(--gap));align-items:baseline}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:calc(18px*var(--gap))}
+.m-stat{display:flex;flex-direction:column;gap:.2em}.m-stat b{font-family:var(--font-display);font-size:clamp(28px,4.6vw,52px);line-height:1;font-weight:700}
+.m-rule{border:0;border-top:1px solid var(--line);margin:calc(24px*var(--gap)) 0}
+.m-chip{display:inline-block;font-family:var(--font-mono);font-size:.78rem;padding:.25em .6em;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.m-list{list-style:none;padding:0;margin:0}.m-list li{padding:.6em 0;border-bottom:1px solid var(--line)}
+.m-bars{display:flex;align-items:flex-end;gap:3px;height:120px}.m-bars i{flex:1;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px}
+main>section{scroll-margin-top:16px}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#m-building{position:fixed;left:12px;bottom:12px;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;z-index:5}
+#m-building::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:m-pulse 1.2s ease-in-out infinite}
+@keyframes m-pulse{50%{opacity:.25}}
+.m-earlier{font-family:var(--font-mono);font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
+main{padding:0}@media(min-width:900px){main{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr)}main>section:first-child{position:sticky;top:0;height:100vh;grid-row:1/span 50;border-right:1px solid var(--line);overflow:auto}main>section{grid-column:2}main>section:first-child{grid-column:1}}main>section{padding:clamp(24px,5vw,64px)}main>section+section{border-top:1px solid var(--line)}</style>
+<script>window.MOMENT={"live":"http://localhost:8788/live/33.45,-112.07","tz":"America/Phoenix","place":"Phoenix","eu":false};(()=>{const EU=false;let lastY=scrollY,lastT=performance.now(),speed=0,taps=0,idle=0,lastAct=performance.now(),hov=new Set(),bottom=false;
+const desc=e=>{const el=e.closest&&e.closest('[data-m],button,a,svg,canvas,table,li,figure,h2,h3');if(!el)return null;return(el.getAttribute('data-m')||el.tagName.toLowerCase()+(el.className&&typeof el.className==='string'?'.'+el.className.split(' ')[0]:'')).slice(0,40)};
+const act=()=>{lastAct=performance.now()};
+addEventListener('scroll',()=>{const t=performance.now(),dy=Math.abs(scrollY-lastY);speed=.7*speed+.3*(dy/Math.max(16,t-lastT)*1000);lastY=scrollY;lastT=t;act();const b=innerHeight+scrollY>=document.documentElement.scrollHeight-40;if(b&&!bottom){bottom=true;parent.postMessage({type:'moment:bottom'},'*')}},{passive:true});
+addEventListener('pointerover',e=>{if(EU)return;const d=desc(e.target);if(d&&hov.size<12)hov.add(d)},{passive:true});
+addEventListener('pointerdown',()=>{taps++;act()},{passive:true});addEventListener('keydown',act);
+const onScreen=()=>{let best=null,area=0;for(const s of document.querySelectorAll('main>section')){const r=s.getBoundingClientRect(),v=Math.max(0,Math.min(innerHeight,r.bottom)-Math.max(0,r.top));if(v>area){area=v;best=s.id||null}}return best};
+setInterval(()=>{idle=performance.now()-lastAct;if(EU)return;parent.postMessage({type:'moment:interaction',section:onScreen(),scrollSpeed:Math.round(speed),hovered:[...hov],taps,idleMs:Math.round(idle),atBottom:bottom},'*');hov.clear();speed*=.5},2000);
+})();</script>
+</head><body class="layout-split motion-still density-dense">
+<div id="m-building" role="status">Writing this page</div>
+<main>
+<section id="after-sunset">
+<p class="m-kicker">Phoenix · Sunday · 6:40 p.m.</p>
+<h2 class="m-big">77° and the sun is already gone.</h2>
+<p class="m-lead">The sun set at 5:27 p.m. It is clear out, and the air has barely noticed. The thermometer reads 77°F (25°C), more than an hour after dark started.</p>
+<p>That is the desert's habit. Clear sky, nothing to hold the day in, and still the ground and the pavement keep giving heat back. The drop comes slowly, one degree at a time, not all at once.</p>
+<div class="as-chart">
+<svg id="as-svg" viewBox="0 0 320 140" role="img" aria-label="Temperature falling from 78 degrees at 5 p.m. to 64 degrees at 2 a.m.">
+<line x1="0" y1="120" x2="320" y2="120" stroke="var(--line)"/>
+<path id="as-path" d="" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<g id="as-dots"></g>
+<g id="as-labels" class="m-mono" fill="var(--muted)" font-size="9"></g>
+</svg>
+</div>
+<div class="m-row as-stats">
+<div class="m-stat"><b>78°</b><span>at 5 p.m.</span></div>
+<div class="m-stat"><b>72°</b><span>by 9 p.m.</span></div>
+<div class="m-stat"><b>64°</b><span>by 2 a.m.</span></div>
+</div>
+<p class="m-muted">Fifteen degrees in nine hours. Tonight stays clear the whole way down.</p>
+<style>
+#after-sunset{padding:var(--gap) 0}
+#after-sunset h2{margin:.2em 0 .4em;line-height:.98}
+#after-sunset .as-chart{margin:calc(var(--gap)*1.2) 0 var(--gap);border-top:1px solid var(--line);padding-top:var(--gap)}
+#after-sunset svg{width:100%;height:auto;display:block;overflow:visible}
+#after-sunset .as-stats{gap:var(--gap);margin:var(--gap) 0}
+#after-sunset .as-stats .m-stat b{color:var(--accent)}
+</style>
+</section><section id="clear-evening">
+<p class="m-kicker">Next 12 hours</p>
+<h2>A clear Sunday night ahead</h2>
+<p class="m-lead">It is 77°F (25°C) at 6:40 p.m., and the sky stays clear all night. By 2:00 a.m. it settles at 64°F (18°C).</p>
+<div class="m-grid ce-stats">
+<div class="m-stat"><b>72°</b><span>at 9:00 p.m. (22°C)</span></div>
+<div class="m-stat"><b>67°</b><span>at midnight (19°C)</span></div>
+<div class="m-stat"><b>64°</b><span>low, 2:00 a.m. (18°C)</span></div>
+</div>
+<div class="ce-chart" aria-label="Hourly temperature from 6 p.m. to 5 a.m., falling from 76 to 64 degrees Fahrenheit">
+<svg id="ce-svg" viewBox="0 0 600 180" role="img" preserveAspectRatio="none">
+<path id="ce-area" fill="color-mix(in srgb, var(--accent) 18%, transparent)" stroke="none"/>
+<path id="ce-line" fill="none" stroke="var(--accent)" stroke-width="2.5" vector-effect="non-scaling-stroke"/>
+</svg>
+<div class="ce-axis m-mono m-muted"><span>6 p.m.</span><span>9 p.m.</span><span>12 a.m.</span><span>3 a.m.</span><span>5 a.m.</span></div>
+</div>
+<p>No rain is expected: 0 mm in every hour from now until 5:00 a.m. Pick a hour and nothing in the sky changes. Haze or cloud only creeps in a little around 4:00 a.m.</p>
+<p class="m-muted">The weekend ends quietly. Cool air, open sky, nothing to dodge.</p>
+<style>
+#clear-evening .ce-stats{margin:var(--gap) 0}
+#clear-evening .ce-chart{margin:var(--gap) 0;border-top:1px solid var(--line);padding-top:12px}
+#clear-evening svg{width:100%;height:180px;display:block}
+#clear-evening .ce-axis{display:flex;justify-content:space-between;font-size:.75rem;margin-top:6px}
+</style>
+</section><section id="back-to-week">
+<p class="m-kicker">Sunday, 6:40 p.m.</p>
+<h2>One last evening before Monday</h2>
+<p class="m-lead">The week starts again tomorrow. Tonight it hasn't yet.</p>
+<div class="bw-grid">
+<p>It is 77°F (25°C) and clear. No rain is expected before 5:00 a.m. The sun set at 5:27 p.m., and the evening is still wide open.</p>
+<ul class="bw-list">
+<li><span class="m-mono m-accent">7 p.m.</span> 75°F (24°C), clear</li>
+<li><span class="m-mono m-accent">8 p.m.</span> 74°F (23°C), clear</li>
+<li><span class="m-mono m-accent">9 p.m.</span> 72°F (22°C), clear</li>
+<li><span class="m-mono m-accent">10 p.m.</span> 69°F (21°C), clear</li>
+</ul>
+</div>
+<p class="bw-close">Every hour from now until 10 p.m. holds a sky with nothing in it and air that stays warm. Whatever Monday needs, it can have in the morning.</p>
+<div class="bw-rule m-rule"></div>
+<p class="m-muted m-mono bw-foot">Sunrise tomorrow: 7:01 a.m.</p>
+<style>
+#back-to-week{padding:calc(var(--gap)*1.5) 0}
+#back-to-week h2{font-family:var(--font-display);font-size:clamp(2rem,5vw,3.4rem);line-height:1.05;margin:.3em 0 .5em}
+#back-to-week .bw-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--gap);align-items:start;margin-top:var(--gap)}
+#back-to-week .bw-grid p{margin:0}
+#back-to-week .bw-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+#back-to-week .bw-list li{display:flex;gap:1em;align-items:baseline;padding:.6em 0;border-bottom:1px solid var(--line)}
+#back-to-week .bw-list span{min-width:4.5em}
+#back-to-week .bw-close{font-size:1.15rem;max-width:34em;margin:calc(var(--gap)*1.2) 0 var(--gap)}
+#back-to-week .bw-foot{margin:.6em 0 0;font-size:.85rem}
+</style>
+</section></main>
+<style>#m-building{display:none}</style>
+
+<script>(()=>{try{
+(function(){
+var sec=document.getElementById('after-sunset');
+if(!sec)return;
+var data=[[17,78],[18,76],[19,75],[20,74],[21,72],[22,69],[23,67],[24,67],[25,65],[26,64]];
+var minT=62,maxT=80,x0=10,x1=310,yTop=15,yBot=115;
+function px(i){return x0+(x1-x0)*i/(data.length-1);}
+function py(t){return yBot-(t-minT)/(maxT-minT)*(yBot-yTop);}
+var d='';
+var dots='';
+data.forEach(function(p,i){
+d+=(i?'L':'M')+px(i).toFixed(1)+' '+py(p[1]).toFixed(1)+' ';
+dots+='<circle cx="'+px(i).toFixed(1)+'" cy="'+py(p[1]).toFixed(1)+'" r="'+(i===1?4:2.5)+'" fill="'+(i===1?'var(--accent-2)':'var(--accent)')+'"/>';
+});
+document.getElementById('as-path').setAttribute('d',d);
+document.getElementById('as-dots').innerHTML=dots;
+var lab='';
+[[0,'5p'],[1,'6p'],[4,'9p'],[7,'12a'],[9,'2a']].forEach(function(l){
+lab+='<text x="'+px(l[0]).toFixed(1)+'" y="134" text-anchor="middle">'+l[1]+'</text>';
+});
+lab+='<text x="'+px(1).toFixed(1)+'" y="'+(py(76)-9).toFixed(1)+'" text-anchor="middle" fill="var(--accent-2)">now</text>';
+document.getElementById('as-labels').innerHTML=lab;
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var t=[76,75,74,72,69,67,67,65,64,65,64,65];
+var min=62,max=78,w=600,h=180;
+var pts=t.map(function(v,i){return [i*(w/(t.length-1)),h-((v-min)/(max-min))*(h-20)-10];});
+var d=pts.map(function(p,i){return (i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1);}).join(' ');
+document.getElementById('ce-line').setAttribute('d',d);
+document.getElementById('ce-area').setAttribute('d',d+' L'+w+' '+h+' L0 '+h+' Z');
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>parent.postMessage({type:'moment:complete'},'*')</script>
+</body></html>

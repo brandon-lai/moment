@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Stockholm at 3:08, sunset and the frost to come</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;700&family=Figtree:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>:root{--bg:#f4f1ea;--fg:#1b1a17;--muted:#5f5a50;--accent:#c2410c;--accent-2:#1d4ed8;--surface:#ebe6db;--line:#d6cfbf;color-scheme:light;--font-display:'Bricolage Grotesque',sans-serif;--font-body:'Figtree',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;--radius:0px;--gap:1}
+@media (prefers-color-scheme:dark){:root{--bg:#101826;--fg:#eef3f9;--muted:#9fb0c6;--accent:#93c5fd;--accent-2:#fca5a5;--surface:#172235;--line:#273650;color-scheme:dark;}}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:16.5px;line-height:1.55;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;line-height:1.05;letter-spacing:-.01em;margin:0 0 calc(.5em*var(--gap));text-wrap:balance}
+h1{font-size:clamp(34px,6.4vw,84px)}h2{font-size:clamp(24px,3.6vw,44px)}h3{font-size:clamp(18px,2.2vw,24px)}
+p{margin:0 0 calc(1em*var(--gap));max-width:68ch;text-wrap:pretty}
+a{color:var(--accent);text-underline-offset:.18em}
+button{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--fg);border-radius:var(--radius);padding:.55em 1em;cursor:pointer}
+button:hover{background:var(--fg);color:var(--bg)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=range]{accent-color:var(--accent);width:100%}
+table{border-collapse:collapse;width:100%}td,th{padding:.45em .6em;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85em}
+svg{max-width:100%;height:auto}canvas{max-width:100%;display:block}
+img{max-width:100%}
+.m-kicker{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .9em}
+.m-big{font-family:var(--font-display);font-size:clamp(56px,13vw,170px);line-height:.88;letter-spacing:-.03em;font-weight:700}
+.m-lead{font-size:1.25em;line-height:1.4;max-width:40ch}
+.m-muted{color:var(--muted)}.m-accent{color:var(--accent)}.m-accent-2{color:var(--accent-2)}
+.m-mono{font-family:var(--font-mono)}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:calc(16px*var(--gap))}
+.m-row{display:flex;flex-wrap:wrap;gap:calc(12px*var(--gap));align-items:baseline}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:calc(18px*var(--gap))}
+.m-stat{display:flex;flex-direction:column;gap:.2em}.m-stat b{font-family:var(--font-display);font-size:clamp(28px,4.6vw,52px);line-height:1;font-weight:700}
+.m-rule{border:0;border-top:1px solid var(--line);margin:calc(24px*var(--gap)) 0}
+.m-chip{display:inline-block;font-family:var(--font-mono);font-size:.78rem;padding:.25em .6em;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.m-list{list-style:none;padding:0;margin:0}.m-list li{padding:.6em 0;border-bottom:1px solid var(--line)}
+.m-bars{display:flex;align-items:flex-end;gap:3px;height:120px}.m-bars i{flex:1;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px}
+main>section{scroll-margin-top:16px}
+main>section{animation:m-in .9s cubic-bezier(.2,.7,.2,1) both}@keyframes m-in{from{opacity:0;transform:translateY(8px)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#m-building{position:fixed;left:12px;bottom:12px;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;z-index:5}
+#m-building::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:m-pulse 1.2s ease-in-out infinite}
+@keyframes m-pulse{50%{opacity:.25}}
+.m-earlier{font-family:var(--font-mono);font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
+main{padding:0}main>section{min-height:88vh;padding:clamp(28px,7vw,110px) clamp(16px,6vw,96px);display:flex;flex-direction:column;justify-content:center}main>section:nth-child(even){background:var(--surface)}</style>
+<script>window.MOMENT={"live":"http://localhost:8788/live/59.33,18.07","tz":"Europe/Stockholm","place":"Stockholm","eu":true};(()=>{const EU=true;let lastY=scrollY,lastT=performance.now(),speed=0,taps=0,idle=0,lastAct=performance.now(),hov=new Set(),bottom=false;
+const desc=e=>{const el=e.closest&&e.closest('[data-m],button,a,svg,canvas,table,li,figure,h2,h3');if(!el)return null;return(el.getAttribute('data-m')||el.tagName.toLowerCase()+(el.className&&typeof el.className==='string'?'.'+el.className.split(' ')[0]:'')).slice(0,40)};
+const act=()=>{lastAct=performance.now()};
+addEventListener('scroll',()=>{const t=performance.now(),dy=Math.abs(scrollY-lastY);speed=.7*speed+.3*(dy/Math.max(16,t-lastT)*1000);lastY=scrollY;lastT=t;act();const b=innerHeight+scrollY>=document.documentElement.scrollHeight-40;if(b&&!bottom){bottom=true;parent.postMessage({type:'moment:bottom'},'*')}},{passive:true});
+addEventListener('pointerover',e=>{if(EU)return;const d=desc(e.target);if(d&&hov.size<12)hov.add(d)},{passive:true});
+addEventListener('pointerdown',()=>{taps++;act()},{passive:true});addEventListener('keydown',act);
+const onScreen=()=>{let best=null,area=0;for(const s of document.querySelectorAll('main>section')){const r=s.getBoundingClientRect(),v=Math.max(0,Math.min(innerHeight,r.bottom)-Math.max(0,r.top));if(v>area){area=v;best=s.id||null}}return best};
+setInterval(()=>{idle=performance.now()-lastAct;if(EU)return;parent.postMessage({type:'moment:interaction',section:onScreen(),scrollSpeed:Math.round(speed),hovered:[...hov],taps,idleMs:Math.round(idle),atBottom:bottom},'*');hov.clear();speed*=.5},2000);
+})();</script>
+</head><body class="layout-full-bleed motion-gentle density-balanced">
+<div id="m-building" role="status">Writing this page</div>
+<main>
+<section id="last-light">
+<p class="m-kicker">Stockholm · Tuesday · 3:05 p.m.</p>
+<h2 class="m-big">The last light of the day</h2>
+<p class="m-lead">Sunset is at 3:08 p.m. That is three minutes from now. Sunrise was at 8:03 a.m., so the sun has been up for just over seven hours.</p>
+<div class="ll-stage">
+<svg id="ll-svg" viewBox="0 0 600 220" role="img" aria-label="The sun's path today, with the sun at the horizon at 3:05 p.m.">
+<path d="M20 190 Q300 -40 580 190" fill="none" stroke="var(--line)" stroke-width="2" stroke-dasharray="3 7"/>
+<line x1="0" y1="190" x2="600" y2="190" stroke="var(--fg)" stroke-width="2"/>
+<circle id="ll-sun" cx="560" cy="178" r="14" fill="var(--accent)"/>
+<text x="20" y="212" class="ll-t">8:03 a.m.</text>
+<text x="580" y="212" class="ll-t" text-anchor="end">3:08 p.m.</text>
+</svg>
+</div>
+<p class="ll-note">The sky is overcast, so expect a soft, flat glow rather than a sharp sun. It is 6°C now and 5°C by 4 p.m.</p>
+<style>
+#last-light{min-height:90vh;padding:clamp(2rem,6vw,5rem) clamp(1.25rem,5vw,4rem);background:var(--bg);color:var(--fg);display:flex;flex-direction:column;justify-content:center;gap:var(--gap)}
+#last-light .m-lead{max-width:36em;margin:0}
+#last-light h2{margin:0;font-family:var(--font-display)}
+#last-light .ll-stage{max-width:760px;width:100%}
+#last-light svg{width:100%;height:auto;display:block;overflow:visible}
+#last-light .ll-t{font-family:var(--font-mono);font-size:12px;fill:var(--muted)}
+#last-light .ll-note{max-width:34em;color:var(--muted);margin:0}
+</style>
+</section><section id="cold-descent">
+<p class="m-kicker">Tonight, Stockholm</p>
+<h2 class="m-big">Overcast giving way to frost</h2>
+<p class="m-lead">It is 6°C now under a grey lid of cloud. By 11 p.m. it is -1°C. By 1 a.m. it is -2°C, and it stays there.</p>
+<div class="cd-chart">
+<svg id="cd-svg" viewBox="0 0 800 280" role="img" aria-label="Temperature falling from 6 degrees at 2 p.m. to minus 2 degrees at 2 a.m.">
+<line id="cd-zero" x1="0" x2="800" y1="0" y2="0" stroke="var(--accent-2)" stroke-width="1.5" stroke-dasharray="6 6"/>
+<text id="cd-zero-label" x="8" y="0" fill="var(--accent-2)" font-family="var(--font-mono)" font-size="13">0°C</text>
+<path id="cd-area" fill="color-mix(in srgb, var(--accent) 14%, transparent)" stroke="none"/>
+<path id="cd-line" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<g id="cd-dots"></g>
+</svg>
+</div>
+<div class="m-row cd-stats">
+<div class="m-stat"><b>6°C</b><span>2:00 p.m.</span></div>
+<div class="m-stat"><b>3°C</b><span>7:00 p.m.</span></div>
+<div class="m-stat"><b>-1°C</b><span>11:00 p.m.</span></div>
+<div class="m-stat"><b>-2°C</b><span>2:00 a.m.</span></div>
+</div>
+<p class="m-muted">The line crosses zero between 10 and 11 p.m. Dry the whole way: no rain is expected.</p>
+<style>
+#cold-descent{padding:calc(var(--gap)*3) var(--gap);background:var(--surface);min-height:90vh}
+#cold-descent .cd-chart{margin:calc(var(--gap)*1.5) 0;max-width:900px}
+#cold-descent svg{width:100%;height:auto;display:block;overflow:visible}
+#cold-descent .cd-stats{gap:calc(var(--gap)*1.5);margin-bottom:var(--gap)}
+#cold-descent .cd-stats .m-stat b{font-family:var(--font-display)}
+</style>
+</section></main>
+<style>#m-building{display:none}</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+<script>(()=>{try{
+(function(){
+var sun=document.getElementById('ll-sun');
+if(!sun)return;
+var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(reduce||typeof anime==='undefined')return;
+anime({targets:sun,r:[14,17],opacity:[1,0.8],duration:3200,direction:'alternate',loop:true,easing:'easeInOutSine'});
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var temps=[6,6,5,5,4,3,3,2,1,-1,-1,-2,-2];
+var labels=['2 p.m.','3','4','5','6','7','8','9','10','11','12','1 a.m.','2'];
+var W=800,H=280,pt=20,pb=30;
+var min=-3,max=7;
+function x(i){return 20+i*(W-40)/(temps.length-1)}
+function y(t){return pt+(max-t)/(max-min)*(H-pt-pb)}
+var d='';
+temps.forEach(function(t,i){d+=(i?'L':'M')+x(i).toFixed(1)+' '+y(t).toFixed(1)});
+var line=document.getElementById('cd-line');
+line.setAttribute('d',d);
+document.getElementById('cd-area').setAttribute('d',d+'L'+x(temps.length-1)+' '+(H-pb)+'L'+x(0)+' '+(H-pb)+'Z');
+var zy=y(0);
+var z=document.getElementById('cd-zero');
+z.setAttribute('y1',zy);z.setAttribute('y2',zy);
+var zl=document.getElementById('cd-zero-label');
+zl.setAttribute('y',zy-6);
+var g=document.getElementById('cd-dots');
+var ns='http://www.w3.org/2000/svg';
+[0,5,9,12].forEach(function(i){
+var c=document.createElementNS(ns,'circle');
+c.setAttribute('cx',x(i));c.setAttribute('cy',y(temps[i]));c.setAttribute('r',5);
+c.setAttribute('fill',temps[i]<0?'var(--accent-2)':'var(--accent)');
+g.appendChild(c);
+var t=document.createElementNS(ns,'text');
+t.setAttribute('x',x(i));t.setAttribute('y',H-8);
+t.setAttribute('text-anchor',i===0?'start':i===12?'end':'middle');
+t.setAttribute('fill','var(--muted)');t.setAttribute('font-family','var(--font-mono)');t.setAttribute('font-size','13');
+t.textContent=labels[i];
+g.appendChild(t);
+});
+var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!reduce&&line.getTotalLength){
+var L=line.getTotalLength();
+line.style.strokeDasharray=L;line.style.strokeDashoffset=L;
+line.style.transition='stroke-dashoffset 2.4s ease-out';
+var sec=document.getElementById('cold-descent');
+var go=function(){line.style.strokeDashoffset=0};
+if('IntersectionObserver' in window){
+var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){go();io.disconnect()}},{threshold:0.3});
+io.observe(sec);
+}else go();
+}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>parent.postMessage({type:'moment:complete'},'*')</script>
+</body></html>

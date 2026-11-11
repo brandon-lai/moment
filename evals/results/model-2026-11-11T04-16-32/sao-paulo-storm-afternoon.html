@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The storm clears at 8 p.m. in São Paulo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@400;700&display=swap">
+<style>:root{--bg:#0a0f0a;--fg:#c8f7c5;--muted:#7fa77b;--accent:#5cff3a;--accent-2:#ffd166;--surface:#101810;--line:#1f2e1f;color-scheme:dark;--font-display:'Space Mono',sans-serif;--font-body:'Space Grotesk',system-ui,sans-serif;--font-mono:'Space Mono',ui-monospace,monospace;--radius:0px;--gap:1.35}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:18px;line-height:1.55;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;line-height:1.05;letter-spacing:-.01em;margin:0 0 calc(.5em*var(--gap));text-wrap:balance}
+h1{font-size:clamp(34px,6.4vw,84px)}h2{font-size:clamp(24px,3.6vw,44px)}h3{font-size:clamp(18px,2.2vw,24px)}
+p{margin:0 0 calc(1em*var(--gap));max-width:68ch;text-wrap:pretty}
+a{color:var(--accent);text-underline-offset:.18em}
+button{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--fg);border-radius:var(--radius);padding:.55em 1em;cursor:pointer}
+button:hover{background:var(--fg);color:var(--bg)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=range]{accent-color:var(--accent);width:100%}
+table{border-collapse:collapse;width:100%}td,th{padding:.45em .6em;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85em}
+svg{max-width:100%;height:auto}canvas{max-width:100%;display:block}
+img{max-width:100%}
+.m-kicker{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .9em}
+.m-big{font-family:var(--font-display);font-size:clamp(56px,13vw,170px);line-height:.88;letter-spacing:-.03em;font-weight:700}
+.m-lead{font-size:1.25em;line-height:1.4;max-width:40ch}
+.m-muted{color:var(--muted)}.m-accent{color:var(--accent)}.m-accent-2{color:var(--accent-2)}
+.m-mono{font-family:var(--font-mono)}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:calc(16px*var(--gap))}
+.m-row{display:flex;flex-wrap:wrap;gap:calc(12px*var(--gap));align-items:baseline}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:calc(18px*var(--gap))}
+.m-stat{display:flex;flex-direction:column;gap:.2em}.m-stat b{font-family:var(--font-display);font-size:clamp(28px,4.6vw,52px);line-height:1;font-weight:700}
+.m-rule{border:0;border-top:1px solid var(--line);margin:calc(24px*var(--gap)) 0}
+.m-chip{display:inline-block;font-family:var(--font-mono);font-size:.78rem;padding:.25em .6em;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.m-list{list-style:none;padding:0;margin:0}.m-list li{padding:.6em 0;border-bottom:1px solid var(--line)}
+.m-bars{display:flex;align-items:flex-end;gap:3px;height:120px}.m-bars i{flex:1;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px}
+main>section{scroll-margin-top:16px}
+main>section{animation:m-in .5s cubic-bezier(.2,.7,.2,1) both}@keyframes m-in{from{opacity:0;transform:translateY(18px)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#m-building{position:fixed;left:12px;bottom:12px;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;z-index:5}
+#m-building::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:m-pulse 1.2s ease-in-out infinite}
+@keyframes m-pulse{50%{opacity:.25}}
+.m-earlier{font-family:var(--font-mono);font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
+body{font-family:var(--font-mono)}h1,h2,h3{font-family:var(--font-mono);letter-spacing:0}main{max-width:62rem;margin:0 auto;padding:clamp(16px,4vw,48px)}main>section{padding:clamp(20px,4vw,40px) 0;border-top:1px dashed var(--line)}main>section h2::before{content:'> ';color:var(--accent)}:root{--radius:0px}</style>
+<script>window.MOMENT={"live":"http://localhost:8788/live/-23.55,-46.63","tz":"America/Sao_Paulo","place":"São Paulo","eu":false};(()=>{const EU=false;let lastY=scrollY,lastT=performance.now(),speed=0,taps=0,idle=0,lastAct=performance.now(),hov=new Set(),bottom=false;
+const desc=e=>{const el=e.closest&&e.closest('[data-m],button,a,svg,canvas,table,li,figure,h2,h3');if(!el)return null;return(el.getAttribute('data-m')||el.tagName.toLowerCase()+(el.className&&typeof el.className==='string'?'.'+el.className.split(' ')[0]:'')).slice(0,40)};
+const act=()=>{lastAct=performance.now()};
+addEventListener('scroll',()=>{const t=performance.now(),dy=Math.abs(scrollY-lastY);speed=.7*speed+.3*(dy/Math.max(16,t-lastT)*1000);lastY=scrollY;lastT=t;act();const b=innerHeight+scrollY>=document.documentElement.scrollHeight-40;if(b&&!bottom){bottom=true;parent.postMessage({type:'moment:bottom'},'*')}},{passive:true});
+addEventListener('pointerover',e=>{if(EU)return;const d=desc(e.target);if(d&&hov.size<12)hov.add(d)},{passive:true});
+addEventListener('pointerdown',()=>{taps++;act()},{passive:true});addEventListener('keydown',act);
+const onScreen=()=>{let best=null,area=0;for(const s of document.querySelectorAll('main>section')){const r=s.getBoundingClientRect(),v=Math.max(0,Math.min(innerHeight,r.bottom)-Math.max(0,r.top));if(v>area){area=v;best=s.id||null}}return best};
+setInterval(()=>{idle=performance.now()-lastAct;if(EU)return;parent.postMessage({type:'moment:interaction',section:onScreen(),scrollSpeed:Math.round(speed),hovered:[...hov],taps,idleMs:Math.round(idle),atBottom:bottom},'*');hov.clear();speed*=.5},2000);
+})();</script>
+</head><body class="layout-terminal motion-lively density-airy">
+<div id="m-building" role="status">Writing this page</div>
+<main>
+<section id="clearing-countdown">
+<h2 class="m-mono"><span class="m-accent">$</span> storm --until-clear <span class="m-muted">/ são paulo</span></h2>
+<p class="m-lead m-mono">Thunderstorms, 30°C. The storm stops around 8 p.m.</p>
+
+<div class="cc-readout m-mono">
+<div class="cc-row"><span class="m-muted">now</span><span id="cc-now">4:10 p.m.</span></div>
+<div class="cc-row"><span class="m-muted">clears</span><span>8:00 p.m.</span></div>
+<div class="cc-row"><span class="m-muted">remaining</span><span class="m-accent" id="cc-left">3 h 50 min</span></div>
+</div>
+
+<pre class="cc-bar m-mono" id="cc-bar" aria-hidden="true"></pre>
+
+<p class="m-muted m-mono cc-note">Rain chance holds at 73 to 81% through 7 p.m., then drops to 10% at 8 p.m. and 4% at 9 p.m. Heaviest hours on the board: 5 p.m. (3.2 mm) and 7 p.m. (3.8 mm).</p>
+
+<div class="cc-hours m-mono" id="cc-hours" role="list">
+<div role="listitem"><span>4 p.m.</span><i style="width:78%"></i><b>78%</b></div>
+<div role="listitem"><span>5 p.m.</span><i style="width:78%"></i><b>78%</b></div>
+<div role="listitem"><span>6 p.m.</span><i style="width:80%"></i><b>80%</b></div>
+<div role="listitem"><span>7 p.m.</span><i style="width:81%"></i><b>81%</b></div>
+<div role="listitem" class="cc-clear"><span>8 p.m.</span><i style="width:10%"></i><b>10%</b></div>
+<div role="listitem" class="cc-clear"><span>9 p.m.</span><i style="width:4%"></i><b>4%</b></div>
+</div>
+
+<style>
+#clearing-countdown{padding:calc(var(--gap)*1.5) 0}
+#clearing-countdown h2{font-family:var(--font-mono);font-size:clamp(1.1rem,2.6vw,1.6rem);font-weight:500;margin:0 0 calc(var(--gap)*.75);overflow-wrap:anywhere}
+#clearing-countdown .m-lead{margin:0 0 calc(var(--gap)*1.5)}
+#clearing-countdown .cc-readout{border:1px solid var(--line);background:var(--surface);padding:var(--gap);max-width:420px}
+#clearing-countdown .cc-row{display:flex;justify-content:space-between;gap:var(--gap);padding:.35rem 0;border-bottom:1px dashed var(--line)}
+#clearing-countdown .cc-row:last-child{border-bottom:0}
+#clearing-countdown .cc-row span:last-child{font-size:1.15rem}
+#clearing-countdown .cc-bar{margin:calc(var(--gap)*1.25) 0 .5rem;color:var(--accent);font-size:clamp(.7rem,2.4vw,1rem);white-space:pre;overflow:hidden;line-height:1.2}
+#clearing-countdown .cc-note{max-width:60ch;font-size:.9rem;margin:var(--gap) 0}
+#clearing-countdown .cc-hours{max-width:520px;margin-top:calc(var(--gap)*1.25)}
+#clearing-countdown .cc-hours div{display:grid;grid-template-columns:4.5rem 1fr 3rem;align-items:center;gap:.75rem;padding:.3rem 0}
+#clearing-countdown .cc-hours span{color:var(--muted)}
+#clearing-countdown .cc-hours i{display:block;height:.6rem;background:var(--accent);transform-origin:left}
+#clearing-countdown .cc-hours .cc-clear i{background:var(--accent-2)}
+#clearing-countdown .cc-hours b{font-weight:400;text-align:right}
+#clearing-countdown .cc-cursor{display:inline-block;width:.6em;height:1em;background:var(--accent);vertical-align:-.15em;animation:ccblink 1s steps(1) infinite}
+@keyframes ccblink{50%{opacity:0}}
+@media (prefers-reduced-motion:reduce){#clearing-countdown .cc-cursor{animation:none}}
+</style>
+</section><section id="sunset-window">
+<h2 class="m-mono"><span class="m-accent">$</span> sunset --window<span class="cursor" aria-hidden="true">_</span></h2>
+<p class="m-lead m-mono">Sunset is at 6:33 p.m. Behind the cloud, you will not see it. The rain runs until about 8 p.m., then the evening opens up.</p>
+
+<pre class="sw-table m-mono" id="sw-rows" aria-label="Hourly forecast from 6 p.m. to midnight">
+<span class="sw-head">TIME      TEMP   RAIN   SKY</span>
+<span class="sw-row" data-i="0">6:00 p.m.  28°C   80%    rain</span>
+<span class="sw-row sun" data-i="1">6:33 p.m.  --     --     sunset</span>
+<span class="sw-row" data-i="2">7:00 p.m.  27°C   81%    rain</span>
+<span class="sw-row clear" data-i="3">8:00 p.m.  27°C   10%    overcast, dry</span>
+<span class="sw-row clear" data-i="4">9:00 p.m.  25°C    4%    overcast, dry</span>
+<span class="sw-row clear" data-i="5">10:00 p.m. 25°C    2%    overcast, dry</span>
+<span class="sw-row clear" data-i="6">11:00 p.m. 24°C   15%    overcast, dry</span>
+<span class="sw-row clear" data-i="7">12:00 a.m. 23°C   12%    overcast, dry</span>
+</pre>
+
+<p class="m-mono sw-note"><span class="m-accent-2">&gt;</span> From 8 p.m. the rain chance drops from 81% to 10%. By 10 p.m. it is 2% and the air is 25°C, five degrees under this afternoon.</p>
+
+<style>
+#sunset-window h2{font-size:clamp(1.1rem,3vw,1.5rem);margin:0 0 1.2rem;font-weight:600}
+#sunset-window .cursor{color:var(--accent);animation:sw-blink 1s steps(1) infinite}
+@keyframes sw-blink{50%{opacity:0}}
+#sunset-window .m-lead{max-width:60ch;margin:0 0 2rem}
+#sunset-window .sw-table{display:block;margin:0 0 1.5rem;padding:1.2rem 1rem;background:var(--surface);border:1px solid var(--line);border-radius:0;overflow-x:auto;font-size:clamp(.72rem,2.6vw,.95rem);line-height:1.9;white-space:pre}
+#sunset-window .sw-row{display:block;color:var(--muted)}
+#sunset-window .sw-head{display:block;color:var(--fg);border-bottom:1px solid var(--line);margin-bottom:.4rem;padding-bottom:.3rem}
+#sunset-window .sw-row.sun{color:var(--accent)}
+#sunset-window .sw-row.clear{color:var(--fg)}
+#sunset-window .sw-note{max-width:60ch;margin:0;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){#sunset-window .cursor{animation:none}}
+</style>
+</section><section id="weekend-start">
+<h2 class="m-mono"><span class="m-accent">$</span> weekend --starts tonight<span id="ws-cursor">_</span></h2>
+<p class="m-lead">Today is Black Consciousness Day, and it is Friday. The weekend starts as the rain stops.</p>
+<pre class="m-mono ws-board">date        Fri 2026-11-20
+holiday     Black Consciousness Day
+now         4:10 p.m.  thunderstorms  30°C
+rain ends   8:00 p.m.
+8:00 p.m.   27°C  10% rain  dry
+11:00 p.m.  24°C  15% rain  dry
+3:00 a.m.   21°C  15% rain  dry</pre>
+<p>Nothing to cancel tonight, only to delay. The wet part is the next three hours and fifty minutes. After that the sky stays overcast but dry, and the air cools from 27° to 21° by 3 a.m.</p>
+<p class="m-muted">Warm, dry and cloudy from 8 p.m. on. Leave when the 8 p.m. line turns over.</p>
+<p class="m-mono ws-prompt"><span class="m-accent">&gt;</span> <span id="ws-status">checking the clock</span></p>
+<style>
+#weekend-start .ws-board{border:1px solid var(--line);background:var(--surface);padding:1rem 1.2rem;margin:1.5rem 0;overflow-x:auto;white-space:pre;border-radius:0;font-family:var(--font-mono);color:var(--fg);line-height:1.8}
+#weekend-start h2{font-family:var(--font-mono);font-weight:600}
+#weekend-start .ws-prompt{margin-top:1.5rem}
+#weekend-start #ws-cursor{color:var(--accent)}
+</style>
+</section></main>
+<style>#m-building{display:none}</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+<script>(()=>{try{
+(function(){
+var root=document.getElementById('clearing-countdown');
+if(!root)return;
+var barEl=document.getElementById('cc-bar');
+var leftEl=document.getElementById('cc-left');
+var nowEl=document.getElementById('cc-now');
+var startMin=16*60+10, endMin=20*60, total=endMin-startMin;
+var loadMin=null;
+var t0=Date.now();
+function fmt(m){
+var h=Math.floor(m/60),mm=m%60;
+var ap=h>=12?'p.m.':'a.m.';
+var hh=h%12===0?12:h%12;
+return hh+':'+(mm<10?'0':'')+mm+' '+ap;
+}
+function render(){
+var elapsed=Math.floor((Date.now()-t0)/60000);
+var cur=Math.min(startMin+elapsed,endMin);
+var rem=Math.max(endMin-cur,0);
+var h=Math.floor(rem/60),m=rem%60;
+leftEl.textContent=rem===0?'clear':h+' h '+(m<10?'0':'')+m+' min';
+nowEl.textContent=fmt(cur);
+var w=28;
+var filled=Math.round(w*(cur-startMin)/total);
+var s='[';
+for(var i=0;i<w;i++)s+=i<filled?'#':'.';
+s+='] '+Math.round(100*(cur-startMin)/total)+'%';
+barEl.innerHTML=s+' <span class="cc-cursor"></span>';
+}
+render();
+setInterval(render,10000);
+var still=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(window.anime&&!still){
+anime({targets:'#clearing-countdown .cc-hours i',scaleX:[0,1],delay:anime.stagger(120),duration:700,easing:'easeOutQuad'});
+anime({targets:'#clearing-countdown .cc-row',opacity:[0,1],translateX:[-8,0],delay:anime.stagger(150),duration:500,easing:'easeOutQuad'});
+}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var rows=document.querySelectorAll('#sw-rows .sw-row');
+if(!rows.length)return;
+var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(reduce||typeof anime==='undefined')return;
+rows.forEach(function(r){r.style.opacity=0;});
+var started=false;
+function go(){
+if(started)return;started=true;
+anime({targets:'#sw-rows .sw-row',opacity:[0,1],translateX:[-8,0],delay:anime.stagger(110),duration:450,easing:'easeOutQuad'});
+}
+var el=document.getElementById('sw-rows');
+if('IntersectionObserver' in window){
+var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){go();io.disconnect();}},{threshold:.2});
+io.observe(el);
+}else{go();}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var cur=document.getElementById('ws-cursor');
+var st=document.getElementById('ws-status');
+var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(cur&&!reduce){setInterval(function(){cur.style.visibility=cur.style.visibility==='hidden'?'visible':'hidden'},530)}
+if(st){
+var msg='storm clears 8:00 p.m. / weekend on';
+if(reduce){st.textContent=msg}else{
+var i=0;st.textContent='';
+var t=setInterval(function(){i++;st.textContent=msg.slice(0,i);if(i>=msg.length)clearInterval(t)},45)}
+}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>parent.postMessage({type:'moment:complete'},'*')</script>
+</body></html>

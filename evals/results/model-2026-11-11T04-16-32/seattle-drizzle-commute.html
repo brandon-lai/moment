@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Drizzle until 1 a.m. in Seattle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700&family=Lora:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>:root{--bg:#0f1720;--fg:#dfe7ee;--muted:#8fa1b3;--accent:#5eead4;--accent-2:#fbbf24;--surface:#16212d;--line:#263545;color-scheme:dark;--font-display:'Sora',sans-serif;--font-body:'Lora',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;--radius:18px;--gap:1}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:16.5px;line-height:1.55;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;line-height:1.05;letter-spacing:-.01em;margin:0 0 calc(.5em*var(--gap));text-wrap:balance}
+h1{font-size:clamp(34px,6.4vw,84px)}h2{font-size:clamp(24px,3.6vw,44px)}h3{font-size:clamp(18px,2.2vw,24px)}
+p{margin:0 0 calc(1em*var(--gap));max-width:68ch;text-wrap:pretty}
+a{color:var(--accent);text-underline-offset:.18em}
+button{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--fg);border-radius:var(--radius);padding:.55em 1em;cursor:pointer}
+button:hover{background:var(--fg);color:var(--bg)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=range]{accent-color:var(--accent);width:100%}
+table{border-collapse:collapse;width:100%}td,th{padding:.45em .6em;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85em}
+svg{max-width:100%;height:auto}canvas{max-width:100%;display:block}
+img{max-width:100%}
+.m-kicker{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .9em}
+.m-big{font-family:var(--font-display);font-size:clamp(56px,13vw,170px);line-height:.88;letter-spacing:-.03em;font-weight:700}
+.m-lead{font-size:1.25em;line-height:1.4;max-width:40ch}
+.m-muted{color:var(--muted)}.m-accent{color:var(--accent)}.m-accent-2{color:var(--accent-2)}
+.m-mono{font-family:var(--font-mono)}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:calc(16px*var(--gap))}
+.m-row{display:flex;flex-wrap:wrap;gap:calc(12px*var(--gap));align-items:baseline}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:calc(18px*var(--gap))}
+.m-stat{display:flex;flex-direction:column;gap:.2em}.m-stat b{font-family:var(--font-display);font-size:clamp(28px,4.6vw,52px);line-height:1;font-weight:700}
+.m-rule{border:0;border-top:1px solid var(--line);margin:calc(24px*var(--gap)) 0}
+.m-chip{display:inline-block;font-family:var(--font-mono);font-size:.78rem;padding:.25em .6em;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.m-list{list-style:none;padding:0;margin:0}.m-list li{padding:.6em 0;border-bottom:1px solid var(--line)}
+.m-bars{display:flex;align-items:flex-end;gap:3px;height:120px}.m-bars i{flex:1;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px}
+main>section{scroll-margin-top:16px}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#m-building{position:fixed;left:12px;bottom:12px;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;z-index:5}
+#m-building::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:m-pulse 1.2s ease-in-out infinite}
+@keyframes m-pulse{50%{opacity:.25}}
+.m-earlier{font-family:var(--font-mono);font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
+main{max-width:64rem;margin:0 auto;padding:clamp(20px,4vw,56px);counter-reset:sec}main>section{counter-increment:sec;position:relative;padding:clamp(24px,4vw,48px) 0 clamp(24px,4vw,48px) clamp(0px,9vw,120px);border-top:1px solid var(--line)}main>section::before{content:counter(sec,decimal-leading-zero);font-family:var(--font-display);font-size:clamp(28px,6vw,72px);line-height:1;color:var(--accent);display:block;margin-bottom:12px}@media(min-width:760px){main>section::before{position:absolute;left:0;top:clamp(24px,4vw,48px)}}</style>
+<script>window.MOMENT={"live":"http://localhost:8788/live/47.61,-122.33","tz":"America/Los_Angeles","place":"Seattle","eu":false};(()=>{const EU=false;let lastY=scrollY,lastT=performance.now(),speed=0,taps=0,idle=0,lastAct=performance.now(),hov=new Set(),bottom=false;
+const desc=e=>{const el=e.closest&&e.closest('[data-m],button,a,svg,canvas,table,li,figure,h2,h3');if(!el)return null;return(el.getAttribute('data-m')||el.tagName.toLowerCase()+(el.className&&typeof el.className==='string'?'.'+el.className.split(' ')[0]:'')).slice(0,40)};
+const act=()=>{lastAct=performance.now()};
+addEventListener('scroll',()=>{const t=performance.now(),dy=Math.abs(scrollY-lastY);speed=.7*speed+.3*(dy/Math.max(16,t-lastT)*1000);lastY=scrollY;lastT=t;act();const b=innerHeight+scrollY>=document.documentElement.scrollHeight-40;if(b&&!bottom){bottom=true;parent.postMessage({type:'moment:bottom'},'*')}},{passive:true});
+addEventListener('pointerover',e=>{if(EU)return;const d=desc(e.target);if(d&&hov.size<12)hov.add(d)},{passive:true});
+addEventListener('pointerdown',()=>{taps++;act()},{passive:true});addEventListener('keydown',act);
+const onScreen=()=>{let best=null,area=0;for(const s of document.querySelectorAll('main>section')){const r=s.getBoundingClientRect(),v=Math.max(0,Math.min(innerHeight,r.bottom)-Math.max(0,r.top));if(v>area){area=v;best=s.id||null}}return best};
+setInterval(()=>{idle=performance.now()-lastAct;if(EU)return;parent.postMessage({type:'moment:interaction',section:onScreen(),scrollSpeed:Math.round(speed),hovered:[...hov],taps,idleMs:Math.round(idle),atBottom:bottom},'*');hov.clear();speed*=.5},2000);
+})();</script>
+</head><body class="layout-index motion-still density-balanced">
+<div id="m-building" role="status">Writing this page</div>
+<main>
+<section id="clearing-countdown">
+<div class="cc-wrap">
+<div class="cc-num m-big m-mono m-accent">01</div>
+<div class="cc-body">
+<p class="m-kicker">Seattle · Tuesday evening</p>
+<h2>Hours until the drizzle stops</h2>
+<p class="m-lead">The drizzle stops around 1 a.m. It is 5:35 p.m. now, so that is about seven and a half hours of it.</p>
+<div class="cc-count" aria-live="off">
+<span class="m-big m-accent-2" id="cc-hours">7</span><span class="cc-unit">h</span>
+<span class="m-big m-accent-2" id="cc-mins">25</span><span class="cc-unit">min</span>
+</div>
+<p class="m-muted" id="cc-note">Counted from 5:35 p.m. to 1:00 a.m.</p>
+<div class="cc-strip" role="img" aria-label="Rain chance by hour from 5 p.m. to 1 a.m., dropping to 19 percent at 1 a.m.">
+<div class="cc-cell"><i style="height:73%"></i><span>5</span></div>
+<div class="cc-cell"><i style="height:75%"></i><span>6</span></div>
+<div class="cc-cell"><i style="height:70%"></i><span>7</span></div>
+<div class="cc-cell"><i style="height:80%"></i><span>8</span></div>
+<div class="cc-cell"><i style="height:73%"></i><span>9</span></div>
+<div class="cc-cell"><i style="height:92%"></i><span>10</span></div>
+<div class="cc-cell"><i style="height:84%"></i><span>11</span></div>
+<div class="cc-cell"><i style="height:74%"></i><span>12</span></div>
+<div class="cc-cell cc-end"><i style="height:19%"></i><span>1</span></div>
+</div>
+<p class="m-muted cc-cap">Rain chance by hour, p.m. into a.m. The wettest hour is 10 p.m. at 92%. By 1 a.m. it is 19%.</p>
+</div>
+</div>
+<style>
+#clearing-countdown .cc-wrap{display:grid;grid-template-columns:minmax(64px,140px) 1fr;gap:var(--gap);padding:calc(var(--gap)*2) 0;border-top:1px solid var(--line)}
+#clearing-countdown .cc-num{line-height:.85;font-size:clamp(3rem,10vw,8rem)}
+#clearing-countdown h2{font-family:var(--font-display);margin:.2em 0 .4em;font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.1}
+#clearing-countdown .cc-count{display:flex;align-items:baseline;gap:.25em;margin:1rem 0 .25rem;flex-wrap:wrap}
+#clearing-countdown .cc-count .m-big{font-size:clamp(4rem,14vw,9rem);line-height:.9}
+#clearing-countdown .cc-unit{font-family:var(--font-mono);color:var(--muted);margin-right:.6em}
+#clearing-countdown .cc-strip{display:flex;align-items:flex-end;gap:6px;height:140px;margin-top:2rem;border-bottom:1px solid var(--line)}
+#clearing-countdown .cc-cell{flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:6px;min-width:0}
+#clearing-countdown .cc-cell i{display:block;width:100%;background:var(--accent);border-radius:2px 2px 0 0;opacity:.8}
+#clearing-countdown .cc-cell.cc-end i{background:var(--accent-2);opacity:1}
+#clearing-countdown .cc-cell span{font-family:var(--font-mono);font-size:.75rem;color:var(--muted);transform:translateY(1.6em);position:relative}
+#clearing-countdown .cc-cap{margin-top:2rem;max-width:46ch}
+@media(max-width:480px){#clearing-countdown .cc-wrap{grid-template-columns:1fr}}
+</style>
+</section><section id="overnight-temps">
+<div class="ot-wrap">
+<div class="ot-num m-big m-accent" aria-hidden="true">02</div>
+<div class="ot-body">
+<p class="m-kicker">Temperatures from now to morning</p>
+<h2 class="ot-h">54° at dinner, 38° by 4 a.m.</h2>
+<p class="m-lead">It's 54°F (12°C) now. The drop is steady, about two degrees an hour through the evening, then it slows once the rain quits around 1 a.m.</p>
+<figure class="ot-fig">
+<svg id="ot-chart" viewBox="0 0 640 260" role="img" aria-label="Line chart of hourly temperature in Seattle from 4 p.m. to 4 a.m., falling from 53°F to 38°F">
+<line x1="40" y1="30" x2="620" y2="30" class="ot-grid"/>
+<line x1="40" y1="110" x2="620" y2="110" class="ot-grid"/>
+<line x1="40" y1="190" x2="620" y2="190" class="ot-grid"/>
+<text x="4" y="34" class="ot-t">53°</text>
+<text x="4" y="114" class="ot-t">45°</text>
+<text x="4" y="194" class="ot-t">38°</text>
+<rect x="40" y="20" width="400" height="180" class="ot-rain"/>
+<text x="48" y="40" class="ot-t ot-rt">drizzle</text>
+<polyline id="ot-line" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" points="40,30 88,30 136,38 184,54 232,78 280,94 328,102 376,118 424,134 472,150 520,158 568,166 616,190"/>
+<circle cx="40" cy="30" r="5" fill="var(--accent)"/>
+<circle cx="616" cy="190" r="5" fill="var(--accent-2)"/>
+<text x="40" y="224" class="ot-t">4 p.m.</text>
+<text x="232" y="224" class="ot-t">8 p.m.</text>
+<text x="424" y="224" class="ot-t">12 a.m.</text>
+<text x="580" y="224" class="ot-t">4 a.m.</text>
+</svg>
+</figure>
+<div class="m-row ot-stats">
+<div class="m-stat"><b>54°F</b><span>now, 5 p.m.</span></div>
+<div class="m-stat"><b>45°F</b><span>at 9 p.m.</span></div>
+<div class="m-stat"><b class="m-accent-2">38°F</b><span>low at 4 a.m. (4°C)</span></div>
+</div>
+<p class="m-muted">Rule of thumb: the coldest hour is the last one on this chart. Dress for 38°F if you're out late.</p>
+</div>
+</div>
+<style>
+#overnight-temps .ot-wrap{display:grid;grid-template-columns:minmax(64px,120px) 1fr;gap:var(--gap);align-items:start}
+#overnight-temps .ot-num{line-height:.85;border-right:1px solid var(--line);padding-right:12px}
+#overnight-temps .ot-h{font-family:var(--font-display);font-size:clamp(1.8rem,4.5vw,3rem);line-height:1.05;margin:.2em 0 .5em}
+#overnight-temps .ot-fig{margin:1.5em 0}
+#overnight-temps svg{width:100%;height:auto;display:block}
+#overnight-temps .ot-grid{stroke:var(--line);stroke-width:1;stroke-dasharray:3 5}
+#overnight-temps .ot-t{fill:var(--muted);font-family:var(--font-mono);font-size:12px}
+#overnight-temps .ot-rain{fill:color-mix(in srgb,var(--accent) 10%,transparent)}
+#overnight-temps .ot-stats{gap:var(--gap);margin:1em 0}
+@media(max-width:480px){#overnight-temps .ot-wrap{grid-template-columns:1fr}#overnight-temps .ot-num{border-right:0;padding:0}}
+</style>
+</section><section id="after-the-rain">
+<div class="atr-gutter" aria-hidden="true">03</div>
+<div class="atr-body">
+<p class="m-kicker">Seattle · after 1 a.m.</p>
+<h2 class="atr-h">What the clearing sets up</h2>
+<p class="m-lead">The rain quits around 1 a.m. and the sky stays covered. The cloud overhead is there, the water falling from it is not.</p>
+<div class="atr-grid">
+<div class="m-stat"><b>19%</b><span>rain chance at 1 a.m., down from 92% at 10 p.m.</span></div>
+<div class="m-stat"><b>7%</b><span>rain chance at 2 a.m.</span></div>
+<div class="m-stat"><b>38°F</b><span>(4°C) at 4 a.m., the low on this chart</span></div>
+</div>
+<p>So the cold comes in dry. Temperatures keep sliding from 40°F (4°C) at 1 a.m. to 38°F (4°C) at 4 a.m., with no rain on top of it. Anything wet from the evening has hours to sit and not get wetter.</p>
+<p>Sunrise is at 7:18 a.m. The last hours before it, the chart shows 10 to 13% rain chance and no measurable rain. Plan the morning around a dry start and a cold one.</p>
+<div class="atr-strip" role="img" aria-label="Rain chance by hour from 1 a.m. to 4 a.m.: 19, 7, 13, 10 percent">
+<svg viewBox="0 0 320 70" width="100%" height="70" preserveAspectRatio="none">
+<line x1="0" y1="62" x2="320" y2="62" stroke="var(--line)"/>
+<rect x="10" y="42" width="52" height="20" fill="var(--accent)"/>
+<rect x="95" y="56" width="52" height="6" fill="var(--accent)"/>
+<rect x="180" y="50" width="52" height="12" fill="var(--accent)"/>
+<rect x="265" y="53" width="45" height="9" fill="var(--accent)"/>
+</svg>
+<div class="atr-labels m-mono m-muted"><span>1 a.m. 19%</span><span>2 a.m. 7%</span><span>3 a.m. 13%</span><span>4 a.m. 10%</span></div>
+</div>
+</div>
+<style>
+#after-the-rain{display:grid;grid-template-columns:minmax(56px,120px) 1fr;gap:var(--gap);padding:calc(var(--gap)*2) 0;border-top:1px solid var(--line)}
+#after-the-rain .atr-gutter{font-family:var(--font-display);font-size:clamp(3rem,9vw,7rem);line-height:.9;color:var(--accent)}
+#after-the-rain .atr-h{font-family:var(--font-display);font-size:clamp(1.6rem,4vw,2.6rem);margin:.2em 0 .5em}
+#after-the-rain .atr-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:var(--gap);margin:1.5em 0}
+#after-the-rain .atr-body{max-width:46rem;min-width:0}
+#after-the-rain .atr-strip{margin-top:1.5em}
+#after-the-rain .atr-labels{display:flex;justify-content:space-between;gap:.5em;flex-wrap:wrap;font-size:.8rem;margin-top:.4em}
+@media (max-width:480px){#after-the-rain{grid-template-columns:1fr}}
+</style>
+</section></main>
+<style>#m-building{display:none}</style>
+
+<script>(()=>{try{
+(function(){
+var h=document.getElementById('cc-hours'),m=document.getElementById('cc-mins'),n=document.getElementById('cc-note');
+if(!h||!m)return;
+try{
+var parts=new Intl.DateTimeFormat('en-US',{timeZone:'America/Los_Angeles',hour:'numeric',minute:'numeric',hour12:false}).formatToParts(new Date());
+var hr=0,mn=0;
+parts.forEach(function(p){if(p.type==='hour')hr=parseInt(p.value,10)%24;if(p.type==='minute')mn=parseInt(p.value,10)});
+var now=hr*60+mn,target=25*60;
+if(now<4*60)target=hr<1?60:60;
+var diff=target-now;
+if(now<60){diff=60-now}
+if(diff>0&&diff<=12*60){
+h.textContent=Math.floor(diff/60);
+m.textContent=diff%60;
+var t=hr%12||12,ap=hr>=12?'p.m.':'a.m.';
+n.textContent='Counted from '+t+':'+(mn<10?'0':'')+mn+' '+ap+' to 1:00 a.m.';
+}
+}catch(e){}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>parent.postMessage({type:'moment:complete'},'*')</script>
+</body></html>

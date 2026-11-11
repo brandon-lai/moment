@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sunset in Paris: the last clear hour</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;700&family=Albert+Sans:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>:root{--bg:#f4f6f3;--fg:#17241c;--muted:#536557;--accent:#166534;--accent-2:#b91c1c;--surface:#e8ece6;--line:#cdd6ce;color-scheme:light;--font-display:'Bodoni Moda',serif;--font-body:'Albert Sans',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;--radius:0px;--gap:0.7}
+@media (prefers-color-scheme:dark){:root{--bg:#13202b;--fg:#e8eef2;--muted:#9db0bf;--accent:#f4a261;--accent-2:#7dd3fc;--surface:#1a2a37;--line:#2a3d4d;color-scheme:dark;}}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:15px;line-height:1.55;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;line-height:1.05;letter-spacing:-.01em;margin:0 0 calc(.5em*var(--gap));text-wrap:balance}
+h1{font-size:clamp(34px,6.4vw,84px)}h2{font-size:clamp(24px,3.6vw,44px)}h3{font-size:clamp(18px,2.2vw,24px)}
+p{margin:0 0 calc(1em*var(--gap));max-width:68ch;text-wrap:pretty}
+a{color:var(--accent);text-underline-offset:.18em}
+button{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--fg);border-radius:var(--radius);padding:.55em 1em;cursor:pointer}
+button:hover{background:var(--fg);color:var(--bg)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=range]{accent-color:var(--accent);width:100%}
+table{border-collapse:collapse;width:100%}td,th{padding:.45em .6em;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85em}
+svg{max-width:100%;height:auto}canvas{max-width:100%;display:block}
+img{max-width:100%}
+.m-kicker{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .9em}
+.m-big{font-family:var(--font-display);font-size:clamp(56px,13vw,170px);line-height:.88;letter-spacing:-.03em;font-weight:700}
+.m-lead{font-size:1.25em;line-height:1.4;max-width:40ch}
+.m-muted{color:var(--muted)}.m-accent{color:var(--accent)}.m-accent-2{color:var(--accent-2)}
+.m-mono{font-family:var(--font-mono)}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:calc(16px*var(--gap))}
+.m-row{display:flex;flex-wrap:wrap;gap:calc(12px*var(--gap));align-items:baseline}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:calc(18px*var(--gap))}
+.m-stat{display:flex;flex-direction:column;gap:.2em}.m-stat b{font-family:var(--font-display);font-size:clamp(28px,4.6vw,52px);line-height:1;font-weight:700}
+.m-rule{border:0;border-top:1px solid var(--line);margin:calc(24px*var(--gap)) 0}
+.m-chip{display:inline-block;font-family:var(--font-mono);font-size:.78rem;padding:.25em .6em;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.m-list{list-style:none;padding:0;margin:0}.m-list li{padding:.6em 0;border-bottom:1px solid var(--line)}
+.m-bars{display:flex;align-items:flex-end;gap:3px;height:120px}.m-bars i{flex:1;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px}
+main>section{scroll-margin-top:16px}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#m-building{position:fixed;left:12px;bottom:12px;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;z-index:5}
+#m-building::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:m-pulse 1.2s ease-in-out infinite}
+@keyframes m-pulse{50%{opacity:.25}}
+.m-earlier{font-family:var(--font-mono);font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
+main{max-width:64rem;margin:0 auto;padding:clamp(20px,4vw,56px);counter-reset:sec}main>section{counter-increment:sec;position:relative;padding:clamp(24px,4vw,48px) 0 clamp(24px,4vw,48px) clamp(0px,9vw,120px);border-top:1px solid var(--line)}main>section::before{content:counter(sec,decimal-leading-zero);font-family:var(--font-display);font-size:clamp(28px,6vw,72px);line-height:1;color:var(--accent);display:block;margin-bottom:12px}@media(min-width:760px){main>section::before{position:absolute;left:0;top:clamp(24px,4vw,48px)}}</style>
+<script>window.MOMENT={"live":"http://localhost:8788/live/48.86,2.35","tz":"Europe/Paris","place":"Paris","eu":true};(()=>{const EU=true;let lastY=scrollY,lastT=performance.now(),speed=0,taps=0,idle=0,lastAct=performance.now(),hov=new Set(),bottom=false;
+const desc=e=>{const el=e.closest&&e.closest('[data-m],button,a,svg,canvas,table,li,figure,h2,h3');if(!el)return null;return(el.getAttribute('data-m')||el.tagName.toLowerCase()+(el.className&&typeof el.className==='string'?'.'+el.className.split(' ')[0]:'')).slice(0,40)};
+const act=()=>{lastAct=performance.now()};
+addEventListener('scroll',()=>{const t=performance.now(),dy=Math.abs(scrollY-lastY);speed=.7*speed+.3*(dy/Math.max(16,t-lastT)*1000);lastY=scrollY;lastT=t;act();const b=innerHeight+scrollY>=document.documentElement.scrollHeight-40;if(b&&!bottom){bottom=true;parent.postMessage({type:'moment:bottom'},'*')}},{passive:true});
+addEventListener('pointerover',e=>{if(EU)return;const d=desc(e.target);if(d&&hov.size<12)hov.add(d)},{passive:true});
+addEventListener('pointerdown',()=>{taps++;act()},{passive:true});addEventListener('keydown',act);
+const onScreen=()=>{let best=null,area=0;for(const s of document.querySelectorAll('main>section')){const r=s.getBoundingClientRect(),v=Math.max(0,Math.min(innerHeight,r.bottom)-Math.max(0,r.top));if(v>area){area=v;best=s.id||null}}return best};
+setInterval(()=>{idle=performance.now()-lastAct;if(EU)return;parent.postMessage({type:'moment:interaction',section:onScreen(),scrollSpeed:Math.round(speed),hovered:[...hov],taps,idleMs:Math.round(idle),atBottom:bottom},'*');hov.clear();speed*=.5},2000);
+})();</script>
+</head><body class="layout-index motion-still density-dense">
+<div id="m-building" role="status">Writing this page</div>
+<main>
+<section id="sunset-clock">
+<div class="sc-wrap">
+<div class="sc-num m-mono" aria-hidden="true">01</div>
+<div class="sc-body">
+<p class="m-kicker">Paris · Friday, November 6</p>
+<h2>Sunset countdown for Paris</h2>
+<p class="m-lead">Sunset is at 5:24 p.m., 55 minutes from now. The sky is clear and 16°C, and it stays clear through the evening.</p>
+<div class="m-row sc-stats">
+<div class="m-stat"><b id="sc-left">55 min</b><span>until sunset</span></div>
+<div class="m-stat"><b>4:30 p.m.</b><span>now</span></div>
+<div class="m-stat"><b>5:24 p.m.</b><span>sunset</span></div>
+<div class="m-stat"><b>7:46 a.m.</b><span>sunrise today</span></div>
+</div>
+<svg id="sc-svg" viewBox="0 0 600 120" role="img" aria-label="Timeline from 4:00 p.m. to 6:00 p.m. with now at 4:30 and sunset at 5:24">
+<rect x="0" y="50" width="600" height="20" fill="color-mix(in srgb, var(--accent) 12%, transparent)"/>
+<rect x="270" y="50" width="258" height="20" fill="color-mix(in srgb, var(--accent) 35%, transparent)"/>
+<line x1="0" y1="60" x2="600" y2="60" stroke="var(--line)" stroke-width="1"/>
+<line x1="150" y1="30" x2="150" y2="90" stroke="var(--fg)" stroke-width="2"/>
+<line x1="528" y1="30" x2="528" y2="90" stroke="var(--accent)" stroke-width="2"/>
+<text x="150" y="24" fill="var(--fg)" font-size="12" text-anchor="middle" font-family="var(--font-mono)">now 4:30</text>
+<text x="528" y="24" fill="var(--accent)" font-size="12" text-anchor="middle" font-family="var(--font-mono)">sunset 5:24</text>
+<text x="0" y="110" fill="var(--muted)" font-size="11" font-family="var(--font-mono)">4:00 p.m.</text>
+<text x="600" y="110" fill="var(--muted)" font-size="11" text-anchor="end" font-family="var(--font-mono)">6:00 p.m.</text>
+<text x="399" y="110" fill="var(--muted)" font-size="11" text-anchor="middle" font-family="var(--font-mono)">low light, about 4:45 to 5:24</text>
+</svg>
+<p class="m-muted sc-note">The shaded band is the stretch before sunset when the sun sits low. It is a rough guide, not a measured window. Rain chance from now until midnight stays under 20% every hour.</p>
+</div>
+</div>
+<style>
+#sunset-clock{padding:var(--gap) 0}
+#sunset-clock .sc-wrap{display:grid;grid-template-columns:minmax(48px,110px) 1fr;gap:var(--gap);align-items:start}
+#sunset-clock .sc-num{font-size:clamp(2.5rem,8vw,6rem);line-height:1;color:var(--accent);border-top:2px solid var(--fg);padding-top:.4rem}
+#sunset-clock h2{font-family:var(--font-display);font-size:clamp(1.8rem,4.5vw,3rem);line-height:1.05;margin:.2rem 0 1rem}
+#sunset-clock .sc-stats{gap:var(--gap);margin:1.5rem 0}
+#sunset-clock #sc-svg{width:100%;height:auto;display:block;max-width:720px}
+#sunset-clock .sc-note{max-width:60ch;margin-top:1rem}
+@media (max-width:480px){#sunset-clock .sc-wrap{grid-template-columns:1fr}}
+</style>
+</section><section id="outdoor-window">
+<div class="ow-wrap">
+<div class="ow-num" aria-hidden="true">02</div>
+<div class="ow-body">
+<p class="m-kicker">Clear hours before the night</p>
+<h2 class="ow-h">Clear sky, 16° now, and no rain in the forecast through 3 a.m.</h2>
+<p class="m-lead">Every hour from now until 3 a.m. reads clear or close to it. Rain chance never passes 19%, and no rain is expected to fall at all.</p>
+<div class="ow-chart" role="img" aria-label="Temperature by hour in Paris from 3 p.m. to 3 a.m., falling from 16 to 8 degrees. Sunset marked at 5:24 p.m.">
+<div class="ow-bars" id="ow-bars"></div>
+</div>
+<div class="m-grid ow-stats">
+<div class="m-stat"><b>16°</b><span>Peak, at 4 p.m.</span></div>
+<div class="m-stat"><b>14°</b><span>At 7 p.m., after dark</span></div>
+<div class="m-stat"><b>10°</b><span>By 10 p.m.</span></div>
+<div class="m-stat"><b>8°</b><span>Low, at 2 a.m.</span></div>
+</div>
+<p class="ow-note">Sunset is at 5:24 p.m. The sky stays clear after it, so the evening is dry. It just gets colder: 15° at 5 p.m., 12° at 9 p.m. If you want the 16° light, go in the next hour.</p>
+</div>
+</div>
+<style>
+#outdoor-window .ow-wrap{display:grid;grid-template-columns:minmax(56px,120px) 1fr;gap:var(--gap);align-items:start;border-top:1px solid var(--line);padding-top:var(--gap)}
+#outdoor-window .ow-num{font-family:var(--font-display);font-size:clamp(48px,9vw,110px);line-height:.9;color:var(--accent);font-weight:700}
+#outdoor-window .ow-h{font-family:var(--font-display);font-size:clamp(24px,3.4vw,40px);line-height:1.1;margin:.3em 0 .5em;max-width:22ch}
+#outdoor-window .ow-chart{margin:calc(var(--gap)*1.2) 0;border-bottom:1px solid var(--line)}
+#outdoor-window .ow-bars{display:flex;align-items:flex-end;gap:4px;height:170px}
+#outdoor-window .ow-col{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%}
+#outdoor-window .ow-col i{display:block;width:100%;background:var(--accent);border-radius:2px 2px 0 0}
+#outdoor-window .ow-col.dark i{background:color-mix(in srgb,var(--fg) 55%,var(--bg))}
+#outdoor-window .ow-col.sun i{background:var(--accent-2)}
+#outdoor-window .ow-col small{font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-top:4px;white-space:nowrap}
+#outdoor-window .ow-col em{font-family:var(--font-mono);font-size:10px;font-style:normal;margin-bottom:3px}
+#outdoor-window .ow-stats{margin-bottom:var(--gap)}
+#outdoor-window .ow-note{max-width:60ch;color:var(--fg)}
+@media(max-width:480px){#outdoor-window .ow-wrap{grid-template-columns:1fr}#outdoor-window .ow-col small:nth-of-type(n){font-size:9px}}
+</style>
+</section><section id="weekend-start">
+<div class="ws-num m-mono m-accent">03</div>
+<div class="ws-body">
+<h2>The weekend starts tonight</h2>
+<p class="m-lead">It's Friday, 4:30 p.m. The sun sets at 5:24 p.m. and the sky is clear, so the last hour of light is the first hour of your weekend.</p>
+<div class="ws-split">
+<div class="ws-big">
+<span class="m-big m-accent">55</span>
+<span class="m-muted m-mono">minutes of daylight left</span>
+</div>
+<ul class="m-list ws-list">
+<li><b>Now to 5:24 p.m.</b> Dry, clear, 16° falling to 15°. Light coat weather.</li>
+<li><b>5:24 to 8 p.m.</b> Dark, dry, 14° to 13°. Rain chance stays under 8%.</li>
+<li><b>After 10 p.m.</b> 10° and falling, still clear. Bring a layer.</li>
+</ul>
+</div>
+<div class="m-rule"></div>
+<p class="ws-close">Whatever you had planned for Saturday, tonight is dry and cold, so you don't have to rely on the weekend's weather. Go out while the sun is low.</p>
+<div class="m-row ws-chips">
+<span class="m-chip">Sunset 5:24 p.m.</span>
+<span class="m-chip">Clear until 3 a.m.</span>
+<span class="m-chip">Low 8°</span>
+</div>
+</div>
+<style>
+#weekend-start{display:grid;grid-template-columns:minmax(56px,120px) 1fr;gap:var(--gap);padding:calc(var(--gap)*2) 0;border-top:1px solid var(--line)}
+#weekend-start .ws-num{font-size:clamp(2rem,6vw,4.5rem);line-height:1;font-family:var(--font-mono)}
+#weekend-start h2{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,3rem);margin:0 0 .5em;color:var(--fg)}
+#weekend-start .ws-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:calc(var(--gap)*1.5);align-items:center;margin:var(--gap) 0}
+#weekend-start .ws-big{display:flex;flex-direction:column}
+#weekend-start .ws-big .m-big{font-size:clamp(5rem,16vw,11rem);line-height:.9}
+#weekend-start .ws-list li{padding:.6em 0;border-bottom:1px solid var(--line)}
+#weekend-start .ws-list b{display:block;font-family:var(--font-mono);font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--accent-2)}
+#weekend-start .ws-close{max-width:52ch;color:var(--fg)}
+#weekend-start .ws-chips{margin-top:var(--gap)}
+@media (max-width:640px){
+#weekend-start{grid-template-columns:1fr}
+#weekend-start .ws-split{grid-template-columns:1fr}
+}
+</style>
+</section></main>
+<style>#m-building{display:none}</style>
+
+<script>(()=>{try{
+(function(){
+var el=document.getElementById('sc-left');
+if(!el)return;
+try{
+var now=new Date();
+var parts=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Paris',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(now);
+var h=+parts.find(function(p){return p.type==='hour'}).value;
+var m=+parts.find(function(p){return p.type==='minute'}).value;
+var left=(17*60+24)-(h*60+m);
+if(left>0&&left<600){el.textContent=left+' min';}
+else if(left<=0&&left>-600){el.textContent='set';}
+}catch(e){}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var data=[["3p",15],["4p",16],["5p",15],["6p",14],["7p",14],["8p",13],["9p",12],["10p",10],["11p",10],["12a",9],["1a",9],["2a",8],["3a",9]];
+var box=document.getElementById('ow-bars');
+if(!box)return;
+data.forEach(function(d,i){
+var h=Math.round((d[1]-4)/14*100);
+var c=document.createElement('div');
+c.className='ow-col'+(i===2?' sun':(i>2?' dark':''));
+c.innerHTML='<em>'+d[1]+'</em><i style="height:'+h+'%"></i><small>'+d[0]+'</small>';
+box.appendChild(c);
+});
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>parent.postMessage({type:'moment:complete'},'*')</script>
+</body></html>

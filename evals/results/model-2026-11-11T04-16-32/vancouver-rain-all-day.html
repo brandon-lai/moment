@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Drizzle in Vancouver until nine tonight</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>:root{--bg:#1c1d1f;--fg:#ececec;--muted:#a3a3a3;--accent:#a3e635;--accent-2:#60a5fa;--surface:#242528;--line:#36383c;color-scheme:dark;--font-display:'Archivo Black',sans-serif;--font-body:'Archivo',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;--radius:12px;--gap:1}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:16.5px;line-height:1.55;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.05;letter-spacing:-.01em;margin:0 0 calc(.5em*var(--gap));text-wrap:balance}
+h1{font-size:clamp(34px,6.4vw,84px)}h2{font-size:clamp(24px,3.6vw,44px)}h3{font-size:clamp(18px,2.2vw,24px)}
+p{margin:0 0 calc(1em*var(--gap));max-width:68ch;text-wrap:pretty}
+a{color:var(--accent);text-underline-offset:.18em}
+button{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--fg);border-radius:var(--radius);padding:.55em 1em;cursor:pointer}
+button:hover{background:var(--fg);color:var(--bg)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=range]{accent-color:var(--accent);width:100%}
+table{border-collapse:collapse;width:100%}td,th{padding:.45em .6em;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85em}
+svg{max-width:100%;height:auto}canvas{max-width:100%;display:block}
+img{max-width:100%}
+.m-kicker{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .9em}
+.m-big{font-family:var(--font-display);font-size:clamp(56px,13vw,170px);line-height:.88;letter-spacing:-.03em;font-weight:400}
+.m-lead{font-size:1.25em;line-height:1.4;max-width:40ch}
+.m-muted{color:var(--muted)}.m-accent{color:var(--accent)}.m-accent-2{color:var(--accent-2)}
+.m-mono{font-family:var(--font-mono)}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:calc(16px*var(--gap))}
+.m-row{display:flex;flex-wrap:wrap;gap:calc(12px*var(--gap));align-items:baseline}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:calc(18px*var(--gap))}
+.m-stat{display:flex;flex-direction:column;gap:.2em}.m-stat b{font-family:var(--font-display);font-size:clamp(28px,4.6vw,52px);line-height:1;font-weight:400}
+.m-rule{border:0;border-top:1px solid var(--line);margin:calc(24px*var(--gap)) 0}
+.m-chip{display:inline-block;font-family:var(--font-mono);font-size:.78rem;padding:.25em .6em;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.m-list{list-style:none;padding:0;margin:0}.m-list li{padding:.6em 0;border-bottom:1px solid var(--line)}
+.m-bars{display:flex;align-items:flex-end;gap:3px;height:120px}.m-bars i{flex:1;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px}
+main>section{scroll-margin-top:16px}
+main>section{animation:m-in .9s cubic-bezier(.2,.7,.2,1) both}@keyframes m-in{from{opacity:0;transform:translateY(8px)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#m-building{position:fixed;left:12px;bottom:12px;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;z-index:5}
+#m-building::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:m-pulse 1.2s ease-in-out infinite}
+@keyframes m-pulse{50%{opacity:.25}}
+.m-earlier{font-family:var(--font-mono);font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
+main{max-width:44rem;margin:0 auto;padding:clamp(24px,6vw,72px) clamp(16px,5vw,32px)}main>section{padding:clamp(28px,6vw,64px) 0}main>section+section{border-top:1px solid var(--line)}</style>
+<script>window.MOMENT={"live":"http://localhost:8788/live/49.28,-123.12","tz":"America/Vancouver","place":"Vancouver","eu":false};(()=>{const EU=false;let lastY=scrollY,lastT=performance.now(),speed=0,taps=0,idle=0,lastAct=performance.now(),hov=new Set(),bottom=false;
+const desc=e=>{const el=e.closest&&e.closest('[data-m],button,a,svg,canvas,table,li,figure,h2,h3');if(!el)return null;return(el.getAttribute('data-m')||el.tagName.toLowerCase()+(el.className&&typeof el.className==='string'?'.'+el.className.split(' ')[0]:'')).slice(0,40)};
+const act=()=>{lastAct=performance.now()};
+addEventListener('scroll',()=>{const t=performance.now(),dy=Math.abs(scrollY-lastY);speed=.7*speed+.3*(dy/Math.max(16,t-lastT)*1000);lastY=scrollY;lastT=t;act();const b=innerHeight+scrollY>=document.documentElement.scrollHeight-40;if(b&&!bottom){bottom=true;parent.postMessage({type:'moment:bottom'},'*')}},{passive:true});
+addEventListener('pointerover',e=>{if(EU)return;const d=desc(e.target);if(d&&hov.size<12)hov.add(d)},{passive:true});
+addEventListener('pointerdown',()=>{taps++;act()},{passive:true});addEventListener('keydown',act);
+const onScreen=()=>{let best=null,area=0;for(const s of document.querySelectorAll('main>section')){const r=s.getBoundingClientRect(),v=Math.max(0,Math.min(innerHeight,r.bottom)-Math.max(0,r.top));if(v>area){area=v;best=s.id||null}}return best};
+setInterval(()=>{idle=performance.now()-lastAct;if(EU)return;parent.postMessage({type:'moment:interaction',section:onScreen(),scrollSpeed:Math.round(speed),hovered:[...hov],taps,idleMs:Math.round(idle),atBottom:bottom},'*');hov.clear();speed*=.5},2000);
+})();</script>
+</head><body class="layout-single-column motion-gentle density-balanced">
+<div id="m-building" role="status">Writing this page</div>
+<main>
+<section id="now-drizzle">
+<p class="m-kicker">Tuesday, 2:00 p.m. · Vancouver</p>
+<h1 class="m-big">Drizzle at twelve degrees</h1>
+<p class="m-lead">It is a grey afternoon and the rain is fine and steady. Rain chance sits at 74% this hour, with about half a millimetre expected.</p>
+<svg id="nd-sky" viewBox="0 0 640 220" role="img" aria-label="Soft grey sky with falling drizzle over a low horizon" preserveAspectRatio="xMinYMid slice">
+<rect x="0" y="0" width="640" height="220" fill="color-mix(in srgb, var(--surface) 80%, var(--bg))"/>
+<ellipse cx="170" cy="60" rx="190" ry="34" fill="color-mix(in srgb, var(--muted) 30%, transparent)"/>
+<ellipse cx="450" cy="46" rx="230" ry="40" fill="color-mix(in srgb, var(--muted) 24%, transparent)"/>
+<ellipse cx="320" cy="92" rx="300" ry="30" fill="color-mix(in srgb, var(--muted) 18%, transparent)"/>
+<g id="nd-rain" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round" opacity="0.7"></g>
+<rect x="0" y="196" width="640" height="24" fill="var(--bg)"/>
+<line x1="0" y1="196" x2="640" y2="196" stroke="var(--line)"/>
+</svg>
+<p>Light is flat and soft, with no hard shadows. Sunset is at 4:39 p.m., so the grey fades to dark early today.</p>
+<div class="m-row nd-stats">
+<div class="m-stat"><b>12°C</b><span>now</span></div>
+<div class="m-stat"><b>74%</b><span>rain chance, 2 p.m.</span></div>
+<div class="m-stat"><b>4:39 p.m.</b><span>sunset</span></div>
+</div>
+<p class="m-muted">Sunrise was at 7:16 a.m. The drizzle holds through the evening and stops around 9 p.m.</p>
+<style>
+#now-drizzle{max-width:64ch;padding:calc(var(--gap)*2) 0}
+#now-drizzle .m-big{margin:.2em 0 .3em;line-height:1}
+#now-drizzle svg{display:block;width:100%;height:auto;max-height:220px;border-radius:var(--radius);margin:var(--gap) 0}
+#now-drizzle .nd-stats{gap:var(--gap);margin:var(--gap) 0}
+</style>
+</section><section id="clearing-evening">
+<p class="m-kicker">Tonight, hour by hour</p>
+<h2>The sky clears after nine</h2>
+<p class="m-lead">Drizzle holds through 8 p.m. At 9 the rain chance drops to 18%, and by midnight it's 12%.</p>
+<p>The temperature goes the other way. It's 12°C this afternoon, 8°C at 9 p.m., and 5°C by 1 a.m. Drag the slider to move through the evening.</p>
+
+<div id="clearing-evening-chart" aria-hidden="false">
+<svg id="ce-svg" viewBox="0 0 640 220" role="img" aria-label="Temperature falling from 12 degrees to 5 degrees, with drizzle ending at 9 p.m.">
+<rect id="ce-wet" x="0" y="0" width="0" height="190" fill="color-mix(in srgb, var(--accent-2) 14%, transparent)"/>
+<g id="ce-drops"></g>
+<line id="ce-edge" x1="0" x2="0" y1="0" y2="190" stroke="var(--accent)" stroke-dasharray="3 4"/>
+<path id="ce-line" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
+<g id="ce-pts"></g>
+<g id="ce-labels" fill="var(--muted)" font-family="var(--font-mono)" font-size="11"></g>
+<text id="ce-stop" fill="var(--accent)" font-family="var(--font-mono)" font-size="11">rain stops</text>
+</svg>
+</div>
+
+<p class="m-mono" id="ce-read" aria-live="polite"></p>
+<input id="ce-range" type="range" min="0" max="12" value="1" step="1" aria-label="Hour of the evening" style="width:100%;max-width:420px;accent-color:var(--accent)">
+
+<style>
+#clearing-evening #ce-svg{width:100%;height:auto;display:block;margin:1.5rem 0 .5rem;border-bottom:1px solid var(--line)}
+#clearing-evening #ce-read{margin:.75rem 0 .5rem;color:var(--fg);min-height:1.5em}
+#clearing-evening #ce-drops line{stroke:var(--accent-2);stroke-width:1.2;opacity:.55}
+</style>
+</section><section id="tomorrow-marker">
+<p class="m-kicker">Tomorrow · Wednesday, November 11</p>
+<h2 class="m-big">Remembrance Day tomorrow</h2>
+<p class="m-lead">It is Remembrance Day tomorrow. Tonight is the quiet part before it.</p>
+<p>The drizzle stops around 9 p.m. After that the sky is clear and the air cools toward 5°C by 1 a.m. Whatever you have planned for the day, the night before is dry and still.</p>
+<div class="tm-line" aria-hidden="true">
+<svg viewBox="0 0 400 40" width="100%" height="40" preserveAspectRatio="none">
+<line x1="0" y1="20" x2="400" y2="20" stroke="var(--line)" stroke-width="1"/>
+<circle id="tm-dot" cx="200" cy="20" r="4" fill="var(--accent)"/>
+</svg>
+</div>
+<p class="m-muted">Sunrise tomorrow is the same hour it was today, around 7:16 a.m. Today's sunset was 4:39 p.m.</p>
+<p class="m-muted tm-small">Clear from 9 p.m. 4° to 12° over the next twelve hours.</p>
+<style>
+#tomorrow-marker { padding: calc(var(--gap) * 2) 0; max-width: 64ch; }
+#tomorrow-marker h2 { margin: 0.3em 0 0.4em; }
+#tomorrow-marker p { margin: 0 0 1em; line-height: 1.6; }
+#tomorrow-marker .tm-line { margin: calc(var(--gap) * 1.5) 0; }
+#tomorrow-marker #tm-dot { transform-origin: 200px 20px; }
+#tomorrow-marker .tm-small { font-family: var(--font-mono); font-size: 0.85em; }
+@media (prefers-reduced-motion: no-preference) {
+#tomorrow-marker #tm-dot { animation: tm-breathe 6s ease-in-out infinite; }
+}
+@keyframes tm-breathe {
+0%, 100% { opacity: 0.45; transform: scale(1); }
+50% { opacity: 1; transform: scale(1.6); }
+}
+</style>
+</section></main>
+<style>#m-building{display:none}</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+<script>(()=>{try{
+(function(){
+var g=document.getElementById('nd-rain');
+if(!g)return;
+var ns='http://www.w3.org/2000/svg';
+var lines=[];
+for(var i=0;i<46;i++){
+var x=(i*14.1+(i%5)*3)%640;
+var y=(i*37)%190;
+var l=document.createElementNS(ns,'line');
+l.setAttribute('x1',x);l.setAttribute('y1',y);
+l.setAttribute('x2',x-2);l.setAttribute('y2',y+9);
+g.appendChild(l);
+lines.push({el:l,x:x,y:y,s:0.5+(i%4)*0.18});
+}
+var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(reduce)return;
+function tick(){
+for(var i=0;i<lines.length;i++){
+var o=lines[i];
+o.y+=o.s;
+if(o.y>195){o.y=0;}
+o.el.setAttribute('y1',o.y);
+o.el.setAttribute('y2',o.y+9);
+}
+requestAnimationFrame(tick);
+}
+requestAnimationFrame(tick);
+})();
+</reasoning_effort>
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var H=[["1 p.m.",11,88,0.3],["2 p.m.",12,74,0.5],["3 p.m.",12,85,0.3],["4 p.m.",11,72,0.7],["5 p.m.",11,95,0.7],["6 p.m.",10,72,0.7],["7 p.m.",10,74,0.3],["8 p.m.",9,80,0.9],["9 p.m.",8,18,0],["10 p.m.",7,13,0],["11 p.m.",6,4,0],["12 a.m.",5,12,0],["1 a.m.",5,8,0]];
+var W=640,L=24,R=24,top=20,bot=190,n=H.length;
+function x(i){return L+i*(W-L-R)/(n-1)}
+function y(t){return top+(12-t)*(bot-top-10)/8}
+var d="",pts="",lab="";
+H.forEach(function(h,i){
+d+=(i?"L":"M")+x(i)+" "+y(h[1])+" ";
+pts+='<circle class="ce-p" cx="'+x(i)+'" cy="'+y(h[1])+'" r="4" fill="var(--bg)" stroke="var(--accent)" stroke-width="2"/>';
+if(i%2===0)lab+='<text x="'+x(i)+'" y="210" text-anchor="middle">'+h[0].replace(" ","")+'</text>';
+});
+document.getElementById("ce-line").setAttribute("d",d);
+document.getElementById("ce-pts").innerHTML=pts;
+document.getElementById("ce-labels").innerHTML=lab;
+var ex=x(7.5);
+document.getElementById("ce-wet").setAttribute("width",ex);
+var e=document.getElementById("ce-edge");e.setAttribute("x1",ex);e.setAttribute("x2",ex);
+var st=document.getElementById("ce-stop");st.setAttribute("x",ex+6);st.setAttribute("y",16);
+var drops="";
+for(var i=0;i<26;i++){var dx=8+i*(ex-16)/25,dy=30+((i*47)%120);drops+='<line x1="'+dx+'" y1="'+dy+'" x2="'+(dx-3)+'" y2="'+(dy+12)+'"/>';}
+document.getElementById("ce-drops").innerHTML=drops;
+var r=document.getElementById("ce-range"),out=document.getElementById("ce-read");
+var ps=document.querySelectorAll("#ce-pts .ce-p");
+function upd(){
+var i=+r.value,h=H[i];
+ps.forEach(function(p,k){p.setAttribute("r",k===i?7:4);p.setAttribute("fill",k===i?"var(--accent)":"var(--bg)")});
+out.textContent=h[0]+": "+h[1]+"°C, "+h[2]+"% chance of rain"+(h[3]?", about "+h[3]+" mm":", dry");
+}
+r.addEventListener("input",upd);upd();
+var still=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+if(!still&&window.anime){
+anime({targets:"#ce-drops line",translateY:[0,14],opacity:[0.7,0.15],duration:1600,delay:anime.stagger(60),loop:true,easing:"linear"});
+}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>parent.postMessage({type:'moment:complete'},'*')</script>
+</body></html>

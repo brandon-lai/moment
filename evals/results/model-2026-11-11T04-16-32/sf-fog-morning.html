@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>When the fog lifts in San Francisco today</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;700&family=Inter:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>:root{--bg:#0a0f0a;--fg:#c8f7c5;--muted:#7fa77b;--accent:#5cff3a;--accent-2:#ffd166;--surface:#101810;--line:#1f2e1f;color-scheme:dark;--font-display:'Fraunces',serif;--font-body:'Inter',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;--radius:0px;--gap:1.35}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:18px;line-height:1.55;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;line-height:1.05;letter-spacing:-.01em;margin:0 0 calc(.5em*var(--gap));text-wrap:balance}
+h1{font-size:clamp(34px,6.4vw,84px)}h2{font-size:clamp(24px,3.6vw,44px)}h3{font-size:clamp(18px,2.2vw,24px)}
+p{margin:0 0 calc(1em*var(--gap));max-width:68ch;text-wrap:pretty}
+a{color:var(--accent);text-underline-offset:.18em}
+button{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--fg);border-radius:var(--radius);padding:.55em 1em;cursor:pointer}
+button:hover{background:var(--fg);color:var(--bg)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=range]{accent-color:var(--accent);width:100%}
+table{border-collapse:collapse;width:100%}td,th{padding:.45em .6em;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85em}
+svg{max-width:100%;height:auto}canvas{max-width:100%;display:block}
+img{max-width:100%}
+.m-kicker{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .9em}
+.m-big{font-family:var(--font-display);font-size:clamp(56px,13vw,170px);line-height:.88;letter-spacing:-.03em;font-weight:700}
+.m-lead{font-size:1.25em;line-height:1.4;max-width:40ch}
+.m-muted{color:var(--muted)}.m-accent{color:var(--accent)}.m-accent-2{color:var(--accent-2)}
+.m-mono{font-family:var(--font-mono)}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:calc(16px*var(--gap))}
+.m-row{display:flex;flex-wrap:wrap;gap:calc(12px*var(--gap));align-items:baseline}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:calc(18px*var(--gap))}
+.m-stat{display:flex;flex-direction:column;gap:.2em}.m-stat b{font-family:var(--font-display);font-size:clamp(28px,4.6vw,52px);line-height:1;font-weight:700}
+.m-rule{border:0;border-top:1px solid var(--line);margin:calc(24px*var(--gap)) 0}
+.m-chip{display:inline-block;font-family:var(--font-mono);font-size:.78rem;padding:.25em .6em;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.m-list{list-style:none;padding:0;margin:0}.m-list li{padding:.6em 0;border-bottom:1px solid var(--line)}
+.m-bars{display:flex;align-items:flex-end;gap:3px;height:120px}.m-bars i{flex:1;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px}
+main>section{scroll-margin-top:16px}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#m-building{position:fixed;left:12px;bottom:12px;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;z-index:5}
+#m-building::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:m-pulse 1.2s ease-in-out infinite}
+@keyframes m-pulse{50%{opacity:.25}}
+.m-earlier{font-family:var(--font-mono);font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
+main{max-width:46rem;margin:0 auto;padding:clamp(16px,4vw,48px) clamp(12px,4vw,32px) 80px}main>section{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(20px,4vw,40px);margin-top:-6px;position:relative}main>section:nth-child(odd){transform:rotate(-.4deg)}main>section:nth-child(even){transform:rotate(.4deg) translateX(6px)}main>section+section{margin-top:18px}@media(prefers-reduced-motion:reduce){main>section{transform:none!important}}</style>
+<script>window.MOMENT={"live":"http://localhost:8788/live/37.77,-122.42","tz":"America/Los_Angeles","place":"San Francisco","eu":false};(()=>{const EU=false;let lastY=scrollY,lastT=performance.now(),speed=0,taps=0,idle=0,lastAct=performance.now(),hov=new Set(),bottom=false;
+const desc=e=>{const el=e.closest&&e.closest('[data-m],button,a,svg,canvas,table,li,figure,h2,h3');if(!el)return null;return(el.getAttribute('data-m')||el.tagName.toLowerCase()+(el.className&&typeof el.className==='string'?'.'+el.className.split(' ')[0]:'')).slice(0,40)};
+const act=()=>{lastAct=performance.now()};
+addEventListener('scroll',()=>{const t=performance.now(),dy=Math.abs(scrollY-lastY);speed=.7*speed+.3*(dy/Math.max(16,t-lastT)*1000);lastY=scrollY;lastT=t;act();const b=innerHeight+scrollY>=document.documentElement.scrollHeight-40;if(b&&!bottom){bottom=true;parent.postMessage({type:'moment:bottom'},'*')}},{passive:true});
+addEventListener('pointerover',e=>{if(EU)return;const d=desc(e.target);if(d&&hov.size<12)hov.add(d)},{passive:true});
+addEventListener('pointerdown',()=>{taps++;act()},{passive:true});addEventListener('keydown',act);
+const onScreen=()=>{let best=null,area=0;for(const s of document.querySelectorAll('main>section')){const r=s.getBoundingClientRect(),v=Math.max(0,Math.min(innerHeight,r.bottom)-Math.max(0,r.top));if(v>area){area=v;best=s.id||null}}return best};
+setInterval(()=>{idle=performance.now()-lastAct;if(EU)return;parent.postMessage({type:'moment:interaction',section:onScreen(),scrollSpeed:Math.round(speed),hovered:[...hov],taps,idleMs:Math.round(idle),atBottom:bottom},'*');hov.clear();speed*=.5},2000);
+})();</script>
+</head><body class="layout-card-stack motion-still density-airy">
+<div id="m-building" role="status">Writing this page</div>
+<main>
+<section id="fog-now">
+<p class="m-kicker">Monday, 8:10 a.m. · San Francisco</p>
+<h2 class="m-big">Fog now, 52°F</h2>
+<p class="m-lead">The sky is fog right now, 52°F (11°C). It has been fog since at least 7 a.m., when it was 49°F (10°C).</p>
+<p>Temperature is climbing a degree an hour. The forecast keeps fog through 9 a.m., then turns the sky overcast at 10 and 11. By noon it reads mostly clear, and it stays that way through the evening.</p>
+<div class="m-row fn-stats">
+<div class="m-stat"><b>52°F</b><span>now (11°C)</span></div>
+<div class="m-stat"><b>60°F</b><span>high, around 3 p.m. (16°C)</span></div>
+<div class="m-stat"><b>8%</b><span>rain chance this hour</span></div>
+</div>
+<p class="m-muted">No rain in the hourly forecast. Sunrise was 6:44 a.m.; sunset is 5:04 p.m.</p>
+<style>
+#fog-now{padding:calc(var(--gap)*1.2);background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);max-width:34rem;margin:0 auto var(--gap) 0;transform:rotate(-0.6deg)}
+#fog-now .m-big{margin:.2em 0 .4em;line-height:1}
+#fog-now p{margin:0 0 1em}
+#fog-now .fn-stats{gap:var(--gap);margin:1.5em 0 1.2em}
+#fog-now .m-stat b{color:var(--accent)}
+</style>
+</section><section id="clearing-window">
+<h2>Likely clearing window</h2>
+<p class="m-lead">The fog is in the forecast through 9 a.m. From 10 a.m. the sky code changes to cloud, and by noon it reads clear.</p>
+<div class="cw-card">
+<div class="cw-track" role="img" aria-label="Sky by hour from 7 a.m. to 7 p.m.: fog until 9 a.m., cloudy at 10 and 11, clear from noon">
+<div class="cw-seg cw-fog" style="flex:3"><span>Fog</span><small>7 to 10 a.m.</small></div>
+<div class="cw-seg cw-cloud" style="flex:2"><span>Cloud</span><small>10 a.m. to noon</small></div>
+<div class="cw-seg cw-clear" style="flex:7"><span>Clear</span><small>noon to 7 p.m.</small></div>
+</div>
+<div class="cw-axis m-mono"><span>7a</span><span>9a</span><span>11a</span><span>1p</span><span>3p</span><span>5p</span><span>7p</span></div>
+</div>
+<div class="m-grid cw-stats">
+<div class="m-stat"><b>10 a.m.</b><span>fog gives way to cloud, 54°F (12°C)</span></div>
+<div class="m-stat"><b>12 p.m.</b><span>first clear hour, 58°F (15°C)</span></div>
+<div class="m-stat"><b>3 p.m.</b><span>warmest hour, 60°F (16°C)</span></div>
+</div>
+<p class="m-muted">Rain chance stays at or below 19% all day, with no measurable rain forecast. Sunset is at 5:04 p.m., so the clear stretch from noon holds about five hours of daylight.</p>
+<style>
+#clearing-window .cw-card{margin:var(--gap) 0;padding:1.25rem;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius)}
+#clearing-window .cw-track{display:flex;gap:4px;min-height:96px}
+#clearing-window .cw-seg{display:flex;flex-direction:column;justify-content:flex-end;padding:.6rem .7rem;border-radius:calc(var(--radius) / 2);min-width:0}
+#clearing-window .cw-seg span{font-family:var(--font-display);font-size:1.1rem}
+#clearing-window .cw-seg small{font-family:var(--font-mono);font-size:.7rem;opacity:.75}
+#clearing-window .cw-fog{background:color-mix(in srgb,var(--muted) 35%,transparent);color:var(--fg)}
+#clearing-window .cw-cloud{background:color-mix(in srgb,var(--accent-2) 30%,transparent);color:var(--fg)}
+#clearing-window .cw-clear{background:var(--accent);color:var(--bg)}
+#clearing-window .cw-axis{display:flex;justify-content:space-between;margin-top:.5rem;font-size:.75rem;color:var(--muted)}
+#clearing-window .cw-stats{margin-bottom:var(--gap)}
+</style>
+</section><section id="plan-the-hours">
+<h2 class="m-kicker">Plan around the clear hours</h2>
+<p class="m-lead">Noon to 5 p.m. is the block to build around. Before that, keep it to things that don't care about the sky.</p>
+
+<div class="pt-slots">
+  <div class="pt-slot">
+    <span class="m-mono m-accent">Until 10 a.m.</span>
+    <h3>Fog hours</h3>
+    <p>Indoor tasks, errands by car, emails, laundry. Temperature is 51 to 54°F (11 to 12°C), so dress in layers if you step out.</p>
+  </div>
+  <div class="pt-slot">
+    <span class="m-mono m-accent">10 a.m. to noon</span>
+    <h3>Cloud hours</h3>
+    <p>Short walks, getting to the bus, a quick coffee outside. Good for anything you can start but not finish in the open.</p>
+  </div>
+  <div class="pt-slot pt-best">
+    <span class="m-mono m-accent-2">Noon to 5 p.m.</span>
+    <h3>Clear hours</h3>
+    <p>Save the long walk, the photos, the lunch on a bench, the bike ride. It's 58°F (15°C) at noon and 60°F (16°C) at 3 p.m. Rain chance stays at 18% or less, with no measurable rain.</p>
+  </div>
+  <div class="pt-slot">
+    <span class="m-mono m-accent">After 5 p.m.</span>
+    <h3>Dark by 5:04</h3>
+    <p>Sunset is at 5:04 p.m. It's still clear, but 57°F (14°C) and falling toward 56°F (13°C) by 7. Bring a jacket.</p>
+  </div>
+</div>
+
+<p class="m-muted pt-note">If you only get one outdoor hour today, take 1 p.m. It's 59°F (15°C), clear, and the fog is long gone.</p>
+
+<style>
+#plan-the-hours .pt-slots{display:grid;gap:var(--gap);margin:2rem 0 1.5rem;max-width:34rem}
+#plan-the-hours .pt-slot{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:1.1rem 1.25rem}
+#plan-the-hours .pt-slot:nth-child(odd){transform:rotate(-0.4deg)}
+#plan-the-hours .pt-slot:nth-child(even){transform:rotate(0.4deg) translateX(0.5rem)}
+#plan-the-hours .pt-slot h3{font-family:var(--font-display);font-size:1.3rem;margin:0.3rem 0 0.4rem;color:var(--fg)}
+#plan-the-hours .pt-slot p{margin:0;color:var(--muted);line-height:1.5}
+#plan-the-hours .pt-best{border-color:var(--accent-2);border-width:2px}
+#plan-the-hours .pt-best p{color:var(--fg)}
+#plan-the-hours .pt-note{max-width:34rem;margin-top:1.5rem}
+@media (max-width:480px){#plan-the-hours .pt-slot:nth-child(even){transform:rotate(0.4deg)}}
+</style>
+</section></main>
+<style>#m-building{display:none}</style>
+
+<script>(()=>{try{
+(function(){
+var el=document.querySelector('#fog-now .m-lead');
+if(!el||!window.MOMENT||!window.MOMENT.live)return;
+fetch(window.MOMENT.live+'/weather').then(function(r){return r.json()}).then(function(d){
+if(d&&d.now&&typeof d.now.temp_c==='number'){
+var f=Math.round(d.now.temp_c*9/5+32);
+el.textContent='Live reading: '+f+'°F ('+Math.round(d.now.temp_c)+'°C)'+(d.now.desc?', '+d.now.desc.toLowerCase():'')+'. It was 49°F (10°C) at 7 a.m.';
+}
+}).catch(function(){});
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>parent.postMessage({type:'moment:complete'},'*')</script>
+</body></html>

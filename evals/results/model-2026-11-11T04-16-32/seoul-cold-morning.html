@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Clear and cold over Seoul this morning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Plus+Jakarta+Sans:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>:root{--bg:#f1eef6;--fg:#221c2e;--muted:#5f5670;--accent:#0f766e;--accent-2:#9d174d;--surface:#e6e1ee;--line:#d2cadf;color-scheme:light;--font-display:'Young Serif',serif;--font-body:'Plus Jakarta Sans',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;--radius:6px;--gap:1}
+@media (prefers-color-scheme:dark){:root{--bg:#0f2747;--fg:#e6eefb;--muted:#9fb6d9;--accent:#fde047;--accent-2:#fca5a5;--surface:#143057;--line:#24467a;color-scheme:dark;}}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:16.5px;line-height:1.55;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.05;letter-spacing:-.01em;margin:0 0 calc(.5em*var(--gap));text-wrap:balance}
+h1{font-size:clamp(34px,6.4vw,84px)}h2{font-size:clamp(24px,3.6vw,44px)}h3{font-size:clamp(18px,2.2vw,24px)}
+p{margin:0 0 calc(1em*var(--gap));max-width:68ch;text-wrap:pretty}
+a{color:var(--accent);text-underline-offset:.18em}
+button{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--fg);border-radius:var(--radius);padding:.55em 1em;cursor:pointer}
+button:hover{background:var(--fg);color:var(--bg)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=range]{accent-color:var(--accent);width:100%}
+table{border-collapse:collapse;width:100%}td,th{padding:.45em .6em;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85em}
+svg{max-width:100%;height:auto}canvas{max-width:100%;display:block}
+img{max-width:100%}
+.m-kicker{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .9em}
+.m-big{font-family:var(--font-display);font-size:clamp(56px,13vw,170px);line-height:.88;letter-spacing:-.03em;font-weight:400}
+.m-lead{font-size:1.25em;line-height:1.4;max-width:40ch}
+.m-muted{color:var(--muted)}.m-accent{color:var(--accent)}.m-accent-2{color:var(--accent-2)}
+.m-mono{font-family:var(--font-mono)}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:calc(16px*var(--gap))}
+.m-row{display:flex;flex-wrap:wrap;gap:calc(12px*var(--gap));align-items:baseline}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:calc(18px*var(--gap))}
+.m-stat{display:flex;flex-direction:column;gap:.2em}.m-stat b{font-family:var(--font-display);font-size:clamp(28px,4.6vw,52px);line-height:1;font-weight:400}
+.m-rule{border:0;border-top:1px solid var(--line);margin:calc(24px*var(--gap)) 0}
+.m-chip{display:inline-block;font-family:var(--font-mono);font-size:.78rem;padding:.25em .6em;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.m-list{list-style:none;padding:0;margin:0}.m-list li{padding:.6em 0;border-bottom:1px solid var(--line)}
+.m-bars{display:flex;align-items:flex-end;gap:3px;height:120px}.m-bars i{flex:1;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px}
+main>section{scroll-margin-top:16px}
+main>section{animation:m-in .5s cubic-bezier(.2,.7,.2,1) both}@keyframes m-in{from{opacity:0;transform:translateY(18px)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#m-building{position:fixed;left:12px;bottom:12px;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;z-index:5}
+#m-building::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:m-pulse 1.2s ease-in-out infinite}
+@keyframes m-pulse{50%{opacity:.25}}
+.m-earlier{font-family:var(--font-mono);font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
+main{padding:0}main>section{min-height:88vh;padding:clamp(28px,7vw,110px) clamp(16px,6vw,96px);display:flex;flex-direction:column;justify-content:center}main>section:nth-child(even){background:var(--surface)}</style>
+<script>window.MOMENT={"live":"http://localhost:8788/live/37.57,126.98","tz":"Asia/Seoul","place":"Seoul","eu":false};(()=>{const EU=false;let lastY=scrollY,lastT=performance.now(),speed=0,taps=0,idle=0,lastAct=performance.now(),hov=new Set(),bottom=false;
+const desc=e=>{const el=e.closest&&e.closest('[data-m],button,a,svg,canvas,table,li,figure,h2,h3');if(!el)return null;return(el.getAttribute('data-m')||el.tagName.toLowerCase()+(el.className&&typeof el.className==='string'?'.'+el.className.split(' ')[0]:'')).slice(0,40)};
+const act=()=>{lastAct=performance.now()};
+addEventListener('scroll',()=>{const t=performance.now(),dy=Math.abs(scrollY-lastY);speed=.7*speed+.3*(dy/Math.max(16,t-lastT)*1000);lastY=scrollY;lastT=t;act();const b=innerHeight+scrollY>=document.documentElement.scrollHeight-40;if(b&&!bottom){bottom=true;parent.postMessage({type:'moment:bottom'},'*')}},{passive:true});
+addEventListener('pointerover',e=>{if(EU)return;const d=desc(e.target);if(d&&hov.size<12)hov.add(d)},{passive:true});
+addEventListener('pointerdown',()=>{taps++;act()},{passive:true});addEventListener('keydown',act);
+const onScreen=()=>{let best=null,area=0;for(const s of document.querySelectorAll('main>section')){const r=s.getBoundingClientRect(),v=Math.max(0,Math.min(innerHeight,r.bottom)-Math.max(0,r.top));if(v>area){area=v;best=s.id||null}}return best};
+setInterval(()=>{idle=performance.now()-lastAct;if(EU)return;parent.postMessage({type:'moment:interaction',section:onScreen(),scrollSpeed:Math.round(speed),hovered:[...hov],taps,idleMs:Math.round(idle),atBottom:bottom},'*');hov.clear();speed*=.5},2000);
+})();</script>
+</head><body class="layout-full-bleed motion-lively density-balanced">
+<div id="m-building" role="status">Writing this page</div>
+<main>
+<section id="sky-now">
+<p class="m-kicker">Seoul · Thursday · 7:30 a.m.</p>
+<h2 class="m-big">The sky at first light</h2>
+<p class="m-lead">Clear and <span id="sky-now-temp">-3°C</span>. The sun came up at 7:24 a.m., six minutes ago, and there is nothing in the way of it.</p>
+<div class="sky-wrap">
+<svg id="sky-now-svg" viewBox="0 0 800 360" role="img" aria-label="A clear sky at sunrise over a flat horizon, with the sun just above the line">
+<defs>
+<linearGradient id="sky-now-grad" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="var(--bg)"/>
+<stop offset="0.6" stop-color="color-mix(in srgb, var(--accent-2) 22%, var(--bg))"/>
+<stop offset="1" stop-color="color-mix(in srgb, var(--accent) 35%, var(--bg))"/>
+</linearGradient>
+</defs>
+<rect width="800" height="300" fill="url(#sky-now-grad)"/>
+<g id="sky-now-rays" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" opacity="0.5">
+<line x1="400" y1="214" x2="400" y2="170"/>
+<line x1="456" y1="222" x2="486" y2="190"/>
+<line x1="344" y1="222" x2="314" y2="190"/>
+<line x1="490" y1="244" x2="540" y2="230"/>
+<line x1="310" y1="244" x2="260" y2="230"/>
+</g>
+<circle id="sky-now-sun" cx="400" cy="262" r="38" fill="var(--accent)"/>
+<rect y="262" width="800" height="98" fill="var(--surface)"/>
+<line x1="0" y1="262" x2="800" y2="262" stroke="var(--line)" stroke-width="2"/>
+<path d="M0 300 L120 284 L220 296 L340 280 L460 294 L580 282 L700 296 L800 286 L800 360 L0 360Z" fill="color-mix(in srgb, var(--fg) 12%, var(--surface))"/>
+</svg>
+</div>
+<div class="m-row sky-stats">
+<div class="m-stat"><b>-3°C</b><span>at 7:30 a.m.</span></div>
+<div class="m-stat"><b>7:24 a.m.</b><span>sunrise</span></div>
+<div class="m-stat"><b>5:17 p.m.</b><span>sunset</span></div>
+</div>
+<p class="m-muted">It was -5°C at 6:00. Rain chance sits at 18% to 20% and no rain is expected.</p>
+<style>
+#sky-now{min-height:90vh;display:flex;flex-direction:column;justify-content:center;gap:var(--gap)}
+#sky-now .m-big{margin:0;line-height:0.95}
+#sky-now .m-lead{margin:0;max-width:34em}
+#sky-now .sky-wrap{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+#sky-now svg{display:block;width:100%;height:auto}
+#sky-now .sky-stats{gap:var(--gap)}
+#sky-now p.m-muted{margin:0}
+</style>
+</section><section id="warming-day">
+<p class="m-kicker">Thursday, 7:30 a.m. to 6 p.m.</p>
+<h2 class="m-big">Warming through the day</h2>
+<p class="m-lead">It starts at -3°C and climbs about seven degrees. The sky stays clear the whole way.</p>
+<div class="wd-chart">
+<svg id="wd-svg" viewBox="0 0 720 300" role="img" aria-label="Temperature curve from -5°C at 6 a.m. to 4°C at 2 p.m., then 2°C at 6 p.m.">
+<line class="wd-zero" x1="30" x2="700" y1="0" y2="0" id="wd-zero"/>
+<text class="wd-zl" x="30" y="0" id="wd-zl">0°C</text>
+<path id="wd-area" fill="color-mix(in srgb, var(--accent) 14%, transparent)" d=""/>
+<path id="wd-line" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d=""/>
+<g id="wd-dots"></g>
+<g id="wd-labels"></g>
+</svg>
+</div>
+<div class="m-row wd-stats">
+<div class="m-stat"><b>-3°C</b><span>7:00 a.m.</span></div>
+<div class="m-stat"><b>0°C</b><span>10:00 a.m., freezing line</span></div>
+<div class="m-stat"><b class="m-accent">4°C</b><span>2:00 p.m., the high</span></div>
+<div class="m-stat"><b>2°C</b><span>6:00 p.m., after sunset</span></div>
+</div>
+<p class="m-muted">Sunset is at 5:17 p.m. By then the afternoon warmth is already fading.</p>
+<style>
+#warming-day{padding:clamp(32px,6vw,80px) clamp(16px,5vw,64px);min-height:90vh;background:var(--surface);color:var(--fg)}
+#warming-day h2{margin:.2em 0 .3em;font-family:var(--font-display)}
+#warming-day .wd-chart{margin:var(--gap) 0;max-width:900px}
+#warming-day svg{width:100%;height:auto;display:block;overflow:visible}
+#warming-day .wd-zero{stroke:var(--line);stroke-dasharray:4 5;stroke-width:1.5}
+#warming-day .wd-zl{fill:var(--muted);font:12px var(--font-mono);dominant-baseline:text-after-edge}
+#warming-day .wd-stats{gap:var(--gap);margin:var(--gap) 0}
+#warming-day .wd-t{fill:var(--fg);font:13px var(--font-mono);text-anchor:middle}
+#warming-day .wd-h{fill:var(--muted);font:11px var(--font-mono);text-anchor:middle}
+</style>
+</section></main>
+<style>#m-building{display:none}</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+<script>(()=>{try{
+(function(){
+var sun=document.getElementById('sky-now-sun');
+var rays=document.getElementById('sky-now-rays');
+var temp=document.getElementById('sky-now-temp');
+if(!sun)return;
+var still=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!still&&window.anime){
+anime({targets:sun,translateY:[40,0],duration:2600,easing:'easeOutCubic'});
+anime({targets:rays,opacity:[0,0.5],duration:2600,delay:600,easing:'easeOutQuad'});
+anime({targets:rays,opacity:[0.5,0.25],duration:3200,direction:'alternate',loop:true,easing:'easeInOutSine',delay:3200});
+}
+try{
+fetch(window.MOMENT.live+'/weather').then(function(r){return r.json()}).then(function(d){
+if(d&&d.now&&typeof d.now.temp_c==='number'){temp.textContent=Math.round(d.now.temp_c)+'°C';}
+}).catch(function(){});
+}catch(e){}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var d=[["6",-5],["7",-3],["8",-2],["9",-2],["10",0],["11",1],["12",2],["13",3],["14",4],["15",3],["16",4],["17",3],["18",2]];
+var x0=30,x1=700,top=40,bot=250,min=-6,max=5;
+function X(i){return x0+(x1-x0)*i/(d.length-1)}
+function Y(v){return bot-(v-min)/(max-min)*(bot-top)}
+var pts=d.map(function(p,i){return[X(i),Y(p[1])]});
+var line="M"+pts.map(function(p){return p[0].toFixed(1)+","+p[1].toFixed(1)}).join(" L");
+var ns="http://www.w3.org/2000/svg";
+var el=function(id){return document.getElementById(id)};
+var z=Y(0);
+el("wd-zero").setAttribute("y1",z);el("wd-zero").setAttribute("y2",z);
+el("wd-zl").setAttribute("y",z-4);
+el("wd-line").setAttribute("d",line);
+el("wd-area").setAttribute("d",line+" L"+x1+","+bot+" L"+x0+","+bot+" Z");
+var dots=el("wd-dots"),labs=el("wd-labels");
+d.forEach(function(p,i){
+var c=document.createElementNS(ns,"circle");
+c.setAttribute("cx",pts[i][0]);c.setAttribute("cy",pts[i][1]);c.setAttribute("r",i===1||i===8?6:3.5);
+c.setAttribute("fill",i===8?"var(--accent-2)":"var(--accent)");dots.appendChild(c);
+var h=document.createElementNS(ns,"text");h.setAttribute("class","wd-h");
+h.setAttribute("x",pts[i][0]);h.setAttribute("y",bot+28);
+var hr=+p[0];h.textContent=(hr>12?hr-12:hr)+(hr>=12?"p":"a");labs.appendChild(h);
+if(i===1||i===8||i===0||i===12){
+var t=document.createElementNS(ns,"text");t.setAttribute("class","wd-t");
+t.setAttribute("x",pts[i][0]);t.setAttribute("y",pts[i][1]-14);t.textContent=p[1]+"°";labs.appendChild(t);}
+});
+var rm=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+if(!rm&&window.anime){
+var L=el("wd-line"),len=L.getTotalLength();
+L.style.strokeDasharray=len;L.style.strokeDashoffset=len;
+anime({targets:L,strokeDashoffset:[len,0],duration:2200,easing:"easeInOutSine"});
+anime({targets:["#wd-area","#wd-dots","#wd-labels"],opacity:[0,1],duration:1600,delay:900,easing:"linear"});
+}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>parent.postMessage({type:'moment:complete'},'*')</script>
+</body></html>

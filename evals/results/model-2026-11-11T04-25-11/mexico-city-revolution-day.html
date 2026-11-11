@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Revolution Day, Clear Morning in Mexico City</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Jost:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>:root{--bg:#f4f6f3;--fg:#17241c;--muted:#536557;--accent:#166534;--accent-2:#b91c1c;--surface:#e8ece6;--line:#cdd6ce;color-scheme:light;--font-display:'Cormorant Garamond',serif;--font-body:'Jost',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;--radius:2px;--gap:1.35}
+@media (prefers-color-scheme:dark){:root{--bg:#1b1020;--fg:#f3e8f5;--muted:#b39cba;--accent:#f0abfc;--accent-2:#fde68a;--surface:#251729;--line:#3a2740;color-scheme:dark;}}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:18px;line-height:1.55;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;line-height:1.05;letter-spacing:-.01em;margin:0 0 calc(.5em*var(--gap));text-wrap:balance}
+h1{font-size:clamp(30px,min(6.4vw,11cqi),84px)}h2{font-size:clamp(22px,min(3.6vw,8cqi),44px)}h3{font-size:clamp(18px,2.2vw,24px)}
+p{margin:0 0 calc(1em*var(--gap));max-width:68ch;text-wrap:pretty}
+a{color:var(--accent);text-underline-offset:.18em}
+button{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--fg);border-radius:var(--radius);padding:.55em 1em;cursor:pointer}
+button:hover{background:var(--fg);color:var(--bg)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=range]{accent-color:var(--accent);width:100%}
+table{border-collapse:collapse;width:100%}td,th{padding:.45em .6em;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85em}
+svg{max-width:100%;height:auto}canvas{max-width:100%;display:block}
+img{max-width:100%}
+.m-kicker{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .9em}
+.m-big{font-family:var(--font-display);font-size:clamp(44px,16cqi,170px);line-height:.88;letter-spacing:-.03em;font-weight:700}
+.m-lead{font-size:1.25em;line-height:1.4;max-width:40ch}
+.m-muted{color:var(--muted)}.m-accent{color:var(--accent)}.m-accent-2{color:var(--accent-2)}
+.m-mono{font-family:var(--font-mono)}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:calc(16px*var(--gap))}
+.m-row{display:flex;flex-wrap:wrap;gap:calc(12px*var(--gap));align-items:baseline}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:calc(18px*var(--gap))}
+.m-stat{display:flex;flex-direction:column;gap:.2em}.m-stat b{font-family:var(--font-display);font-size:clamp(26px,7cqi,52px);line-height:1;font-weight:700}
+.m-rule{border:0;border-top:1px solid var(--line);margin:calc(24px*var(--gap)) 0}
+.m-chip{display:inline-block;font-family:var(--font-mono);font-size:.78rem;padding:.25em .6em;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.m-list{list-style:none;padding:0;margin:0}.m-list li{padding:.6em 0;border-bottom:1px solid var(--line)}
+.m-bars{display:flex;align-items:flex-end;gap:3px;height:120px}.m-bars i{flex:1;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px}
+main>section{scroll-margin-top:16px;container-type:inline-size}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#m-building{position:fixed;left:12px;bottom:12px;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;z-index:5}
+#m-building::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:m-pulse 1.2s ease-in-out infinite}
+@keyframes m-pulse{50%{opacity:.25}}
+.m-earlier{font-family:var(--font-mono);font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
+main{max-width:1240px;margin:0 auto;padding:clamp(16px,3vw,40px)}main>section:first-child{border-bottom:3px double var(--fg);padding-bottom:18px}main>section{padding:clamp(18px,3vw,32px) 0;border-bottom:1px solid var(--line)}@media(min-width:900px){main>section .m-columns,main>section>p{column-count:2;column-gap:40px;column-rule:1px solid var(--line)}}</style>
+<script>window.MOMENT={"live":"http://localhost:8788/live/19.43,-99.13","tz":"America/Mexico_City","place":"Mexico City","eu":false};(()=>{const EU=false;let lastY=scrollY,lastT=performance.now(),speed=0,taps=0,idle=0,lastAct=performance.now(),hov=new Set(),bottom=false;
+const desc=e=>{const el=e.closest&&e.closest('[data-m],button,a,svg,canvas,table,li,figure,h2,h3');if(!el)return null;return(el.getAttribute('data-m')||el.tagName.toLowerCase()+(el.className&&typeof el.className==='string'?'.'+el.className.split(' ')[0]:'')).slice(0,40)};
+const act=()=>{lastAct=performance.now()};
+addEventListener('scroll',()=>{const t=performance.now(),dy=Math.abs(scrollY-lastY);speed=.7*speed+.3*(dy/Math.max(16,t-lastT)*1000);lastY=scrollY;lastT=t;act();const b=innerHeight+scrollY>=document.documentElement.scrollHeight-40;if(b&&!bottom){bottom=true;parent.postMessage({type:'moment:bottom'},'*')}},{passive:true});
+addEventListener('pointerover',e=>{if(EU)return;const d=desc(e.target);if(d&&hov.size<12)hov.add(d)},{passive:true});
+addEventListener('pointerdown',()=>{taps++;act()},{passive:true});addEventListener('keydown',act);
+const onScreen=()=>{let best=null,area=0;for(const s of document.querySelectorAll('main>section')){const r=s.getBoundingClientRect(),v=Math.max(0,Math.min(innerHeight,r.bottom)-Math.max(0,r.top));if(v>area){area=v;best=s.id||null}}return best};
+setInterval(()=>{idle=performance.now()-lastAct;if(EU)return;parent.postMessage({type:'moment:interaction',section:onScreen(),scrollSpeed:Math.round(speed),hovered:[...hov],taps,idleMs:Math.round(idle),atBottom:bottom},'*');hov.clear();speed*=.5},2000);
+})();</script>
+</head><body class="layout-broadsheet motion-still density-airy">
+<div id="m-building" role="status">Writing this page</div>
+<main>
+<section id="holiday-question">
+<div class="hq-kicker m-kicker">Question 1 of 2 &middot; Monday, 16 November 2026</div>
+<h2 class="hq-head">Why today is a holiday</h2>
+<p class="m-lead hq-lead">Revolution Day is a public holiday in Mexico today. It is 10:20 a.m. in Mexico City, the sky is clear, and the week has barely started. One question, then the answer.</p>
+<div class="m-rule"></div>
+<p class="hq-ask">Which of these describes today in Mexico?</p>
+<div class="hq-opts" role="group" aria-label="Pick an answer">
+<button type="button" class="hq-opt" data-i="0"><span class="m-mono hq-letter">A</span><span>A public holiday, so many people have the day off</span></button>
+<button type="button" class="hq-opt" data-i="1"><span class="m-mono hq-letter">B</span><span>An ordinary Monday with no holiday</span></button>
+<button type="button" class="hq-opt" data-i="2"><span class="m-mono hq-letter">C</span><span>A holiday that only applies on weekends</span></button>
+</div>
+<div class="hq-answer" id="hq-answer" hidden>
+<div class="m-kicker m-accent" id="hq-verdict"></div>
+<p id="hq-text"></p>
+</div>
+<style>
+#holiday-question{max-width:46rem;padding-block:var(--gap)}
+#holiday-question .hq-head{font-family:var(--font-display);font-size:clamp(2rem,9cqi,3.6rem);line-height:1.05;margin:.3em 0 .4em}
+#holiday-question .hq-lead{margin:0 0 1.2em}
+#holiday-question .hq-ask{font-family:var(--font-display);font-size:1.35rem;margin:1.2em 0 .8em}
+#holiday-question .hq-opts{display:grid;gap:.6rem}
+#holiday-question .hq-opt{display:flex;gap:1rem;align-items:baseline;text-align:left;width:100%;padding:.9rem 1rem;background:transparent;color:var(--fg);border:1px solid var(--line);border-radius:var(--radius);font:inherit;font-family:var(--font-body);font-size:1rem;cursor:pointer}
+#holiday-question .hq-opt:hover,#holiday-question .hq-opt:focus-visible{border-color:var(--accent);background:var(--surface);outline:none}
+#holiday-question .hq-letter{color:var(--accent);font-weight:700}
+#holiday-question .hq-opt.is-right{border-color:var(--accent);background:var(--surface)}
+#holiday-question .hq-opt.is-wrong{opacity:.5}
+#holiday-question .hq-answer{margin-top:1.2rem;padding:1rem 1.2rem;border-left:3px solid var(--accent);background:var(--surface)}
+#holiday-question .hq-answer p{margin:.4em 0 0}
+</style>
+</section><section id="weather-question">
+<p class="m-kicker">Question two</p>
+<h2>Clear skies, 19 degrees</h2>
+<p class="m-lead">It is 10:20 a.m. and there is not a cloud in the forecast. Pick the high you expect for the next twelve hours.</p>
+<div class="wq-opts" role="group" aria-label="Pick the afternoon high">
+<button type="button" class="wq-opt" data-v="19">19°C</button>
+<button type="button" class="wq-opt" data-v="21">21°C</button>
+<button type="button" class="wq-opt" data-v="24">24°C</button>
+</div>
+<div id="wq-answer" class="wq-answer" hidden>
+<p id="wq-verdict" class="wq-verdict"></p>
+<p>The high is 21°C, reached at noon and held through 4 p.m. It is 19° now, so the day adds two degrees and stops.</p>
+<p class="m-muted">Sunrise was 6:46 a.m. Sunset is 5:58 p.m. The coldest hour ahead is 9 p.m. at 18°C. Rain chance stays at or below 19% all the way through.</p>
+</div>
+<style>
+#weather-question{padding:calc(var(--gap)*1.5) 0;border-top:1px solid var(--line)}
+#weather-question h2{font-family:var(--font-display);font-size:clamp(2rem,9cqi,3.6rem);line-height:1.05;margin:.2em 0 .4em}
+#weather-question .wq-opts{display:flex;flex-wrap:wrap;gap:var(--gap);margin:calc(var(--gap)*1.2) 0}
+#weather-question .wq-opt{font-family:var(--font-display);font-size:clamp(1.6rem,8cqi,2.8rem);background:transparent;color:var(--fg);border:1px solid var(--fg);border-radius:var(--radius);padding:.3em .8em;cursor:pointer}
+#weather-question .wq-opt:hover,#weather-question .wq-opt:focus-visible{background:var(--surface);outline:none}
+#weather-question .wq-opt.is-picked{background:var(--fg);color:var(--bg)}
+#weather-question .wq-opt.is-right{border-color:var(--accent);box-shadow:inset 0 -4px 0 var(--accent)}
+#weather-question .wq-answer{border-top:1px solid var(--line);padding-top:var(--gap);max-width:60ch}
+#weather-question .wq-verdict{font-family:var(--font-display);font-size:clamp(1.3rem,5cqi,2rem);color:var(--accent);margin:0 0 .5em}
+</style>
+</section><section id="next-hours">
+<p class="m-kicker">Question 3 of 3 &middot; Last one</p>
+<h2>The next twelve hours</h2>
+<p class="m-lead">The temperature will stay inside a narrow band until 9 p.m. How wide is it, from lowest hour to highest?</p>
+<div class="nh-choices" role="group" aria-label="Pick a range">
+<button type="button" class="nh-opt" data-pick="a"><span class="m-mono">A</span> About 16° to 21°</button>
+<button type="button" class="nh-opt" data-pick="b"><span class="m-mono">B</span> About 10° to 28°</button>
+<button type="button" class="nh-opt" data-pick="c"><span class="m-mono">C</span> About 5° to 15°</button>
+</div>
+<div class="nh-answer" id="nh-answer" hidden>
+<p class="nh-verdict" id="nh-verdict"></p>
+<p>Today's forecast runs 18° at 9 a.m., 21° from noon, and back to 18° by 9 p.m. The 16° low in the range comes before or after that window. Nothing in the hourly numbers says rain: the chance never goes past 19%, and the expected amount is 0 mm every hour.</p>
+<svg id="nh-chart" viewBox="0 0 260 90" role="img" aria-label="Hourly temperatures from 9 a.m. to 9 p.m.">
+<line x1="0" y1="80" x2="260" y2="80" stroke="var(--line)"/>
+<polyline fill="none" stroke="var(--accent)" stroke-width="2" points="10,60 30,50 50,40 70,30 90,40 110,30 130,30 150,30 170,30 190,40 210,40 230,50 250,60"/>
+<text x="10" y="90" font-size="8" fill="var(--muted)">9a</text>
+<text x="120" y="90" font-size="8" fill="var(--muted)">3p</text>
+<text x="238" y="90" font-size="8" fill="var(--muted)">9p</text>
+</svg>
+<p class="m-muted">Sunset is 5:58 p.m. After that it cools slowly, one degree an hour.</p>
+</div>
+<style>
+#next-hours{border-top:3px double var(--fg);padding-top:var(--gap)}
+#next-hours h2{font-family:var(--font-display);font-size:clamp(1.8rem,9cqi,3rem);margin:.2em 0 .4em;line-height:1.05}
+#next-hours .nh-choices{display:grid;gap:.6rem;margin:1.2rem 0;border-top:1px solid var(--line)}
+#next-hours .nh-opt{font:inherit;font-family:var(--font-body);text-align:left;background:transparent;color:var(--fg);border:0;border-bottom:1px solid var(--line);padding:.9rem .2rem;cursor:pointer;display:flex;gap:1rem;align-items:baseline;font-size:1.1rem}
+#next-hours .nh-opt:hover,#next-hours .nh-opt:focus-visible{background:var(--surface);outline:none}
+#next-hours .nh-opt.right{border-left:4px solid var(--accent);padding-left:.8rem}
+#next-hours .nh-opt.wrong{color:var(--muted);text-decoration:line-through}
+#next-hours .nh-verdict{font-family:var(--font-display);font-size:1.5rem;margin:0 0 .5rem}
+#next-hours .nh-answer{border-top:1px solid var(--line);padding-top:1rem;max-width:60ch}
+#next-hours svg{width:100%;max-width:320px;height:auto;display:block;margin:1rem 0}
+</style>
+</section></main>
+<style>#m-building{display:none}</style>
+
+<script>(()=>{try{
+(function(){
+var root=document.getElementById('holiday-question');
+if(!root)return;
+var opts=root.querySelectorAll('.hq-opt');
+var box=document.getElementById('hq-answer');
+var verdict=document.getElementById('hq-verdict');
+var text=document.getElementById('hq-text');
+var done=false;
+opts.forEach(function(b){
+b.addEventListener('click',function(){
+var i=+b.getAttribute('data-i');
+opts.forEach(function(o,k){
+o.classList.remove('is-right','is-wrong');
+if(k===0)o.classList.add('is-right');else o.classList.add('is-wrong');
+});
+verdict.textContent=i===0?'Correct':'Not quite';
+text.textContent='A. Revolution Day is a public holiday in Mexico today, Monday, 16 November. It falls on a weekday, so it is not a weekend-only thing.';
+box.hidden=false;
+done=true;
+});
+});
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var root=document.getElementById('weather-question');
+var btns=root.querySelectorAll('.wq-opt');
+var ans=document.getElementById('wq-answer');
+var verdict=document.getElementById('wq-verdict');
+btns.forEach(function(b){
+b.addEventListener('click',function(){
+btns.forEach(function(x){
+x.classList.remove('is-picked');
+if(x.getAttribute('data-v')==='21'){x.classList.add('is-right');}
+});
+b.classList.add('is-picked');
+var v=b.getAttribute('data-v');
+verdict.textContent=v==='21'?'Right. 21°C.':(v==='19'?'Close. That is only the temperature right now.':'Too warm. The forecast tops out lower.');
+ans.hidden=false;
+});
+});
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var root=document.getElementById('next-hours');
+var ans=document.getElementById('nh-answer');
+var v=document.getElementById('nh-verdict');
+var opts=root.querySelectorAll('.nh-opt');
+opts.forEach(function(b){
+b.addEventListener('click',function(){
+var p=b.getAttribute('data-pick');
+opts.forEach(function(o){
+o.disabled=true;
+if(o.getAttribute('data-pick')==='a')o.classList.add('right');
+else o.classList.add('wrong');
+});
+v.textContent=p==='a'?'Right. 16° to 21°.':'Not quite. It is 16° to 21°.';
+ans.hidden=false;
+});
+});
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>parent.postMessage({type:'moment:complete'},'*')</script>
+</body></html>

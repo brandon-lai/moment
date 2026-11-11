@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sunset in 38 minutes, Los Angeles</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Schibsted+Grotesk:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>:root{--bg:#eef1e8;--fg:#1e2a1e;--muted:#55634f;--accent:#4d7c0f;--accent-2:#a16207;--surface:#e2e8d9;--line:#c9d2bd;color-scheme:light;--font-display:'Gloock',serif;--font-body:'Schibsted Grotesk',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;--radius:12px;--gap:0.7}
+@media (prefers-color-scheme:dark){:root{--bg:#0b0d10;--fg:#f1f5f9;--muted:#94a3b8;--accent:#f472b6;--accent-2:#22d3ee;--surface:#13171c;--line:#252b33;color-scheme:dark;}}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:15px;line-height:1.55;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.05;letter-spacing:-.01em;margin:0 0 calc(.5em*var(--gap));text-wrap:balance}
+h1{font-size:clamp(34px,6.4vw,84px)}h2{font-size:clamp(24px,3.6vw,44px)}h3{font-size:clamp(18px,2.2vw,24px)}
+p{margin:0 0 calc(1em*var(--gap));max-width:68ch;text-wrap:pretty}
+a{color:var(--accent);text-underline-offset:.18em}
+button{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--fg);border-radius:var(--radius);padding:.55em 1em;cursor:pointer}
+button:hover{background:var(--fg);color:var(--bg)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=range]{accent-color:var(--accent);width:100%}
+table{border-collapse:collapse;width:100%}td,th{padding:.45em .6em;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85em}
+svg{max-width:100%;height:auto}canvas{max-width:100%;display:block}
+img{max-width:100%}
+.m-kicker{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .9em}
+.m-big{font-family:var(--font-display);font-size:clamp(56px,13vw,170px);line-height:.88;letter-spacing:-.03em;font-weight:400}
+.m-lead{font-size:1.25em;line-height:1.4;max-width:40ch}
+.m-muted{color:var(--muted)}.m-accent{color:var(--accent)}.m-accent-2{color:var(--accent-2)}
+.m-mono{font-family:var(--font-mono)}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:calc(16px*var(--gap))}
+.m-row{display:flex;flex-wrap:wrap;gap:calc(12px*var(--gap));align-items:baseline}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:calc(18px*var(--gap))}
+.m-stat{display:flex;flex-direction:column;gap:.2em}.m-stat b{font-family:var(--font-display);font-size:clamp(28px,4.6vw,52px);line-height:1;font-weight:400}
+.m-rule{border:0;border-top:1px solid var(--line);margin:calc(24px*var(--gap)) 0}
+.m-chip{display:inline-block;font-family:var(--font-mono);font-size:.78rem;padding:.25em .6em;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.m-list{list-style:none;padding:0;margin:0}.m-list li{padding:.6em 0;border-bottom:1px solid var(--line)}
+.m-bars{display:flex;align-items:flex-end;gap:3px;height:120px}.m-bars i{flex:1;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px}
+main>section{scroll-margin-top:16px}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#m-building{position:fixed;left:12px;bottom:12px;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;z-index:5}
+#m-building::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:m-pulse 1.2s ease-in-out infinite}
+@keyframes m-pulse{50%{opacity:.25}}
+.m-earlier{font-family:var(--font-mono);font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
+main{padding:0}main>section{min-height:88vh;padding:clamp(28px,7vw,110px) clamp(16px,6vw,96px);display:flex;flex-direction:column;justify-content:center}main>section:nth-child(even){background:var(--surface)}</style>
+<script>window.MOMENT={"live":"http://localhost:8788/live/34.05,-118.24","tz":"America/Los_Angeles","place":"Los Angeles","eu":false};(()=>{const EU=false;let lastY=scrollY,lastT=performance.now(),speed=0,taps=0,idle=0,lastAct=performance.now(),hov=new Set(),bottom=false;
+const desc=e=>{const el=e.closest&&e.closest('[data-m],button,a,svg,canvas,table,li,figure,h2,h3');if(!el)return null;return(el.getAttribute('data-m')||el.tagName.toLowerCase()+(el.className&&typeof el.className==='string'?'.'+el.className.split(' ')[0]:'')).slice(0,40)};
+const act=()=>{lastAct=performance.now()};
+addEventListener('scroll',()=>{const t=performance.now(),dy=Math.abs(scrollY-lastY);speed=.7*speed+.3*(dy/Math.max(16,t-lastT)*1000);lastY=scrollY;lastT=t;act();const b=innerHeight+scrollY>=document.documentElement.scrollHeight-40;if(b&&!bottom){bottom=true;parent.postMessage({type:'moment:bottom'},'*')}},{passive:true});
+addEventListener('pointerover',e=>{if(EU)return;const d=desc(e.target);if(d&&hov.size<12)hov.add(d)},{passive:true});
+addEventListener('pointerdown',()=>{taps++;act()},{passive:true});addEventListener('keydown',act);
+const onScreen=()=>{let best=null,area=0;for(const s of document.querySelectorAll('main>section')){const r=s.getBoundingClientRect(),v=Math.max(0,Math.min(innerHeight,r.bottom)-Math.max(0,r.top));if(v>area){area=v;best=s.id||null}}return best};
+setInterval(()=>{idle=performance.now()-lastAct;if(EU)return;parent.postMessage({type:'moment:interaction',section:onScreen(),scrollSpeed:Math.round(speed),hovered:[...hov],taps,idleMs:Math.round(idle),atBottom:bottom},'*');hov.clear();speed*=.5},2000);
+})();</script>
+</head><body class="layout-full-bleed motion-still density-dense">
+<div id="m-building" role="status">Writing this page</div>
+<main>
+<section id="sunset-clock">
+<p class="m-kicker">Los Angeles · Thursday, 4:15 p.m.</p>
+<h1 class="m-big" id="sc-count">38 minutes</h1>
+<p class="m-lead">Sunset is at 4:52 p.m. The sky is clear and it is 75°F (24°C).</p>
+<div class="sc-bar" aria-hidden="true">
+<svg viewBox="0 0 600 70" preserveAspectRatio="none" width="100%" height="70">
+<line x1="0" y1="35" x2="600" y2="35" stroke="var(--line)" stroke-width="2"/>
+<line id="sc-done" x1="0" y1="35" x2="0" y2="35" stroke="var(--accent)" stroke-width="6"/>
+<circle id="sc-dot" cx="0" cy="35" r="9" fill="var(--accent)"/>
+<circle cx="598" cy="35" r="9" fill="none" stroke="var(--accent-2)" stroke-width="3"/>
+</svg>
+<div class="sc-ends m-mono"><span>4:15 p.m.</span><span>4:52 p.m.</span></div>
+</div>
+<div class="m-row sc-stats">
+<div class="m-stat"><b>4:52 p.m.</b><span>Sunset</span></div>
+<div class="m-stat"><b>75°F</b><span>Now, clear</span></div>
+<div class="m-stat"><b>6:24 a.m.</b><span>Sunrise this morning</span></div>
+</div>
+<style>
+#sunset-clock{min-height:90vh;display:flex;flex-direction:column;justify-content:center;gap:var(--gap);padding:clamp(24px,6vw,88px);background:var(--bg);color:var(--fg)}
+#sunset-clock .m-big{font-size:clamp(3.5rem,16vw,12rem);line-height:.9;margin:0;color:var(--accent)}
+#sunset-clock .m-lead{max-width:34ch;margin:0}
+#sunset-clock .sc-bar{max-width:720px;width:100%}
+#sunset-clock .sc-bar svg{display:block}
+#sunset-clock .sc-ends{display:flex;justify-content:space-between;color:var(--muted);font-size:.85rem;margin-top:4px}
+#sunset-clock .sc-stats{gap:calc(var(--gap)*2);margin-top:var(--gap)}
+</style>
+</section><section id="last-light">
+<p class="m-kicker">4:15 p.m. to 4:52 p.m.</p>
+<h2 class="m-big">Use the last light</h2>
+<p class="m-lead">It's 75° and clear, and the sky stays clear through sunset. Thirty-eight minutes is enough for one good thing outside. Pick one.</p>
+<div class="ll-grid">
+<div class="ll-item"><span class="m-mono m-accent">Now</span><h3>Walk somewhere with a view</h3><p>Go west or toward high ground. With no cloud, the sky does the work. You need about twenty minutes to get there and settle in.</p></div>
+<div class="ll-item"><span class="m-mono m-accent">By 4:35</span><h3>Eat outside</h3><p>The temperature holds at 75° through 5 p.m. and only slips to 74° by 6. A jacket is optional. Take your coffee or dinner to the patio.</p></div>
+<div class="ll-item"><span class="m-mono m-accent">By 4:45</span><h3>Take the photo</h3><p>Clear skies at the horizon mean clean, low, warm light. Shoot before the sun touches the skyline, then keep looking after it drops.</p></div>
+<div class="ll-item"><span class="m-mono m-accent">Any time</span><h3>Stay put</h3><p>Sit on a step or a bench. Rain chance is 8% at 4 p.m. and 2% by 6. Nothing is coming to interrupt you.</p></div>
+</div>
+<p class="ll-note m-muted">Sunset is at 4:52 p.m. Leave the phone in your pocket for the last five minutes.</p>
+<style>
+#last-light{padding:clamp(48px,8vw,110px) clamp(20px,5vw,72px);background:var(--surface);color:var(--fg);border-top:1px solid var(--line)}
+#last-light h2{margin:.1em 0 .3em;line-height:.95}
+#last-light .m-lead{max-width:34em;margin:0 0 clamp(28px,4vw,56px)}
+#last-light .ll-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:0;border-top:2px solid var(--fg)}
+#last-light .ll-item{padding:20px 20px 24px 0;border-bottom:1px solid var(--line)}
+#last-light .ll-item h3{font-family:var(--font-display);font-size:1.35rem;margin:.4em 0 .4em;line-height:1.15}
+#last-light .ll-item p{margin:0;color:var(--muted);max-width:30em}
+#last-light .ll-note{margin:28px 0 0;font-family:var(--font-mono);font-size:.9rem}
+</style>
+</section><section id="after-dark">
+<p class="m-kicker">After sunset</p>
+<h2 class="m-big">75° now. 63° by 3 a.m.</h2>
+<p class="m-lead">The sun goes down at 4:52 p.m. and the air stays mild for hours. It's 74°F (23°C) at 6 p.m. and still 70°F (21°C) at 9. The sky stays clear all night.</p>
+
+<div class="ad-chart">
+<svg id="ad-svg" viewBox="0 0 600 220" role="img" aria-label="Hourly temperature from 3 p.m. to 3 a.m., falling from 75 to 63 degrees Fahrenheit" preserveAspectRatio="xMidYMid meet">
+<line x1="40" y1="30" x2="580" y2="30" stroke="var(--line)"/>
+<line x1="40" y1="110" x2="580" y2="110" stroke="var(--line)"/>
+<line x1="40" y1="190" x2="580" y2="190" stroke="var(--line)"/>
+<text x="4" y="34" fill="var(--muted)" font-size="12" font-family="var(--font-mono)">75°</text>
+<text x="4" y="114" fill="var(--muted)" font-size="12" font-family="var(--font-mono)">69°</text>
+<text x="4" y="194" fill="var(--muted)" font-size="12" font-family="var(--font-mono)">63°</text>
+<rect x="136" y="30" width="444" height="160" fill="var(--surface)" opacity="0.7"/>
+<line x1="136" y1="24" x2="136" y2="196" stroke="var(--accent)" stroke-width="2"/>
+<text x="142" y="20" fill="var(--accent)" font-size="12" font-family="var(--font-mono)">Sunset 4:52 p.m.</text>
+<polyline fill="none" stroke="var(--accent-2)" stroke-width="3" stroke-linejoin="round" points="40,30 86,30 132,30 178,37 224,43 270,57 316,63 362,77 408,90 454,103 500,103 546,103 580,190"/>
+<circle cx="40" cy="30" r="5" fill="var(--accent-2)"/>
+<circle cx="580" cy="190" r="5" fill="var(--accent-2)"/>
+<text x="40" y="214" fill="var(--muted)" font-size="12" font-family="var(--font-mono)">3 p.m.</text>
+<text x="270" y="214" fill="var(--muted)" font-size="12" font-family="var(--font-mono)">9 p.m.</text>
+<text x="520" y="214" fill="var(--muted)" font-size="12" font-family="var(--font-mono)">3 a.m.</text>
+</svg>
+</div>
+
+<div class="m-grid ad-stats">
+<div class="m-stat"><b>74°F</b><span>6 p.m. (23°C)</span></div>
+<div class="m-stat"><b>70°F</b><span>9 p.m. (21°C)</span></div>
+<div class="m-stat"><b>64°F</b><span>midnight (18°C)</span></div>
+<div class="m-stat"><b>63°F</b><span>3 a.m. (17°C)</span></div>
+</div>
+
+<p class="m-muted">Twelve degrees in total. Most of the drop comes after 9 p.m., so an evening outside stays comfortable well past dark.</p>
+
+<style>
+#after-dark{padding:clamp(48px,9vw,120px) clamp(20px,6vw,96px);background:var(--bg);color:var(--fg)}
+#after-dark .m-big{margin:.2em 0 .3em;line-height:1}
+#after-dark .m-lead{max-width:40ch}
+#after-dark .ad-chart{margin:var(--gap) 0;max-width:760px}
+#after-dark svg{width:100%;height:auto;display:block}
+#after-dark .ad-stats{margin:var(--gap) 0;max-width:760px}
+#after-dark .m-muted{max-width:48ch}
+</style>
+</section></main>
+<style>#m-building{display:none}</style>
+
+<script>(()=>{try{
+(function(){
+var el=document.getElementById('sc-count');
+var done=document.getElementById('sc-done');
+var dot=document.getElementById('sc-dot');
+var total=37;
+var start=Date.now();
+var base=38;
+function render(){
+var elapsed=(Date.now()-start)/60000;
+var left=Math.max(0,Math.ceil(base-elapsed));
+el.textContent=left===0?'Now':left+(left===1?' minute':' minutes');
+var frac=Math.min(1,Math.max(0,(base-left)/total));
+var x=Math.min(598,Math.max(0,frac*598));
+done.setAttribute('x2',x);
+dot.setAttribute('cx',x);
+}
+render();
+setInterval(render,15000);
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>parent.postMessage({type:'moment:complete'},'*')</script>
+</body></html>

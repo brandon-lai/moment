@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rain in Nairobi until about 5 p.m.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Plus+Jakarta+Sans:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>:root{--bg:#fafafa;--fg:#0a0a0a;--muted:#5c5c5c;--accent:#d93f00;--accent-2:#0040e0;--surface:#f0f0f0;--line:#dcdcdc;color-scheme:light;--font-display:'Young Serif',serif;--font-body:'Plus Jakarta Sans',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;--radius:0px;--gap:0.7}
+@media (prefers-color-scheme:dark){:root{--bg:#1c1d1f;--fg:#ececec;--muted:#a3a3a3;--accent:#a3e635;--accent-2:#60a5fa;--surface:#242528;--line:#36383c;color-scheme:dark;}}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:15px;line-height:1.55;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.05;letter-spacing:-.01em;margin:0 0 calc(.5em*var(--gap));text-wrap:balance}
+h1{font-size:clamp(34px,6.4vw,84px)}h2{font-size:clamp(24px,3.6vw,44px)}h3{font-size:clamp(18px,2.2vw,24px)}
+p{margin:0 0 calc(1em*var(--gap));max-width:68ch;text-wrap:pretty}
+a{color:var(--accent);text-underline-offset:.18em}
+button{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--fg);border-radius:var(--radius);padding:.55em 1em;cursor:pointer}
+button:hover{background:var(--fg);color:var(--bg)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=range]{accent-color:var(--accent);width:100%}
+table{border-collapse:collapse;width:100%}td,th{padding:.45em .6em;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85em}
+svg{max-width:100%;height:auto}canvas{max-width:100%;display:block}
+img{max-width:100%}
+.m-kicker{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .9em}
+.m-big{font-family:var(--font-display);font-size:clamp(56px,13vw,170px);line-height:.88;letter-spacing:-.03em;font-weight:400}
+.m-lead{font-size:1.25em;line-height:1.4;max-width:40ch}
+.m-muted{color:var(--muted)}.m-accent{color:var(--accent)}.m-accent-2{color:var(--accent-2)}
+.m-mono{font-family:var(--font-mono)}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:calc(16px*var(--gap))}
+.m-row{display:flex;flex-wrap:wrap;gap:calc(12px*var(--gap));align-items:baseline}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:calc(18px*var(--gap))}
+.m-stat{display:flex;flex-direction:column;gap:.2em}.m-stat b{font-family:var(--font-display);font-size:clamp(28px,4.6vw,52px);line-height:1;font-weight:400}
+.m-rule{border:0;border-top:1px solid var(--line);margin:calc(24px*var(--gap)) 0}
+.m-chip{display:inline-block;font-family:var(--font-mono);font-size:.78rem;padding:.25em .6em;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.m-list{list-style:none;padding:0;margin:0}.m-list li{padding:.6em 0;border-bottom:1px solid var(--line)}
+.m-bars{display:flex;align-items:flex-end;gap:3px;height:120px}.m-bars i{flex:1;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px}
+main>section{scroll-margin-top:16px}
+main>section{animation:m-in .5s cubic-bezier(.2,.7,.2,1) both}@keyframes m-in{from{opacity:0;transform:translateY(18px)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#m-building{position:fixed;left:12px;bottom:12px;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;z-index:5}
+#m-building::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:m-pulse 1.2s ease-in-out infinite}
+@keyframes m-pulse{50%{opacity:.25}}
+.m-earlier{font-family:var(--font-mono);font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
+main{padding:0}main>section{min-height:88vh;padding:clamp(28px,7vw,110px) clamp(16px,6vw,96px);display:flex;flex-direction:column;justify-content:center}main>section:nth-child(even){background:var(--surface)}</style>
+<script>window.MOMENT={"live":"http://localhost:8788/live/-1.29,36.82","tz":"Africa/Nairobi","place":"Nairobi","eu":false};(()=>{const EU=false;let lastY=scrollY,lastT=performance.now(),speed=0,taps=0,idle=0,lastAct=performance.now(),hov=new Set(),bottom=false;
+const desc=e=>{const el=e.closest&&e.closest('[data-m],button,a,svg,canvas,table,li,figure,h2,h3');if(!el)return null;return(el.getAttribute('data-m')||el.tagName.toLowerCase()+(el.className&&typeof el.className==='string'?'.'+el.className.split(' ')[0]:'')).slice(0,40)};
+const act=()=>{lastAct=performance.now()};
+addEventListener('scroll',()=>{const t=performance.now(),dy=Math.abs(scrollY-lastY);speed=.7*speed+.3*(dy/Math.max(16,t-lastT)*1000);lastY=scrollY;lastT=t;act();const b=innerHeight+scrollY>=document.documentElement.scrollHeight-40;if(b&&!bottom){bottom=true;parent.postMessage({type:'moment:bottom'},'*')}},{passive:true});
+addEventListener('pointerover',e=>{if(EU)return;const d=desc(e.target);if(d&&hov.size<12)hov.add(d)},{passive:true});
+addEventListener('pointerdown',()=>{taps++;act()},{passive:true});addEventListener('keydown',act);
+const onScreen=()=>{let best=null,area=0;for(const s of document.querySelectorAll('main>section')){const r=s.getBoundingClientRect(),v=Math.max(0,Math.min(innerHeight,r.bottom)-Math.max(0,r.top));if(v>area){area=v;best=s.id||null}}return best};
+setInterval(()=>{idle=performance.now()-lastAct;if(EU)return;parent.postMessage({type:'moment:interaction',section:onScreen(),scrollSpeed:Math.round(speed),hovered:[...hov],taps,idleMs:Math.round(idle),atBottom:bottom},'*');hov.clear();speed*=.5},2000);
+})();</script>
+</head><body class="layout-full-bleed motion-lively density-dense">
+<div id="m-building" role="status">Writing this page</div>
+<main>
+<section id="wait-clock">
+<p class="m-kicker">Nairobi · Wednesday, 3:00 p.m.</p>
+<h2>Time until the rain stops</h2>
+<p class="m-lead">Light rain at 24°C now. It stops around 5 p.m.</p>
+<div class="wc-stage">
+<div class="wc-time m-big" id="wc-count" aria-live="off">2:00:00</div>
+<p class="wc-sub m-muted" id="wc-sub">hours, minutes, seconds until 5:00 p.m.</p>
+</div>
+<div class="wc-bar" aria-hidden="true"><i id="wc-fill"></i></div>
+<div class="wc-hours" id="wc-hours">
+<div class="wc-h"><b>3 p.m.</b><span>86%</span><em>0.8 mm</em></div>
+<div class="wc-h wc-peak"><b>4 p.m.</b><span>72%</span><em>4.1 mm</em></div>
+<div class="wc-h wc-clear"><b>5 p.m.</b><span>18%</span><em>0 mm</em></div>
+</div>
+<p class="wc-note">The heaviest stretch is the 4 p.m. hour, at 4.1 mm. By 5 p.m. the rain chance drops to 18%.</p>
+<style>
+#wait-clock{min-height:90vh;padding:clamp(2rem,6vw,5rem) clamp(1rem,5vw,4rem);background:var(--bg);color:var(--fg);display:flex;flex-direction:column;justify-content:center;gap:var(--gap)}
+#wait-clock h2{font-family:var(--font-display);font-size:clamp(1.4rem,3vw,2.2rem);margin:0}
+#wait-clock .wc-stage{margin-top:1rem}
+#wait-clock .wc-time{font-family:var(--font-display);font-size:clamp(4rem,19vw,13rem);line-height:.95;color:var(--accent);font-variant-numeric:tabular-nums;letter-spacing:-.03em}
+#wait-clock .wc-sub{font-family:var(--font-mono);margin:.5rem 0 0}
+#wait-clock .wc-bar{height:10px;background:var(--line);border-radius:var(--radius);overflow:hidden;margin-top:1.5rem}
+#wait-clock .wc-bar i{display:block;height:100%;width:0;background:var(--accent-2);transition:width 1s linear}
+#wait-clock .wc-hours{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:var(--gap);margin-top:1rem}
+#wait-clock .wc-h{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:1rem;display:flex;flex-direction:column;gap:.25rem}
+#wait-clock .wc-h b{font-family:var(--font-display);font-size:1.2rem}
+#wait-clock .wc-h span{font-family:var(--font-mono);font-size:1.6rem;color:var(--accent)}
+#wait-clock .wc-h em{font-style:normal;color:var(--muted);font-family:var(--font-mono);font-size:.9rem}
+#wait-clock .wc-peak{border-color:var(--accent)}
+#wait-clock .wc-clear span{color:var(--accent-2)}
+#wait-clock .wc-note{max-width:44ch;color:var(--muted);margin:0}
+</style>
+</section><section id="after-rain">
+<p class="m-kicker">After 5 p.m.</p>
+<h2 class="m-big">The dry hours</h2>
+<p class="m-lead">From 5 p.m. the chance of rain drops to 18%, then 3% at 6 p.m. Sunset is at 6:23 p.m. Drag the slider to see the evening at each hour.</p>
+
+<div class="ar-wrap">
+<div class="ar-readout">
+<div class="m-stat"><b id="ar-time">6 p.m.</b><span>hour</span></div>
+<div class="m-stat"><b id="ar-temp">23°C</b><span>temperature</span></div>
+<div class="m-stat"><b id="ar-rain">3%</b><span>chance of rain</span></div>
+</div>
+<p id="ar-note" class="ar-note"></p>
+<input id="ar-range" type="range" min="0" max="9" step="1" value="1" aria-label="Hour of the evening">
+<div class="ar-ticks m-mono m-muted"><span>5 p.m.</span><span>10 p.m.</span><span>2 a.m.</span></div>
+<svg id="ar-chart" viewBox="0 0 600 140" preserveAspectRatio="none" role="img" aria-label="Temperature from 5 p.m. to 2 a.m."></svg>
+</div>
+
+<p class="m-muted ar-foot">Temperatures fall from 24° at 5 p.m. to 18° by midnight. Bring a layer for after 10 p.m.</p>
+
+<style>
+#after-rain .ar-wrap{margin-top:var(--gap);border-top:1px solid var(--line);padding-top:var(--gap)}
+#after-rain .ar-readout{display:flex;flex-wrap:wrap;gap:calc(var(--gap)*1.5)}
+#after-rain .ar-note{font-family:var(--font-display);font-size:1.4rem;margin:var(--gap) 0;min-height:2.8em;color:var(--accent)}
+#after-rain input[type=range]{width:100%;accent-color:var(--accent);margin:0}
+#after-rain .ar-ticks{display:flex;justify-content:space-between;font-size:.8rem;margin-top:.4rem}
+#after-rain svg{width:100%;height:140px;display:block;margin-top:var(--gap);background:var(--surface);border-radius:var(--radius)}
+#after-rain .ar-foot{margin-top:var(--gap);max-width:48ch}
+</style>
+</section></main>
+<style>#m-building{display:none}</style>
+
+<script>(()=>{try{
+(function(){
+var el=document.getElementById('wc-count');
+var sub=document.getElementById('wc-sub');
+var fill=document.getElementById('wc-fill');
+if(!el)return;
+var now=new Date();
+var start=new Date(now);start.setHours(15,0,0,0);
+var end=new Date(now);end.setHours(17,0,0,0);
+function p(n){return n<10?'0'+n:''+n}
+function tick(){
+var t=new Date();
+var ms=end-t;
+if(ms<=0){
+el.textContent='0:00:00';
+sub.textContent='The rain should have stopped by now.';
+fill.style.width='100%';
+return;
+}
+var s=Math.floor(ms/1000);
+var h=Math.floor(s/3600),m=Math.floor((s%3600)/60),sc=s%60;
+el.textContent=h+':'+p(m)+':'+p(sc);
+var pct=(t-start)/(end-start)*100;
+fill.style.width=Math.max(0,Math.min(100,pct))+'%';
+}
+tick();
+setInterval(tick,1000);
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var d=[
+{t:"5 p.m.",c:24,r:18,n:"Last damp air. Pavements still wet, sky going grey to pale."},
+{t:"6 p.m.",c:23,r:3,n:"The driest hour of the night. Sunset at 6:23 p.m., so go now."},
+{t:"7 p.m.",c:23,r:17,n:"Dark and mild at 23°. Good for a walk or an outdoor table."},
+{t:"8 p.m.",c:22,r:20,n:"Still mild. A small chance of rain, so keep it close to cover."},
+{t:"9 p.m.",c:21,r:5,n:"Cooler and dry. Light jacket weather begins."},
+{t:"10 p.m.",c:20,r:4,n:"20° and dry. Fine for the trip home."},
+{t:"11 p.m.",c:19,r:15,n:"19° with a slim chance of rain."},
+{t:"12 a.m.",c:18,r:11,n:"18° and mostly dry."},
+{t:"1 a.m.",c:18,r:14,n:"Steady at 18°."},
+{t:"2 a.m.",c:18,r:16,n:"Still 18°, rain chance 16%."}
+];
+var rng=document.getElementById('ar-range'),tt=document.getElementById('ar-time'),tp=document.getElementById('ar-temp'),rn=document.getElementById('ar-rain'),nt=document.getElementById('ar-note'),svg=document.getElementById('ar-chart');
+var min=17,max=25,W=600,H=140,p=14;
+function x(i){return p+i*(W-2*p)/(d.length-1)}
+function y(c){return H-p-(c-min)/(max-min)*(H-2*p)}
+var path=d.map(function(o,i){return(i?'L':'M')+x(i)+' '+y(o.c)}).join(' ');
+svg.innerHTML='<path d="'+path+'" fill="none" stroke="var(--accent-2)" stroke-width="3" vector-effect="non-scaling-stroke"/><line id="ar-l" y1="0" y2="'+H+'" stroke="var(--accent)" stroke-width="2" vector-effect="non-scaling-stroke"/><circle id="ar-c" r="6" fill="var(--accent)"/>';
+var l=document.getElementById('ar-l'),c=document.getElementById('ar-c');
+function up(){var i=+rng.value,o=d[i];tt.textContent=o.t;tp.textContent=o.c+'°C';rn.textContent=o.r+'%';nt.textContent=o.n;l.setAttribute('x1',x(i));l.setAttribute('x2',x(i));c.setAttribute('cx',x(i));c.setAttribute('cy',y(o.c))}
+rng.addEventListener('input',up);up();
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>parent.postMessage({type:'moment:complete'},'*')</script>
+</body></html>

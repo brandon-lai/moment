@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Armistice Day in Paris, under overcast skies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>:root{--bg:#f1eef6;--fg:#221c2e;--muted:#5f5670;--accent:#0f766e;--accent-2:#9d174d;--surface:#e6e1ee;--line:#d2cadf;color-scheme:light;--font-display:'Playfair Display',serif;--font-body:'Source Sans 3',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;--radius:6px;--gap:1}
+@media (prefers-color-scheme:dark){:root{--bg:#13202b;--fg:#e8eef2;--muted:#9db0bf;--accent:#f4a261;--accent-2:#7dd3fc;--surface:#1a2a37;--line:#2a3d4d;color-scheme:dark;}}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:16.5px;line-height:1.55;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;line-height:1.05;letter-spacing:-.01em;margin:0 0 calc(.5em*var(--gap));text-wrap:balance}
+h1{font-size:clamp(34px,6.4vw,84px)}h2{font-size:clamp(24px,3.6vw,44px)}h3{font-size:clamp(18px,2.2vw,24px)}
+p{margin:0 0 calc(1em*var(--gap));max-width:68ch;text-wrap:pretty}
+a{color:var(--accent);text-underline-offset:.18em}
+button{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--fg);border-radius:var(--radius);padding:.55em 1em;cursor:pointer}
+button:hover{background:var(--fg);color:var(--bg)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=range]{accent-color:var(--accent);width:100%}
+table{border-collapse:collapse;width:100%}td,th{padding:.45em .6em;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85em}
+svg{max-width:100%;height:auto}canvas{max-width:100%;display:block}
+img{max-width:100%}
+.m-kicker{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .9em}
+.m-big{font-family:var(--font-display);font-size:clamp(56px,13vw,170px);line-height:.88;letter-spacing:-.03em;font-weight:700}
+.m-lead{font-size:1.25em;line-height:1.4;max-width:40ch}
+.m-muted{color:var(--muted)}.m-accent{color:var(--accent)}.m-accent-2{color:var(--accent-2)}
+.m-mono{font-family:var(--font-mono)}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:calc(16px*var(--gap))}
+.m-row{display:flex;flex-wrap:wrap;gap:calc(12px*var(--gap));align-items:baseline}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:calc(18px*var(--gap))}
+.m-stat{display:flex;flex-direction:column;gap:.2em}.m-stat b{font-family:var(--font-display);font-size:clamp(28px,4.6vw,52px);line-height:1;font-weight:700}
+.m-rule{border:0;border-top:1px solid var(--line);margin:calc(24px*var(--gap)) 0}
+.m-chip{display:inline-block;font-family:var(--font-mono);font-size:.78rem;padding:.25em .6em;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.m-list{list-style:none;padding:0;margin:0}.m-list li{padding:.6em 0;border-bottom:1px solid var(--line)}
+.m-bars{display:flex;align-items:flex-end;gap:3px;height:120px}.m-bars i{flex:1;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px}
+main>section{scroll-margin-top:16px}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#m-building{position:fixed;left:12px;bottom:12px;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;z-index:5}
+#m-building::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:m-pulse 1.2s ease-in-out infinite}
+@keyframes m-pulse{50%{opacity:.25}}
+.m-earlier{font-family:var(--font-mono);font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
+main{max-width:46rem;margin:0 auto;padding:clamp(16px,4vw,48px) clamp(12px,4vw,32px) 80px}main>section{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(20px,4vw,40px);margin-top:-6px;position:relative}main>section:nth-child(odd){transform:rotate(-.4deg)}main>section:nth-child(even){transform:rotate(.4deg) translateX(6px)}main>section+section{margin-top:18px}@media(prefers-reduced-motion:reduce){main>section{transform:none!important}}</style>
+<script>window.MOMENT={"live":"http://localhost:8788/live/48.86,2.35","tz":"Europe/Paris","place":"Paris","eu":true};(()=>{const EU=true;let lastY=scrollY,lastT=performance.now(),speed=0,taps=0,idle=0,lastAct=performance.now(),hov=new Set(),bottom=false;
+const desc=e=>{const el=e.closest&&e.closest('[data-m],button,a,svg,canvas,table,li,figure,h2,h3');if(!el)return null;return(el.getAttribute('data-m')||el.tagName.toLowerCase()+(el.className&&typeof el.className==='string'?'.'+el.className.split(' ')[0]:'')).slice(0,40)};
+const act=()=>{lastAct=performance.now()};
+addEventListener('scroll',()=>{const t=performance.now(),dy=Math.abs(scrollY-lastY);speed=.7*speed+.3*(dy/Math.max(16,t-lastT)*1000);lastY=scrollY;lastT=t;act();const b=innerHeight+scrollY>=document.documentElement.scrollHeight-40;if(b&&!bottom){bottom=true;parent.postMessage({type:'moment:bottom'},'*')}},{passive:true});
+addEventListener('pointerover',e=>{if(EU)return;const d=desc(e.target);if(d&&hov.size<12)hov.add(d)},{passive:true});
+addEventListener('pointerdown',()=>{taps++;act()},{passive:true});addEventListener('keydown',act);
+const onScreen=()=>{let best=null,area=0;for(const s of document.querySelectorAll('main>section')){const r=s.getBoundingClientRect(),v=Math.max(0,Math.min(innerHeight,r.bottom)-Math.max(0,r.top));if(v>area){area=v;best=s.id||null}}return best};
+setInterval(()=>{idle=performance.now()-lastAct;if(EU)return;parent.postMessage({type:'moment:interaction',section:onScreen(),scrollSpeed:Math.round(speed),hovered:[...hov],taps,idleMs:Math.round(idle),atBottom:bottom},'*');hov.clear();speed*=.5},2000);
+})();</script>
+</head><body class="layout-card-stack motion-still density-balanced">
+<div id="m-building" role="status">Writing this page</div>
+<main>
+<section id="holiday-start">
+<p class="m-kicker">Wednesday, 11 November 2026</p>
+<h2 class="hs-title">Armistice Day, and what it means today</h2>
+<p class="m-lead">It is a public holiday in France, and it is 11 a.m. in Paris. Overcast, 10°C, no rain in the hours ahead.</p>
+<p>Treat today like a Sunday that landed on a Wednesday. The day off is the point. Anyone with a calendar that says "Wednesday" will be working from the wrong assumption, so check opening hours before you walk anywhere with a plan.</p>
+<div class="hs-rule m-rule"></div>
+<div class="m-row hs-stats">
+<div class="m-stat"><b>10°C</b><span>right now</span></div>
+<div class="m-stat"><b>13°C</b><span>peak, around 3 p.m.</span></div>
+<div class="m-stat"><b>5:17 p.m.</b><span>sunset</span></div>
+</div>
+<p class="m-muted hs-note">Sunrise was at 7:54 a.m. The light is flat and even, which is kind to a long walk and no use for dramatic photos.</p>
+<style>
+#holiday-start{max-width:34rem;padding:calc(var(--gap)*1.25);background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);transform:rotate(-0.6deg);box-shadow:0 1px 0 var(--line)}
+#holiday-start .hs-title{font-family:var(--font-display);font-size:clamp(1.9rem,6vw,2.8rem);line-height:1.05;margin:.3rem 0 var(--gap);color:var(--fg)}
+#holiday-start .m-lead{margin:0 0 var(--gap)}
+#holiday-start p{font-family:var(--font-body);line-height:1.55}
+#holiday-start .hs-rule{margin:var(--gap) 0;border-top:2px solid var(--accent)}
+#holiday-start .hs-stats{gap:var(--gap)}
+#holiday-start .hs-note{margin:var(--gap) 0 0;font-size:.95rem}
+</style>
+</section><section id="overcast-plan">
+<h2>Planning around the overcast midday</h2>
+<p class="m-lead">The sky stays grey all day, but it stays dry. Rain chances never pass 20% between now and 10 p.m., and none of the hours shows any measurable rain.</p>
+<div class="op-card">
+<p class="m-kicker">Temperature, 11 a.m. to 10 p.m.</p>
+<svg id="op-chart" viewBox="0 0 300 120" role="img" aria-label="Temperature by hour, from 10°C at 11 a.m. up to 13°C at 3 p.m. and down to 8°C at 10 p.m.">
+<line x1="10" y1="100" x2="290" y2="100" stroke="var(--line)"/>
+<polyline fill="none" stroke="var(--accent)" stroke-width="2.5" points="10,70 35,60 61,50 87,50 112,30 138,40 163,40 189,40 214,60 240,60 265,70 290,90"/>
+<circle cx="112" cy="30" r="4" fill="var(--accent)"/>
+<text x="112" y="20" font-size="10" text-anchor="middle" fill="var(--fg)" font-family="var(--font-mono)">13°</text>
+<text x="10" y="114" font-size="9" fill="var(--muted)" font-family="var(--font-mono)">11 a.m.</text>
+<text x="290" y="114" font-size="9" text-anchor="end" fill="var(--muted)" font-family="var(--font-mono)">10 p.m.</text>
+</svg>
+</div>
+<ul class="m-list op-list">
+<li><b>Go out now.</b> It is 10°C at 11 a.m. and warms to 12°C by 1 p.m. Midday is the cool end of the walking hours.</li>
+<li><b>Peak at 3 p.m.</b> That is the warmest hour at 13°C. Clouds thin a little around 1 p.m. and again from 2 p.m. to 5 p.m.</li>
+<li><b>Bring a layer, skip the umbrella.</b> After sunset at 5:17 p.m. it drops to 10°C by 7 p.m. and 8°C by 10 p.m.</li>
+<li><b>Light is flat.</b> Grey light is even and soft, good for being outside, less good for views.</li>
+</ul>
+<style>
+#overcast-plan{max-width:34rem;padding:calc(var(--gap)*1.2);background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);transform:translateX(1.2rem) rotate(.6deg);}
+#overcast-plan h2{font-family:var(--font-display);margin:0 0 .6rem;font-size:1.7rem;line-height:1.1}
+#overcast-plan .op-card{margin:1.2rem 0;padding:1rem;border:1px solid var(--line);border-radius:var(--radius);background:var(--bg)}
+#overcast-plan svg{width:100%;height:auto;display:block}
+#overcast-plan .op-list{padding-left:0;list-style:none;display:grid;gap:.8rem}
+#overcast-plan .op-list li{border-top:1px solid var(--line);padding-top:.7rem}
+@media(max-width:480px){#overcast-plan{transform:none}}
+</style>
+</section><section id="afternoon-steps">
+<p class="m-kicker">11 a.m. to 10 p.m.</p>
+<h2>What to do with the rest of the day</h2>
+<p class="m-lead">Order it by what is certain. Dry hours first, closures second, everything else after.</p>
+<ol class="as-list">
+<li><span class="m-mono m-accent">11 a.m.</span><div><b>Walk now.</b> 10°C, grey, 7% chance of rain. The easiest hour to be outside.</div></li>
+<li><span class="m-mono m-accent">1 p.m.</span><div><b>Sit down for lunch.</b> 12°C and the sky opens a little. Holiday hours vary, so book or check before you cross town.</div></li>
+<li><span class="m-mono m-accent">3 p.m.</span><div><b>Take the long loop.</b> 13°C is the warmest it gets. Rain chance is 12%.</div></li>
+<li><span class="m-mono m-accent">5:17 p.m.</span><div><b>Sunset.</b> The light goes early. Be where you want to be by then.</div></li>
+<li><span class="m-mono m-accent">7 p.m.</span><div><b>Go indoors.</b> 10°C and falling to 8°C by 10 p.m. Rain stays at 20% or less.</div></li>
+</ol>
+<p class="m-muted as-note">It is a public holiday, so confirm that any shop, museum or office is open before you head there.</p>
+<style>
+#afternoon-steps{max-width:34rem;margin-left:1.5rem;padding:1.5rem;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);transform:rotate(.6deg)}
+#afternoon-steps h2{font-family:var(--font-display);font-size:clamp(1.6rem,5vw,2.2rem);line-height:1.1;margin:.3rem 0 .8rem}
+#afternoon-steps .as-list{list-style:none;margin:1.5rem 0 1rem;padding:0;border-top:1px solid var(--line)}
+#afternoon-steps .as-list li{display:grid;grid-template-columns:5.2rem 1fr;gap:1rem;padding:.9rem 0;border-bottom:1px solid var(--line)}
+#afternoon-steps .as-list b{color:var(--fg)}
+#afternoon-steps .as-note{font-size:.95rem;margin:0}
+@media (max-width:480px){#afternoon-steps{margin-left:0;transform:none}#afternoon-steps .as-list li{grid-template-columns:1fr;gap:.2rem}}
+</style>
+</section></main>
+<style>#m-building{display:none}</style>
+
+
+<script>parent.postMessage({type:'moment:complete'},'*')</script>
+</body></html>

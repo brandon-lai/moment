@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sunset in Dublin: your remaining daylight</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>:root{--bg:#0f2747;--fg:#e6eefb;--muted:#9fb6d9;--accent:#fde047;--accent-2:#fca5a5;--surface:#143057;--line:#24467a;color-scheme:dark;--font-display:'Chakra Petch',sans-serif;--font-body:'JetBrains Mono',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;--radius:0px;--gap:0.7}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:15px;line-height:1.55;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;line-height:1.05;letter-spacing:-.01em;margin:0 0 calc(.5em*var(--gap));text-wrap:balance}
+h1{font-size:clamp(34px,6.4vw,84px)}h2{font-size:clamp(24px,3.6vw,44px)}h3{font-size:clamp(18px,2.2vw,24px)}
+p{margin:0 0 calc(1em*var(--gap));max-width:68ch;text-wrap:pretty}
+a{color:var(--accent);text-underline-offset:.18em}
+button{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--fg);border-radius:var(--radius);padding:.55em 1em;cursor:pointer}
+button:hover{background:var(--fg);color:var(--bg)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=range]{accent-color:var(--accent);width:100%}
+table{border-collapse:collapse;width:100%}td,th{padding:.45em .6em;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85em}
+svg{max-width:100%;height:auto}canvas{max-width:100%;display:block}
+img{max-width:100%}
+.m-kicker{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .9em}
+.m-big{font-family:var(--font-display);font-size:clamp(56px,13vw,170px);line-height:.88;letter-spacing:-.03em;font-weight:700}
+.m-lead{font-size:1.25em;line-height:1.4;max-width:40ch}
+.m-muted{color:var(--muted)}.m-accent{color:var(--accent)}.m-accent-2{color:var(--accent-2)}
+.m-mono{font-family:var(--font-mono)}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:calc(16px*var(--gap))}
+.m-row{display:flex;flex-wrap:wrap;gap:calc(12px*var(--gap));align-items:baseline}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:calc(18px*var(--gap))}
+.m-stat{display:flex;flex-direction:column;gap:.2em}.m-stat b{font-family:var(--font-display);font-size:clamp(28px,4.6vw,52px);line-height:1;font-weight:700}
+.m-rule{border:0;border-top:1px solid var(--line);margin:calc(24px*var(--gap)) 0}
+.m-chip{display:inline-block;font-family:var(--font-mono);font-size:.78rem;padding:.25em .6em;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.m-list{list-style:none;padding:0;margin:0}.m-list li{padding:.6em 0;border-bottom:1px solid var(--line)}
+.m-bars{display:flex;align-items:flex-end;gap:3px;height:120px}.m-bars i{flex:1;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px}
+main>section{scroll-margin-top:16px}
+main>section{animation:m-in .5s cubic-bezier(.2,.7,.2,1) both}@keyframes m-in{from{opacity:0;transform:translateY(18px)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#m-building{position:fixed;left:12px;bottom:12px;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;z-index:5}
+#m-building::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:m-pulse 1.2s ease-in-out infinite}
+@keyframes m-pulse{50%{opacity:.25}}
+.m-earlier{font-family:var(--font-mono);font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
+body{font-family:var(--font-mono)}h1,h2,h3{font-family:var(--font-mono);letter-spacing:0}main{max-width:62rem;margin:0 auto;padding:clamp(16px,4vw,48px)}main>section{padding:clamp(20px,4vw,40px) 0;border-top:1px dashed var(--line)}main>section h2::before{content:'> ';color:var(--accent)}:root{--radius:0px}</style>
+<script>window.MOMENT={"live":"http://localhost:8788/live/53.35,-6.26","tz":"Europe/Dublin","place":"Dublin","eu":true};(()=>{const EU=true;let lastY=scrollY,lastT=performance.now(),speed=0,taps=0,idle=0,lastAct=performance.now(),hov=new Set(),bottom=false;
+const desc=e=>{const el=e.closest&&e.closest('[data-m],button,a,svg,canvas,table,li,figure,h2,h3');if(!el)return null;return(el.getAttribute('data-m')||el.tagName.toLowerCase()+(el.className&&typeof el.className==='string'?'.'+el.className.split(' ')[0]:'')).slice(0,40)};
+const act=()=>{lastAct=performance.now()};
+addEventListener('scroll',()=>{const t=performance.now(),dy=Math.abs(scrollY-lastY);speed=.7*speed+.3*(dy/Math.max(16,t-lastT)*1000);lastY=scrollY;lastT=t;act();const b=innerHeight+scrollY>=document.documentElement.scrollHeight-40;if(b&&!bottom){bottom=true;parent.postMessage({type:'moment:bottom'},'*')}},{passive:true});
+addEventListener('pointerover',e=>{if(EU)return;const d=desc(e.target);if(d&&hov.size<12)hov.add(d)},{passive:true});
+addEventListener('pointerdown',()=>{taps++;act()},{passive:true});addEventListener('keydown',act);
+const onScreen=()=>{let best=null,area=0;for(const s of document.querySelectorAll('main>section')){const r=s.getBoundingClientRect(),v=Math.max(0,Math.min(innerHeight,r.bottom)-Math.max(0,r.top));if(v>area){area=v;best=s.id||null}}return best};
+setInterval(()=>{idle=performance.now()-lastAct;if(EU)return;parent.postMessage({type:'moment:interaction',section:onScreen(),scrollSpeed:Math.round(speed),hovered:[...hov],taps,idleMs:Math.round(idle),atBottom:bottom},'*');hov.clear();speed*=.5},2000);
+})();</script>
+</head><body class="layout-terminal motion-lively density-dense">
+<div id="m-building" role="status">Writing this page</div>
+<main>
+<section id="daylight-left">
+<p class="m-kicker">dublin / sun / sunday 15 nov</p>
+<h2 class="dl-prompt"><span class="m-accent">$</span> daylight --remaining</h2>
+<p class="m-lead">Sunset is at 4:31 p.m. It is 2:30 p.m. now. That leaves about two hours of light.</p>
+<pre id="dl-table" class="dl-table">now        2:30 p.m.   partly cloudy, 14°C
+sunrise    7:51 a.m.
+sunset     4:31 p.m.
+left       <span id="dl-left" class="m-accent">2h 01m</span>
+rain       4% at 2 p.m., 17% at 3 p.m., 11% at 4 p.m.</pre>
+<div class="dl-bar" aria-hidden="true"><i id="dl-fill"></i><b id="dl-now"></b></div>
+<p class="dl-scale m-mono m-muted"><span>7:51 a.m.</span><span>sunset 4:31 p.m.</span></p>
+<p class="m-muted">The sky clouds over from 3 p.m. and stays overcast into the evening. No measurable rain in the hourly forecast.</p>
+<style>
+#daylight-left{font-family:var(--font-mono)}
+#daylight-left .dl-prompt{font-family:var(--font-mono);font-weight:600;margin:0 0 var(--gap)}
+#daylight-left .dl-table{font-family:var(--font-mono);background:var(--surface);border:1px solid var(--line);border-radius:0;padding:1rem;margin:var(--gap) 0;overflow-x:auto;line-height:1.8;white-space:pre-wrap}
+#daylight-left .dl-bar{position:relative;height:14px;border:1px solid var(--line);border-radius:0;background:var(--surface)}
+#daylight-left .dl-bar i{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--accent)}
+#daylight-left .dl-bar b{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--fg);left:0}
+#daylight-left .dl-scale{display:flex;justify-content:space-between;font-size:.8rem;margin:.4rem 0 var(--gap)}
+@media (prefers-reduced-motion:no-preference){#daylight-left .dl-bar b{animation:dlblink 1.2s steps(2) infinite}}
+@keyframes dlblink{50%{opacity:.2}}
+</style>
+</section><section id="outdoor-window">
+<h2 class="m-mono"><span class="m-accent">$</span> window --from 2:30pm --until 4:31pm</h2>
+<p class="m-lead m-mono">Two hours of light. Dry the whole way: rain chance never tops 17%, and no rain is forecast. Pick a slot and see what fits.</p>
+<div class="ow-tabs m-row" role="tablist">
+<button class="ow-btn" data-k="walk" aria-pressed="true">[walk]</button>
+<button class="ow-btn" data-k="errand" aria-pressed="false">[errand]</button>
+<button class="ow-btn" data-k="indoor" aria-pressed="false">[indoor]</button>
+</div>
+<pre class="ow-table m-mono" id="ow-out"></pre>
+<p class="ow-note m-muted m-mono">sunset 4:31 p.m. // overcast from 3 p.m. so the light thins before that</p>
+<style>
+#outdoor-window h2{font-family:var(--font-mono);font-size:1.15rem;margin:0 0 var(--gap);word-break:break-word}
+#outdoor-window .m-lead{margin:0 0 var(--gap);max-width:60ch}
+#outdoor-window .ow-tabs{gap:8px;margin-bottom:var(--gap)}
+#outdoor-window .ow-btn{font-family:var(--font-mono);font-size:1rem;background:transparent;color:var(--muted);border:1px solid var(--line);border-radius:0;padding:8px 14px;cursor:pointer}
+#outdoor-window .ow-btn[aria-pressed="true"]{color:var(--bg);background:var(--accent);border-color:var(--accent)}
+#outdoor-window .ow-btn:focus-visible{outline:2px solid var(--accent-2);outline-offset:2px}
+#outdoor-window .ow-table{background:var(--surface);border:1px solid var(--line);border-radius:0;padding:14px;margin:0 0 var(--gap);overflow-x:auto;white-space:pre;font-size:.9rem;line-height:1.7;color:var(--fg)}
+#outdoor-window .ow-table .h{color:var(--muted)}
+#outdoor-window .ow-table .a{color:var(--accent)}
+#outdoor-window .ow-table .b{color:var(--accent-2)}
+#outdoor-window .ow-note{font-size:.85rem;margin:0}
+</style>
+</section><section id="tomorrow-light">
+<h2 class="m-mono"><span class="m-accent">$</span> tomorrow --light</h2>
+<p class="m-lead m-mono">Monday 16 Nov. Check the times below once you have used today's.</p>
+<pre id="tl-out" class="m-mono">sunrise   --:-- a.m.
+sunset    --:-- p.m.
+daylight  --h --m
+vs today  --</pre>
+<p class="m-muted m-mono" id="tl-note">Tomorrow's times are not in this brief yet. Today's are: sunrise 7:51 a.m., sunset 4:31 p.m., 8h 40m of daylight.</p>
+<style>
+#tomorrow-light h2{font-family:var(--font-mono);font-size:1.1rem;font-weight:400;margin:0 0 var(--gap);color:var(--fg)}
+#tomorrow-light .m-lead{margin:0 0 var(--gap);font-size:1.05rem;color:var(--fg)}
+#tomorrow-light pre{margin:0 0 var(--gap);padding:var(--gap);border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:0;overflow-x:auto;line-height:1.7;font-family:var(--font-mono)}
+#tomorrow-light #tl-note{margin:0;font-size:.9rem}
+</style>
+</section></main>
+<style>#m-building{display:none}</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+<script>(()=>{try{
+(function(){
+var rise=7*60+51,set=16*60+31,nowM=14*60+30;
+var left=set-nowM;
+var pct=Math.max(0,Math.min(100,(nowM-rise)/(set-rise)*100));
+var fill=document.getElementById('dl-fill'),mark=document.getElementById('dl-now');
+var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(reduce||typeof anime==='undefined'){
+fill.style.width=pct+'%';mark.style.left=pct+'%';
+}else{
+var o={p:0};
+anime({targets:o,p:pct,duration:1400,easing:'easeOutCubic',update:function(){fill.style.width=o.p+'%';mark.style.left=o.p+'%';}});
+}
+document.getElementById('dl-left').textContent=Math.floor(left/60)+'h '+String(left%60).padStart(2,'0')+'m';
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var data={
+walk:{
+title:"WALK // 45-90 min, start by 3:00 p.m.",
+rows:[["2:30","14°C"," 4%","go. best light, mild","a"],["3:00","13°C","17%","go. clouds thicken","a"],["3:30","13°C","14%","turn back by 4:00","b"],["4:00","13°C","11%","dusk walking only","b"],["4:31","13°C","11%","sun down","h"]]
+},
+errand:{
+title:"ERRAND // outdoor stops, finish before 4:15 p.m.",
+rows:[["2:30","14°C"," 4%","leave now, warmest hour","a"],["3:00","13°C","17%","still bright","a"],["3:30","13°C","14%","head home","b"],["4:00","13°C","11%","light fading","b"],["4:31","13°C","11%","sun down","h"]]
+},
+indoor:{
+title:"INDOOR // after sunset, nothing is lost",
+rows:[["4:31","13°C","11%","sun down, go in","b"],["5:00","13°C"," 7%","dry, dark","h"],["6:00","12°C"," 4%","dry, dark","h"],["7:00","11°C"," 7%","dry, dark","h"],["8:00","11°C","15%","dry, dark","h"]]
+}};
+var out=document.getElementById('ow-out');
+var btns=document.querySelectorAll('#outdoor-window .ow-btn');
+var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+function pad(s,n){s=String(s);while(s.length<n)s+=' ';return s}
+function render(k){
+var d=data[k];
+var h='<span class="a">'+d.title+'</span>\n<span class="h">'+pad('TIME',7)+pad('TEMP',7)+pad('RAIN',6)+'VERDICT</span>\n';
+d.rows.forEach(function(r){
+h+=pad(r[0],7)+pad(r[1],7)+pad(r[2]+'%',6)+'<span class="'+r[4]+'">'+r[3]+'</span>\n';
+});
+out.innerHTML=h;
+btns.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-k')===k?'true':'false')});
+if(!reduce&&window.anime){anime({targets:out,opacity:[0.3,1],duration:300,easing:'linear'})}
+}
+btns.forEach(function(b){b.addEventListener('click',function(){render(b.getAttribute('data-k'))})});
+render('walk');
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var out=document.getElementById('tl-out');
+var note=document.getElementById('tl-note');
+if(!out||!window.MOMENT||!window.MOMENT.live)return;
+function mins(s){var d=new Date(s);return d.getHours()*60+d.getMinutes();}
+function fmt(m){var h=Math.floor(m/60),mm=m%60,ap=h>=12?'p.m.':'a.m.';h=h%12;if(h===0)h=12;return h+':'+(mm<10?'0':'')+mm+' '+ap;}
+fetch(window.MOMENT.live+'/weather').then(function(r){return r.json();}).then(function(j){
+if(!j||!j.sunrise||!j.sunset)return;
+var sr=mins(j.sunrise),ss=mins(j.sunset);
+var today=ss-sr;
+var d=new Date(j.sunrise);
+// live endpoint gives today's times only; show them as the reference
+out.textContent='sunrise   '+fmt(sr)+'\nsunset    '+fmt(ss)+'\ndaylight  '+Math.floor(today/60)+'h '+(today%60)+'m\nsource    live, today';
+note.textContent='The live feed returns today only. Tomorrow rises a little later and sets a little earlier, so plan on slightly less light than the figures above.';
+}).catch(function(){});
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>parent.postMessage({type:'moment:complete'},'*')</script>
+</body></html>

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Saturday Midday in Sydney, Clear and Warm</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=IBM+Plex+Sans:wght@400;700&family=IBM+Plex+Mono:wght@400;700&display=swap">
+<style>:root{--bg:#1c1d1f;--fg:#ececec;--muted:#a3a3a3;--accent:#a3e635;--accent-2:#60a5fa;--surface:#242528;--line:#36383c;color-scheme:dark;--font-display:'Space Grotesk',sans-serif;--font-body:'IBM Plex Sans',system-ui,sans-serif;--font-mono:'IBM Plex Mono',ui-monospace,monospace;--radius:18px;--gap:1.35}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:18px;line-height:1.55;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;line-height:1.05;letter-spacing:-.01em;margin:0 0 calc(.5em*var(--gap));text-wrap:balance}
+h1{font-size:clamp(30px,min(6.4vw,11cqi),84px)}h2{font-size:clamp(22px,min(3.6vw,8cqi),44px)}h3{font-size:clamp(18px,2.2vw,24px)}
+p{margin:0 0 calc(1em*var(--gap));max-width:68ch;text-wrap:pretty}
+a{color:var(--accent);text-underline-offset:.18em}
+button{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--fg);border-radius:var(--radius);padding:.55em 1em;cursor:pointer}
+button:hover{background:var(--fg);color:var(--bg)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=range]{accent-color:var(--accent);width:100%}
+table{border-collapse:collapse;width:100%}td,th{padding:.45em .6em;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85em}
+svg{max-width:100%;height:auto}canvas{max-width:100%;display:block}
+img{max-width:100%}
+.m-kicker{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .9em}
+.m-big{font-family:var(--font-display);font-size:clamp(44px,16cqi,170px);line-height:.88;letter-spacing:-.03em;font-weight:700}
+.m-lead{font-size:1.25em;line-height:1.4;max-width:40ch}
+.m-muted{color:var(--muted)}.m-accent{color:var(--accent)}.m-accent-2{color:var(--accent-2)}
+.m-mono{font-family:var(--font-mono)}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:calc(16px*var(--gap))}
+.m-row{display:flex;flex-wrap:wrap;gap:calc(12px*var(--gap));align-items:baseline}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:calc(18px*var(--gap))}
+.m-stat{display:flex;flex-direction:column;gap:.2em}.m-stat b{font-family:var(--font-display);font-size:clamp(26px,7cqi,52px);line-height:1;font-weight:700}
+.m-rule{border:0;border-top:1px solid var(--line);margin:calc(24px*var(--gap)) 0}
+.m-chip{display:inline-block;font-family:var(--font-mono);font-size:.78rem;padding:.25em .6em;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.m-list{list-style:none;padding:0;margin:0}.m-list li{padding:.6em 0;border-bottom:1px solid var(--line)}
+.m-bars{display:flex;align-items:flex-end;gap:3px;height:120px}.m-bars i{flex:1;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px}
+main>section{scroll-margin-top:16px;container-type:inline-size}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#m-building{position:fixed;left:12px;bottom:12px;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;z-index:5}
+#m-building::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:m-pulse 1.2s ease-in-out infinite}
+@keyframes m-pulse{50%{opacity:.25}}
+.m-earlier{font-family:var(--font-mono);font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
+main{max-width:1240px;margin:0 auto;padding:clamp(16px,3vw,40px)}main>section:first-child{border-bottom:3px double var(--fg);padding-bottom:18px}main>section{padding:clamp(18px,3vw,32px) 0;border-bottom:1px solid var(--line)}@media(min-width:900px){main>section .m-columns,main>section>p{column-count:2;column-gap:40px;column-rule:1px solid var(--line)}}</style>
+<script>window.MOMENT={"live":"http://localhost:8788/live/-33.87,151.21","tz":"Australia/Sydney","place":"Sydney","eu":false};(()=>{const EU=false;let lastY=scrollY,lastT=performance.now(),speed=0,taps=0,idle=0,lastAct=performance.now(),hov=new Set(),bottom=false;
+const desc=e=>{const el=e.closest&&e.closest('[data-m],button,a,svg,canvas,table,li,figure,h2,h3');if(!el)return null;return(el.getAttribute('data-m')||el.tagName.toLowerCase()+(el.className&&typeof el.className==='string'?'.'+el.className.split(' ')[0]:'')).slice(0,40)};
+const act=()=>{lastAct=performance.now()};
+addEventListener('scroll',()=>{const t=performance.now(),dy=Math.abs(scrollY-lastY);speed=.7*speed+.3*(dy/Math.max(16,t-lastT)*1000);lastY=scrollY;lastT=t;act();const b=innerHeight+scrollY>=document.documentElement.scrollHeight-40;if(b&&!bottom){bottom=true;parent.postMessage({type:'moment:bottom'},'*')}},{passive:true});
+addEventListener('pointerover',e=>{if(EU)return;const d=desc(e.target);if(d&&hov.size<12)hov.add(d)},{passive:true});
+addEventListener('pointerdown',()=>{taps++;act()},{passive:true});addEventListener('keydown',act);
+const onScreen=()=>{let best=null,area=0;for(const s of document.querySelectorAll('main>section')){const r=s.getBoundingClientRect(),v=Math.max(0,Math.min(innerHeight,r.bottom)-Math.max(0,r.top));if(v>area){area=v;best=s.id||null}}return best};
+setInterval(()=>{idle=performance.now()-lastAct;if(EU)return;parent.postMessage({type:'moment:interaction',section:onScreen(),scrollSpeed:Math.round(speed),hovered:[...hov],taps,idleMs:Math.round(idle),atBottom:bottom},'*');hov.clear();speed*=.5},2000);
+})();</script>
+</head><body class="layout-broadsheet motion-still density-airy">
+<div id="m-building" role="status">Writing this page</div>
+<main>
+<section id="the-hour">
+<p class="m-kicker">Saturday, 11:30 a.m. · Sydney</p>
+<h2 class="th-head">The Hour Before Lunch</h2>
+<p class="m-lead">It is 27° and mostly clear. The sky has not been interrupted yet, and for the next hour or so nothing is due to interrupt it.</p>
+<div class="th-cols">
+<p>Late morning on a clear Saturday is the part of the day with no agenda attached. Breakfast is done. Lunch has not been decided. The 12:00 reading is 28°, and the rain chance sits at 17%, with no rain forecast to fall.</p>
+<p>This is a good hour for being outside without a plan. Walk to the shop that is slightly too far to walk to. Take the long way. Sit somewhere with a view of the sky and let it do the work.</p>
+<p>Sunrise was at 5:45 a.m., so the sun has been up nearly six hours and is close to its highest point. Light this high is flat and bright. Shadows are short and sit right under things.</p>
+</div>
+<div class="th-strip m-mono">
+<span><b>11:00</b> 27°</span>
+<span><b>12:00</b> 28°</span>
+<span><b>1:00 p.m.</b> 29°</span>
+</div>
+<style>
+#the-hour{padding:calc(var(--gap)*1.5) 0;border-top:3px double var(--line)}
+#the-hour .th-head{font-family:var(--font-display);font-size:clamp(2rem,9cqi,4.5rem);line-height:1.02;margin:.4em 0 .5em;color:var(--fg)}
+#the-hour .m-lead{max-width:34em;margin-bottom:calc(var(--gap)*1.5)}
+#the-hour .th-cols{column-width:15rem;column-gap:calc(var(--gap)*1.5);column-rule:1px solid var(--line);font-size:1rem;line-height:1.65}
+#the-hour .th-cols p{margin:0 0 1em;break-inside:avoid}
+#the-hour .th-cols p:first-child::first-letter{font-family:var(--font-display);float:left;font-size:3.4em;line-height:.85;padding:.06em .1em 0 0;color:var(--accent)}
+#the-hour .th-strip{display:flex;flex-wrap:wrap;gap:var(--gap);margin-top:calc(var(--gap)*1.5);padding-top:var(--gap);border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+#the-hour .th-strip b{color:var(--accent);font-weight:600;margin-right:.4em}
+</style>
+</section><section id="the-afternoon">
+<p class="m-kicker">Afternoon Edition</p>
+<h2>Where the Afternoon Is Heading</h2>
+<p class="m-lead">It is 27° now. By 1 p.m. it reaches 29°, and it stays there until about 6 p.m.</p>
+<div class="aft-cols">
+<p>The 23° in the forecast is the overnight low, not something you will feel at lunch. The day only goes one way from here: a couple of degrees warmer, then a long flat top through the afternoon.</p>
+<p>The sky stays clear the whole stretch. Rain chances sit between 5% and 19% every hour, and none of the hours carries any measurable rain. Sunset is at 7:35 p.m., so the warm part of the day has room to run.</p>
+<p>After 7 p.m. it eases to 27°, then 26° by 8 and 25° by 10. Even at night it stays mild.</p>
+</div>
+<svg id="aft-chart" viewBox="0 0 320 120" role="img" aria-label="Hourly temperature from 11 a.m. to 10 p.m., rising from 27 to 29 degrees and easing to 25 by 10 p.m." preserveAspectRatio="none">
+<line x1="0" y1="20" x2="320" y2="20" stroke="var(--line)"/>
+<line x1="0" y1="60" x2="320" y2="60" stroke="var(--line)"/>
+<line x1="0" y1="100" x2="320" y2="100" stroke="var(--line)"/>
+<polyline fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linejoin="round" points="0,60 29,40 58,20 87,20 116,20 145,20 174,20 203,20 232,60 261,80 290,80 320,100"/>
+<circle cx="0" cy="60" r="4" fill="var(--accent-2)"/>
+</svg>
+<div class="aft-axis m-mono m-muted"><span>11 a.m.</span><span>Peak 1 to 6 p.m.</span><span>10 p.m.</span></div>
+<div class="m-row aft-stats">
+<div class="m-stat"><b>27°</b><span>now</span></div>
+<div class="m-stat"><b>29°</b><span>1 p.m. to 6 p.m.</span></div>
+<div class="m-stat"><b>25°</b><span>by 10 p.m.</span></div>
+</div>
+</div>
+<style>
+#the-afternoon{border-top:3px double var(--line);padding:var(--gap) 0}
+#the-afternoon h2{font-family:var(--font-display);font-size:clamp(1.8rem,8cqi,3.2rem);line-height:1.05;margin:.3em 0 .5em}
+#the-afternoon .aft-cols{column-width:15rem;column-gap:2rem;column-rule:1px solid var(--line);margin:1.5rem 0}
+#the-afternoon .aft-cols p{margin:0 0 1em;break-inside:avoid}
+#the-afternoon #aft-chart{width:100%;height:9rem;display:block;margin-top:2rem}
+#the-afternoon .aft-axis{display:flex;justify-content:space-between;gap:.5rem;font-size:.75rem;margin-top:.5rem}
+#the-afternoon .aft-stats{margin-top:2rem;gap:2rem}
+</style>
+</section></main>
+<style>#m-building{display:none}</style>
+
+
+<script>parent.postMessage({type:'moment:complete'},'*')</script>
+</body></html>

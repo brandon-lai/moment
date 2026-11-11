@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rain stops around midnight in Tokyo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lato:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>:root{--bg:#0e1116;--fg:#e8e6e1;--muted:#9aa0a8;--accent:#f59e0b;--accent-2:#60a5fa;--surface:#161b22;--line:#2a313b;color-scheme:dark;--font-display:'Abril Fatface',serif;--font-body:'Lato',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;--radius:0px;--gap:0.7}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:15px;line-height:1.55;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.05;letter-spacing:-.01em;margin:0 0 calc(.5em*var(--gap));text-wrap:balance}
+h1{font-size:clamp(30px,min(6.4vw,11cqi),84px)}h2{font-size:clamp(22px,min(3.6vw,8cqi),44px)}h3{font-size:clamp(18px,2.2vw,24px)}
+p{margin:0 0 calc(1em*var(--gap));max-width:68ch;text-wrap:pretty}
+a{color:var(--accent);text-underline-offset:.18em}
+button{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--fg);border-radius:var(--radius);padding:.55em 1em;cursor:pointer}
+button:hover{background:var(--fg);color:var(--bg)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=range]{accent-color:var(--accent);width:100%}
+table{border-collapse:collapse;width:100%}td,th{padding:.45em .6em;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85em}
+svg{max-width:100%;height:auto}canvas{max-width:100%;display:block}
+img{max-width:100%}
+.m-kicker{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .9em}
+.m-big{font-family:var(--font-display);font-size:clamp(44px,16cqi,170px);line-height:.88;letter-spacing:-.03em;font-weight:400}
+.m-lead{font-size:1.25em;line-height:1.4;max-width:40ch}
+.m-muted{color:var(--muted)}.m-accent{color:var(--accent)}.m-accent-2{color:var(--accent-2)}
+.m-mono{font-family:var(--font-mono)}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:calc(16px*var(--gap))}
+.m-row{display:flex;flex-wrap:wrap;gap:calc(12px*var(--gap));align-items:baseline}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:calc(18px*var(--gap))}
+.m-stat{display:flex;flex-direction:column;gap:.2em}.m-stat b{font-family:var(--font-display);font-size:clamp(26px,7cqi,52px);line-height:1;font-weight:400}
+.m-rule{border:0;border-top:1px solid var(--line);margin:calc(24px*var(--gap)) 0}
+.m-chip{display:inline-block;font-family:var(--font-mono);font-size:.78rem;padding:.25em .6em;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.m-list{list-style:none;padding:0;margin:0}.m-list li{padding:.6em 0;border-bottom:1px solid var(--line)}
+.m-bars{display:flex;align-items:flex-end;gap:3px;height:120px}.m-bars i{flex:1;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px}
+main>section{scroll-margin-top:16px;container-type:inline-size}
+main>section{animation:m-in .9s cubic-bezier(.2,.7,.2,1) both}@keyframes m-in{from{opacity:0;transform:translateY(8px)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#m-building{position:fixed;left:12px;bottom:12px;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;z-index:5}
+#m-building::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:m-pulse 1.2s ease-in-out infinite}
+@keyframes m-pulse{50%{opacity:.25}}
+.m-earlier{font-family:var(--font-mono);font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
+main{max-width:46rem;margin:0 auto;padding:clamp(16px,4vw,48px) clamp(12px,4vw,32px) 80px}main>section{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(20px,4vw,40px);margin-top:-6px;position:relative}main>section:nth-child(odd){transform:rotate(-.4deg)}main>section:nth-child(even){transform:rotate(.4deg) translateX(6px)}main>section+section{margin-top:18px}@media(prefers-reduced-motion:reduce){main>section{transform:none!important}}</style>
+<script>window.MOMENT={"live":"http://localhost:8788/live/35.68,139.65","tz":"Asia/Tokyo","place":"Tokyo","eu":false};(()=>{const EU=false;let lastY=scrollY,lastT=performance.now(),speed=0,taps=0,idle=0,lastAct=performance.now(),hov=new Set(),bottom=false;
+const desc=e=>{const el=e.closest&&e.closest('[data-m],button,a,svg,canvas,table,li,figure,h2,h3');if(!el)return null;return(el.getAttribute('data-m')||el.tagName.toLowerCase()+(el.className&&typeof el.className==='string'?'.'+el.className.split(' ')[0]:'')).slice(0,40)};
+const act=()=>{lastAct=performance.now()};
+addEventListener('scroll',()=>{const t=performance.now(),dy=Math.abs(scrollY-lastY);speed=.7*speed+.3*(dy/Math.max(16,t-lastT)*1000);lastY=scrollY;lastT=t;act();const b=innerHeight+scrollY>=document.documentElement.scrollHeight-40;if(b&&!bottom){bottom=true;parent.postMessage({type:'moment:bottom'},'*')}},{passive:true});
+addEventListener('pointerover',e=>{if(EU)return;const d=desc(e.target);if(d&&hov.size<12)hov.add(d)},{passive:true});
+addEventListener('pointerdown',()=>{taps++;act()},{passive:true});addEventListener('keydown',act);
+const onScreen=()=>{let best=null,area=0;for(const s of document.querySelectorAll('main>section')){const r=s.getBoundingClientRect(),v=Math.max(0,Math.min(innerHeight,r.bottom)-Math.max(0,r.top));if(v>area){area=v;best=s.id||null}}return best};
+setInterval(()=>{idle=performance.now()-lastAct;if(EU)return;parent.postMessage({type:'moment:interaction',section:onScreen(),scrollSpeed:Math.round(speed),hovered:[...hov],taps,idleMs:Math.round(idle),atBottom:bottom},'*');hov.clear();speed*=.5},2000);
+})();</script>
+</head><body class="layout-card-stack motion-gentle density-dense">
+<div id="m-building" role="status">Writing this page</div>
+<main>
+<section id="clears-at">
+<p class="m-kicker">Tokyo · Tuesday · 10:15 p.m.</p>
+<h2>When the rain lifts</h2>
+<p class="m-lead">Light rain, 12°C. It stops around midnight.</p>
+<div class="m-big" id="clears-at-count" aria-live="off">1h 45m</div>
+<p class="m-muted" id="clears-at-sub">until the first dry hour</p>
+<svg id="clears-at-chart" viewBox="0 0 300 90" role="img" aria-label="Rain chance by hour from 9 p.m. to 1 a.m.">
+<line x1="0" y1="70" x2="300" y2="70" stroke="var(--line)"/>
+<rect x="14" y="21" width="36" height="49" fill="var(--accent)"/>
+<rect x="74" y="15" width="36" height="55" fill="var(--accent)"/>
+<rect x="134" y="16" width="36" height="54" fill="var(--accent)"/>
+<rect x="194" y="65" width="36" height="5" fill="var(--accent-2)"/>
+<rect x="254" y="59" width="36" height="11" fill="var(--accent-2)"/>
+<g font-family="var(--font-mono)" font-size="9" fill="var(--muted)">
+<text x="32" y="84" text-anchor="middle">9p</text>
+<text x="92" y="84" text-anchor="middle">10p</text>
+<text x="152" y="84" text-anchor="middle">11p</text>
+<text x="212" y="84" text-anchor="middle">12a</text>
+<text x="272" y="84" text-anchor="middle">1a</text>
+</g>
+</svg>
+<p class="m-muted m-mono" style="font-size:.8rem">Chance of rain: 71%, 79%, 77%, then 7% at midnight and 16% at 1 a.m.</p>
+<div class="m-row">
+<span class="m-chip">11 p.m.: last wet hour, 1.7 mm</span>
+<span class="m-chip">Midnight: 10°C, cloud</span>
+</div>
+<p>Take the umbrella for the next hour and a half. After that you can leave it by the door.</p>
+<style>
+#clears-at{display:flex;flex-direction:column;gap:calc(var(--gap)*.7)}
+#clears-at h2{font-family:var(--font-display);margin:0}
+#clears-at .m-big{font-size:clamp(3rem,22cqi,7rem);color:var(--accent);line-height:1;font-family:var(--font-display)}
+#clears-at #clears-at-sub{margin:0}
+#clears-at svg{width:100%;height:auto;display:block}
+#clears-at p{margin:0}
+</style>
+</section><section id="after-midnight">
+<p class="m-kicker">After the rain</p>
+<h2>The cooler dry hours ahead</h2>
+<p class="m-lead">Midnight is 10°. By 2 a.m. it is 8°, and it stays there until about 5.</p>
+<div class="am-chart" aria-label="Temperature from midnight to 9 a.m.">
+<svg id="am-svg" viewBox="0 0 300 120" role="img" aria-label="Line chart of temperature falling from 10 degrees at midnight to 8 degrees at 2 a.m., then rising to 11 degrees by 8 a.m.">
+<line x1="10" y1="100" x2="290" y2="100" stroke="var(--line)"/>
+<polyline id="am-line" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" points="10,40 40,57 70,74 100,57 130,74 160,74 190,57 220,40 250,23 280,23"/>
+<g id="am-dots" fill="var(--accent)"></g>
+<g class="m-mono" fill="var(--muted)" font-size="9">
+<text x="10" y="114">12 a.m.</text>
+<text x="130" y="114">4 a.m.</text>
+<text x="255" y="114">9 a.m.</text>
+</g>
+</svg>
+</div>
+<div class="m-grid am-stats">
+<div class="m-stat"><b>10°</b><span>12 a.m., sky clearing</span></div>
+<div class="m-stat"><b>8°</b><span>2 a.m., low point, repeated at 4 and 5</span></div>
+<div class="m-stat"><b>11°</b><span>8 a.m., rain chance 5%</span></div>
+</div>
+<p>Rain chance stays at 16% or less from 1 a.m. onward. Sunrise is at 6:12 a.m. Bring a layer if you are out late, then leave the umbrella behind.</p>
+<style>
+#after-midnight{padding:var(--gap);border:1px solid var(--line);background:var(--surface);border-radius:var(--radius);transform:translateX(6px) rotate(.4deg);max-width:34rem}
+#after-midnight h2{font-family:var(--font-display);font-size:clamp(1.6rem,8cqi,2.4rem);margin:.2em 0 .4em;line-height:1.1}
+#after-midnight .am-chart{margin:1.2rem 0}
+#after-midnight svg{width:100%;height:auto;display:block}
+#after-midnight .am-stats{margin:1rem 0;gap:.8rem}
+#after-midnight .m-stat b{color:var(--accent-2)}
+#after-midnight #am-line{stroke-dasharray:600;stroke-dashoffset:0}
+</style>
+</section></main>
+<style>#m-building{display:none}</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+<script>(()=>{try{
+(function(){
+var el=document.getElementById('clears-at-count');
+var sub=document.getElementById('clears-at-sub');
+if(!el)return;
+var target=new Date(2026,10,11,0,0,0);
+var start=new Date(2026,10,10,22,15,0);
+function tick(){
+var now=new Date();
+var d=now.getFullYear()===2026&&now.getMonth()===10&&(now.getDate()===10||now.getDate()===11)?target-now:null;
+if(d===null||d>6*3600000||d<-12*3600000)return;
+if(d<=0){el.textContent='Dry';sub.textContent='the rain should have stopped by now';return;}
+var m=Math.ceil(d/60000);
+el.textContent=Math.floor(m/60)+'h '+String(m%60).padStart(2,'0')+'m';
+}
+tick();
+setInterval(tick,30000);
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var g=document.getElementById('am-dots');
+var pts=document.getElementById('am-line').getAttribute('points').split(' ');
+pts.forEach(function(p,i){
+var xy=p.split(',');
+var c=document.createElementNS('http://www.w3.org/2000/svg','circle');
+c.setAttribute('cx',xy[0]);c.setAttribute('cy',xy[1]);c.setAttribute('r',i===5?4:2.5);
+g.appendChild(c);
+});
+var line=document.getElementById('am-line');
+if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches&&window.anime){
+line.style.strokeDashoffset=600;
+anime({targets:line,strokeDashoffset:0,duration:1800,easing:'easeOutQuad'});
+}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>parent.postMessage({type:'moment:complete'},'*')</script>
+</body></html>

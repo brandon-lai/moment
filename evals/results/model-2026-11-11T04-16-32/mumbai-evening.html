@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mumbai after sunset, still 31 degrees</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Plus+Jakarta+Sans:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>:root{--bg:#f6ebe7;--fg:#2b1b1e;--muted:#6e5459;--accent:#b8304f;--accent-2:#5b4a8a;--surface:#efdcd6;--line:#e0c4bc;color-scheme:light;--font-display:'Young Serif',serif;--font-body:'Plus Jakarta Sans',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;--radius:6px;--gap:1.35}
+@media (prefers-color-scheme:dark){:root{--bg:#07141a;--fg:#e0f2f1;--muted:#8ab3b0;--accent:#2dd4bf;--accent-2:#a3e635;--surface:#0d1f27;--line:#1b3540;color-scheme:dark;}}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:18px;line-height:1.55;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.05;letter-spacing:-.01em;margin:0 0 calc(.5em*var(--gap));text-wrap:balance}
+h1{font-size:clamp(34px,6.4vw,84px)}h2{font-size:clamp(24px,3.6vw,44px)}h3{font-size:clamp(18px,2.2vw,24px)}
+p{margin:0 0 calc(1em*var(--gap));max-width:68ch;text-wrap:pretty}
+a{color:var(--accent);text-underline-offset:.18em}
+button{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--fg);border-radius:var(--radius);padding:.55em 1em;cursor:pointer}
+button:hover{background:var(--fg);color:var(--bg)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=range]{accent-color:var(--accent);width:100%}
+table{border-collapse:collapse;width:100%}td,th{padding:.45em .6em;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85em}
+svg{max-width:100%;height:auto}canvas{max-width:100%;display:block}
+img{max-width:100%}
+.m-kicker{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .9em}
+.m-big{font-family:var(--font-display);font-size:clamp(56px,13vw,170px);line-height:.88;letter-spacing:-.03em;font-weight:400}
+.m-lead{font-size:1.25em;line-height:1.4;max-width:40ch}
+.m-muted{color:var(--muted)}.m-accent{color:var(--accent)}.m-accent-2{color:var(--accent-2)}
+.m-mono{font-family:var(--font-mono)}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:calc(16px*var(--gap))}
+.m-row{display:flex;flex-wrap:wrap;gap:calc(12px*var(--gap));align-items:baseline}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:calc(18px*var(--gap))}
+.m-stat{display:flex;flex-direction:column;gap:.2em}.m-stat b{font-family:var(--font-display);font-size:clamp(28px,4.6vw,52px);line-height:1;font-weight:400}
+.m-rule{border:0;border-top:1px solid var(--line);margin:calc(24px*var(--gap)) 0}
+.m-chip{display:inline-block;font-family:var(--font-mono);font-size:.78rem;padding:.25em .6em;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.m-list{list-style:none;padding:0;margin:0}.m-list li{padding:.6em 0;border-bottom:1px solid var(--line)}
+.m-bars{display:flex;align-items:flex-end;gap:3px;height:120px}.m-bars i{flex:1;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px}
+main>section{scroll-margin-top:16px}
+main>section{animation:m-in .9s cubic-bezier(.2,.7,.2,1) both}@keyframes m-in{from{opacity:0;transform:translateY(8px)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#m-building{position:fixed;left:12px;bottom:12px;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;z-index:5}
+#m-building::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:m-pulse 1.2s ease-in-out infinite}
+@keyframes m-pulse{50%{opacity:.25}}
+.m-earlier{font-family:var(--font-mono);font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
+main{padding:0 clamp(16px,5vw,72px) 64px}main>section:first-child{min-height:96vh;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:clamp(24px,6vw,80px)}main>section:first-child h1{font-size:clamp(48px,12vw,180px);line-height:.9;max-width:14ch}main>section{padding:clamp(24px,5vw,64px) 0;max-width:60rem}</style>
+<script>window.MOMENT={"live":"http://localhost:8788/live/19.08,72.88","tz":"Asia/Kolkata","place":"Mumbai","eu":false};(()=>{const EU=false;let lastY=scrollY,lastT=performance.now(),speed=0,taps=0,idle=0,lastAct=performance.now(),hov=new Set(),bottom=false;
+const desc=e=>{const el=e.closest&&e.closest('[data-m],button,a,svg,canvas,table,li,figure,h2,h3');if(!el)return null;return(el.getAttribute('data-m')||el.tagName.toLowerCase()+(el.className&&typeof el.className==='string'?'.'+el.className.split(' ')[0]:'')).slice(0,40)};
+const act=()=>{lastAct=performance.now()};
+addEventListener('scroll',()=>{const t=performance.now(),dy=Math.abs(scrollY-lastY);speed=.7*speed+.3*(dy/Math.max(16,t-lastT)*1000);lastY=scrollY;lastT=t;act();const b=innerHeight+scrollY>=document.documentElement.scrollHeight-40;if(b&&!bottom){bottom=true;parent.postMessage({type:'moment:bottom'},'*')}},{passive:true});
+addEventListener('pointerover',e=>{if(EU)return;const d=desc(e.target);if(d&&hov.size<12)hov.add(d)},{passive:true});
+addEventListener('pointerdown',()=>{taps++;act()},{passive:true});addEventListener('keydown',act);
+const onScreen=()=>{let best=null,area=0;for(const s of document.querySelectorAll('main>section')){const r=s.getBoundingClientRect(),v=Math.max(0,Math.min(innerHeight,r.bottom)-Math.max(0,r.top));if(v>area){area=v;best=s.id||null}}return best};
+setInterval(()=>{idle=performance.now()-lastAct;if(EU)return;parent.postMessage({type:'moment:interaction',section:onScreen(),scrollSpeed:Math.round(speed),hovered:[...hov],taps,idleMs:Math.round(idle),atBottom:bottom},'*');hov.clear();speed*=.5},2000);
+})();</script>
+</head><body class="layout-poster motion-gentle density-airy">
+<div id="m-building" role="status">Writing this page</div>
+<main>
+<section id="sunset-glow">
+<p class="m-kicker">Mumbai · Monday · 7:15 p.m.</p>
+<h2 class="sg-title">The sky after sunset</h2>
+<p class="sg-big m-big">31°</p>
+<p class="m-lead sg-lead">The sun set at 6:03 p.m. and it is still 31 degrees in Mumbai. The sky is mostly clear.</p>
+<svg class="sg-sky" viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice" role="img" aria-label="A sky fading from the accent glow at the horizon to the page background overhead, with a few faint stars">
+<defs>
+<linearGradient id="sgFade" x1="0" y1="1" x2="0" y2="0">
+<stop offset="0" stop-color="var(--accent)" stop-opacity="0.85"/>
+<stop offset="0.35" stop-color="var(--accent-2)" stop-opacity="0.45"/>
+<stop offset="1" stop-color="var(--bg)" stop-opacity="0"/>
+</linearGradient>
+</defs>
+<rect width="400" height="220" fill="url(#sgFade)"/>
+<g id="sgStars" fill="var(--fg)"></g>
+<rect y="196" width="400" height="24" fill="var(--fg)" opacity="0.85"/>
+</svg>
+<p class="sg-note">Clear through the night. 25° to 31° over the next twelve hours.</p>
+<style>
+#sunset-glow{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:calc(var(--gap)*2) var(--gap);position:relative}
+#sunset-glow .sg-title{font-family:var(--font-display);font-size:clamp(1.1rem,2vw,1.4rem);font-weight:500;margin:.4rem 0 0;color:var(--muted)}
+#sunset-glow .sg-big{font-size:clamp(7rem,32vw,24rem);line-height:.85;margin:0;padding-left:clamp(0rem,12vw,14rem);color:var(--accent);font-family:var(--font-display)}
+#sunset-glow .sg-lead{max-width:30ch;margin:1rem 0 1.5rem;padding-left:clamp(0rem,12vw,14rem)}
+#sunset-glow .sg-sky{width:100%;height:clamp(120px,24vh,220px);display:block;border-radius:var(--radius);border:1px solid var(--line)}
+#sunset-glow .sg-note{margin:1rem 0 0;color:var(--muted);font-family:var(--font-mono);font-size:.85rem}
+@media (max-width:600px){#sunset-glow .sg-big,#sunset-glow .sg-lead{padding-left:0}}
+</style>
+</section><section id="heat-hold">
+<p class="m-kicker">Monday night, 7:15 p.m.</p>
+<h2 class="hh-title">Heat that lingers into the night</h2>
+<p class="m-lead">Thirty-one now. Thirty at 8 and again at 9. By 1 a.m. it settles at 25 and stays there until dawn.</p>
+<figure class="hh-fig">
+<svg id="hh-svg" viewBox="0 0 720 300" role="img" aria-label="Line chart of temperature falling from 32 degrees at 6 p.m. to 25 degrees at 1 a.m., flat until 4 a.m., then 26 degrees at 6 a.m.">
+<g id="hh-grid"></g>
+<path id="hh-area" fill="color-mix(in srgb, var(--accent) 14%, transparent)"></path>
+<path id="hh-line" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+<g id="hh-dots"></g>
+<g id="hh-labels"></g>
+</svg>
+</figure>
+<p class="hh-note m-muted">The drop is steady, about one degree an hour from 9 p.m., then it stops. Sunrise is at 6:43 a.m., with 26° already on the thermometer.</p>
+<style>
+#heat-hold{padding:calc(var(--gap)*2) var(--gap) calc(var(--gap)*3);border-left:6px solid var(--accent);margin-left:var(--gap);max-width:900px}
+#heat-hold .hh-title{font-family:var(--font-display);font-size:clamp(1.8rem,5vw,3rem);line-height:1.05;margin:.3em 0 .5em;color:var(--fg)}
+#heat-hold .hh-fig{margin:calc(var(--gap)*1.5) 0 var(--gap);padding:0}
+#heat-hold svg{width:100%;height:auto;display:block;overflow:visible}
+#heat-hold .hh-note{max-width:52ch}
+#heat-hold text{font-family:var(--font-mono);font-size:12px;fill:var(--muted)}
+#heat-hold text.hh-big{fill:var(--fg);font-size:14px;font-weight:600}
+</style>
+</section></main>
+<style>#m-building{display:none}</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+<script>(()=>{try{
+(function(){
+var g=document.getElementById('sgStars');
+if(!g)return;
+var ns='http://www.w3.org/2000/svg';
+var seed=7;
+function r(){seed=(seed*9301+49297)%233280;return seed/233280;}
+for(var i=0;i<28;i++){
+var c=document.createElementNS(ns,'circle');
+var y=r()*110;
+c.setAttribute('cx',(r()*400).toFixed(1));
+c.setAttribute('cy',y.toFixed(1));
+c.setAttribute('r',(0.5+r()*1.1).toFixed(2));
+c.setAttribute('opacity',(0.15+(1-y/110)*0.6).toFixed(2));
+g.appendChild(c);
+}
+var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!reduce&&window.anime){
+anime({targets:'#sgStars circle',opacity:function(el){var o=parseFloat(el.getAttribute('opacity'));return [o,Math.max(0.1,o-0.25),o];},duration:function(){return 3000+Math.random()*3000;},delay:function(){return Math.random()*2000;},easing:'easeInOutSine',loop:true});
+}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var d=[["6 p.m.",32],["7",31],["8",30],["9",30],["10",28],["11",27],["12 a.m.",26],["1",25],["2",25],["3",25],["4",25],["5",26],["6",26]];
+var W=720,H=300,L=36,R=24,T=30,B=48,lo=24,hi=33;
+var x=function(i){return L+i*(W-L-R)/(d.length-1)};
+var y=function(v){return T+(hi-v)*(H-T-B)/(hi-lo)};
+var ns="http://www.w3.org/2000/svg";
+function el(n,a,p){var e=document.createElementNS(ns,n);for(var k in a)e.setAttribute(k,a[k]);p.appendChild(e);return e}
+var g=document.getElementById("hh-grid");
+[25,28,31].forEach(function(v){
+el("line",{x1:L,x2:W-R,y1:y(v),y2:y(v),stroke:"var(--line)","stroke-dasharray":"2 5"},g);
+var t=el("text",{x:0,y:y(v)+4},g);t.textContent=v+"°";
+});
+var p="";d.forEach(function(r,i){p+=(i?"L":"M")+x(i)+" "+y(r[1])});
+var line=document.getElementById("hh-line");line.setAttribute("d",p);
+document.getElementById("hh-area").setAttribute("d",p+"L"+x(d.length-1)+" "+(H-B)+"L"+x(0)+" "+(H-B)+"Z");
+var dots=document.getElementById("hh-dots"),lb=document.getElementById("hh-labels");
+d.forEach(function(r,i){
+if(i%2===0||i===1){var t=el("text",{x:x(i),y:H-B+22,"text-anchor":"middle"},lb);t.textContent=r[0];}
+});
+[0,1,7,12].forEach(function(i){
+el("circle",{cx:x(i),cy:y(d[i][1]),r:5,fill:"var(--bg)",stroke:"var(--accent)","stroke-width":2.5},dots);
+var t=el("text",{x:x(i),y:y(d[i][1])-12,"text-anchor":"middle",class:"hh-big"},lb);t.textContent=d[i][1]+"°";
+});
+var rm=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+if(!rm&&window.anime){
+var len=line.getTotalLength();
+line.style.strokeDasharray=len;line.style.strokeDashoffset=len;
+anime({targets:line,strokeDashoffset:0,duration:2600,easing:"easeInOutSine",delay:300});
+}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>parent.postMessage({type:'moment:complete'},'*')</script>
+</body></html>

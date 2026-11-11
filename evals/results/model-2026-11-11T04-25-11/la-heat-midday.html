@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Clear and 93° in Pasadena, mid-November</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Schibsted+Grotesk:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>:root{--bg:#eaf6f7;--fg:#082f37;--muted:#3f6870;--accent:#0e7490;--accent-2:#c4512f;--surface:#d9eef0;--line:#bfdfe3;color-scheme:light;--font-display:'Gloock',serif;--font-body:'Schibsted Grotesk',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;--radius:2px;--gap:1}
+@media (prefers-color-scheme:dark){:root{--bg:#101826;--fg:#eef3f9;--muted:#9fb0c6;--accent:#93c5fd;--accent-2:#fca5a5;--surface:#172235;--line:#273650;color-scheme:dark;}}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:16.5px;line-height:1.55;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.05;letter-spacing:-.01em;margin:0 0 calc(.5em*var(--gap));text-wrap:balance}
+h1{font-size:clamp(30px,min(6.4vw,11cqi),84px)}h2{font-size:clamp(22px,min(3.6vw,8cqi),44px)}h3{font-size:clamp(18px,2.2vw,24px)}
+p{margin:0 0 calc(1em*var(--gap));max-width:68ch;text-wrap:pretty}
+a{color:var(--accent);text-underline-offset:.18em}
+button{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--fg);border-radius:var(--radius);padding:.55em 1em;cursor:pointer}
+button:hover{background:var(--fg);color:var(--bg)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=range]{accent-color:var(--accent);width:100%}
+table{border-collapse:collapse;width:100%}td,th{padding:.45em .6em;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85em}
+svg{max-width:100%;height:auto}canvas{max-width:100%;display:block}
+img{max-width:100%}
+.m-kicker{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .9em}
+.m-big{font-family:var(--font-display);font-size:clamp(44px,16cqi,170px);line-height:.88;letter-spacing:-.03em;font-weight:400}
+.m-lead{font-size:1.25em;line-height:1.4;max-width:40ch}
+.m-muted{color:var(--muted)}.m-accent{color:var(--accent)}.m-accent-2{color:var(--accent-2)}
+.m-mono{font-family:var(--font-mono)}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:calc(16px*var(--gap))}
+.m-row{display:flex;flex-wrap:wrap;gap:calc(12px*var(--gap));align-items:baseline}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:calc(18px*var(--gap))}
+.m-stat{display:flex;flex-direction:column;gap:.2em}.m-stat b{font-family:var(--font-display);font-size:clamp(26px,7cqi,52px);line-height:1;font-weight:400}
+.m-rule{border:0;border-top:1px solid var(--line);margin:calc(24px*var(--gap)) 0}
+.m-chip{display:inline-block;font-family:var(--font-mono);font-size:.78rem;padding:.25em .6em;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.m-list{list-style:none;padding:0;margin:0}.m-list li{padding:.6em 0;border-bottom:1px solid var(--line)}
+.m-bars{display:flex;align-items:flex-end;gap:3px;height:120px}.m-bars i{flex:1;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px}
+main>section{scroll-margin-top:16px;container-type:inline-size}
+main>section{animation:m-in .9s cubic-bezier(.2,.7,.2,1) both}@keyframes m-in{from{opacity:0;transform:translateY(8px)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#m-building{position:fixed;left:12px;bottom:12px;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;z-index:5}
+#m-building::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:m-pulse 1.2s ease-in-out infinite}
+@keyframes m-pulse{50%{opacity:.25}}
+.m-earlier{font-family:var(--font-mono);font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
+main{padding:0}main>section{min-height:88vh;padding:clamp(28px,7vw,110px) clamp(16px,6vw,96px);display:flex;flex-direction:column;justify-content:center}main>section:nth-child(even){background:var(--surface)}</style>
+<script>window.MOMENT={"live":"http://localhost:8788/live/34.05,-118.24","tz":"America/Los_Angeles","place":"Pasadena","eu":false};(()=>{const EU=false;let lastY=scrollY,lastT=performance.now(),speed=0,taps=0,idle=0,lastAct=performance.now(),hov=new Set(),bottom=false;
+const desc=e=>{const el=e.closest&&e.closest('[data-m],button,a,svg,canvas,table,li,figure,h2,h3');if(!el)return null;return(el.getAttribute('data-m')||el.tagName.toLowerCase()+(el.className&&typeof el.className==='string'?'.'+el.className.split(' ')[0]:'')).slice(0,40)};
+const act=()=>{lastAct=performance.now()};
+addEventListener('scroll',()=>{const t=performance.now(),dy=Math.abs(scrollY-lastY);speed=.7*speed+.3*(dy/Math.max(16,t-lastT)*1000);lastY=scrollY;lastT=t;act();const b=innerHeight+scrollY>=document.documentElement.scrollHeight-40;if(b&&!bottom){bottom=true;parent.postMessage({type:'moment:bottom'},'*')}},{passive:true});
+addEventListener('pointerover',e=>{if(EU)return;const d=desc(e.target);if(d&&hov.size<12)hov.add(d)},{passive:true});
+addEventListener('pointerdown',()=>{taps++;act()},{passive:true});addEventListener('keydown',act);
+const onScreen=()=>{let best=null,area=0;for(const s of document.querySelectorAll('main>section')){const r=s.getBoundingClientRect(),v=Math.max(0,Math.min(innerHeight,r.bottom)-Math.max(0,r.top));if(v>area){area=v;best=s.id||null}}return best};
+setInterval(()=>{idle=performance.now()-lastAct;if(EU)return;parent.postMessage({type:'moment:interaction',section:onScreen(),scrollSpeed:Math.round(speed),hovered:[...hov],taps,idleMs:Math.round(idle),atBottom:bottom},'*');hov.clear();speed*=.5},2000);
+})();</script>
+</head><body class="layout-full-bleed motion-gentle density-balanced">
+<div id="m-building" role="status">Writing this page</div>
+<main>
+<section id="heat-now">
+<p class="m-kicker">Pasadena · Wednesday · 12:30 p.m.</p>
+<h2 class="hn-title">93° under a clear sky</h2>
+<p class="m-lead">Not a cloud in the forecast. The sun is near its highest point and the temperature is still climbing.</p>
+<div class="hn-stage">
+<svg id="hn-sky" viewBox="0 0 400 200" role="img" aria-label="A bright sun high over a flat horizon">
+<line x1="0" y1="170" x2="400" y2="170" stroke="var(--line)" stroke-width="2"/>
+<g id="hn-rays" style="transform-origin:200px 70px">
+<line x1="200" y1="12" x2="200" y2="2" /><line x1="241" y1="29" x2="248" y2="22"/><line x1="258" y1="70" x2="268" y2="70"/><line x1="241" y1="111" x2="248" y2="118"/><line x1="200" y1="128" x2="200" y2="138"/><line x1="159" y1="111" x2="152" y2="118"/><line x1="142" y1="70" x2="132" y2="70"/><line x1="159" y1="29" x2="152" y2="22"/>
+</g>
+<circle cx="200" cy="70" r="40" fill="var(--accent)"/>
+</svg>
+<div class="hn-num"><span class="m-big">93°F</span><span class="m-muted m-mono">34°C right now</span></div>
+</div>
+<p class="hn-note">That is 14°F warmer than a typical November 4. Sky is clear, and rain chance this hour is 12%.</p>
+<style>
+#heat-now{display:flex;flex-direction:column;gap:var(--gap);justify-content:center;min-height:80vh}
+#heat-now .hn-title{font-family:var(--font-display);font-size:clamp(2rem,9cqi,5rem);line-height:1;margin:0;max-width:14ch}
+#heat-now .m-lead{max-width:34ch;margin:0}
+#heat-now .hn-stage{display:flex;flex-wrap:wrap;align-items:flex-end;gap:var(--gap)}
+#heat-now #hn-sky{width:min(100%,420px);height:auto;flex:1 1 240px}
+#heat-now #hn-rays line{stroke:var(--accent);stroke-width:4;stroke-linecap:round}
+#heat-now .hn-num{display:flex;flex-direction:column}
+#heat-now .hn-num .m-big{font-size:clamp(3.5rem,22cqi,10rem);line-height:.9;color:var(--accent)}
+#heat-now .hn-note{max-width:44ch;margin:0;color:var(--muted)}
+</style>
+</section><section id="warm-spell">
+<p class="m-kicker">Against the calendar</p>
+<h2 class="m-big" style="font-size:clamp(2rem,9cqi,5rem);margin:0.2em 0 0.3em">Warmer than usual for this date</h2>
+<p class="m-lead">A typical November 4 in Pasadena tops out near 79°F. Today is at 93°F, and it is not done climbing.</p>
+<div class="ws-chart">
+<svg id="ws-svg" viewBox="0 0 600 220" role="img" aria-label="Bar comparing a typical November 4 high of 79 degrees Fahrenheit with the current 93 degrees and the forecast peak of 97 degrees">
+<line x1="0" y1="200" x2="600" y2="200" stroke="var(--line)" stroke-width="2"/>
+<rect id="ws-typ" x="40" y="200" width="150" height="0" fill="var(--muted)" opacity="0.5"/>
+<rect id="ws-now" x="225" y="200" width="150" height="0" fill="var(--accent)"/>
+<rect id="ws-peak" x="410" y="200" width="150" height="0" fill="var(--accent-2)"/>
+<text x="115" y="216" text-anchor="middle" fill="var(--muted)" font-family="var(--font-mono)" font-size="13">TYPICAL</text>
+<text x="300" y="216" text-anchor="middle" fill="var(--fg)" font-family="var(--font-mono)" font-size="13">NOW</text>
+<text x="485" y="216" text-anchor="middle" fill="var(--fg)" font-family="var(--font-mono)" font-size="13">3 P.M.</text>
+</svg>
+</div>
+<div class="m-row ws-stats">
+<div class="m-stat"><b>79°</b><span>typical high</span></div>
+<div class="m-stat"><b class="m-accent">93°</b><span>12:30 p.m.</span></div>
+<div class="m-stat"><b class="m-accent-2">97°</b><span>forecast peak, 3 p.m.</span></div>
+</div>
+<p class="m-muted">That is 14°F above typical right now, and 18°F above at the peak.</p>
+<style>
+#warm-spell .ws-chart{margin:1.5em 0;max-width:640px}
+#warm-spell svg{width:100%;height:auto;display:block}
+#warm-spell .ws-stats{gap:2em;margin:1em 0}
+</style>
+</section><section id="rest-of-day">
+<p class="m-kicker">12:30 p.m. to midnight</p>
+<h2>Clear through the next twelve hours</h2>
+<p class="m-lead">The range runs from 97° at 3 p.m. down to 80° by 11 p.m. No rain in any hour.</p>
+<div class="rod-chart">
+<svg id="rod-svg" viewBox="0 0 720 300" role="img" aria-label="Hourly temperature from 12 p.m. to 11 p.m., peaking at 97 degrees at 3 p.m."></svg>
+</div>
+<div class="m-row rod-stats">
+<div class="m-stat"><b>97°</b><span>peak, 3 p.m.</span></div>
+<div class="m-stat"><b>4:59 p.m.</b><span>sunset</span></div>
+<div class="m-stat"><b>80°</b><span>at 11 p.m.</span></div>
+</div>
+<p class="m-muted rod-note">It stays in the 90s until 7 p.m. and is still 91° then. Drag across the curve to read any hour.</p>
+<style>
+#rest-of-day{min-height:80vh;padding:clamp(2rem,8cqi,6rem) clamp(1rem,6cqi,5rem);background:var(--surface);display:flex;flex-direction:column;gap:var(--gap)}
+#rest-of-day h2{font-family:var(--font-display);font-size:clamp(2rem,8cqi,5rem);line-height:1;margin:0;max-width:16ch}
+#rest-of-day .m-lead{margin:0;max-width:40ch}
+#rest-of-day .rod-chart{width:100%}
+#rest-of-day svg{width:100%;height:auto;display:block;touch-action:none;cursor:crosshair}
+#rest-of-day .rod-stats{gap:clamp(1.5rem,6cqi,4rem)}
+#rest-of-day .rod-note{margin:0}
+#rest-of-day .tick{font-family:var(--font-mono);font-size:11px;fill:var(--muted)}
+#rest-of-day .rd-read{font-family:var(--font-mono);font-size:13px;fill:var(--fg)}
+</style>
+</section></main>
+<style>#m-building{display:none}</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+<script>(()=>{try{
+(function(){
+var r=document.getElementById('hn-rays');
+if(!r||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+var a=0;
+function f(){a+=0.04;r.style.transform='rotate('+a+'deg)';requestAnimationFrame(f);}
+f();
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var sec=document.getElementById('warm-spell');
+var base=60,scale=3.4;
+var bars=[['ws-typ',79],['ws-now',93],['ws-peak',97]];
+var still=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function set(el,v,p){var h=(v-base)*scale+20;el.setAttribute('height',h);el.setAttribute('y',200-h);}
+bars.forEach(function(b,i){
+var el=document.getElementById(b[0]);
+if(still||typeof anime==='undefined'){set(el,b[1]);return;}
+var o={p:0};
+anime({targets:o,p:1,duration:1200,delay:i*250,easing:'easeOutCubic',update:function(){
+var h=((b[1]-base)*scale+20)*o.p;el.setAttribute('height',h);el.setAttribute('y',200-h);}});
+});
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var el=document.getElementById('rod-svg');
+if(!el)return;
+var data=[[12,93],[13,96],[14,96],[15,97],[16,96],[17,95],[18,93],[19,91],[20,88],[21,84],[22,83],[23,80]];
+var W=720,H=300,pl=40,pr=20,pt=40,pb=40;
+var x=function(h){return pl+(h-12)/11*(W-pl-pr)};
+var y=function(t){return pt+(100-t)/(100-75)*(H-pt-pb)};
+var ns='http://www.w3.org/2000/svg';
+function mk(n,a,p){var e=document.createElementNS(ns,n);for(var k in a)e.setAttribute(k,a[k]);(p||el).appendChild(e);return e}
+[80,90,100].forEach(function(t){
+mk('line',{x1:pl,x2:W-pr,y1:y(t),y2:y(t),stroke:'var(--line)','stroke-width':1});
+var l=mk('text',{x:4,y:y(t)+4,class:'tick'});l.textContent=t+'°';
+});
+// sunset marker 16:59
+var sx=x(16.98);
+mk('line',{x1:sx,x2:sx,y1:pt-10,y2:H-pb,stroke:'var(--accent-2)','stroke-width':1.5,'stroke-dasharray':'4 4'});
+var st=mk('text',{x:sx+6,y:pt-14,class:'tick'});st.textContent='sunset';
+data.forEach(function(d){
+if(d[0]%3===0||d[0]===12){var l=mk('text',{x:x(d[0]),y:H-14,class:'tick','text-anchor':'middle'});var h=d[0]>12?d[0]-12:d[0];l.textContent=h+(d[0]>=12?' p.m.':' a.m.');}
+});
+var pts=data.map(function(d){return x(d[0])+','+y(d[1])}).join(' ');
+var area=mk('polygon',{points:pl+','+(H-pb)+' '+pts+' '+x(23)+','+(H-pb),fill:'color-mix(in srgb, var(--accent) 14%, transparent)'});
+var line=mk('polyline',{points:pts,fill:'none',stroke:'var(--accent)','stroke-width':4,'stroke-linejoin':'round','stroke-linecap':'round'});
+var pk=mk('circle',{cx:x(15),cy:y(97),r:7,fill:'var(--accent)'});
+var dot=mk('circle',{cx:x(15),cy:y(97),r:10,fill:'none',stroke:'var(--fg)','stroke-width':2});
+var rd=mk('text',{x:x(15),y:y(97)-18,class:'rd-read','text-anchor':'middle'});
+rd.textContent='97° at 3 p.m.';
+function fmt(h){var s=h>=12?' p.m.':' a.m.';var hh=h>12?h-12:h;return hh+s}
+function show(h){
+h=Math.max(12,Math.min(23,Math.round(h)));
+var d=data[h-12];
+dot.setAttribute('cx',x(h));dot.setAttribute('cy',y(d[1]));
+rd.setAttribute('x',Math.min(W-60,Math.max(60,x(h))));
+rd.setAttribute('y',y(d[1])-18);
+rd.textContent=d[1]+'° at '+fmt(h);
+}
+function move(e){
+var r=el.getBoundingClientRect();
+var cx=(e.clientX-r.left)/r.width*W;
+show(12+(cx-pl)/(W-pl-pr)*11);
+}
+el.addEventListener('pointermove',move);
+el.addEventListener('pointerdown',move);
+var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!reduce){
+var len=line.getTotalLength();
+line.style.strokeDasharray=len;line.style.strokeDashoffset=len;
+area.style.opacity=0;
+var done=false;
+var io=new IntersectionObserver(function(en){
+if(en[0].isIntersecting&&!done){done=true;
+line.style.transition='stroke-dashoffset 1.8s ease';
+area.style.transition='opacity 1.8s ease';
+line.style.strokeDashoffset=0;area.style.opacity=1;}
+},{threshold:0.3});
+io.observe(el);
+}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>parent.postMessage({type:'moment:complete'},'*')</script>
+</body></html>

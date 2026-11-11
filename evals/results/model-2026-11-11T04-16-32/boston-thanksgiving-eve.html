@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dusk over Cambridge, the night before Thanksgiving</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;700&family=Red+Hat+Text:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>:root{--bg:#1c1512;--fg:#efe6dd;--muted:#b3a395;--accent:#d4a373;--accent-2:#93c5fd;--surface:#261d18;--line:#3a2d26;color-scheme:dark;--font-display:'Crimson Pro',serif;--font-body:'Red Hat Text',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;--radius:18px;--gap:0.7}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:15px;line-height:1.55;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;line-height:1.05;letter-spacing:-.01em;margin:0 0 calc(.5em*var(--gap));text-wrap:balance}
+h1{font-size:clamp(34px,6.4vw,84px)}h2{font-size:clamp(24px,3.6vw,44px)}h3{font-size:clamp(18px,2.2vw,24px)}
+p{margin:0 0 calc(1em*var(--gap));max-width:68ch;text-wrap:pretty}
+a{color:var(--accent);text-underline-offset:.18em}
+button{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--fg);border-radius:var(--radius);padding:.55em 1em;cursor:pointer}
+button:hover{background:var(--fg);color:var(--bg)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=range]{accent-color:var(--accent);width:100%}
+table{border-collapse:collapse;width:100%}td,th{padding:.45em .6em;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85em}
+svg{max-width:100%;height:auto}canvas{max-width:100%;display:block}
+img{max-width:100%}
+.m-kicker{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .9em}
+.m-big{font-family:var(--font-display);font-size:clamp(56px,13vw,170px);line-height:.88;letter-spacing:-.03em;font-weight:700}
+.m-lead{font-size:1.25em;line-height:1.4;max-width:40ch}
+.m-muted{color:var(--muted)}.m-accent{color:var(--accent)}.m-accent-2{color:var(--accent-2)}
+.m-mono{font-family:var(--font-mono)}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:calc(16px*var(--gap))}
+.m-row{display:flex;flex-wrap:wrap;gap:calc(12px*var(--gap));align-items:baseline}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:calc(18px*var(--gap))}
+.m-stat{display:flex;flex-direction:column;gap:.2em}.m-stat b{font-family:var(--font-display);font-size:clamp(28px,4.6vw,52px);line-height:1;font-weight:700}
+.m-rule{border:0;border-top:1px solid var(--line);margin:calc(24px*var(--gap)) 0}
+.m-chip{display:inline-block;font-family:var(--font-mono);font-size:.78rem;padding:.25em .6em;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.m-list{list-style:none;padding:0;margin:0}.m-list li{padding:.6em 0;border-bottom:1px solid var(--line)}
+.m-bars{display:flex;align-items:flex-end;gap:3px;height:120px}.m-bars i{flex:1;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px}
+main>section{scroll-margin-top:16px}
+main>section{animation:m-in .5s cubic-bezier(.2,.7,.2,1) both}@keyframes m-in{from{opacity:0;transform:translateY(18px)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#m-building{position:fixed;left:12px;bottom:12px;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;z-index:5}
+#m-building::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:m-pulse 1.2s ease-in-out infinite}
+@keyframes m-pulse{50%{opacity:.25}}
+.m-earlier{font-family:var(--font-mono);font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
+main{max-width:44rem;margin:0 auto;padding:clamp(24px,6vw,72px) clamp(16px,5vw,32px)}main>section{padding:clamp(28px,6vw,64px) 0}main>section+section{border-top:1px solid var(--line)}</style>
+<script>window.MOMENT={"live":"http://localhost:8788/live/42.36,-71.06","tz":"America/New_York","place":"Cambridge","eu":false};(()=>{const EU=false;let lastY=scrollY,lastT=performance.now(),speed=0,taps=0,idle=0,lastAct=performance.now(),hov=new Set(),bottom=false;
+const desc=e=>{const el=e.closest&&e.closest('[data-m],button,a,svg,canvas,table,li,figure,h2,h3');if(!el)return null;return(el.getAttribute('data-m')||el.tagName.toLowerCase()+(el.className&&typeof el.className==='string'?'.'+el.className.split(' ')[0]:'')).slice(0,40)};
+const act=()=>{lastAct=performance.now()};
+addEventListener('scroll',()=>{const t=performance.now(),dy=Math.abs(scrollY-lastY);speed=.7*speed+.3*(dy/Math.max(16,t-lastT)*1000);lastY=scrollY;lastT=t;act();const b=innerHeight+scrollY>=document.documentElement.scrollHeight-40;if(b&&!bottom){bottom=true;parent.postMessage({type:'moment:bottom'},'*')}},{passive:true});
+addEventListener('pointerover',e=>{if(EU)return;const d=desc(e.target);if(d&&hov.size<12)hov.add(d)},{passive:true});
+addEventListener('pointerdown',()=>{taps++;act()},{passive:true});addEventListener('keydown',act);
+const onScreen=()=>{let best=null,area=0;for(const s of document.querySelectorAll('main>section')){const r=s.getBoundingClientRect(),v=Math.max(0,Math.min(innerHeight,r.bottom)-Math.max(0,r.top));if(v>area){area=v;best=s.id||null}}return best};
+setInterval(()=>{idle=performance.now()-lastAct;if(EU)return;parent.postMessage({type:'moment:interaction',section:onScreen(),scrollSpeed:Math.round(speed),hovered:[...hov],taps,idleMs:Math.round(idle),atBottom:bottom},'*');hov.clear();speed*=.5},2000);
+})();</script>
+</head><body class="layout-single-column motion-lively density-dense">
+<div id="m-building" role="status">Writing this page</div>
+<main>
+<section id="dusk-light">
+<p class="m-kicker">Cambridge · Wednesday · 5:05 p.m.</p>
+<h2>The light after sunset</h2>
+<p class="m-lead">The sun set at 4:16 p.m. It has been down for 49 minutes, and the sky is still holding a little color.</p>
+<p>It's 45°F (7°C) and partly cloudy. The clouds keep the last light around a bit longer than a clear sky would. By 6 p.m. it will be 44°F (7°C) and fully dark. Sunrise tomorrow is at 6:48 a.m.</p>
+<svg id="dusk-svg" viewBox="0 0 640 260" role="img" aria-label="A sky fading from dusk to night above a flat horizon, with a few drifting clouds and stars appearing">
+<defs>
+<linearGradient id="dusk-sky" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" id="dusk-top" stop-color="var(--bg)"/>
+<stop offset="0.6" id="dusk-mid" stop-color="var(--surface)"/>
+<stop offset="1" id="dusk-low" stop-color="var(--accent)"/>
+</linearGradient>
+</defs>
+<rect width="640" height="260" fill="url(#dusk-sky)"/>
+<g id="dusk-stars" fill="var(--fg)"></g>
+<g id="dusk-clouds" fill="var(--bg)" opacity="0.55">
+<ellipse cx="150" cy="120" rx="90" ry="12"/>
+<ellipse cx="420" cy="90" rx="120" ry="10"/>
+<ellipse cx="540" cy="150" rx="70" ry="9"/>
+</g>
+<rect y="215" width="640" height="45" fill="var(--bg)"/>
+<line x1="0" y1="215" x2="640" y2="215" stroke="var(--line)"/>
+</svg>
+<input type="range" id="dusk-range" min="0" max="100" value="12" aria-label="Minutes toward full dark">
+<p class="m-muted m-mono" id="dusk-label">5:05 p.m. · sky still faintly lit</p>
+<style>
+#dusk-light{max-width:64ch}
+#dusk-light h2{font-family:var(--font-display);font-size:clamp(2rem,6vw,3.2rem);line-height:1.05;margin:.2em 0 .5em}
+#dusk-light svg{width:100%;height:auto;display:block;margin:2rem 0 1rem;border-radius:var(--radius)}
+#dusk-light input[type=range]{width:100%;accent-color:var(--accent)}
+#dusk-light .m-mono{font-size:.85rem;margin-top:.5rem}
+</style>
+</section><section id="freeze-tonight">
+<p class="m-kicker">Overnight</p>
+<h2>Freezing by morning</h2>
+<p class="m-lead">It is 45°F (7°C) at 5 p.m. By 3 a.m. it is 31°F (-1°C), a degree under freezing.</p>
+<div class="ft-chart">
+<svg id="ft-svg" viewBox="0 0 640 260" role="img" aria-label="Line chart of temperature from 4 p.m. to 4 a.m., falling from 45 to 31 degrees Fahrenheit, with the freezing line at 32">
+<line id="ft-freeze" x1="40" x2="620" y1="0" y2="0" stroke="var(--accent-2)" stroke-dasharray="4 5" stroke-width="1"/>
+<text x="44" id="ft-freeze-label" fill="var(--accent-2)" font-size="11" font-family="var(--font-mono)">32°F freezing</text>
+<path id="ft-area" fill="color-mix(in srgb, var(--accent) 14%, transparent)" d=""/>
+<path id="ft-line" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linejoin="round" d=""/>
+<g id="ft-dots"></g>
+<g id="ft-axis" fill="var(--muted)" font-size="11" font-family="var(--font-mono)"></g>
+</svg>
+</div>
+<p id="ft-readout" class="m-mono ft-read">Tap or hover the line to read a given hour.</p>
+<div class="m-row ft-stats">
+<div class="m-stat"><b>45°F</b><span>5 p.m.</span></div>
+<div class="m-stat"><b>38°F</b><span>10 p.m.</span></div>
+<div class="m-stat"><b class="m-accent-2">31°F</b><span>3 a.m., the low</span></div>
+</div>
+<p class="m-muted">Overcast most of the night, no rain in the hourly forecast. Cold, but dry underfoot until the frost.</p>
+<style>
+#freeze-tonight{padding:calc(var(--gap)*2) 0}
+#freeze-tonight h2{font-family:var(--font-display);font-size:clamp(2rem,5vw,3.2rem);line-height:1.05;margin:.3em 0 .5em}
+#freeze-tonight .ft-chart{margin:var(--gap) 0 .5rem;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:.5rem 0}
+#freeze-tonight svg{width:100%;height:auto;display:block;touch-action:none}
+#freeze-tonight .ft-read{min-height:1.5em;color:var(--fg);margin:.5rem 0 var(--gap)}
+#freeze-tonight .ft-stats{gap:calc(var(--gap)*1.5);margin-bottom:var(--gap)}
+</style>
+</section><section id="eve-of-holiday">
+<p class="m-kicker">Wednesday evening</p>
+<h2>Thanksgiving eve on campus</h2>
+<p class="m-lead">Tomorrow is Thanksgiving. Tonight is the quiet before it.</p>
+<p>It's 5:05 p.m. and the dark is already in. The sky is partly cloudy, 45°F (7°C), and no rain is in the hourly forecast. If you're out walking on campus, it's a dry evening for it, with a coat on.</p>
+<p>The temperature slides from here. 42°F (5°C) by 8 p.m., 38°F (3°C) by 10, and under freezing by 2 a.m. Whatever you're doing tonight, the cold sets in after you're indoors.</p>
+<div class="ev-clock" aria-hidden="true">
+<svg viewBox="0 0 320 60" width="100%" height="60" role="img">
+<line x1="8" y1="40" x2="312" y2="40" stroke="var(--line)" stroke-width="1"/>
+<circle id="ev-dot" cx="8" cy="40" r="5" fill="var(--accent)"/>
+<text x="8" y="16" fill="var(--muted)" font-size="10" font-family="var(--font-mono)">5 p.m. tonight</text>
+<text x="312" y="16" text-anchor="end" fill="var(--muted)" font-size="10" font-family="var(--font-mono)">Thanksgiving</text>
+<circle cx="312" cy="40" r="5" fill="none" stroke="var(--accent-2)" stroke-width="1.5"/>
+</svg>
+</div>
+<p class="m-muted">Sunrise is at 6:48 a.m. The day itself starts cold and clear of rain.</p>
+<style>
+#eve-of-holiday{padding:calc(var(--gap)*2) 0;max-width:64ch}
+#eve-of-holiday h2{font-family:var(--font-display);font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.1;margin:.3em 0 .5em}
+#eve-of-holiday p{margin:0 0 1em;line-height:1.6}
+#eve-of-holiday .ev-clock{margin:1.6em 0 1em;padding-top:.5em;border-top:1px solid var(--line)}
+#eve-of-holiday .ev-clock svg{display:block;overflow:visible}
+</style>
+</section></main>
+<style>#m-building{display:none}</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+<script>(()=>{try{
+(function(){
+var stars=document.getElementById('dusk-stars');
+var ns='http://www.w3.org/2000/svg';
+var pts=[];
+for(var i=0;i<28;i++){
+var c=document.createElementNS(ns,'circle');
+var x=(i*97%640),y=(i*53%170)+8;
+c.setAttribute('cx',x);c.setAttribute('cy',y);c.setAttribute('r',i%5===0?1.6:1);
+c.setAttribute('opacity',0);
+stars.appendChild(c);pts.push(c);
+}
+var range=document.getElementById('dusk-range');
+var label=document.getElementById('dusk-label');
+var clouds=document.getElementById('dusk-clouds');
+var low=document.getElementById('dusk-low');
+function fmt(m){
+var t=5*60+m;
+var h=Math.floor(t/60),mm=t%60;
+return h+':'+(mm<10?'0':'')+mm+' p.m.';
+}
+function update(){
+var v=+range.value/100;
+low.setAttribute('stop-opacity',Math.max(0,0.9-v*1.1));
+pts.forEach(function(c,i){
+var o=Math.max(0,Math.min(1,(v-0.2-(i%7)*0.05)*2.2));
+c.setAttribute('opacity',o.toFixed(2));
+});
+var m=Math.round(v*60);
+var note=v<0.3?'sky still faintly lit':(v<0.7?'last color leaving the horizon':'dark, stars where the clouds allow');
+label.textContent=fmt(m)+' · '+note;
+}
+range.addEventListener('input',update);
+update();
+var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!reduce){
+var d=0,dir=1;
+function drift(){
+d+=0.04*dir;
+if(d>14||d<-14)dir*=-1;
+clouds.setAttribute('transform','translate('+d.toFixed(2)+',0)');
+requestAnimationFrame(drift);
+}
+requestAnimationFrame(drift);
+}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var root=document.getElementById('freeze-tonight');
+var data=[["4 p.m.",45,7],["5 p.m.",45,7],["6 p.m.",44,7],["7 p.m.",42,5],["8 p.m.",42,5],["9 p.m.",38,4],["10 p.m.",38,3],["11 p.m.",35,1],["12 a.m.",35,2],["1 a.m.",34,1],["2 a.m.",32,0],["3 a.m.",31,-1],["4 a.m.",32,0]];
+var L=40,R=620,T=20,B=220,min=28,max=48;
+function x(i){return L+(R-L)*i/(data.length-1)}
+function y(v){return T+(B-T)*(max-v)/(max-min)}
+var d=data.map(function(p,i){return(i?"L":"M")+x(i).toFixed(1)+" "+y(p[1]).toFixed(1)}).join(" ");
+var line=document.getElementById('ft-line');
+line.setAttribute('d',d);
+document.getElementById('ft-area').setAttribute('d',d+" L"+x(data.length-1)+" "+B+" L"+L+" "+B+" Z");
+var fy=y(32);
+var fl=document.getElementById('ft-freeze');fl.setAttribute('y1',fy);fl.setAttribute('y2',fy);
+document.getElementById('ft-freeze-label').setAttribute('y',fy-6);
+var ns="http://www.w3.org/2000/svg";
+var dots=document.getElementById('ft-dots'),axis=document.getElementById('ft-axis');
+var read=document.getElementById('ft-readout');
+data.forEach(function(p,i){
+var c=document.createElementNS(ns,'circle');
+c.setAttribute('cx',x(i));c.setAttribute('cy',y(p[1]));c.setAttribute('r',i===11?5:3.5);
+c.setAttribute('fill',p[1]<32?'var(--accent-2)':'var(--accent)');
+dots.appendChild(c);
+if(i%2===0){var t=document.createElementNS(ns,'text');t.setAttribute('x',x(i));t.setAttribute('y',245);t.setAttribute('text-anchor','middle');t.textContent=p[0];axis.appendChild(t);}
+});
+var svg=document.getElementById('ft-svg');
+function pick(e){
+var r=svg.getBoundingClientRect();
+var px=((e.clientX-r.left)/r.width)*640;
+var i=Math.round((px-L)/(R-L)*(data.length-1));
+i=Math.max(0,Math.min(data.length-1,i));
+var p=data[i];
+read.textContent=p[0]+": "+p[1]+"°F ("+p[2]+"°C)";
+}
+svg.addEventListener('pointermove',pick);
+svg.addEventListener('pointerdown',pick);
+var still=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!still&&window.anime){
+var len=line.getTotalLength();
+line.style.strokeDasharray=len;line.style.strokeDashoffset=len;
+anime({targets:line,strokeDashoffset:0,duration:2200,easing:'easeInOutSine'});
+anime({targets:'#ft-dots circle',opacity:[0,1],delay:anime.stagger(150),duration:400,easing:'linear'});
+}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var dot=document.getElementById('ev-dot');
+if(!dot)return;
+var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(reduce){dot.setAttribute('cx','8');return;}
+if(typeof anime!=='undefined'){
+anime({targets:dot,cx:[8,304],duration:6000,easing:'easeInOutSine',direction:'alternate',loop:true});
+}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>parent.postMessage({type:'moment:complete'},'*')</script>
+</body></html>

@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pasadena at 93°, Midday in November</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;700&family=Inter:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>:root{--bg:#f3efe6;--fg:#12343b;--muted:#4c6b70;--accent:#c8553d;--accent-2:#2e7f87;--surface:#e8e1d1;--line:#d3c8b0;color-scheme:light;--font-display:'Fraunces',serif;--font-body:'Inter',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;--radius:0px;--gap:1}
+@media (prefers-color-scheme:dark){:root{--bg:#07141a;--fg:#e0f2f1;--muted:#8ab3b0;--accent:#2dd4bf;--accent-2:#a3e635;--surface:#0d1f27;--line:#1b3540;color-scheme:dark;}}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:16.5px;line-height:1.55;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;line-height:1.05;letter-spacing:-.01em;margin:0 0 calc(.5em*var(--gap));text-wrap:balance}
+h1{font-size:clamp(34px,6.4vw,84px)}h2{font-size:clamp(24px,3.6vw,44px)}h3{font-size:clamp(18px,2.2vw,24px)}
+p{margin:0 0 calc(1em*var(--gap));max-width:68ch;text-wrap:pretty}
+a{color:var(--accent);text-underline-offset:.18em}
+button{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--fg);border-radius:var(--radius);padding:.55em 1em;cursor:pointer}
+button:hover{background:var(--fg);color:var(--bg)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=range]{accent-color:var(--accent);width:100%}
+table{border-collapse:collapse;width:100%}td,th{padding:.45em .6em;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85em}
+svg{max-width:100%;height:auto}canvas{max-width:100%;display:block}
+img{max-width:100%}
+.m-kicker{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .9em}
+.m-big{font-family:var(--font-display);font-size:clamp(56px,13vw,170px);line-height:.88;letter-spacing:-.03em;font-weight:700}
+.m-lead{font-size:1.25em;line-height:1.4;max-width:40ch}
+.m-muted{color:var(--muted)}.m-accent{color:var(--accent)}.m-accent-2{color:var(--accent-2)}
+.m-mono{font-family:var(--font-mono)}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:calc(16px*var(--gap))}
+.m-row{display:flex;flex-wrap:wrap;gap:calc(12px*var(--gap));align-items:baseline}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:calc(18px*var(--gap))}
+.m-stat{display:flex;flex-direction:column;gap:.2em}.m-stat b{font-family:var(--font-display);font-size:clamp(28px,4.6vw,52px);line-height:1;font-weight:700}
+.m-rule{border:0;border-top:1px solid var(--line);margin:calc(24px*var(--gap)) 0}
+.m-chip{display:inline-block;font-family:var(--font-mono);font-size:.78rem;padding:.25em .6em;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.m-list{list-style:none;padding:0;margin:0}.m-list li{padding:.6em 0;border-bottom:1px solid var(--line)}
+.m-bars{display:flex;align-items:flex-end;gap:3px;height:120px}.m-bars i{flex:1;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px}
+main>section{scroll-margin-top:16px}
+main>section{animation:m-in .5s cubic-bezier(.2,.7,.2,1) both}@keyframes m-in{from{opacity:0;transform:translateY(18px)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#m-building{position:fixed;left:12px;bottom:12px;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;z-index:5}
+#m-building::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:m-pulse 1.2s ease-in-out infinite}
+@keyframes m-pulse{50%{opacity:.25}}
+.m-earlier{font-family:var(--font-mono);font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
+main{max-width:1240px;margin:0 auto;padding:clamp(16px,3vw,40px)}main>section:first-child{border-bottom:3px double var(--fg);padding-bottom:18px}main>section{padding:clamp(18px,3vw,32px) 0;border-bottom:1px solid var(--line)}@media(min-width:900px){main>section .m-columns,main>section>p{column-count:2;column-gap:40px;column-rule:1px solid var(--line)}}</style>
+<script>window.MOMENT={"live":"http://localhost:8788/live/34.05,-118.24","tz":"America/Los_Angeles","place":"Pasadena","eu":false};(()=>{const EU=false;let lastY=scrollY,lastT=performance.now(),speed=0,taps=0,idle=0,lastAct=performance.now(),hov=new Set(),bottom=false;
+const desc=e=>{const el=e.closest&&e.closest('[data-m],button,a,svg,canvas,table,li,figure,h2,h3');if(!el)return null;return(el.getAttribute('data-m')||el.tagName.toLowerCase()+(el.className&&typeof el.className==='string'?'.'+el.className.split(' ')[0]:'')).slice(0,40)};
+const act=()=>{lastAct=performance.now()};
+addEventListener('scroll',()=>{const t=performance.now(),dy=Math.abs(scrollY-lastY);speed=.7*speed+.3*(dy/Math.max(16,t-lastT)*1000);lastY=scrollY;lastT=t;act();const b=innerHeight+scrollY>=document.documentElement.scrollHeight-40;if(b&&!bottom){bottom=true;parent.postMessage({type:'moment:bottom'},'*')}},{passive:true});
+addEventListener('pointerover',e=>{if(EU)return;const d=desc(e.target);if(d&&hov.size<12)hov.add(d)},{passive:true});
+addEventListener('pointerdown',()=>{taps++;act()},{passive:true});addEventListener('keydown',act);
+const onScreen=()=>{let best=null,area=0;for(const s of document.querySelectorAll('main>section')){const r=s.getBoundingClientRect(),v=Math.max(0,Math.min(innerHeight,r.bottom)-Math.max(0,r.top));if(v>area){area=v;best=s.id||null}}return best};
+setInterval(()=>{idle=performance.now()-lastAct;if(EU)return;parent.postMessage({type:'moment:interaction',section:onScreen(),scrollSpeed:Math.round(speed),hovered:[...hov],taps,idleMs:Math.round(idle),atBottom:bottom},'*');hov.clear();speed*=.5},2000);
+})();</script>
+</head><body class="layout-broadsheet motion-lively density-balanced">
+<div id="m-building" role="status">Writing this page</div>
+<main>
+<section id="current-heat">
+<p class="m-kicker">Pasadena &middot; Wednesday, November 4 &middot; 12:30 p.m.</p>
+<h2>Heat right now</h2>
+<p class="m-lead">It is 93°F (34°C) under a clear sky. A typical November 4 here is 79°F. Today runs 14°F warmer.</p>
+<div class="ch-cols">
+<div class="ch-main">
+<div class="m-big ch-num"><span id="ch-temp">93</span>°F</div>
+<p class="m-muted">34°C, clear</p>
+</div>
+<div class="ch-gauge">
+<svg id="ch-svg" viewBox="0 0 120 300" role="img" aria-label="Thermometer comparing 79 degrees normal with 93 degrees now">
+<line x1="60" y1="20" x2="60" y2="280" stroke="var(--line)" stroke-width="2"/>
+<rect id="ch-fill" x="54" y="280" width="12" height="0" fill="var(--accent)"/>
+<line x1="30" x2="90" y1="109" y2="109" stroke="var(--fg)" stroke-width="1.5" stroke-dasharray="3 3"/>
+<text x="26" y="106" text-anchor="end" font-size="11" fill="var(--muted)" font-family="var(--font-mono)">79 normal</text>
+<text x="94" y="68" font-size="11" fill="var(--accent)" font-family="var(--font-mono)">93 now</text>
+</svg>
+</div>
+<div class="ch-side">
+<div class="m-stat"><b>+14°F</b><span>above the seasonal norm</span></div>
+<div class="m-stat"><b>97°F</b><span>expected high, around 3 p.m.</span></div>
+<div class="m-stat"><b>6:16 a.m.</b><span>sunrise today</span></div>
+<div class="m-stat"><b>4:59 p.m.</b><span>sunset today</span></div>
+</div>
+</div>
+<style>
+#current-heat .ch-cols{display:grid;grid-template-columns:1.2fr .6fr 1fr;gap:var(--gap);align-items:end;border-top:2px solid var(--fg);padding-top:var(--gap);margin-top:var(--gap)}
+#current-heat .ch-num{line-height:.9;font-size:clamp(4rem,12vw,8rem);color:var(--accent)}
+#current-heat .ch-gauge svg{width:100%;max-width:160px;height:auto;display:block}
+#current-heat .ch-side{display:grid;gap:12px;border-left:1px solid var(--line);padding-left:var(--gap)}
+@media(max-width:640px){#current-heat .ch-cols{grid-template-columns:1fr}#current-heat .ch-side{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:var(--gap)}}
+</style>
+</section><section id="next-twelve-hours">
+<p class="m-kicker">Hour by hour &middot; 11 a.m. to 11 p.m.</p>
+<h2>Next twelve hours</h2>
+<p class="m-lead">The sky stays clear all the way through. The heat peaks at 97°F (36°C) at 3 p.m., then eases slowly after sunset at 4:59 p.m.</p>
+<div class="nt-cols">
+<div class="nt-chart">
+<svg id="nt-svg" viewBox="0 0 600 220" role="img" aria-label="Line chart of hourly temperature from 11 a.m. to 11 p.m., peaking at 97 degrees Fahrenheit at 3 p.m.">
+<line x1="30" y1="190" x2="590" y2="190" stroke="var(--line)"/>
+<path id="nt-area" d="" fill="color-mix(in srgb, var(--accent) 14%, transparent)"/>
+<path id="nt-line" d="" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
+<g id="nt-dots"></g>
+<g id="nt-labels" font-family="var(--font-mono)" font-size="10" fill="var(--muted)"></g>
+</svg>
+<p id="nt-readout" class="m-mono nt-read">Tap an hour: 12 p.m., 93°F (34°C), rain chance 12%</p>
+</div>
+<div class="nt-side">
+<div class="m-stat"><b>97°F</b><span>High, at 3 p.m. (36°C)</span></div>
+<div class="m-rule"></div>
+<div class="m-stat"><b>80°F</b><span>By 11 p.m. (27°C)</span></div>
+<div class="m-rule"></div>
+<div class="m-stat"><b>0 mm</b><span>Rain expected, every hour</span></div>
+</div>
+</div>
+<style>
+#next-twelve-hours .nt-cols{display:grid;grid-template-columns:2fr 1fr;gap:var(--gap);margin-top:var(--gap);align-items:start}
+#next-twelve-hours .nt-side{border-left:1px solid var(--line);padding-left:var(--gap)}
+#next-twelve-hours .nt-side .m-rule{margin:12px 0}
+#next-twelve-hours svg{width:100%;height:auto;display:block}
+#next-twelve-hours .nt-read{margin:8px 0 0;font-size:.85rem;color:var(--fg)}
+#next-twelve-hours circle{cursor:pointer}
+@media (max-width:640px){#next-twelve-hours .nt-cols{grid-template-columns:1fr}#next-twelve-hours .nt-side{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:var(--gap)}}
+</style>
+</section><section id="afternoon-plan">
+<p class="m-kicker">Afternoon at a glance</p>
+<h2>Plan around 1 to 5 p.m.</h2>
+<p class="m-lead">The hottest stretch runs from 1 p.m. to 5 p.m., every hour at 95°F (35°C) or higher. The peak is 97°F (36°C) at 3 p.m.</p>
+<div class="ap-cols">
+<div class="ap-col">
+<p class="m-kicker">Do outside now</p>
+<p>It is 93°F (34°C) at 12:30 p.m. This is the cooler end of the afternoon. Errands, a walk, anything on foot fits before 1 p.m.</p>
+</div>
+<div class="ap-col">
+<p class="m-kicker">Go indoors</p>
+<p>1 p.m. to 5 p.m. Temperatures hold at 95 to 97°F (35 to 36°C) and the sky stays clear, with no cloud cover in the forecast.</p>
+</div>
+<div class="ap-col">
+<p class="m-kicker">Outside again</p>
+<p>By 6 p.m. it is 93°F (34°C). By 8 p.m. it is 88°F (31°C). At 11 p.m. it is 80°F (27°C). Sunset is 4:59 p.m.</p>
+</div>
+</div>
+<div class="ap-strip" id="ap-strip" aria-label="Heat by hour, 12 p.m. to 8 p.m.">
+<div class="ap-h" data-t="93"><span>12</span></div>
+<div class="ap-h hot" data-t="96"><span>1</span></div>
+<div class="ap-h hot" data-t="96"><span>2</span></div>
+<div class="ap-h hot peak" data-t="97"><span>3</span></div>
+<div class="ap-h hot" data-t="96"><span>4</span></div>
+<div class="ap-h hot" data-t="95"><span>5</span></div>
+<div class="ap-h" data-t="93"><span>6</span></div>
+<div class="ap-h" data-t="91"><span>7</span></div>
+<div class="ap-h" data-t="88"><span>8</span></div>
+</div>
+<p class="m-muted ap-note">Hours in p.m. Shaded bars are the hottest window. Rain chance stays at or under 19% all day, with 0 mm expected.</p>
+<style>
+#afternoon-plan{border-top:3px double var(--fg);padding-top:var(--gap)}
+#afternoon-plan h2{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.05;margin:.2em 0 .4em}
+#afternoon-plan .ap-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin:var(--gap) 0}
+#afternoon-plan .ap-col{padding:0 var(--gap);border-left:1px solid var(--line)}
+#afternoon-plan .ap-col:first-child{padding-left:0;border-left:0}
+#afternoon-plan .ap-col p{margin:.3em 0}
+#afternoon-plan .ap-strip{display:flex;align-items:flex-end;gap:4px;height:140px;border-bottom:1px solid var(--fg)}
+#afternoon-plan .ap-h{flex:1;background:var(--line);position:relative;height:0;transition:height .8s ease}
+#afternoon-plan .ap-h.hot{background:var(--accent)}
+#afternoon-plan .ap-h.peak{background:var(--accent-2)}
+#afternoon-plan .ap-h span{position:absolute;bottom:-1.6em;left:0;right:0;text-align:center;font-family:var(--font-mono);font-size:.75rem;color:var(--muted)}
+#afternoon-plan .ap-note{margin-top:2.4em;font-size:.85rem}
+@media (max-width:600px){#afternoon-plan .ap-col{border-left:0;padding:0 0 var(--gap)}}
+</style>
+</section></main>
+<style>#m-building{display:none}</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+<script>(()=>{try{
+(function(){
+var fill=document.getElementById('ch-fill');
+if(!fill)return;
+var h=(93-40)/(100-40)*260;
+var y=280-h;
+var still=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(still||typeof anime==='undefined'){fill.setAttribute('y',y);fill.setAttribute('height',h);}
+else{
+var o={v:0};
+anime({targets:o,v:1,duration:1400,easing:'easeOutCubic',update:function(){
+fill.setAttribute('y',280-h*o.v);fill.setAttribute('height',h*o.v);}});
+}
+try{
+fetch(window.MOMENT.live+'/weather').then(function(r){return r.json()}).then(function(d){
+if(d&&d.now&&typeof d.now.temp_c==='number'){
+var f=Math.round(d.now.temp_c*9/5+32);
+var el=document.getElementById('ch-temp');
+if(el)el.textContent=f;
+}
+}).catch(function(){});
+}catch(e){}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var root=document.getElementById('next-twelve-hours');
+var data=[[11,92,33,13],[12,93,34,12],[13,96,36,9],[14,96,36,19],[15,97,36,2],[16,96,36,12],[17,95,35,19],[18,93,34,0],[19,91,33,7],[20,88,31,17],[21,84,29,19],[22,83,28,9],[23,80,27,5]];
+var NS='http://www.w3.org/2000/svg';
+function lab(h){var s=h>=12?'p.m.':'a.m.';var x=h%12;if(x===0)x=12;return x+' '+s;}
+var x0=40,x1=580,yTop=30,yBot=190,min=78,max=98;
+function X(i){return x0+(x1-x0)*i/(data.length-1);}
+function Y(t){return yBot-(yBot-yTop)*(t-min)/(max-min);}
+var d='';data.forEach(function(p,i){d+=(i?'L':'M')+X(i)+' '+Y(p[1]);});
+document.getElementById('nt-line').setAttribute('d',d);
+document.getElementById('nt-area').setAttribute('d',d+'L'+X(data.length-1)+' '+yBot+'L'+X(0)+' '+yBot+'Z');
+var dots=document.getElementById('nt-dots'),labs=document.getElementById('nt-labels');
+var read=document.getElementById('nt-readout');
+data.forEach(function(p,i){
+var c=document.createElementNS(NS,'circle');
+c.setAttribute('cx',X(i));c.setAttribute('cy',Y(p[1]));c.setAttribute('r',p[0]===15?6:4);
+c.setAttribute('fill',p[0]===15?'var(--accent-2)':'var(--bg)');
+c.setAttribute('stroke','var(--accent)');c.setAttribute('stroke-width','2');
+function show(){read.textContent=lab(p[0])+', '+p[1]+'°F ('+p[2]+'°C), rain chance '+p[3]+'%';}
+c.addEventListener('mouseenter',show);c.addEventListener('click',show);
+dots.appendChild(c);
+if(i%2===0){var t=document.createElementNS(NS,'text');t.setAttribute('x',X(i));t.setAttribute('y',208);t.setAttribute('text-anchor','middle');t.textContent=lab(p[0]);labs.appendChild(t);}
+});
+var tp=document.createElementNS(NS,'text');
+tp.setAttribute('x',X(4));tp.setAttribute('y',Y(97)-12);tp.setAttribute('text-anchor','middle');
+tp.setAttribute('font-size','11');tp.setAttribute('fill','var(--fg)');tp.setAttribute('font-family','var(--font-mono)');
+tp.textContent='97°F';labs.appendChild(tp);
+var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!reduce&&window.anime){
+var line=document.getElementById('nt-line');
+var len=line.getTotalLength();
+line.style.strokeDasharray=len;line.style.strokeDashoffset=len;
+anime({targets:line,strokeDashoffset:[len,0],duration:1600,easing:'easeInOutQuad'});
+anime({targets:'#nt-dots circle',opacity:[0,1],delay:anime.stagger(80),duration:400,easing:'linear'});
+}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var hs=document.querySelectorAll('#ap-strip .ap-h');
+var still=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+hs.forEach(function(h,i){
+var t=+h.getAttribute('data-t');
+var pct=((t-80)/(98-80))*100;
+if(still){h.style.transition='none';h.style.height=pct+'%';}
+else{setTimeout(function(){h.style.height=pct+'%';},60*i+100);}
+});
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>parent.postMessage({type:'moment:complete'},'*')</script>
+</body></html>

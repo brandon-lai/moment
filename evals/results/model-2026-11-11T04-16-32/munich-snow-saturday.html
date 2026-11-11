@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Snow in Munich, Until Five</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;700&family=Inter:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>:root{--bg:#f4f1ea;--fg:#1b1a17;--muted:#5f5a50;--accent:#c2410c;--accent-2:#1d4ed8;--surface:#ebe6db;--line:#d6cfbf;color-scheme:light;--font-display:'Fraunces',serif;--font-body:'Inter',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;--radius:2px;--gap:0.7}
+@media (prefers-color-scheme:dark){:root{--bg:#0d1a14;--fg:#e3efe7;--muted:#93ab9c;--accent:#86efac;--accent-2:#fcd34d;--surface:#14251c;--line:#22392c;color-scheme:dark;}}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:15px;line-height:1.55;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;line-height:1.05;letter-spacing:-.01em;margin:0 0 calc(.5em*var(--gap));text-wrap:balance}
+h1{font-size:clamp(34px,6.4vw,84px)}h2{font-size:clamp(24px,3.6vw,44px)}h3{font-size:clamp(18px,2.2vw,24px)}
+p{margin:0 0 calc(1em*var(--gap));max-width:68ch;text-wrap:pretty}
+a{color:var(--accent);text-underline-offset:.18em}
+button{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--fg);border-radius:var(--radius);padding:.55em 1em;cursor:pointer}
+button:hover{background:var(--fg);color:var(--bg)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=range]{accent-color:var(--accent);width:100%}
+table{border-collapse:collapse;width:100%}td,th{padding:.45em .6em;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85em}
+svg{max-width:100%;height:auto}canvas{max-width:100%;display:block}
+img{max-width:100%}
+.m-kicker{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .9em}
+.m-big{font-family:var(--font-display);font-size:clamp(56px,13vw,170px);line-height:.88;letter-spacing:-.03em;font-weight:700}
+.m-lead{font-size:1.25em;line-height:1.4;max-width:40ch}
+.m-muted{color:var(--muted)}.m-accent{color:var(--accent)}.m-accent-2{color:var(--accent-2)}
+.m-mono{font-family:var(--font-mono)}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:calc(16px*var(--gap))}
+.m-row{display:flex;flex-wrap:wrap;gap:calc(12px*var(--gap));align-items:baseline}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:calc(18px*var(--gap))}
+.m-stat{display:flex;flex-direction:column;gap:.2em}.m-stat b{font-family:var(--font-display);font-size:clamp(28px,4.6vw,52px);line-height:1;font-weight:700}
+.m-rule{border:0;border-top:1px solid var(--line);margin:calc(24px*var(--gap)) 0}
+.m-chip{display:inline-block;font-family:var(--font-mono);font-size:.78rem;padding:.25em .6em;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.m-list{list-style:none;padding:0;margin:0}.m-list li{padding:.6em 0;border-bottom:1px solid var(--line)}
+.m-bars{display:flex;align-items:flex-end;gap:3px;height:120px}.m-bars i{flex:1;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px}
+main>section{scroll-margin-top:16px}
+main>section{animation:m-in .9s cubic-bezier(.2,.7,.2,1) both}@keyframes m-in{from{opacity:0;transform:translateY(8px)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#m-building{position:fixed;left:12px;bottom:12px;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;z-index:5}
+#m-building::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:m-pulse 1.2s ease-in-out infinite}
+@keyframes m-pulse{50%{opacity:.25}}
+.m-earlier{font-family:var(--font-mono);font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
+main{padding:0}main>section{min-height:88vh;padding:clamp(28px,7vw,110px) clamp(16px,6vw,96px);display:flex;flex-direction:column;justify-content:center}main>section:nth-child(even){background:var(--surface)}</style>
+<script>window.MOMENT={"live":"http://localhost:8788/live/48.14,11.57","tz":"Europe/Berlin","place":"Munich","eu":true};(()=>{const EU=true;let lastY=scrollY,lastT=performance.now(),speed=0,taps=0,idle=0,lastAct=performance.now(),hov=new Set(),bottom=false;
+const desc=e=>{const el=e.closest&&e.closest('[data-m],button,a,svg,canvas,table,li,figure,h2,h3');if(!el)return null;return(el.getAttribute('data-m')||el.tagName.toLowerCase()+(el.className&&typeof el.className==='string'?'.'+el.className.split(' ')[0]:'')).slice(0,40)};
+const act=()=>{lastAct=performance.now()};
+addEventListener('scroll',()=>{const t=performance.now(),dy=Math.abs(scrollY-lastY);speed=.7*speed+.3*(dy/Math.max(16,t-lastT)*1000);lastY=scrollY;lastT=t;act();const b=innerHeight+scrollY>=document.documentElement.scrollHeight-40;if(b&&!bottom){bottom=true;parent.postMessage({type:'moment:bottom'},'*')}},{passive:true});
+addEventListener('pointerover',e=>{if(EU)return;const d=desc(e.target);if(d&&hov.size<12)hov.add(d)},{passive:true});
+addEventListener('pointerdown',()=>{taps++;act()},{passive:true});addEventListener('keydown',act);
+const onScreen=()=>{let best=null,area=0;for(const s of document.querySelectorAll('main>section')){const r=s.getBoundingClientRect(),v=Math.max(0,Math.min(innerHeight,r.bottom)-Math.max(0,r.top));if(v>area){area=v;best=s.id||null}}return best};
+setInterval(()=>{idle=performance.now()-lastAct;if(EU)return;parent.postMessage({type:'moment:interaction',section:onScreen(),scrollSpeed:Math.round(speed),hovered:[...hov],taps,idleMs:Math.round(idle),atBottom:bottom},'*');hov.clear();speed*=.5},2000);
+})();</script>
+</head><body class="layout-full-bleed motion-gentle density-dense">
+<div id="m-building" role="status">Writing this page</div>
+<main>
+<section id="snow-now">
+<p class="m-kicker">Munich · Saturday, 10:30 a.m.</p>
+<h2 class="m-big">Snow Over Munich Now</h2>
+<p class="m-lead">It is snowing in Munich and it is 1°C. The snow keeps falling through the afternoon and stops around 5 p.m.</p>
+<div class="sn-wrap">
+<canvas id="sn-canvas" aria-hidden="true"></canvas>
+<div class="sn-stats">
+<div class="m-stat"><b id="sn-temp">1°C</b><span>right now</span></div>
+<div class="m-stat"><b>4°C</b><span>the afternoon high, at 2 p.m.</span></div>
+<div class="m-stat"><b>5 p.m.</b><span>when the snow stops</span></div>
+</div>
+</div>
+<p class="m-muted">Sunset is at 4:25 p.m., so the last of the snow falls in fading light. Wet snow is likely as the temperature climbs toward 4°C by the early afternoon.</p>
+<style>
+#snow-now{position:relative;min-height:90vh;padding:clamp(24px,6vw,80px);background:var(--bg);color:var(--fg);display:flex;flex-direction:column;justify-content:center;gap:var(--gap);overflow:hidden}
+#snow-now h2{margin:0;font-family:var(--font-display);line-height:.95;max-width:12ch}
+#snow-now .m-lead{max-width:34ch;margin:0}
+#snow-now .sn-wrap{position:relative;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:24px 0;min-height:220px}
+#snow-now canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+#snow-now .sn-stats{position:relative;display:flex;flex-wrap:wrap;gap:clamp(20px,5vw,64px)}
+#snow-now .m-stat b{font-family:var(--font-display);font-size:clamp(2rem,6vw,4rem);color:var(--accent);display:block}
+#snow-now .m-muted{max-width:52ch;margin:0}
+</style>
+</section><section id="clearing-window">
+<p class="m-kicker">Saturday, 28 November</p>
+<h2 class="m-big">The snow stops<br>around <span class="m-accent">5 p.m.</span></h2>
+<p class="m-lead">Snow is likely every hour until 4 p.m. At 5 the chance drops to 8%, and the sky turns to plain cloud with no precipitation for the rest of the evening.</p>
+<figure class="cw-chart">
+<svg id="cw-svg" viewBox="0 0 520 190" role="img" aria-label="Chance of snow by hour from 9 a.m. to 9 p.m.">
+<line x1="0" y1="150" x2="520" y2="150" stroke="var(--line)"/>
+<g id="cw-bars"></g>
+<g id="cw-labels" font-family="var(--font-mono)" font-size="10" fill="var(--muted)"></g>
+</svg>
+<figcaption class="m-muted">Chance of snow, hour by hour. Sunset is at 4:25 p.m., so the clearing arrives after dark.</figcaption>
+</figure>
+<div class="m-row cw-facts">
+<div class="m-stat"><b>82%</b><span>chance at 4 p.m.</span></div>
+<div class="m-stat"><b>8%</b><span>chance at 5 p.m.</span></div>
+<div class="m-stat"><b>3°C</b><span>at 5 p.m.</span></div>
+</div>
+<style>
+#clearing-window{padding:clamp(48px,9vh,110px) 0}
+#clearing-window .m-big{margin:.2em 0 .4em;line-height:.95}
+#clearing-window .cw-chart{margin:2rem 0 1.5rem;max-width:760px}
+#clearing-window svg{width:100%;height:auto;display:block}
+#clearing-window .cw-facts{gap:clamp(24px,5vw,64px)}
+#clearing-window .cw-bar{fill:var(--accent)}
+#clearing-window .cw-bar.after{fill:var(--accent-2);opacity:.55}
+</style>
+</section><section id="night-cold">
+<p class="m-kicker">Tonight · Saturday</p>
+<h2 class="m-big">Freezing<br>tonight.</h2>
+<p class="m-lead">By 9 p.m. it is -1°C. The snow is long gone by then, but the cold stays.</p>
+<div class="nc-wrap">
+<svg id="nc-chart" viewBox="0 0 600 200" role="img" aria-label="Temperature from 5 p.m. to 9 p.m.: 3, 2, 1, 1, then minus 1 degrees Celsius" preserveAspectRatio="xMidYMid meet">
+<line x1="30" y1="120" x2="580" y2="120" class="nc-zero"/>
+<text x="30" y="112" class="nc-zl">0°C</text>
+<path id="nc-line" d="M60,60 L195,84 L330,108 L465,108 L570,148" fill="none"/>
+<g class="nc-dots">
+<circle cx="60" cy="60" r="5"/><circle cx="195" cy="84" r="5"/><circle cx="330" cy="108" r="5"/><circle cx="465" cy="108" r="5"/><circle cx="570" cy="148" r="7" class="nc-last"/>
+</g>
+<g class="nc-lab">
+<text x="60" y="44" text-anchor="middle">3°</text>
+<text x="195" y="68" text-anchor="middle">2°</text>
+<text x="330" y="92" text-anchor="middle">1°</text>
+<text x="465" y="92" text-anchor="middle">1°</text>
+<text x="565" y="176" text-anchor="middle">-1°</text>
+</g>
+<g class="nc-t">
+<text x="60" y="196" text-anchor="middle">5 p.m.</text>
+<text x="195" y="196" text-anchor="middle">6 p.m.</text>
+<text x="330" y="196" text-anchor="middle">7 p.m.</text>
+<text x="465" y="196" text-anchor="middle">8 p.m.</text>
+<text x="570" y="196" text-anchor="middle">9 p.m.</text>
+</g>
+</svg>
+</div>
+<div class="m-row nc-facts">
+<div class="m-stat"><b>3°C</b><span>at 5 p.m., when the snow stops</span></div>
+<div class="m-stat"><b>1°C</b><span>from 7 to 8 p.m.</span></div>
+<div class="m-stat"><b>-1°C</b><span>at 9 p.m., below freezing</span></div>
+</div>
+<p class="m-muted nc-note">Anything wet from the day's snow can stiffen up after dark. The forecast range for the next twelve hours bottoms out at -2°.</p>
+<style>
+#night-cold{padding:clamp(48px,9vw,120px) clamp(20px,6vw,96px);background:var(--surface);color:var(--fg)}
+#night-cold h2{margin:.1em 0 .3em;line-height:.95}
+#night-cold .m-lead{max-width:34ch}
+#night-cold .nc-wrap{margin:clamp(24px,5vw,56px) 0 var(--gap);max-width:720px}
+#night-cold svg{width:100%;height:auto;display:block;overflow:visible}
+#night-cold .nc-zero{stroke:var(--line);stroke-width:1.5;stroke-dasharray:4 6}
+#night-cold .nc-zl{font:12px var(--font-mono);fill:var(--muted)}
+#night-cold #nc-line{stroke:var(--accent);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+#night-cold .nc-dots circle{fill:var(--bg);stroke:var(--accent);stroke-width:3}
+#night-cold .nc-dots .nc-last{fill:var(--accent-2);stroke:var(--accent-2)}
+#night-cold .nc-lab text{font:600 15px var(--font-body);fill:var(--fg)}
+#night-cold .nc-t text{font:12px var(--font-mono);fill:var(--muted)}
+#night-cold .nc-facts{gap:clamp(20px,4vw,56px);margin-top:var(--gap)}
+#night-cold .nc-note{max-width:52ch;margin-top:var(--gap)}
+</style>
+</section></main>
+<style>#m-building{display:none}</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+<script>(()=>{try{
+(function(){
+var sec=document.getElementById('snow-now');
+var cv=document.getElementById('sn-canvas');
+if(!cv)return;
+var ctx=cv.getContext('2d');
+var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var w=0,h=0,flakes=[];
+function color(){return getComputedStyle(sec).getPropertyValue('--muted').trim()||'#888'}
+function size(){
+var r=cv.getBoundingClientRect();
+var d=window.devicePixelRatio||1;
+w=r.width;h=r.height;
+cv.width=w*d;cv.height=h*d;
+ctx.setTransform(d,0,0,d,0,0);
+var n=Math.max(30,Math.round(w/12));
+flakes=[];
+for(var i=0;i<n;i++)flakes.push({x:Math.random()*w,y:Math.random()*h,r:1+Math.random()*2.6,v:.25+Math.random()*.6,p:Math.random()*6.28});
+}
+function draw(t){
+ctx.clearRect(0,0,w,h);
+ctx.fillStyle=color();
+for(var i=0;i<flakes.length;i++){
+var f=flakes[i];
+ctx.globalAlpha=.25+f.r/4;
+ctx.beginPath();
+ctx.arc(f.x+Math.sin(t/1500+f.p)*8,f.y,f.r,0,6.283);
+ctx.fill();
+}
+ctx.globalAlpha=1;
+}
+function step(t){
+for(var i=0;i<flakes.length;i++){
+var f=flakes[i];
+f.y+=f.v;
+if(f.y>h+4){f.y=-4;f.x=Math.random()*w}
+}
+draw(t);
+requestAnimationFrame(step);
+}
+size();
+window.addEventListener('resize',size);
+if(reduce){draw(0)}else{requestAnimationFrame(step)}
+try{
+if(window.MOMENT&&window.MOMENT.live){
+fetch(window.MOMENT.live+'/weather').then(function(r){return r.json()}).then(function(d){
+if(d&&d.now&&typeof d.now.temp_c==='number'){
+document.getElementById('sn-temp').textContent=Math.round(d.now.temp_c)+'°C';
+}
+}).catch(function(){});
+}
+}catch(e){}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var d=[["9",75],["10",77],["11",73],["12",89],["1",85],["2",76],["3",73],["4",82],["5",8],["6",20],["7",15],["8",5],["9",1]];
+var g=document.getElementById('cw-bars'),l=document.getElementById('cw-labels');
+var ns='http://www.w3.org/2000/svg';
+var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+d.forEach(function(p,i){
+var h=Math.max(2,p[1]*1.3),x=8+i*39.5;
+var r=document.createElementNS(ns,'rect');
+r.setAttribute('x',x);r.setAttribute('width',28);r.setAttribute('rx',3);
+r.setAttribute('class','cw-bar'+(i>=8?' after':''));
+r.setAttribute('y',150-h);r.setAttribute('height',h);
+if(!reduce){r.style.transformOrigin='0 150px';r.style.transformBox='fill-box';r.style.transform='scaleY(0)';r.style.transition='transform .7s ease '+(i*60)+'ms';}
+g.appendChild(r);
+var t=document.createElementNS(ns,'text');
+t.setAttribute('x',x+14);t.setAttribute('y',168);t.setAttribute('text-anchor','middle');
+t.textContent=p[0];l.appendChild(t);
+});
+if(!reduce){requestAnimationFrame(function(){requestAnimationFrame(function(){
+g.querySelectorAll('rect').forEach(function(r){r.style.transform='scaleY(1)';});
+});});}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var path=document.getElementById('nc-line');
+if(!path||!window.anime)return;
+if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+var len=path.getTotalLength();
+path.style.strokeDasharray=len;
+path.style.strokeDashoffset=len;
+var done=false;
+function run(){
+if(done)return;done=true;
+anime({targets:path,strokeDashoffset:[len,0],duration:1800,easing:'easeInOutSine'});
+}
+if('IntersectionObserver' in window){
+var io=new IntersectionObserver(function(e){
+if(e[0].isIntersecting){run();io.disconnect();}
+},{threshold:.3});
+io.observe(document.getElementById('nc-chart'));
+}else{run();}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>parent.postMessage({type:'moment:complete'},'*')</script>
+</body></html>

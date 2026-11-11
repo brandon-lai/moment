@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Madrid in an unseasonal November afternoon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>:root{--bg:#f5ece1;--fg:#2d1a10;--muted:#6f5443;--accent:#a94a26;--accent-2:#2f5d62;--surface:#ecdccb;--line:#dcc4ab;color-scheme:light;--font-display:'Archivo Black',sans-serif;--font-body:'Archivo',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;--radius:6px;--gap:1}
+@media (prefers-color-scheme:dark){:root{--bg:#0b0d10;--fg:#f1f5f9;--muted:#94a3b8;--accent:#f472b6;--accent-2:#22d3ee;--surface:#13171c;--line:#252b33;color-scheme:dark;}}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:16.5px;line-height:1.55;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.05;letter-spacing:-.01em;margin:0 0 calc(.5em*var(--gap));text-wrap:balance}
+h1{font-size:clamp(34px,6.4vw,84px)}h2{font-size:clamp(24px,3.6vw,44px)}h3{font-size:clamp(18px,2.2vw,24px)}
+p{margin:0 0 calc(1em*var(--gap));max-width:68ch;text-wrap:pretty}
+a{color:var(--accent);text-underline-offset:.18em}
+button{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--fg);border-radius:var(--radius);padding:.55em 1em;cursor:pointer}
+button:hover{background:var(--fg);color:var(--bg)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=range]{accent-color:var(--accent);width:100%}
+table{border-collapse:collapse;width:100%}td,th{padding:.45em .6em;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85em}
+svg{max-width:100%;height:auto}canvas{max-width:100%;display:block}
+img{max-width:100%}
+.m-kicker{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .9em}
+.m-big{font-family:var(--font-display);font-size:clamp(56px,13vw,170px);line-height:.88;letter-spacing:-.03em;font-weight:400}
+.m-lead{font-size:1.25em;line-height:1.4;max-width:40ch}
+.m-muted{color:var(--muted)}.m-accent{color:var(--accent)}.m-accent-2{color:var(--accent-2)}
+.m-mono{font-family:var(--font-mono)}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:calc(16px*var(--gap))}
+.m-row{display:flex;flex-wrap:wrap;gap:calc(12px*var(--gap));align-items:baseline}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:calc(18px*var(--gap))}
+.m-stat{display:flex;flex-direction:column;gap:.2em}.m-stat b{font-family:var(--font-display);font-size:clamp(28px,4.6vw,52px);line-height:1;font-weight:400}
+.m-rule{border:0;border-top:1px solid var(--line);margin:calc(24px*var(--gap)) 0}
+.m-chip{display:inline-block;font-family:var(--font-mono);font-size:.78rem;padding:.25em .6em;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.m-list{list-style:none;padding:0;margin:0}.m-list li{padding:.6em 0;border-bottom:1px solid var(--line)}
+.m-bars{display:flex;align-items:flex-end;gap:3px;height:120px}.m-bars i{flex:1;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px}
+main>section{scroll-margin-top:16px}
+main>section{animation:m-in .5s cubic-bezier(.2,.7,.2,1) both}@keyframes m-in{from{opacity:0;transform:translateY(18px)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#m-building{position:fixed;left:12px;bottom:12px;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;z-index:5}
+#m-building::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:m-pulse 1.2s ease-in-out infinite}
+@keyframes m-pulse{50%{opacity:.25}}
+.m-earlier{font-family:var(--font-mono);font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
+main{padding:0}main>section{min-height:88vh;padding:clamp(28px,7vw,110px) clamp(16px,6vw,96px);display:flex;flex-direction:column;justify-content:center}main>section:nth-child(even){background:var(--surface)}</style>
+<script>window.MOMENT={"live":"http://localhost:8788/live/40.42,-3.70","tz":"Europe/Madrid","place":"Madrid","eu":true};(()=>{const EU=true;let lastY=scrollY,lastT=performance.now(),speed=0,taps=0,idle=0,lastAct=performance.now(),hov=new Set(),bottom=false;
+const desc=e=>{const el=e.closest&&e.closest('[data-m],button,a,svg,canvas,table,li,figure,h2,h3');if(!el)return null;return(el.getAttribute('data-m')||el.tagName.toLowerCase()+(el.className&&typeof el.className==='string'?'.'+el.className.split(' ')[0]:'')).slice(0,40)};
+const act=()=>{lastAct=performance.now()};
+addEventListener('scroll',()=>{const t=performance.now(),dy=Math.abs(scrollY-lastY);speed=.7*speed+.3*(dy/Math.max(16,t-lastT)*1000);lastY=scrollY;lastT=t;act();const b=innerHeight+scrollY>=document.documentElement.scrollHeight-40;if(b&&!bottom){bottom=true;parent.postMessage({type:'moment:bottom'},'*')}},{passive:true});
+addEventListener('pointerover',e=>{if(EU)return;const d=desc(e.target);if(d&&hov.size<12)hov.add(d)},{passive:true});
+addEventListener('pointerdown',()=>{taps++;act()},{passive:true});addEventListener('keydown',act);
+const onScreen=()=>{let best=null,area=0;for(const s of document.querySelectorAll('main>section')){const r=s.getBoundingClientRect(),v=Math.max(0,Math.min(innerHeight,r.bottom)-Math.max(0,r.top));if(v>area){area=v;best=s.id||null}}return best};
+setInterval(()=>{idle=performance.now()-lastAct;if(EU)return;parent.postMessage({type:'moment:interaction',section:onScreen(),scrollSpeed:Math.round(speed),hovered:[...hov],taps,idleMs:Math.round(idle),atBottom:bottom},'*');hov.clear();speed*=.5},2000);
+})();</script>
+</head><body class="layout-full-bleed motion-lively density-balanced">
+<div id="m-building" role="status">Writing this page</div>
+<main>
+<section id="light-now">
+<p class="m-kicker">Madrid · Saturday · 2:00 p.m.</p>
+<h1 class="m-big">25°<span class="m-accent">C</span></h1>
+<p class="m-lead">Clear sky over Madrid. Not a cloud in the forecast through the afternoon, and it tops out at 26° around 4:00 p.m.</p>
+<div class="ln-stage">
+<svg id="ln-svg" viewBox="0 0 600 220" role="img" aria-label="Sun arc across the sky from 7:52 a.m. sunrise to 6:07 p.m. sunset, with the sun near its midday-afternoon position">
+<line x1="20" y1="190" x2="580" y2="190" stroke="var(--line)" stroke-width="2"/>
+<path id="ln-arc" d="M40 190 A260 170 0 0 1 560 190" fill="none" stroke="var(--line)" stroke-width="2" stroke-dasharray="4 8"/>
+<circle id="ln-glow" cx="300" cy="20" r="26" fill="var(--accent)" opacity="0.18"/>
+<circle id="ln-sun" cx="300" cy="20" r="13" fill="var(--accent)"/>
+<text x="40" y="212" fill="var(--muted)" font-size="12" font-family="var(--font-mono)" text-anchor="middle">7:52 a.m.</text>
+<text x="560" y="212" fill="var(--muted)" font-size="12" font-family="var(--font-mono)" text-anchor="middle">6:07 p.m.</text>
+</svg>
+</div>
+<div class="m-row ln-stats">
+<div class="m-stat"><b>6°C</b><span>warmer than a typical November 7</span></div>
+<div class="m-stat"><b>5%</b><span>chance of rain at 2:00 p.m.</span></div>
+<div class="m-stat"><b>6:07 p.m.</b><span>sunset</span></div>
+</div>
+<style>
+#light-now{min-height:90vh;display:flex;flex-direction:column;justify-content:center;gap:var(--gap);padding:clamp(24px,6vw,72px);background:var(--bg);color:var(--fg)}
+#light-now h1{margin:0;font-size:clamp(7rem,26vw,18rem);line-height:.85}
+#light-now .m-lead{max-width:34ch;margin:0}
+#light-now .ln-stage{width:100%;max-width:640px}
+#light-now svg{width:100%;height:auto;display:block}
+#light-now .ln-stats{gap:clamp(20px,4vw,56px)}
+</style>
+</section><section id="warm-spell">
+<p class="m-kicker">Saturday, November 7</p>
+<h2 class="m-big">Six degrees over.</h2>
+<p class="m-lead">A typical November 7 in Madrid sits near 19°C. Today it is 25°C at 2:00 p.m., and the afternoon peaks at 26°C around 4:00 p.m.</p>
+<div class="ws-gauge">
+<div class="ws-track">
+<div class="ws-fill" id="ws-fill"></div>
+<div class="ws-mark ws-mark-usual"><span class="m-mono">19°</span><em>typical</em></div>
+<div class="ws-mark ws-mark-now"><span class="m-mono m-accent">25°</span><em>today</em></div>
+</div>
+<div class="ws-scale m-mono m-muted"><span>10°</span><span>15°</span><span>20°</span><span>25°</span><span>30°</span></div>
+</div>
+<p class="ws-note">The gap is the same at every hour you look at. By midnight it is still 19°C, which is what the afternoon of an ordinary November 7 would reach.</p>
+<style>
+#warm-spell{background:var(--surface);padding:clamp(48px,9vw,120px) clamp(20px,6vw,96px);min-height:80vh;display:flex;flex-direction:column;justify-content:center;gap:var(--gap)}
+#warm-spell h2{margin:0;color:var(--fg);line-height:.95}
+#warm-spell .m-lead{max-width:34ch;margin:0}
+#warm-spell .ws-gauge{margin:clamp(24px,5vw,56px) 0 8px}
+#warm-spell .ws-track{position:relative;height:56px;border-radius:var(--radius);background:color-mix(in srgb,var(--fg) 8%,transparent);border:1px solid var(--line)}
+#warm-spell .ws-fill{position:absolute;left:0;top:0;bottom:0;width:100%;border-radius:var(--radius);background:linear-gradient(90deg,color-mix(in srgb,var(--accent-2) 55%,transparent) 0 60%,var(--accent) 60% 100%);transform-origin:left;transform:scaleX(1)}
+#warm-spell .ws-gauge.go .ws-fill{animation:ws-grow 1.4s cubic-bezier(.2,.7,.2,1) both}
+@keyframes ws-grow{from{transform:scaleX(.05)}to{transform:scaleX(1)}}
+#warm-spell .ws-mark{position:absolute;top:-34px;display:flex;flex-direction:column;align-items:flex-start;gap:2px;border-left:2px solid var(--fg);padding-left:8px;height:calc(100% + 34px);font-size:.95rem}
+#warm-spell .ws-mark em{font-style:normal;color:var(--muted);font-size:.75rem;text-transform:uppercase;letter-spacing:.08em}
+#warm-spell .ws-mark-usual{left:60%}
+#warm-spell .ws-mark-now{left:calc(100% - 2px);border-left:0;border-right:2px solid var(--fg);padding-left:0;padding-right:8px;align-items:flex-end}
+#warm-spell .ws-scale{display:flex;justify-content:space-between;font-size:.75rem;margin-top:8px}
+#warm-spell .ws-note{max-width:52ch;color:var(--muted);margin:0}
+@media (prefers-reduced-motion:reduce){#warm-spell .ws-gauge.go .ws-fill{animation:none}}
+</style>
+</section><section id="evening-ahead">
+<p class="m-kicker">3 of 3 · Tonight</p>
+<h2 class="ea-h">Cooling toward evening</h2>
+<p class="m-lead">The sky stays clear all night. The temperature just slides: 25° at 2:00 p.m., 23° by 8:00, 18° at 1:00 a.m.</p>
+
+<div class="ea-wrap">
+<svg id="ea-chart" viewBox="0 0 600 260" role="img" aria-label="Hourly temperature from 1:00 p.m. to 1:00 a.m., falling from 25 to 18 degrees Celsius" preserveAspectRatio="xMidYMid meet">
+<line x1="40" y1="30" x2="590" y2="30" stroke="var(--line)"/>
+<line x1="40" y1="100" x2="590" y2="100" stroke="var(--line)"/>
+<line x1="40" y1="170" x2="590" y2="170" stroke="var(--line)"/>
+<text x="34" y="34" text-anchor="end" class="ea-t">26°</text>
+<text x="34" y="104" text-anchor="end" class="ea-t">22°</text>
+<text x="34" y="174" text-anchor="end" class="ea-t">18°</text>
+<rect id="ea-night" x="0" y="20" width="0" height="170" fill="var(--fg)" opacity="0.06"/>
+<path id="ea-area" fill="color-mix(in srgb, var(--accent) 14%, transparent)" d=""/>
+<path id="ea-line" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d=""/>
+<g id="ea-dots"></g>
+<g id="ea-labels"></g>
+</svg>
+<p class="ea-note m-muted m-mono">Sunset at 6:07 p.m. Shaded band: after dark.</p>
+</div>
+
+<div class="m-row ea-stats">
+<div class="m-stat"><b>26°</b><span>peak, 4:00 p.m.</span></div>
+<div class="m-stat"><b>23°</b><span>at 8:00 p.m.</span></div>
+<div class="m-stat"><b>19°</b><span>at midnight</span></div>
+<div class="m-stat"><b>18°</b><span>at 1:00 a.m.</span></div>
+</div>
+
+<p class="ea-end">Rain chance stays at 18% or below the whole way. Take a layer after dark, but you will not need a coat.</p>
+
+<style>
+#evening-ahead{padding:clamp(48px,9vw,120px) clamp(20px,6vw,80px);background:var(--surface);color:var(--fg)}
+#evening-ahead .ea-h{font-family:var(--font-display);font-size:clamp(2.2rem,6vw,4.5rem);line-height:1;margin:.2em 0 .4em}
+#evening-ahead .ea-wrap{margin:clamp(24px,4vw,48px) 0 0;max-width:900px}
+#evening-ahead svg{width:100%;height:auto;display:block}
+#evening-ahead .ea-t{fill:var(--muted);font-family:var(--font-mono);font-size:11px}
+#evening-ahead .ea-note{font-size:.8rem;margin:.5em 0 0}
+#evening-ahead .ea-stats{gap:clamp(20px,4vw,56px);margin-top:clamp(24px,4vw,40px)}
+#evening-ahead .ea-end{max-width:46ch;margin-top:clamp(24px,4vw,40px);font-size:1.1rem}
+</style>
+</section></main>
+<style>#m-building{display:none}</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+<script>(()=>{try{
+(function(){
+var sun=document.getElementById('ln-sun'),glow=document.getElementById('ln-glow');
+if(!sun)return;
+var rise=7*60+52,set=18*60+7,now=14*60;
+var f=(now-rise)/(set-rise);
+function pos(t){
+var a=Math.PI*(1-t);
+return {x:300+260*Math.cos(a)*-1*-1*-1*-1,y:190-170*Math.sin(a)};
+}
+function place(t){
+var a=Math.PI*(1-t);
+var x=300+260*Math.cos(a),y=190-170*Math.sin(a);
+sun.setAttribute('cx',x);sun.setAttribute('cy',y);
+glow.setAttribute('cx',x);glow.setAttribute('cy',y);
+}
+place(f);
+var still=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!still&&window.anime){
+var o={t:0};
+anime({targets:o,t:f,duration:2200,easing:'easeOutCubic',update:function(){place(o.t)}});
+anime({targets:glow,r:[22,32],opacity:[0.28,0.1],duration:2600,direction:'alternate',loop:true,easing:'easeInOutSine'});
+}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var g=document.querySelector('#warm-spell .ws-gauge');
+if(!g)return;
+var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(reduce||!('IntersectionObserver' in window))return;
+var io=new IntersectionObserver(function(es){
+es.forEach(function(e){if(e.isIntersecting){g.classList.add('go');io.disconnect();}});
+},{threshold:.4});
+io.observe(g);
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var root=document.getElementById('evening-ahead');
+var data=[["1p",25],["2p",25],["3p",25],["4p",26],["5p",25],["6p",24],["7p",23],["8p",23],["9p",22],["10p",21],["11p",19],["12a",19],["1a",18]];
+var x0=50,x1=580,yTop=30,yBot=170,min=18,max=26;
+function X(i){return x0+(x1-x0)*i/(data.length-1)}
+function Y(v){return yBot-(yBot-yTop)*(v-min)/(max-min)}
+var pts=data.map(function(d,i){return[X(i),Y(d[1])]});
+var d="M"+pts.map(function(p){return p[0].toFixed(1)+" "+p[1].toFixed(1)}).join(" L");
+var line=document.getElementById('ea-line');
+line.setAttribute('d',d);
+document.getElementById('ea-area').setAttribute('d',d+" L"+x1+" 190 L"+x0+" 190 Z");
+var sx=X(5)+(X(6)-X(5))*0.07;
+var night=document.getElementById('ea-night');
+night.setAttribute('x',sx);night.setAttribute('width',x1+10-sx);
+var ns='http://www.w3.org/2000/svg';
+var dots=document.getElementById('ea-dots'),labs=document.getElementById('ea-labels');
+data.forEach(function(d,i){
+var c=document.createElementNS(ns,'circle');
+c.setAttribute('cx',pts[i][0]);c.setAttribute('cy',pts[i][1]);c.setAttribute('r',i%3===0||i===12?4:2.5);
+c.setAttribute('fill',i===12?'var(--accent-2)':'var(--accent)');dots.appendChild(c);
+if(i%2===0){var t=document.createElementNS(ns,'text');
+t.setAttribute('x',pts[i][0]);t.setAttribute('y',215);t.setAttribute('text-anchor','middle');
+t.setAttribute('class','ea-t');t.textContent=d[0];labs.appendChild(t);}
+});
+var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!reduce&&window.anime){
+var len=line.getTotalLength();
+line.style.strokeDasharray=len;line.style.strokeDashoffset=len;
+var started=false;
+function go(){if(started)return;started=true;
+anime({targets:line,strokeDashoffset:[len,0],duration:2200,easing:'easeInOutSine'});
+anime({targets:dots.children,opacity:[0,1],delay:anime.stagger(150),duration:400,easing:'linear'});}
+if('IntersectionObserver' in window){
+var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){go();io.disconnect();}},{threshold:.3});
+io.observe(root);}else go();
+}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>parent.postMessage({type:'moment:complete'},'*')</script>
+</body></html>

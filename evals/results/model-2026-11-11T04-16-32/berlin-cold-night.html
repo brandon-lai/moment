@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Clear, cold, and a full moon over Berlin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=VT323&family=IBM+Plex+Mono:wght@400;700&display=swap">
+<style>:root{--bg:#0c0c0c;--fg:#f5f5f4;--muted:#a8a29e;--accent:#f05252;--accent-2:#fde047;--surface:#171717;--line:#292524;color-scheme:dark;--font-display:'VT323',sans-serif;--font-body:'IBM Plex Mono',system-ui,sans-serif;--font-mono:'IBM Plex Mono',ui-monospace,monospace;--radius:0px;--gap:1.35}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:18px;line-height:1.55;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.05;letter-spacing:-.01em;margin:0 0 calc(.5em*var(--gap));text-wrap:balance}
+h1{font-size:clamp(34px,6.4vw,84px)}h2{font-size:clamp(24px,3.6vw,44px)}h3{font-size:clamp(18px,2.2vw,24px)}
+p{margin:0 0 calc(1em*var(--gap));max-width:68ch;text-wrap:pretty}
+a{color:var(--accent);text-underline-offset:.18em}
+button{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--fg);border-radius:var(--radius);padding:.55em 1em;cursor:pointer}
+button:hover{background:var(--fg);color:var(--bg)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=range]{accent-color:var(--accent);width:100%}
+table{border-collapse:collapse;width:100%}td,th{padding:.45em .6em;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85em}
+svg{max-width:100%;height:auto}canvas{max-width:100%;display:block}
+img{max-width:100%}
+.m-kicker{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .9em}
+.m-big{font-family:var(--font-display);font-size:clamp(56px,13vw,170px);line-height:.88;letter-spacing:-.03em;font-weight:400}
+.m-lead{font-size:1.25em;line-height:1.4;max-width:40ch}
+.m-muted{color:var(--muted)}.m-accent{color:var(--accent)}.m-accent-2{color:var(--accent-2)}
+.m-mono{font-family:var(--font-mono)}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:calc(16px*var(--gap))}
+.m-row{display:flex;flex-wrap:wrap;gap:calc(12px*var(--gap));align-items:baseline}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:calc(18px*var(--gap))}
+.m-stat{display:flex;flex-direction:column;gap:.2em}.m-stat b{font-family:var(--font-display);font-size:clamp(28px,4.6vw,52px);line-height:1;font-weight:400}
+.m-rule{border:0;border-top:1px solid var(--line);margin:calc(24px*var(--gap)) 0}
+.m-chip{display:inline-block;font-family:var(--font-mono);font-size:.78rem;padding:.25em .6em;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.m-list{list-style:none;padding:0;margin:0}.m-list li{padding:.6em 0;border-bottom:1px solid var(--line)}
+.m-bars{display:flex;align-items:flex-end;gap:3px;height:120px}.m-bars i{flex:1;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px}
+main>section{scroll-margin-top:16px}
+main>section{animation:m-in .5s cubic-bezier(.2,.7,.2,1) both}@keyframes m-in{from{opacity:0;transform:translateY(18px)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#m-building{position:fixed;left:12px;bottom:12px;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;z-index:5}
+#m-building::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:m-pulse 1.2s ease-in-out infinite}
+@keyframes m-pulse{50%{opacity:.25}}
+.m-earlier{font-family:var(--font-mono);font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
+body{font-family:var(--font-mono)}h1,h2,h3{font-family:var(--font-mono);letter-spacing:0}main{max-width:62rem;margin:0 auto;padding:clamp(16px,4vw,48px)}main>section{padding:clamp(20px,4vw,40px) 0;border-top:1px dashed var(--line)}main>section h2::before{content:'> ';color:var(--accent)}:root{--radius:0px}</style>
+<script>window.MOMENT={"live":"http://localhost:8788/live/52.52,13.40","tz":"Europe/Berlin","place":"Berlin","eu":true};(()=>{const EU=true;let lastY=scrollY,lastT=performance.now(),speed=0,taps=0,idle=0,lastAct=performance.now(),hov=new Set(),bottom=false;
+const desc=e=>{const el=e.closest&&e.closest('[data-m],button,a,svg,canvas,table,li,figure,h2,h3');if(!el)return null;return(el.getAttribute('data-m')||el.tagName.toLowerCase()+(el.className&&typeof el.className==='string'?'.'+el.className.split(' ')[0]:'')).slice(0,40)};
+const act=()=>{lastAct=performance.now()};
+addEventListener('scroll',()=>{const t=performance.now(),dy=Math.abs(scrollY-lastY);speed=.7*speed+.3*(dy/Math.max(16,t-lastT)*1000);lastY=scrollY;lastT=t;act();const b=innerHeight+scrollY>=document.documentElement.scrollHeight-40;if(b&&!bottom){bottom=true;parent.postMessage({type:'moment:bottom'},'*')}},{passive:true});
+addEventListener('pointerover',e=>{if(EU)return;const d=desc(e.target);if(d&&hov.size<12)hov.add(d)},{passive:true});
+addEventListener('pointerdown',()=>{taps++;act()},{passive:true});addEventListener('keydown',act);
+const onScreen=()=>{let best=null,area=0;for(const s of document.querySelectorAll('main>section')){const r=s.getBoundingClientRect(),v=Math.max(0,Math.min(innerHeight,r.bottom)-Math.max(0,r.top));if(v>area){area=v;best=s.id||null}}return best};
+setInterval(()=>{idle=performance.now()-lastAct;if(EU)return;parent.postMessage({type:'moment:interaction',section:onScreen(),scrollSpeed:Math.round(speed),hovered:[...hov],taps,idleMs:Math.round(idle),atBottom:bottom},'*');hov.clear();speed*=.5},2000);
+})();</script>
+</head><body class="layout-terminal motion-lively density-airy">
+<div id="m-building" role="status">Writing this page</div>
+<main>
+<section id="clear-cold-night">
+<p class="m-kicker m-mono">berlin / thu 26 nov / 11:10 p.m.</p>
+<h2 class="m-mono" id="ccn-h"><span class="m-accent">$</span> A clear, cold Thursday night<span id="ccn-cursor">_</span></h2>
+<p class="m-lead m-mono">It is -4°C in Berlin and the sky is clear. It stays clear all night.</p>
+<div class="ccn-table m-mono">
+<div><span>now</span><span id="ccn-now">-4°C</span><span class="m-muted">clear</span></div>
+<div><span>low</span><span>-7°C</span><span class="m-muted">3:00 to 5:00 a.m.</span></div>
+<div><span>high, next 12h</span><span>-1°C</span><span class="m-muted">10:00 a.m.</span></div>
+<div><span>rain</span><span>0 mm</span><span class="m-muted">none in the next 12h</span></div>
+<div><span>sunrise</span><span>7:47 a.m.</span><span class="m-muted">tomorrow</span></div>
+<div><span>sunset</span><span>4:02 p.m.</span><span class="m-muted">today, long gone</span></div>
+</div>
+<p class="m-mono m-muted ccn-note">Nothing between you and the sky. Dress for the -7 at 3:00 a.m., not the -4 you have now.</p>
+<style>
+#clear-cold-night{padding:calc(var(--gap)*2) 0}
+#clear-cold-night h2{font-size:clamp(1.5rem,4.5vw,2.6rem);line-height:1.15;margin:.4em 0 .6em;font-weight:700}
+#clear-cold-night .m-lead{max-width:38em;margin:0 0 calc(var(--gap)*1.5)}
+#clear-cold-night .ccn-table{border-top:1px solid var(--line);max-width:40em}
+#clear-cold-night .ccn-table div{display:grid;grid-template-columns:minmax(6.5em,10em) 6em 1fr;gap:1em;padding:.7em 0;border-bottom:1px solid var(--line);align-items:baseline}
+#clear-cold-night .ccn-table div span:nth-child(2){color:var(--accent);font-weight:700}
+#clear-cold-night .ccn-note{margin-top:calc(var(--gap)*1.5);max-width:36em}
+#clear-cold-night #ccn-cursor{color:var(--accent)}
+@media (max-width:420px){#clear-cold-night .ccn-table div{grid-template-columns:1fr 1fr}#clear-cold-night .ccn-table div span:nth-child(3){grid-column:1/-1}}
+</style>
+</section><section id="full-moon-overhead">
+<h2 class="m-mono"><span class="m-accent">$</span> moon --tonight --city berlin</h2>
+<p class="m-lead m-mono">The moon is full tonight, and the sky has nothing in front of it.</p>
+<pre class="m-mono" id="moon-readout">sky        clear, all night
+moon       full
+temp       -4°C at 11:10 p.m.
+low        -7°C, 3:00 a.m. to 5:00 a.m.
+cloud      none in the hourly run, 10 p.m. to 10 a.m.</pre>
+<svg id="moon-svg" viewBox="0 0 320 180" role="img" aria-label="A full moon above a flat line of rooftops" width="100%" style="max-width:480px;display:block">
+<rect x="0" y="0" width="320" height="180" fill="none" stroke="var(--line)"/>
+<g id="moon-stars"></g>
+<circle id="moon-glow" cx="220" cy="64" r="44" fill="var(--accent)" opacity="0.12"/>
+<circle id="moon-disc" cx="220" cy="64" r="30" fill="var(--fg)"/>
+<path d="M0 150 H40 V134 H62 V150 H96 V128 H118 V150 H170 V138 H200 V150 H250 V132 H276 V150 H320 V180 H0 Z" fill="var(--surface)" stroke="var(--line)"/>
+</svg>
+<p class="m-muted m-mono">With no cloud forecast, the full moon stays visible for the whole run of hours ahead. Look up any time before sunrise at 7:47 a.m.</p>
+<p class="m-mono"><span class="m-accent">$</span> <span id="moon-cursor">_</span></p>
+<style>
+#full-moon-overhead pre{margin:var(--gap) 0;padding:1rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.8}
+#full-moon-overhead svg{margin:var(--gap) 0}
+#full-moon-overhead h2{font-weight:400}
+</style>
+</section><section id="the-hours-ahead">
+<h2 class="m-mono">$ temp --next 12h <span class="m-accent">_</span></h2>
+<p class="m-lead m-mono">It keeps getting colder until 5:00 a.m., then climbs. Every hour is clear.</p>
+<pre id="ha-table" class="m-mono" style="margin:0;white-space:pre;overflow-x:auto;line-height:1.7">
+time        temp    sky
+11:00 p.m.  -4°C    clear
+12:00 a.m.  -6°C    clear
+1:00 a.m.   -6°C    clear
+2:00 a.m.   -6°C    clear
+3:00 a.m.   -7°C    clear   low
+4:00 a.m.   -7°C    clear   low
+5:00 a.m.   -7°C    clear   low
+6:00 a.m.   -6°C    clear
+7:00 a.m.   -5°C    clear
+8:00 a.m.   -4°C    clear
+9:00 a.m.   -2°C    clear
+10:00 a.m.  -1°C    clear   high
+</pre>
+<div class="m-rule" style="margin:var(--gap) 0"></div>
+<p class="m-kicker">temperature, 11:00 p.m. to 10:00 a.m.</p>
+<svg id="ha-chart" viewBox="0 0 600 160" width="100%" role="img" aria-label="Line chart of temperature falling from -4 degrees at 11 p.m. to -7 degrees at 3 a.m., then rising to -1 degrees at 10 a.m.">
+<line x1="10" y1="20" x2="590" y2="20" stroke="var(--line)" />
+<line x1="10" y1="140" x2="590" y2="140" stroke="var(--line)" />
+<polyline id="ha-line" fill="none" stroke="var(--accent)" stroke-width="2" points="10,76 62,100 114,100 167,100 219,124 272,124 324,124 377,100 429,88 482,76 534,52 590,28" />
+<g fill="var(--accent)">
+<rect x="217" y="122" width="5" height="5"/>
+<rect x="322" y="122" width="5" height="5"/>
+</g>
+<text x="12" y="14" font-size="11" fill="var(--muted)" font-family="monospace">-1°</text>
+<text x="12" y="156" font-size="11" fill="var(--muted)" font-family="monospace">-7°</text>
+<text x="230" y="154" font-size="11" fill="var(--muted)" font-family="monospace">3 a.m.</text>
+</svg>
+<p class="m-muted m-mono">Coldest from 3:00 to 5:00 a.m. By 10:00 a.m. it is -1°C. Sunrise is at 7:47 a.m., at -5°C.</p>
+<p class="m-mono">$ <span class="m-accent">_</span></p>
+<style>
+#the-hours-ahead h2{font-weight:400;margin:0 0 var(--gap)}
+#the-hours-ahead .m-lead{margin:0 0 var(--gap)}
+#the-hours-ahead #ha-table{color:var(--fg);font-size:.95rem;border-radius:0}
+#the-hours-ahead svg{display:block;border-radius:0;max-width:100%}
+#the-hours-ahead .m-accent{animation:ha-blink 1.1s steps(1) infinite}
+@keyframes ha-blink{50%{opacity:0}}
+@media (prefers-reduced-motion:reduce){#the-hours-ahead .m-accent{animation:none}}
+</style>
+</section></main>
+<style>#m-building{display:none}</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+<script>(()=>{try{
+(function(){
+var c=document.getElementById('ccn-cursor');
+var still=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(c&&!still){var on=true;setInterval(function(){on=!on;c.style.opacity=on?1:0;},530);}
+try{
+fetch(window.MOMENT.live+'/weather').then(function(r){return r.json()}).then(function(d){
+if(d&&d.now&&typeof d.now.temp_c==='number'){
+document.getElementById('ccn-now').textContent=Math.round(d.now.temp_c)+'°C';
+}
+}).catch(function(){});
+}catch(e){}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var g=document.getElementById('moon-stars');
+if(!g)return;
+var ns='http://www.w3.org/2000/svg';
+var pts=[[24,20],[60,44],[104,16],[140,52],[170,24],[28,86],[92,78],[150,96],[290,30],[300,92],[262,70],[124,114]];
+pts.forEach(function(p,i){
+var c=document.createElementNS(ns,'rect');
+c.setAttribute('x',p[0]);c.setAttribute('y',p[1]);
+c.setAttribute('width',2);c.setAttribute('height',2);
+c.setAttribute('fill','var(--muted)');
+c.setAttribute('class','moon-star');
+g.appendChild(c);
+});
+var still=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(still)return;
+if(window.anime){
+anime({targets:'#full-moon-overhead .moon-star',opacity:[0.2,1],duration:1800,delay:anime.stagger(220),direction:'alternate',loop:true,easing:'easeInOutSine'});
+anime({targets:'#moon-glow',opacity:[0.08,0.2],r:[42,50],duration:3200,direction:'alternate',loop:true,easing:'easeInOutSine'});
+}
+var cur=document.getElementById('moon-cursor');
+if(cur){setInterval(function(){cur.style.visibility=cur.style.visibility==='hidden'?'visible':'hidden';},530);}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var line=document.getElementById('ha-line');
+if(!line||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+var len=line.getTotalLength();
+line.style.strokeDasharray=len;
+line.style.strokeDashoffset=len;
+if(window.anime){
+anime({targets:line,strokeDashoffset:[len,0],duration:2200,easing:'easeInOutSine'});
+}else{
+line.style.strokeDashoffset=0;
+}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>parent.postMessage({type:'moment:complete'},'*')</script>
+</body></html>

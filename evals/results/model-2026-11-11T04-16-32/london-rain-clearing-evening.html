@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>London&#39;s rain, easing toward seven</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:wght@400;700&family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>:root{--bg:#0e1116;--fg:#e8e6e1;--muted:#9aa0a8;--accent:#f59e0b;--accent-2:#60a5fa;--surface:#161b22;--line:#2a313b;color-scheme:dark;--font-display:'Literata',serif;--font-body:'Atkinson Hyperlegible',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;--radius:2px;--gap:0.7}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:15px;line-height:1.55;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;line-height:1.05;letter-spacing:-.01em;margin:0 0 calc(.5em*var(--gap));text-wrap:balance}
+h1{font-size:clamp(34px,6.4vw,84px)}h2{font-size:clamp(24px,3.6vw,44px)}h3{font-size:clamp(18px,2.2vw,24px)}
+p{margin:0 0 calc(1em*var(--gap));max-width:68ch;text-wrap:pretty}
+a{color:var(--accent);text-underline-offset:.18em}
+button{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--fg);border-radius:var(--radius);padding:.55em 1em;cursor:pointer}
+button:hover{background:var(--fg);color:var(--bg)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=range]{accent-color:var(--accent);width:100%}
+table{border-collapse:collapse;width:100%}td,th{padding:.45em .6em;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85em}
+svg{max-width:100%;height:auto}canvas{max-width:100%;display:block}
+img{max-width:100%}
+.m-kicker{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .9em}
+.m-big{font-family:var(--font-display);font-size:clamp(56px,13vw,170px);line-height:.88;letter-spacing:-.03em;font-weight:700}
+.m-lead{font-size:1.25em;line-height:1.4;max-width:40ch}
+.m-muted{color:var(--muted)}.m-accent{color:var(--accent)}.m-accent-2{color:var(--accent-2)}
+.m-mono{font-family:var(--font-mono)}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:calc(16px*var(--gap))}
+.m-row{display:flex;flex-wrap:wrap;gap:calc(12px*var(--gap));align-items:baseline}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:calc(18px*var(--gap))}
+.m-stat{display:flex;flex-direction:column;gap:.2em}.m-stat b{font-family:var(--font-display);font-size:clamp(28px,4.6vw,52px);line-height:1;font-weight:700}
+.m-rule{border:0;border-top:1px solid var(--line);margin:calc(24px*var(--gap)) 0}
+.m-chip{display:inline-block;font-family:var(--font-mono);font-size:.78rem;padding:.25em .6em;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.m-list{list-style:none;padding:0;margin:0}.m-list li{padding:.6em 0;border-bottom:1px solid var(--line)}
+.m-bars{display:flex;align-items:flex-end;gap:3px;height:120px}.m-bars i{flex:1;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px}
+main>section{scroll-margin-top:16px}
+main>section{animation:m-in .9s cubic-bezier(.2,.7,.2,1) both}@keyframes m-in{from{opacity:0;transform:translateY(8px)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#m-building{position:fixed;left:12px;bottom:12px;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;z-index:5}
+#m-building::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:m-pulse 1.2s ease-in-out infinite}
+@keyframes m-pulse{50%{opacity:.25}}
+.m-earlier{font-family:var(--font-mono);font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
+main{padding:0 clamp(16px,5vw,72px) 64px}main>section:first-child{min-height:96vh;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:clamp(24px,6vw,80px)}main>section:first-child h1{font-size:clamp(48px,12vw,180px);line-height:.9;max-width:14ch}main>section{padding:clamp(24px,5vw,64px) 0;max-width:60rem}</style>
+<script>window.MOMENT={"live":"http://localhost:8788/live/51.51,-0.13","tz":"Europe/London","place":"London","eu":true};(()=>{const EU=true;let lastY=scrollY,lastT=performance.now(),speed=0,taps=0,idle=0,lastAct=performance.now(),hov=new Set(),bottom=false;
+const desc=e=>{const el=e.closest&&e.closest('[data-m],button,a,svg,canvas,table,li,figure,h2,h3');if(!el)return null;return(el.getAttribute('data-m')||el.tagName.toLowerCase()+(el.className&&typeof el.className==='string'?'.'+el.className.split(' ')[0]:'')).slice(0,40)};
+const act=()=>{lastAct=performance.now()};
+addEventListener('scroll',()=>{const t=performance.now(),dy=Math.abs(scrollY-lastY);speed=.7*speed+.3*(dy/Math.max(16,t-lastT)*1000);lastY=scrollY;lastT=t;act();const b=innerHeight+scrollY>=document.documentElement.scrollHeight-40;if(b&&!bottom){bottom=true;parent.postMessage({type:'moment:bottom'},'*')}},{passive:true});
+addEventListener('pointerover',e=>{if(EU)return;const d=desc(e.target);if(d&&hov.size<12)hov.add(d)},{passive:true});
+addEventListener('pointerdown',()=>{taps++;act()},{passive:true});addEventListener('keydown',act);
+const onScreen=()=>{let best=null,area=0;for(const s of document.querySelectorAll('main>section')){const r=s.getBoundingClientRect(),v=Math.max(0,Math.min(innerHeight,r.bottom)-Math.max(0,r.top));if(v>area){area=v;best=s.id||null}}return best};
+setInterval(()=>{idle=performance.now()-lastAct;if(EU)return;parent.postMessage({type:'moment:interaction',section:onScreen(),scrollSpeed:Math.round(speed),hovered:[...hov],taps,idleMs:Math.round(idle),atBottom:bottom},'*');hov.clear();speed*=.5},2000);
+})();</script>
+</head><body class="layout-poster motion-gentle density-dense">
+<div id="m-building" role="status">Writing this page</div>
+<main>
+<section id="rain-easing">
+<p class="m-kicker">London · Tuesday · 5:20 p.m.</p>
+<h2 class="re-head">Light rain, then clearing</h2>
+<p class="m-lead re-lead">It is 13° and raining lightly. The rain stops around <span class="m-accent">7 p.m.</span></p>
+<div class="re-stage">
+<canvas id="re-canvas" aria-hidden="true"></canvas>
+<div class="re-big m-big"><span>7</span><small>p.m.</small></div>
+</div>
+<div class="re-hours" id="re-hours">
+<div><b>5 p.m.</b><i style="height:88%"></i><span>88% · 0.2 mm</span></div>
+<div><b>6 p.m.</b><i style="height:87%"></i><span>87% · 1.8 mm</span></div>
+<div class="re-dry"><b>7 p.m.</b><i style="height:9%"></i><span>9% · dry</span></div>
+<div class="re-dry"><b>8 p.m.</b><i style="height:8%"></i><span>8% · dry</span></div>
+</div>
+<p class="m-muted re-note">The heaviest stretch is the 6 o'clock hour, 1.8 mm. After seven it cools from 12° toward 6° overnight.</p>
+<style>
+#rain-easing{position:relative;min-height:100vh;padding:clamp(24px,5vw,64px);display:flex;flex-direction:column;gap:var(--gap);overflow:hidden}
+#rain-easing .re-head{font-family:var(--font-display);font-size:clamp(1.1rem,2vw,1.5rem);margin:0;color:var(--muted);font-weight:400}
+#rain-easing .re-lead{max-width:28ch;margin:0;position:relative;z-index:2}
+#rain-easing .re-stage{position:absolute;inset:0;z-index:0;pointer-events:none}
+#rain-easing canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.55}
+#rain-easing .re-big{position:absolute;right:-2vw;top:22%;display:flex;align-items:baseline;gap:.1em;font-family:var(--font-display);font-size:clamp(14rem,42vw,40rem);line-height:.8;color:color-mix(in srgb,var(--accent) 22%,transparent);letter-spacing:-.04em}
+#rain-easing .re-big small{font-size:.12em;letter-spacing:0;color:color-mix(in srgb,var(--accent-2) 60%,transparent)}
+#rain-easing .re-hours{position:relative;z-index:2;margin-top:auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;max-width:560px;align-items:end;height:160px}
+#rain-easing .re-hours div{display:flex;flex-direction:column;justify-content:flex-end;gap:6px;height:100%;border-top:1px solid var(--line);padding-top:6px}
+#rain-easing .re-hours b{font-family:var(--font-mono);font-size:.75rem;font-weight:400;color:var(--muted)}
+#rain-easing .re-hours i{display:block;background:var(--accent);border-radius:2px;order:2;min-height:3px}
+#rain-easing .re-hours .re-dry i{background:var(--accent-2)}
+#rain-easing .re-hours span{font-family:var(--font-mono);font-size:.7rem;color:var(--fg);order:3}
+#rain-easing .re-hours b{order:1;margin-bottom:auto}
+#rain-easing .re-note{position:relative;z-index:2;max-width:46ch;margin:0}
+</style>
+</section><section id="dusk-settling">
+<p class="m-kicker">After 4:20 p.m.</p>
+<h2 class="ds-title">Dusk over the city</h2>
+<p class="m-lead">The sun set at 4:20 p.m. It is 5:20 now, so the dark is already an hour old.</p>
+
+<div class="ds-wrap">
+<svg id="ds-svg" viewBox="0 0 600 200" role="img" aria-label="A city skyline at night with a few lit windows and thin rain that stops around seven">
+<g id="ds-rain" stroke="var(--accent-2)" stroke-width="1" opacity=".5"></g>
+<g id="ds-skyline" fill="var(--surface)" stroke="var(--line)" stroke-width="1">
+<rect x="0" y="150" width="60" height="50"/>
+<rect x="60" y="120" width="44" height="80"/>
+<rect x="104" y="140" width="56" height="60"/>
+<rect x="160" y="90" width="40" height="110"/>
+<rect x="200" y="130" width="70" height="70"/>
+<rect x="270" y="105" width="46" height="95"/>
+<rect x="316" y="145" width="60" height="55"/>
+<rect x="376" y="75" width="38" height="125"/>
+<rect x="414" y="125" width="66" height="75"/>
+<rect x="480" y="100" width="44" height="100"/>
+<rect x="524" y="140" width="76" height="60"/>
+</g>
+<g id="ds-lights" fill="var(--accent)"></g>
+</svg>
+</div>
+
+<div class="ds-row">
+<div class="m-stat"><b>7 p.m.</b><span>rain stops</span></div>
+<div class="m-stat"><b>12°</b><span>at 7 p.m.</span></div>
+<div class="m-stat"><b>6°</b><span>by 1 a.m.</span></div>
+</div>
+
+<p class="ds-note">After seven the sky is mostly cloud with gaps, and rain chances stay under 20% through the night. It cools from 12° to 6° by 1 a.m., and sits at 7° around 4 a.m. Sunrise is 7:10 a.m.</p>
+
+<style>
+#dusk-settling{padding:calc(var(--gap)*1.5) var(--gap);border-left:3px solid var(--accent);max-width:760px}
+#dusk-settling .ds-title{font-family:var(--font-display);font-size:clamp(1.8rem,5vw,3rem);margin:.2em 0 .4em;line-height:1.05}
+#dusk-settling .ds-wrap{margin:var(--gap) 0;border:1px solid var(--line);border-radius:var(--radius);background:color-mix(in srgb,var(--bg) 70%,var(--surface));overflow:hidden}
+#dusk-settling svg{display:block;width:100%;height:auto}
+#dusk-settling .ds-row{display:flex;flex-wrap:wrap;gap:var(--gap);margin-bottom:var(--gap)}
+#dusk-settling .ds-note{color:var(--muted);max-width:56ch}
+#dusk-settling .ds-win{opacity:.15}
+#dusk-settling .ds-win.on{opacity:.9}
+</style>
+</section></main>
+<style>#m-building{display:none}</style>
+
+<script>(()=>{try{
+(function(){
+var c=document.getElementById('re-canvas');if(!c)return;
+var ctx=c.getContext('2d');
+var cs=getComputedStyle(document.documentElement);
+var col=cs.getPropertyValue('--fg').trim()||'#fff';
+var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var w,h,drops=[];
+function size(){var r=c.getBoundingClientRect();w=c.width=r.width;h=c.height=r.height;}
+size();window.addEventListener('resize',size);
+var n=70;
+for(var i=0;i<n;i++)drops.push({x:Math.random(),y:Math.random(),l:8+Math.random()*14,s:.15+Math.random()*.25});
+var t0=performance.now();
+function draw(now){
+var k=reduce?1:Math.max(0,1-((now-t0)/60000));
+ctx.clearRect(0,0,w,h);
+ctx.strokeStyle=col;ctx.lineWidth=1;
+var active=Math.ceil(n*(.25+.75*k));
+for(var i=0;i<active;i++){
+var d=drops[i];
+ctx.globalAlpha=.25+.4*k;
+ctx.beginPath();ctx.moveTo(d.x*w,d.y*h);ctx.lineTo(d.x*w-d.l*.2,d.y*h+d.l);ctx.stroke();
+if(!reduce){d.y+=d.s*(h/600)*.016*60/60;d.x-=.0004;if(d.y>1){d.y=-.05;d.x=Math.random()*1.1;}}
+}
+if(!reduce)requestAnimationFrame(draw);
+}
+requestAnimationFrame(draw);
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var sec=document.getElementById('dusk-settling');
+var ns='http://www.w3.org/2000/svg';
+var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var lights=document.getElementById('ds-lights');
+var seed=7;
+function rnd(){seed=(seed*9301+49297)%233280;return seed/233280;}
+var wins=[];
+var blds=[[0,60,150],[60,44,120],[104,56,140],[160,40,90],[200,70,130],[270,46,105],[316,60,145],[376,38,75],[414,66,125],[480,44,100],[524,76,140]];
+blds.forEach(function(b){
+for(var y=b[2]+10;y<190;y+=16){
+for(var x=b[0]+8;x<b[0]+b[1]-8;x+=14){
+var r=document.createElementNS(ns,'rect');
+r.setAttribute('x',x);r.setAttribute('y',y);r.setAttribute('width',5);r.setAttribute('height',7);
+r.setAttribute('class','ds-win'+(rnd()>.6?' on':''));
+lights.appendChild(r);wins.push(r);
+}}
+});
+var rain=document.getElementById('ds-rain');
+var drops=[];
+for(var i=0;i<40;i++){
+var l=document.createElementNS(ns,'line');
+var x=rnd()*600,y=rnd()*200;
+l.setAttribute('x1',x);l.setAttribute('y1',y);l.setAttribute('x2',x-3);l.setAttribute('y2',y+10);
+rain.appendChild(l);drops.push({el:l,x:x,y:y});
+}
+if(reduce){rain.setAttribute('opacity','.2');return;}
+var t0=null;
+function frame(t){
+if(!t0)t0=t;
+var el=(t-t0)/1000;
+var fade=Math.max(0,1-el/12);
+rain.setAttribute('opacity',(.5*fade).toFixed(3));
+drops.forEach(function(d){
+d.y+=1.6;d.x-=.5;
+if(d.y>200){d.y=-10;d.x=rnd()*600;}
+d.el.setAttribute('x1',d.x);d.el.setAttribute('y1',d.y);d.el.setAttribute('x2',d.x-3);d.el.setAttribute('y2',d.y+10);
+});
+if(fade>0)requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+setInterval(function(){
+var w=wins[Math.floor(Math.random()*wins.length)];
+w.classList.toggle('on');
+},900);
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>parent.postMessage({type:'moment:complete'},'*')</script>
+</body></html>

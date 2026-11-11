@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Thanksgiving Eve in Cambridge, 31° Tonight</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&family=Karla:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>:root{--bg:#f6ebe7;--fg:#2b1b1e;--muted:#6e5459;--accent:#b8304f;--accent-2:#5b4a8a;--surface:#efdcd6;--line:#e0c4bc;color-scheme:light;--font-display:'EB Garamond',serif;--font-body:'Karla',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;--radius:2px;--gap:1}
+@media (prefers-color-scheme:dark){:root{--bg:#101826;--fg:#eef3f9;--muted:#9fb0c6;--accent:#93c5fd;--accent-2:#fca5a5;--surface:#172235;--line:#273650;color-scheme:dark;}}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:16.5px;line-height:1.55;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;line-height:1.05;letter-spacing:-.01em;margin:0 0 calc(.5em*var(--gap));text-wrap:balance}
+h1{font-size:clamp(30px,min(6.4vw,11cqi),84px)}h2{font-size:clamp(22px,min(3.6vw,8cqi),44px)}h3{font-size:clamp(18px,2.2vw,24px)}
+p{margin:0 0 calc(1em*var(--gap));max-width:68ch;text-wrap:pretty}
+a{color:var(--accent);text-underline-offset:.18em}
+button{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--fg);border-radius:var(--radius);padding:.55em 1em;cursor:pointer}
+button:hover{background:var(--fg);color:var(--bg)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=range]{accent-color:var(--accent);width:100%}
+table{border-collapse:collapse;width:100%}td,th{padding:.45em .6em;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85em}
+svg{max-width:100%;height:auto}canvas{max-width:100%;display:block}
+img{max-width:100%}
+.m-kicker{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .9em}
+.m-big{font-family:var(--font-display);font-size:clamp(44px,16cqi,170px);line-height:.88;letter-spacing:-.03em;font-weight:700}
+.m-lead{font-size:1.25em;line-height:1.4;max-width:40ch}
+.m-muted{color:var(--muted)}.m-accent{color:var(--accent)}.m-accent-2{color:var(--accent-2)}
+.m-mono{font-family:var(--font-mono)}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:calc(16px*var(--gap))}
+.m-row{display:flex;flex-wrap:wrap;gap:calc(12px*var(--gap));align-items:baseline}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:calc(18px*var(--gap))}
+.m-stat{display:flex;flex-direction:column;gap:.2em}.m-stat b{font-family:var(--font-display);font-size:clamp(26px,7cqi,52px);line-height:1;font-weight:700}
+.m-rule{border:0;border-top:1px solid var(--line);margin:calc(24px*var(--gap)) 0}
+.m-chip{display:inline-block;font-family:var(--font-mono);font-size:.78rem;padding:.25em .6em;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.m-list{list-style:none;padding:0;margin:0}.m-list li{padding:.6em 0;border-bottom:1px solid var(--line)}
+.m-bars{display:flex;align-items:flex-end;gap:3px;height:120px}.m-bars i{flex:1;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px}
+main>section{scroll-margin-top:16px;container-type:inline-size}
+main>section{animation:m-in .5s cubic-bezier(.2,.7,.2,1) both}@keyframes m-in{from{opacity:0;transform:translateY(18px)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#m-building{position:fixed;left:12px;bottom:12px;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;z-index:5}
+#m-building::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:m-pulse 1.2s ease-in-out infinite}
+@keyframes m-pulse{50%{opacity:.25}}
+.m-earlier{font-family:var(--font-mono);font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
+main{max-width:44rem;margin:0 auto;padding:clamp(24px,6vw,72px) clamp(16px,5vw,32px)}main>section{padding:clamp(28px,6vw,64px) 0}main>section+section{border-top:1px solid var(--line)}</style>
+<script>window.MOMENT={"live":"http://localhost:8788/live/42.36,-71.06","tz":"America/New_York","place":"Cambridge","eu":false};(()=>{const EU=false;let lastY=scrollY,lastT=performance.now(),speed=0,taps=0,idle=0,lastAct=performance.now(),hov=new Set(),bottom=false;
+const desc=e=>{const el=e.closest&&e.closest('[data-m],button,a,svg,canvas,table,li,figure,h2,h3');if(!el)return null;return(el.getAttribute('data-m')||el.tagName.toLowerCase()+(el.className&&typeof el.className==='string'?'.'+el.className.split(' ')[0]:'')).slice(0,40)};
+const act=()=>{lastAct=performance.now()};
+addEventListener('scroll',()=>{const t=performance.now(),dy=Math.abs(scrollY-lastY);speed=.7*speed+.3*(dy/Math.max(16,t-lastT)*1000);lastY=scrollY;lastT=t;act();const b=innerHeight+scrollY>=document.documentElement.scrollHeight-40;if(b&&!bottom){bottom=true;parent.postMessage({type:'moment:bottom'},'*')}},{passive:true});
+addEventListener('pointerover',e=>{if(EU)return;const d=desc(e.target);if(d&&hov.size<12)hov.add(d)},{passive:true});
+addEventListener('pointerdown',()=>{taps++;act()},{passive:true});addEventListener('keydown',act);
+const onScreen=()=>{let best=null,area=0;for(const s of document.querySelectorAll('main>section')){const r=s.getBoundingClientRect(),v=Math.max(0,Math.min(innerHeight,r.bottom)-Math.max(0,r.top));if(v>area){area=v;best=s.id||null}}return best};
+setInterval(()=>{idle=performance.now()-lastAct;if(EU)return;parent.postMessage({type:'moment:interaction',section:onScreen(),scrollSpeed:Math.round(speed),hovered:[...hov],taps,idleMs:Math.round(idle),atBottom:bottom},'*');hov.clear();speed*=.5},2000);
+})();</script>
+</head><body class="layout-single-column motion-lively density-balanced">
+<div id="m-building" role="status">Writing this page</div>
+<main>
+<section id="thanksgiving-clock">
+<p class="m-kicker">Wednesday, 5:05 p.m. in Cambridge</p>
+<h2>Time until Thanksgiving</h2>
+<p class="m-lead">Thanksgiving is tomorrow. The clock below counts down to midnight, when the day begins.</p>
+<div class="tc-clock" aria-live="off">
+<div class="tc-unit"><b id="tc-h">06</b><span>hours</span></div>
+<div class="tc-unit"><b id="tc-m">54</b><span>minutes</span></div>
+<div class="tc-unit"><b id="tc-s">00</b><span>seconds</span></div>
+</div>
+<div class="tc-track" aria-hidden="true"><i id="tc-fill"></i></div>
+<p class="m-muted tc-note">The bar fills as Wednesday runs out. It was 45°F (7°C) and partly cloudy at the last reading, and the temperature falls through the night.</p>
+<style>
+#thanksgiving-clock{max-width:64ch}
+#thanksgiving-clock h2{font-family:var(--font-display);font-size:clamp(1.8rem,7cqi,3rem);line-height:1.05;margin:.2em 0 .5em}
+#thanksgiving-clock .tc-clock{display:flex;flex-wrap:wrap;gap:var(--gap);margin:1.6rem 0 1.2rem;align-items:flex-end}
+#thanksgiving-clock .tc-unit{display:flex;flex-direction:column}
+#thanksgiving-clock .tc-unit b{font-family:var(--font-display);font-size:clamp(3rem,20cqi,7rem);line-height:.9;color:var(--accent);font-variant-numeric:tabular-nums;font-weight:700}
+#thanksgiving-clock .tc-unit span{font-family:var(--font-mono);font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-top:.4rem}
+#thanksgiving-clock .tc-track{height:6px;background:var(--line);border-radius:var(--radius);overflow:hidden}
+#thanksgiving-clock .tc-track i{display:block;height:100%;width:0;background:var(--accent-2)}
+#thanksgiving-clock .tc-note{margin-top:1rem}
+</style>
+</section><section id="freeze-tonight">
+<div class="m-kicker">Overnight</div>
+<h2 class="ft-h">Freezing overnight</h2>
+<p class="m-lead">It is 45°F (7°C) right now. By 3 a.m. it is 31°F (-1°C). That is 14 degrees gone in ten hours.</p>
+<div class="ft-chart">
+<svg id="ft-svg" viewBox="0 0 520 220" role="img" aria-label="Hourly temperature from 4 p.m. to 4 a.m., falling from 45 to 31 degrees Fahrenheit">
+<line id="ft-freeze" x1="30" x2="510" y1="0" y2="0" stroke="var(--accent-2)" stroke-width="1.5" stroke-dasharray="5 5"/>
+<text id="ft-freeze-label" x="34" y="0" fill="var(--accent-2)" font-size="11" font-family="var(--font-mono)">32°F freezing</text>
+<path id="ft-line" d="" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<g id="ft-dots"></g>
+<g id="ft-axis" font-family="var(--font-mono)" font-size="10" fill="var(--muted)"></g>
+</svg>
+</div>
+<p>The temperature slips under 32°F around 3 a.m. and sits there until dawn. Skies stay mostly cloudy to overcast, and the hourly rain chance never passes 20% with no measurable rain forecast.</p>
+<p class="ft-travel"><b>For tonight's travel:</b> no rain is forecast, but any dampness on pavement, steps or bridges can freeze after midnight. If you are out late, the cold is the story. If you are leaving early tomorrow, the first hours are the coldest. Sunrise is 6:48 a.m.</p>
+<style>
+#freeze-tonight{max-width:64ch}
+#freeze-tonight .ft-h{font-family:var(--font-display);font-size:clamp(2rem,9cqi,3.4rem);line-height:1;margin:.3em 0 .5em}
+#freeze-tonight .ft-chart{margin:2rem 0 1.5rem;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:1rem 0}
+#freeze-tonight svg{width:100%;height:auto;display:block}
+#freeze-tonight .ft-travel{border-left:3px solid var(--accent);padding-left:1rem;margin-top:1.5rem}
+</style>
+</section><section id="dark-hours">
+<p class="m-kicker">After dark</p>
+<h2>Sunset already passed</h2>
+<p class="m-lead">The sun set at 4:16 p.m. It is 5:05 now, so the dark is already 49 minutes old.</p>
+<p>Sunrise tomorrow is at 6:48 a.m. The sky stays dark through the whole stretch in between, and it is overcast for most of it.</p>
+<div class="dh-strip" aria-hidden="true">
+<svg id="dh-svg" viewBox="0 0 600 120" width="100%" role="img" aria-label="Night timeline from sunset to sunrise">
+<rect x="0" y="40" width="600" height="28" rx="4" fill="var(--fg)" opacity="0.9"/>
+<rect id="dh-done" x="0" y="40" width="0" height="28" rx="4" fill="var(--accent)"/>
+<line id="dh-now" x1="0" y1="30" x2="0" y2="78" stroke="var(--bg)" stroke-width="2"/>
+<text x="0" y="100" fill="var(--muted)" font-family="var(--font-mono)" font-size="13">4:16 p.m.</text>
+<text x="600" y="100" text-anchor="end" fill="var(--muted)" font-family="var(--font-mono)" font-size="13">6:48 a.m.</text>
+<text id="dh-label" x="0" y="22" fill="var(--fg)" font-family="var(--font-mono)" font-size="13">now</text>
+</svg>
+</div>
+<p class="m-muted">Dark time from sunset to sunrise: 14 hours 32 minutes. About 49 minutes of it is behind you.</p>
+<div class="m-row dh-stats">
+<div class="m-stat"><b>4:16 p.m.</b><span>sunset</span></div>
+<div class="m-stat"><b>6:48 a.m.</b><span>sunrise</span></div>
+</div>
+<p>Hold your coat for the walk home. By 7 p.m. it is 42°F (5°C), and it keeps dropping from there.</p>
+<style>
+#dark-hours .dh-strip{margin:calc(var(--gap)*1.2) 0 var(--gap);max-width:64ch}
+#dark-hours .dh-stats{gap:calc(var(--gap)*1.5);margin:var(--gap) 0}
+#dark-hours .m-stat b{font-size:clamp(1.4rem,7cqi,2.2rem)}
+#dark-hours #dh-done{transition:none}
+</style>
+</section></main>
+<style>#m-building{display:none}</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+<script>(()=>{try{
+(function(){
+var h=document.getElementById('tc-h'),m=document.getElementById('tc-m'),s=document.getElementById('tc-s'),f=document.getElementById('tc-fill');
+if(!h)return;
+var still=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function pad(n){return n<10?'0'+n:''+n}
+function tick(){
+var now=new Date();
+var end=new Date(now.getFullYear(),now.getMonth(),now.getDate()+1,0,0,0);
+var start=new Date(now.getFullYear(),now.getMonth(),now.getDate(),0,0,0);
+var left=Math.max(0,end-now);
+var tot=Math.floor(left/1000);
+h.textContent=pad(Math.floor(tot/3600));
+m.textContent=pad(Math.floor(tot%3600/60));
+s.textContent=pad(tot%60);
+f.style.width=(100*(now-start)/(end-start)).toFixed(2)+'%';
+}
+tick();
+if(!still){setInterval(tick,1000)}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var d=[
+["4p",45],["5p",45],["6p",44],["7p",42],["8p",42],["9p",38],["10p",38],["11p",35],["12a",35],["1a",34],["2a",32],["3a",31],["4a",32]];
+var svg=document.getElementById('ft-svg');
+var NS='http://www.w3.org/2000/svg';
+var x0=30,x1=510,top=20,bot=190,min=28,max=48;
+function X(i){return x0+(x1-x0)*i/(d.length-1)}
+function Y(v){return bot-(bot-top)*(v-min)/(max-min)}
+var fy=Y(32);
+var fl=document.getElementById('ft-freeze');
+fl.setAttribute('y1',fy);fl.setAttribute('y2',fy);
+document.getElementById('ft-freeze-label').setAttribute('y',fy+14);
+var p='';
+d.forEach(function(r,i){p+=(i?'L':'M')+X(i).toFixed(1)+' '+Y(r[1]).toFixed(1)+' '});
+var line=document.getElementById('ft-line');
+line.setAttribute('d',p);
+var dots=document.getElementById('ft-dots');
+var axis=document.getElementById('ft-axis');
+d.forEach(function(r,i){
+if(i===0||i===3||i===7||i===11||i===12){
+var c=document.createElementNS(NS,'circle');
+c.setAttribute('cx',X(i));c.setAttribute('cy',Y(r[1]));c.setAttribute('r',4.5);
+c.setAttribute('fill',r[1]<32?'var(--accent-2)':'var(--accent)');
+dots.appendChild(c);
+var t=document.createElementNS(NS,'text');
+t.setAttribute('x',X(i));t.setAttribute('y',Y(r[1])-10);
+t.setAttribute('text-anchor','middle');t.setAttribute('font-size','11');
+t.setAttribute('font-family','var(--font-mono)');t.setAttribute('fill','var(--fg)');
+t.textContent=r[1]+'°';dots.appendChild(t);
+}
+if(i%2===0){
+var a=document.createElementNS(NS,'text');
+a.setAttribute('x',X(i));a.setAttribute('y',212);a.setAttribute('text-anchor','middle');
+a.textContent=r[0];axis.appendChild(a);
+}
+});
+var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!reduce&&window.anime){
+var len=line.getTotalLength();
+line.style.strokeDasharray=len;
+line.style.strokeDashoffset=len;
+dots.style.opacity=0;
+var played=false;
+function go(){
+if(played)return;played=true;
+anime({targets:line,strokeDashoffset:[len,0],duration:1800,easing:'easeInOutQuad'});
+anime({targets:dots,opacity:[0,1],duration:600,delay:1500,easing:'linear'});
+}
+if('IntersectionObserver' in window){
+var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){go();io.disconnect()}},{threshold:.3});
+io.observe(svg);
+}else go();
+}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var total=872, elapsed=49;
+var pct=elapsed/total;
+var W=600;
+var done=document.getElementById('dh-done');
+var now=document.getElementById('dh-now');
+var label=document.getElementById('dh-label');
+var target=W*pct;
+function set(x){
+done.setAttribute('width',x);
+now.setAttribute('x1',x);now.setAttribute('x2',x);
+label.setAttribute('x',Math.max(0,Math.min(x-14,W-70)));
+}
+var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(reduce||typeof anime==='undefined'){set(target);return;}
+var o={x:0};
+anime({targets:o,x:target,duration:1600,easing:'easeOutCubic',update:function(){set(o.x);}});
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>parent.postMessage({type:'moment:complete'},'*')</script>
+</body></html>

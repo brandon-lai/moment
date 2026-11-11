@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>When the rain stops in Tokyo tonight</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=IBM+Plex+Sans:wght@400;700&family=IBM+Plex+Mono:wght@400;700&display=swap">
+<style>:root{--bg:#0f2747;--fg:#e6eefb;--muted:#9fb6d9;--accent:#fde047;--accent-2:#fca5a5;--surface:#143057;--line:#24467a;color-scheme:dark;--font-display:'Space Grotesk',sans-serif;--font-body:'IBM Plex Sans',system-ui,sans-serif;--font-mono:'IBM Plex Mono',ui-monospace,monospace;--radius:2px;--gap:1}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:16.5px;line-height:1.55;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;line-height:1.05;letter-spacing:-.01em;margin:0 0 calc(.5em*var(--gap));text-wrap:balance}
+h1{font-size:clamp(34px,6.4vw,84px)}h2{font-size:clamp(24px,3.6vw,44px)}h3{font-size:clamp(18px,2.2vw,24px)}
+p{margin:0 0 calc(1em*var(--gap));max-width:68ch;text-wrap:pretty}
+a{color:var(--accent);text-underline-offset:.18em}
+button{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--fg);border-radius:var(--radius);padding:.55em 1em;cursor:pointer}
+button:hover{background:var(--fg);color:var(--bg)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=range]{accent-color:var(--accent);width:100%}
+table{border-collapse:collapse;width:100%}td,th{padding:.45em .6em;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85em}
+svg{max-width:100%;height:auto}canvas{max-width:100%;display:block}
+img{max-width:100%}
+.m-kicker{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .9em}
+.m-big{font-family:var(--font-display);font-size:clamp(56px,13vw,170px);line-height:.88;letter-spacing:-.03em;font-weight:700}
+.m-lead{font-size:1.25em;line-height:1.4;max-width:40ch}
+.m-muted{color:var(--muted)}.m-accent{color:var(--accent)}.m-accent-2{color:var(--accent-2)}
+.m-mono{font-family:var(--font-mono)}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:calc(16px*var(--gap))}
+.m-row{display:flex;flex-wrap:wrap;gap:calc(12px*var(--gap));align-items:baseline}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:calc(18px*var(--gap))}
+.m-stat{display:flex;flex-direction:column;gap:.2em}.m-stat b{font-family:var(--font-display);font-size:clamp(28px,4.6vw,52px);line-height:1;font-weight:700}
+.m-rule{border:0;border-top:1px solid var(--line);margin:calc(24px*var(--gap)) 0}
+.m-chip{display:inline-block;font-family:var(--font-mono);font-size:.78rem;padding:.25em .6em;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.m-list{list-style:none;padding:0;margin:0}.m-list li{padding:.6em 0;border-bottom:1px solid var(--line)}
+.m-bars{display:flex;align-items:flex-end;gap:3px;height:120px}.m-bars i{flex:1;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px}
+main>section{scroll-margin-top:16px}
+main>section{animation:m-in .5s cubic-bezier(.2,.7,.2,1) both}@keyframes m-in{from{opacity:0;transform:translateY(18px)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#m-building{position:fixed;left:12px;bottom:12px;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;z-index:5}
+#m-building::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:m-pulse 1.2s ease-in-out infinite}
+@keyframes m-pulse{50%{opacity:.25}}
+.m-earlier{font-family:var(--font-mono);font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
+main{padding:0}main>section{min-height:88vh;padding:clamp(28px,7vw,110px) clamp(16px,6vw,96px);display:flex;flex-direction:column;justify-content:center}main>section:nth-child(even){background:var(--surface)}</style>
+<script>window.MOMENT={"live":"http://localhost:8788/live/35.68,139.65","tz":"Asia/Tokyo","place":"Tokyo","eu":false};(()=>{const EU=false;let lastY=scrollY,lastT=performance.now(),speed=0,taps=0,idle=0,lastAct=performance.now(),hov=new Set(),bottom=false;
+const desc=e=>{const el=e.closest&&e.closest('[data-m],button,a,svg,canvas,table,li,figure,h2,h3');if(!el)return null;return(el.getAttribute('data-m')||el.tagName.toLowerCase()+(el.className&&typeof el.className==='string'?'.'+el.className.split(' ')[0]:'')).slice(0,40)};
+const act=()=>{lastAct=performance.now()};
+addEventListener('scroll',()=>{const t=performance.now(),dy=Math.abs(scrollY-lastY);speed=.7*speed+.3*(dy/Math.max(16,t-lastT)*1000);lastY=scrollY;lastT=t;act();const b=innerHeight+scrollY>=document.documentElement.scrollHeight-40;if(b&&!bottom){bottom=true;parent.postMessage({type:'moment:bottom'},'*')}},{passive:true});
+addEventListener('pointerover',e=>{if(EU)return;const d=desc(e.target);if(d&&hov.size<12)hov.add(d)},{passive:true});
+addEventListener('pointerdown',()=>{taps++;act()},{passive:true});addEventListener('keydown',act);
+const onScreen=()=>{let best=null,area=0;for(const s of document.querySelectorAll('main>section')){const r=s.getBoundingClientRect(),v=Math.max(0,Math.min(innerHeight,r.bottom)-Math.max(0,r.top));if(v>area){area=v;best=s.id||null}}return best};
+setInterval(()=>{idle=performance.now()-lastAct;if(EU)return;parent.postMessage({type:'moment:interaction',section:onScreen(),scrollSpeed:Math.round(speed),hovered:[...hov],taps,idleMs:Math.round(idle),atBottom:bottom},'*');hov.clear();speed*=.5},2000);
+})();</script>
+</head><body class="layout-full-bleed motion-lively density-balanced">
+<div id="m-building" role="status">Writing this page</div>
+<main>
+<section id="rain-clears">
+<p class="m-kicker">Tokyo · Tuesday, 10:15 p.m.</p>
+<h2 class="rc-title">Rain stops around midnight</h2>
+<p class="m-lead">It is light rain at 12° right now. By 12:00 a.m. the chance of rain drops to 7%, and the sky clears.</p>
+<div class="rc-stage">
+<svg id="rc-svg" viewBox="0 0 600 120" role="img" aria-label="Rain chance by hour, 9 p.m. to 12 a.m." preserveAspectRatio="none">
+<line x1="0" y1="100" x2="600" y2="100" stroke="var(--line)" />
+<g id="rc-bars"></g>
+<line id="rc-mid" x1="450" y1="8" x2="450" y2="112" stroke="var(--accent)" stroke-dasharray="3 4" />
+</svg>
+<div class="rc-labels m-mono m-muted"><span>9 p.m.</span><span>10</span><span>11</span><span class="m-accent">12 a.m.</span></div>
+</div>
+<div class="m-row rc-stats">
+<div class="m-stat"><b>79%</b><span>rain chance at 10 p.m.</span></div>
+<div class="m-stat"><b>7%</b><span>at midnight</span></div>
+<div class="m-stat"><b>8° to 12°</b><span>after it clears</span></div>
+</div>
+<p class="m-muted rc-note">The heaviest stretch is the 11 p.m. hour, around 1.7 mm. After that the forecast stays dry through 9 a.m.</p>
+<style>
+#rain-clears{padding:clamp(40px,8vw,96px) 0;min-height:80vh}
+#rain-clears .rc-title{font-family:var(--font-display);font-size:clamp(2.4rem,8vw,6rem);line-height:.98;margin:.2em 0 .3em;max-width:14ch}
+#rain-clears .m-lead{max-width:36em}
+#rain-clears .rc-stage{margin:clamp(24px,4vw,48px) 0 12px;max-width:760px}
+#rain-clears svg{width:100%;height:140px;display:block}
+#rain-clears .rc-labels{display:flex;justify-content:space-between;font-size:.8rem;padding-top:6px}
+#rain-clears .rc-stats{gap:clamp(20px,4vw,56px);margin-top:28px}
+#rain-clears .rc-note{max-width:34em;margin-top:24px}
+</style>
+</section><section id="dry-window">
+<p class="m-kicker">Plan the dry window</p>
+<h2 class="m-big">Nine dry hours<br>after midnight.</h2>
+<p class="m-lead">Rain chance drops to 7% at 12:00 a.m. and stays at 16% or lower through 9:00 a.m. Pick a start time and see what you get.</p>
+<div class="dw-tool">
+<label class="m-mono m-muted" for="dw-range">Head out at <b id="dw-time" class="m-accent">12:00 a.m.</b></label>
+<input type="range" id="dw-range" min="0" max="12" step="1" value="3" aria-label="Start time">
+<div id="dw-strip" class="dw-strip"></div>
+<div class="m-grid dw-stats">
+<div class="m-stat"><b id="dw-hours">0</b><span>dry hours from then</span></div>
+<div class="m-stat"><b id="dw-chance">0%</b><span>top rain chance in that stretch</span></div>
+<div class="m-stat"><b id="dw-temp">0°C</b><span>temperature at start</span></div>
+</div>
+<p id="dw-note" class="m-muted"></p>
+</div>
+<style>
+#dry-window{padding:clamp(48px,9vw,120px) clamp(20px,5vw,72px);min-height:90vh;background:var(--surface)}
+#dry-window .m-big{margin:.2em 0 .3em}
+#dry-window .m-lead{max-width:34em}
+#dry-window .dw-tool{margin-top:clamp(24px,4vw,48px);max-width:900px}
+#dry-window input[type=range]{width:100%;margin:14px 0 22px;accent-color:var(--accent)}
+#dry-window .dw-strip{display:grid;grid-template-columns:repeat(13,1fr);gap:4px;align-items:end;height:140px;margin-bottom:28px}
+#dry-window .dw-col{display:flex;flex-direction:column;justify-content:flex-end;height:100%;gap:6px;font-size:11px;text-align:center;color:var(--muted);font-family:var(--font-mono)}
+#dry-window .dw-bar{width:100%;border-radius:3px;background:var(--line);min-height:4px;transition:background .3s,opacity .3s}
+#dry-window .dw-col.wet .dw-bar{background:var(--accent-2)}
+#dry-window .dw-col.dry .dw-bar{background:var(--accent)}
+#dry-window .dw-col.off{opacity:.3}
+#dry-window .dw-col span{font-size:10px;white-space:nowrap;overflow:hidden}
+#dry-window .dw-stats{margin-bottom:20px}
+@media(max-width:560px){#dry-window .dw-col span{display:none}#dry-window .dw-col.on span{display:none}}
+</style>
+</section><section id="night-temps">
+<p class="m-kicker">10 p.m. to 9 a.m.</p>
+<h2 class="m-big">12° down to 8°</h2>
+<p class="m-lead">It cools in steps, not a slide. 10° by midnight, 8° by 2:00 a.m., and 8° again at 4:00 and 5:00 a.m. The low is 8°. Then it climbs back to 11° by 8:00 a.m.</p>
+<div id="nt-chart-wrap">
+<svg id="nt-chart" viewBox="0 0 720 300" role="img" aria-label="Hourly temperature in Tokyo from 10 p.m. to 9 a.m., falling from 12 degrees to 8 and rising to 11"></svg>
+</div>
+<div class="m-row" id="nt-stats">
+<div class="m-stat"><b>12°</b><span>10 p.m.</span></div>
+<div class="m-stat"><b>10°</b><span>12:00 a.m.</span></div>
+<div class="m-stat"><b class="m-accent">8°</b><span>2:00 a.m. and 4:00 to 5:00 a.m.</span></div>
+<div class="m-stat"><b>11°</b><span>8:00 a.m.</span></div>
+</div>
+<style>
+#night-temps{padding:clamp(48px,9vw,120px) clamp(20px,6vw,96px);background:var(--surface)}
+#night-temps .m-big{margin:.2em 0 .3em}
+#night-temps .m-lead{max-width:44ch}
+#night-temps #nt-chart-wrap{margin:clamp(24px,4vw,48px) 0}
+#night-temps svg{width:100%;height:auto;display:block;overflow:visible}
+#night-temps .nt-line{fill:none;stroke:var(--accent);stroke-width:3}
+#night-temps .nt-area{fill:color-mix(in srgb,var(--accent) 14%,transparent)}
+#night-temps .nt-grid{stroke:var(--line);stroke-width:1}
+#night-temps .nt-t{fill:var(--muted);font-family:var(--font-mono);font-size:12px}
+#night-temps .nt-v{fill:var(--fg);font-family:var(--font-mono);font-size:13px}
+#night-temps .nt-dot{fill:var(--bg);stroke:var(--accent);stroke-width:2}
+#night-temps .nt-dot.low{fill:var(--accent-2);stroke:var(--accent-2)}
+#night-temps #nt-stats{gap:clamp(20px,4vw,56px)}
+</style>
+</section></main>
+<style>#m-building{display:none}</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+<script>(()=>{try{
+(function(){
+var data=[71,79,77,7];
+var g=document.getElementById('rc-bars');
+var ns='http://www.w3.org/2000/svg';
+var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+data.forEach(function(v,i){
+var h=v/100*90;
+var r=document.createElementNS(ns,'rect');
+r.setAttribute('x',i*150+30);
+r.setAttribute('width',90);
+r.setAttribute('rx',3);
+r.setAttribute('fill',i===3?'var(--accent)':'var(--accent-2)');
+r.setAttribute('opacity',i===3?1:.8);
+var y=100-h;
+r.setAttribute('y',reduce?y:100);
+r.setAttribute('height',reduce?h:0);
+g.appendChild(r);
+if(!reduce){
+if(window.anime){
+anime({targets:r,y:y,height:h,duration:900,delay:i*180,easing:'easeOutCubic'});
+}else{
+r.setAttribute('y',y);r.setAttribute('height',h);
+}
+}
+});
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var H=[
+{t:"9 p.m.",h:21,c:71,m:0.7,T:12},
+{t:"10 p.m.",h:22,c:79,m:0.2,T:12},
+{t:"11 p.m.",h:23,c:77,m:1.7,T:10},
+{t:"12 a.m.",h:0,c:7,m:0,T:10},
+{t:"1 a.m.",h:1,c:16,m:0,T:9},
+{t:"2 a.m.",h:2,c:15,m:0,T:8},
+{t:"3 a.m.",h:3,c:15,m:0,T:9},
+{t:"4 a.m.",h:4,c:15,m:0,T:8},
+{t:"5 a.m.",h:5,c:0,m:0,T:8},
+{t:"6 a.m.",h:6,c:8,m:0,T:9},
+{t:"7 a.m.",h:7,c:13,m:0,T:10},
+{t:"8 a.m.",h:8,c:5,m:0,T:11},
+{t:"9 a.m.",h:9,c:15,m:0,T:11}
+];
+var r=document.getElementById('dw-range'),strip=document.getElementById('dw-strip');
+var cols=H.map(function(d){
+var c=document.createElement('div');c.className='dw-col';
+var b=document.createElement('div');b.className='dw-bar';b.style.height=Math.max(4,d.c)+'%';
+var s=document.createElement('span');s.textContent=d.t.replace(' ','');
+c.appendChild(b);c.appendChild(s);strip.appendChild(c);return c;
+});
+function upd(){
+var i=+r.value,d=H[i];
+document.getElementById('dw-time').textContent=d.t.replace(/^(\d+) ([ap])\.m\./,'$1:00 $2.m.');
+var dry=0,mx=0;
+for(var k=i;k<H.length;k++){if(H[k].c<=20&&H[k].m===0){dry++;mx=Math.max(mx,H[k].c);}else if(dry===0){mx=Math.max(mx,H[k].c);}else break;}
+if(dry===0){mx=d.c;}
+document.getElementById('dw-hours').textContent=dry;
+document.getElementById('dw-chance').textContent=mx+'%';
+document.getElementById('dw-temp').textContent=d.T+'°C';
+cols.forEach(function(c,k){
+c.className='dw-col '+(k<i?'off':(H[k].c<=20&&H[k].m===0?'dry':'wet'));
+});
+var n=document.getElementById('dw-note');
+if(dry===0){n.textContent='Still wet at this hour. The rain clears at 12:00 a.m.';}
+else if(i===3){n.textContent='The first dry hour. Expect 10°C and a low chance of rain.';}
+else{n.textContent='Dry from here to 9:00 a.m., '+d.T+'°C at the start.';}
+}
+r.addEventListener('input',upd);upd();
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var root=document.getElementById('night-temps');
+var svg=root.querySelector('#nt-chart');
+var labels=['10p','11p','12a','1a','2a','3a','4a','5a','6a','7a','8a','9a'];
+var temps=[12,10,10,9,8,9,8,8,9,10,11,11];
+var W=720,H=300,pl=36,pr=16,pt=28,pb=36;
+var min=7,max=13;
+var x=function(i){return pl+i*(W-pl-pr)/(temps.length-1)};
+var y=function(t){return pt+(max-t)*(H-pt-pb)/(max-min)};
+var ns='http://www.w3.org/2000/svg';
+function el(n,a,txt){var e=document.createElementNS(ns,n);for(var k in a)e.setAttribute(k,a[k]);if(txt!=null)e.textContent=txt;svg.appendChild(e);return e}
+[8,10,12].forEach(function(t){
+el('line',{x1:pl,x2:W-pr,y1:y(t),y2:y(t),'class':'nt-grid'});
+el('text',{x:0,y:y(t)+4,'class':'nt-t'},t+'°');
+});
+var d=temps.map(function(t,i){return(i?'L':'M')+x(i)+' '+y(t)}).join(' ');
+el('path',{d:d+' L'+x(temps.length-1)+' '+(H-pb)+' L'+x(0)+' '+(H-pb)+' Z','class':'nt-area'});
+var line=el('path',{d:d,'class':'nt-line'});
+temps.forEach(function(t,i){
+var low=t===8;
+el('circle',{cx:x(i),cy:y(t),r:low?5:4,'class':'nt-dot'+(low?' low':'')});
+el('text',{x:x(i),y:y(t)-12,'text-anchor':'middle','class':'nt-v'},t+'°');
+el('text',{x:x(i),y:H-12,'text-anchor':'middle','class':'nt-t'},labels[i]);
+});
+var still=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!still&&window.anime){
+var len=line.getTotalLength();
+line.style.strokeDasharray=len;
+line.style.strokeDashoffset=len;
+var played=false;
+var go=function(){
+if(played)return;played=true;
+anime({targets:line,strokeDashoffset:[len,0],duration:1800,easing:'easeInOutSine'});
+};
+if('IntersectionObserver' in window){
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){go();io.disconnect()}})},{threshold:.3});
+io.observe(svg);
+}else go();
+}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>parent.postMessage({type:'moment:complete'},'*')</script>
+</body></html>

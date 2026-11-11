@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Drizzle in Portland, Clearing by Six</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&family=Karla:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>:root{--bg:#f4f1ea;--fg:#1b1a17;--muted:#5f5a50;--accent:#c2410c;--accent-2:#1d4ed8;--surface:#ebe6db;--line:#d6cfbf;color-scheme:light;--font-display:'EB Garamond',serif;--font-body:'Karla',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;--radius:6px;--gap:0.7}
+@media (prefers-color-scheme:dark){:root{--bg:#0c0c0c;--fg:#f5f5f4;--muted:#a8a29e;--accent:#f05252;--accent-2:#fde047;--surface:#171717;--line:#292524;color-scheme:dark;}}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:15px;line-height:1.55;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;line-height:1.05;letter-spacing:-.01em;margin:0 0 calc(.5em*var(--gap));text-wrap:balance}
+h1{font-size:clamp(34px,6.4vw,84px)}h2{font-size:clamp(24px,3.6vw,44px)}h3{font-size:clamp(18px,2.2vw,24px)}
+p{margin:0 0 calc(1em*var(--gap));max-width:68ch;text-wrap:pretty}
+a{color:var(--accent);text-underline-offset:.18em}
+button{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--fg);border-radius:var(--radius);padding:.55em 1em;cursor:pointer}
+button:hover{background:var(--fg);color:var(--bg)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=range]{accent-color:var(--accent);width:100%}
+table{border-collapse:collapse;width:100%}td,th{padding:.45em .6em;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85em}
+svg{max-width:100%;height:auto}canvas{max-width:100%;display:block}
+img{max-width:100%}
+.m-kicker{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .9em}
+.m-big{font-family:var(--font-display);font-size:clamp(56px,13vw,170px);line-height:.88;letter-spacing:-.03em;font-weight:700}
+.m-lead{font-size:1.25em;line-height:1.4;max-width:40ch}
+.m-muted{color:var(--muted)}.m-accent{color:var(--accent)}.m-accent-2{color:var(--accent-2)}
+.m-mono{font-family:var(--font-mono)}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:calc(16px*var(--gap))}
+.m-row{display:flex;flex-wrap:wrap;gap:calc(12px*var(--gap));align-items:baseline}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:calc(18px*var(--gap))}
+.m-stat{display:flex;flex-direction:column;gap:.2em}.m-stat b{font-family:var(--font-display);font-size:clamp(28px,4.6vw,52px);line-height:1;font-weight:700}
+.m-rule{border:0;border-top:1px solid var(--line);margin:calc(24px*var(--gap)) 0}
+.m-chip{display:inline-block;font-family:var(--font-mono);font-size:.78rem;padding:.25em .6em;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.m-list{list-style:none;padding:0;margin:0}.m-list li{padding:.6em 0;border-bottom:1px solid var(--line)}
+.m-bars{display:flex;align-items:flex-end;gap:3px;height:120px}.m-bars i{flex:1;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px}
+main>section{scroll-margin-top:16px}
+main>section{animation:m-in .9s cubic-bezier(.2,.7,.2,1) both}@keyframes m-in{from{opacity:0;transform:translateY(8px)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#m-building{position:fixed;left:12px;bottom:12px;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;z-index:5}
+#m-building::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:m-pulse 1.2s ease-in-out infinite}
+@keyframes m-pulse{50%{opacity:.25}}
+.m-earlier{font-family:var(--font-mono);font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
+main{max-width:44rem;margin:0 auto;padding:clamp(24px,6vw,72px) clamp(16px,5vw,32px)}main>section{padding:clamp(28px,6vw,64px) 0}main>section+section{border-top:1px solid var(--line)}</style>
+<script>window.MOMENT={"live":"http://localhost:8788/live/45.52,-122.68","tz":"America/Los_Angeles","place":"Portland","eu":false};(()=>{const EU=false;let lastY=scrollY,lastT=performance.now(),speed=0,taps=0,idle=0,lastAct=performance.now(),hov=new Set(),bottom=false;
+const desc=e=>{const el=e.closest&&e.closest('[data-m],button,a,svg,canvas,table,li,figure,h2,h3');if(!el)return null;return(el.getAttribute('data-m')||el.tagName.toLowerCase()+(el.className&&typeof el.className==='string'?'.'+el.className.split(' ')[0]:'')).slice(0,40)};
+const act=()=>{lastAct=performance.now()};
+addEventListener('scroll',()=>{const t=performance.now(),dy=Math.abs(scrollY-lastY);speed=.7*speed+.3*(dy/Math.max(16,t-lastT)*1000);lastY=scrollY;lastT=t;act();const b=innerHeight+scrollY>=document.documentElement.scrollHeight-40;if(b&&!bottom){bottom=true;parent.postMessage({type:'moment:bottom'},'*')}},{passive:true});
+addEventListener('pointerover',e=>{if(EU)return;const d=desc(e.target);if(d&&hov.size<12)hov.add(d)},{passive:true});
+addEventListener('pointerdown',()=>{taps++;act()},{passive:true});addEventListener('keydown',act);
+const onScreen=()=>{let best=null,area=0;for(const s of document.querySelectorAll('main>section')){const r=s.getBoundingClientRect(),v=Math.max(0,Math.min(innerHeight,r.bottom)-Math.max(0,r.top));if(v>area){area=v;best=s.id||null}}return best};
+setInterval(()=>{idle=performance.now()-lastAct;if(EU)return;parent.postMessage({type:'moment:interaction',section:onScreen(),scrollSpeed:Math.round(speed),hovered:[...hov],taps,idleMs:Math.round(idle),atBottom:bottom},'*');hov.clear();speed*=.5},2000);
+})();</script>
+</head><body class="layout-single-column motion-gentle density-dense">
+<div id="m-building" role="status">Writing this page</div>
+<main>
+<section id="now-sky">
+<p class="m-kicker">Sunday, 10:15 a.m. · Portland</p>
+<h2>The sky this morning</h2>
+<p class="m-lead">Drizzle, 50°F (10°C). It started the day at 48°F and has crept up a few degrees since nine.</p>
+<p>The rain is steady but small. Right now the chance sits at 85%, with about 0.9 mm falling this hour. It stays that way through the afternoon: 78% to 90% every hour until five. Then it stops around 6 p.m.</p>
+<canvas id="now-sky-canvas" width="640" height="180" aria-label="Drizzle falling against a grey sky"></canvas>
+<div class="m-row now-sky-stats">
+<div class="m-stat"><b>50°F</b><span>now (10°C)</span></div>
+<div class="m-stat"><b>85%</b><span>rain chance this hour</span></div>
+<div class="m-stat"><b>6 p.m.</b><span>drizzle stops</span></div>
+</div>
+<p class="m-muted">Today's range is 45° to 54°F. It peaks at 54°F from three to five, wet the whole way.</p>
+<style>
+#now-sky h2{font-family:var(--font-display);font-size:clamp(2rem,5vw,3rem);line-height:1.05;margin:.2em 0 .5em}
+#now-sky{max-width:64ch;padding:calc(var(--gap)*2) 0}
+#now-sky canvas{display:block;width:100%;height:auto;max-height:180px;margin:var(--gap) 0;background:color-mix(in srgb,var(--muted) 14%,var(--bg));border-radius:var(--radius)}
+#now-sky .now-sky-stats{gap:calc(var(--gap)*1.5);margin:var(--gap) 0}
+</style>
+</section><section id="clearing-hour">
+<p class="m-kicker">11 a.m. to 6 p.m.</p>
+<h2>Where the light returns</h2>
+<p class="m-lead">The drizzle holds through the afternoon, then stops around 6 p.m. By 6:00 the rain chance is 7%.</p>
+<p>Until then it is steady and soft. The chance of rain never drops below 71% before dinner, and the amounts stay small, under a millimeter in most hours. It warms a little, from 51°F (10°C) at 11 a.m. to 54°F (12°C) by mid-afternoon, then eases to 51°F (11°C) at 6.</p>
+<p>Sunset is at 4:35 p.m., so the clearing comes after dark. The sky changes at 6; the light does not.</p>
+<figure class="ch-wrap">
+<svg id="ch-svg" viewBox="0 0 640 220" role="img" aria-label="Chance of rain by hour, falling from 94% at 9 a.m. to 7% at 6 p.m.">
+<line x1="0" y1="190" x2="640" y2="190" stroke="var(--line)"/>
+<path id="ch-area" fill="color-mix(in srgb, var(--accent) 16%, transparent)" d=""/>
+<path id="ch-line" fill="none" stroke="var(--accent)" stroke-width="2" d=""/>
+<line id="ch-mark" x1="0" y1="20" x2="0" y2="190" stroke="var(--accent-2)" stroke-width="1.5" stroke-dasharray="3 4"/>
+<text id="ch-mark-t" fill="var(--accent-2)" font-size="12" font-family="var(--font-mono)" y="14">rain stops</text>
+<g id="ch-ticks" font-family="var(--font-mono)" font-size="11" fill="var(--muted)"></g>
+</svg>
+<figcaption class="m-muted m-mono">Chance of rain, 9 a.m. to 9 p.m.</figcaption>
+</figure>
+<div class="m-row ch-read">
+<div class="m-stat"><b id="ch-v">85%</b><span id="ch-l">10 a.m.</span></div>
+<input id="ch-range" type="range" min="0" max="12" value="1" step="1" aria-label="Hour of the day">
+</div>
+<style>
+#clearing-hour h2{font-family:var(--font-display);font-size:clamp(2rem,6vw,3.2rem);line-height:1.05;margin:.2em 0 .5em}
+#clearing-hour p{max-width:64ch}
+#clearing-hour .ch-wrap{margin:2.2rem 0 1rem;padding:0}
+#clearing-hour svg{width:100%;height:auto;display:block;overflow:visible}
+#clearing-hour .ch-read{align-items:center;gap:1.5rem;margin-top:1rem}
+#clearing-hour .ch-read input{flex:1;min-width:160px;accent-color:var(--accent)}
+</style>
+</section><section id="evening-after">
+<p class="m-kicker">6 p.m. onward</p>
+<h2>The evening that follows</h2>
+<p class="m-lead">Sunset was at 4:35 p.m., so the rain stops after dark. At 6:00 the chance is 7%. By 7:00 it is 0%.</p>
+<p>The sky stays covered, but it stops dripping. The temperature starts to slide: 51°F (11°C) at six, 50°F (10°C) at seven, 49°F (9°C) at eight, 47°F (8°C) at nine. Four degrees in three hours. Nothing sharp.</p>
+<svg id="ea-chart" viewBox="0 0 320 120" role="img" aria-label="Temperature from 6 p.m. to 9 p.m.: 51, 50, 49, 47 degrees Fahrenheit">
+<line x1="20" y1="100" x2="300" y2="100" stroke="var(--line)" stroke-width="1"/>
+<path id="ea-line" d="M30 28 L120 46 L210 64 L300 100" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<g fill="var(--accent)">
+<circle cx="30" cy="28" r="4"/><circle cx="120" cy="46" r="4"/><circle cx="210" cy="64" r="4"/><circle cx="300" cy="100" r="4"/>
+</g>
+<g font-family="var(--font-mono)" font-size="11" fill="var(--fg)">
+<text x="30" y="16" text-anchor="middle">51°</text>
+<text x="120" y="34" text-anchor="middle">50°</text>
+<text x="210" y="52" text-anchor="middle">49°</text>
+<text x="292" y="88" text-anchor="end">47°</text>
+</g>
+<g font-family="var(--font-mono)" font-size="10" fill="var(--muted)">
+<text x="30" y="115" text-anchor="middle">6 pm</text>
+<text x="120" y="115" text-anchor="middle">7 pm</text>
+<text x="210" y="115" text-anchor="middle">8 pm</text>
+<text x="300" y="115" text-anchor="end">9 pm</text>
+</g>
+</svg>
+<div class="m-grid">
+<div class="m-stat"><b>0%</b><span>rain chance at 7 p.m.</span></div>
+<div class="m-stat"><b>47°F</b><span>(8°C) by 9 p.m.</span></div>
+<div class="m-stat"><b>0 mm</b><span>falling after six</span></div>
+</div>
+<p class="m-muted">The low for the next twelve hours is 45°F (7°C). Dry streets, cool air, a day that ended better than it started.</p>
+<style>
+#evening-after h2{font-family:var(--font-display);font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.1;margin:.2em 0 .5em}
+#evening-after svg{display:block;width:100%;max-width:420px;height:auto;margin:var(--gap) 0}
+#evening-after .m-grid{margin:var(--gap) 0}
+</style>
+</section></main>
+<style>#m-building{display:none}</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+<script>(()=>{try{
+(function(){
+var c=document.getElementById('now-sky-canvas');
+if(!c)return;
+var ctx=c.getContext('2d');
+var W=c.width,H=c.height;
+var still=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var cs=getComputedStyle(document.documentElement);
+var fg=cs.getPropertyValue('--fg').trim()||'#222';
+var accent=cs.getPropertyValue('--accent').trim()||'#357';
+var drops=[];
+for(var i=0;i<70;i++){drops.push({x:Math.random()*W,y:Math.random()*H,l:6+Math.random()*10,s:0.6+Math.random()*1.1});}
+function draw(){
+ctx.clearRect(0,0,W,H);
+ctx.lineWidth=1.2;
+for(var i=0;i<drops.length;i++){
+var d=drops[i];
+ctx.strokeStyle=i%6===0?accent:fg;
+ctx.globalAlpha=i%6===0?0.55:0.28;
+ctx.beginPath();
+ctx.moveTo(d.x,d.y);
+ctx.lineTo(d.x-d.l*0.18,d.y+d.l);
+ctx.stroke();
+}
+ctx.globalAlpha=1;
+}
+function step(){
+for(var i=0;i<drops.length;i++){
+var d=drops[i];
+d.y+=d.s;d.x-=d.s*0.18;
+if(d.y>H||d.x<0){d.y=-d.l;d.x=Math.random()*W+20;}
+}
+draw();
+requestAnimationFrame(step);
+}
+draw();
+if(!still)requestAnimationFrame(step);
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var d=[["9 a.m.",94],["10 a.m.",85],["11 a.m.",78],["12 p.m.",80],["1 p.m.",89],["2 p.m.",84],["3 p.m.",90],["4 p.m.",87],["5 p.m.",71],["6 p.m.",7],["7 p.m.",0],["8 p.m.",2],["9 p.m.",10]];
+var W=640,top=20,base=190,h=base-top;
+var x=function(i){return 10+i*(W-20)/12};
+var y=function(v){return base-v/100*h};
+var p="";d.forEach(function(r,i){p+=(i?"L":"M")+x(i).toFixed(1)+" "+y(r[1]).toFixed(1)});
+var line=document.getElementById("ch-line"),area=document.getElementById("ch-area");
+line.setAttribute("d",p);
+area.setAttribute("d",p+"L"+x(12)+" "+base+"L"+x(0)+" "+base+"Z");
+var mx=(x(8)+x(9))/2;
+var m=document.getElementById("ch-mark");
+m.setAttribute("x1",mx);m.setAttribute("x2",mx);
+var mt=document.getElementById("ch-mark-t");
+mt.setAttribute("x",mx+6);
+var ticks=document.getElementById("ch-ticks");
+[0,3,6,9,12].forEach(function(i){
+var t=document.createElementNS("http://www.w3.org/2000/svg","text");
+t.setAttribute("x",x(i));t.setAttribute("y",208);
+t.setAttribute("text-anchor",i==0?"start":i==12?"end":"middle");
+t.textContent=d[i][0];ticks.appendChild(t);
+});
+var dot=document.createElementNS("http://www.w3.org/2000/svg","circle");
+dot.setAttribute("r",5);dot.setAttribute("fill","var(--accent-2)");
+document.getElementById("ch-svg").appendChild(dot);
+var rg=document.getElementById("ch-range"),v=document.getElementById("ch-v"),l=document.getElementById("ch-l");
+function set(i){
+dot.setAttribute("cx",x(i));dot.setAttribute("cy",y(d[i][1]));
+v.textContent=d[i][1]+"%";l.textContent=d[i][0];
+}
+rg.addEventListener("input",function(){set(+rg.value)});
+set(1);
+var rm=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+if(window.anime&&!rm){
+var len=line.getTotalLength();
+line.style.strokeDasharray=len;
+anime({targets:line,strokeDashoffset:[len,0],duration:1800,easing:"easeInOutSine"});
+anime({targets:area,opacity:[0,1],duration:1800,easing:"easeInOutSine"});
+}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var p=document.getElementById('ea-line');
+if(!p||window.matchMedia('(prefers-reduced-motion: reduce)').matches||typeof anime==='undefined')return;
+var len=p.getTotalLength();
+p.style.strokeDasharray=len;
+p.style.strokeDashoffset=len;
+var done=false;
+function go(){
+if(done)return;done=true;
+anime({targets:p,strokeDashoffset:[len,0],duration:2200,easing:'easeInOutSine'});
+}
+if('IntersectionObserver' in window){
+var io=new IntersectionObserver(function(e){
+if(e[0].isIntersecting){go();io.disconnect();}
+},{threshold:0.4});
+io.observe(p);
+}else{go();}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>parent.postMessage({type:'moment:complete'},'*')</script>
+</body></html>

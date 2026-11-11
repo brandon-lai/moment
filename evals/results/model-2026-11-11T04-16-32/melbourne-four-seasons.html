@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Melbourne, 2 p.m. Tuesday: the rain is coming</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;700&family=Alegreya+Sans:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>:root{--bg:#111418;--fg:#e6e9ec;--muted:#9199a3;--accent:#facc15;--accent-2:#38bdf8;--surface:#191d23;--line:#2b3139;color-scheme:dark;--font-display:'Alegreya',serif;--font-body:'Alegreya Sans',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;--radius:2px;--gap:1.35}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:18px;line-height:1.55;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;line-height:1.05;letter-spacing:-.01em;margin:0 0 calc(.5em*var(--gap));text-wrap:balance}
+h1{font-size:clamp(34px,6.4vw,84px)}h2{font-size:clamp(24px,3.6vw,44px)}h3{font-size:clamp(18px,2.2vw,24px)}
+p{margin:0 0 calc(1em*var(--gap));max-width:68ch;text-wrap:pretty}
+a{color:var(--accent);text-underline-offset:.18em}
+button{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--fg);border-radius:var(--radius);padding:.55em 1em;cursor:pointer}
+button:hover{background:var(--fg);color:var(--bg)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=range]{accent-color:var(--accent);width:100%}
+table{border-collapse:collapse;width:100%}td,th{padding:.45em .6em;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85em}
+svg{max-width:100%;height:auto}canvas{max-width:100%;display:block}
+img{max-width:100%}
+.m-kicker{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .9em}
+.m-big{font-family:var(--font-display);font-size:clamp(56px,13vw,170px);line-height:.88;letter-spacing:-.03em;font-weight:700}
+.m-lead{font-size:1.25em;line-height:1.4;max-width:40ch}
+.m-muted{color:var(--muted)}.m-accent{color:var(--accent)}.m-accent-2{color:var(--accent-2)}
+.m-mono{font-family:var(--font-mono)}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:calc(16px*var(--gap))}
+.m-row{display:flex;flex-wrap:wrap;gap:calc(12px*var(--gap));align-items:baseline}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:calc(18px*var(--gap))}
+.m-stat{display:flex;flex-direction:column;gap:.2em}.m-stat b{font-family:var(--font-display);font-size:clamp(28px,4.6vw,52px);line-height:1;font-weight:700}
+.m-rule{border:0;border-top:1px solid var(--line);margin:calc(24px*var(--gap)) 0}
+.m-chip{display:inline-block;font-family:var(--font-mono);font-size:.78rem;padding:.25em .6em;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.m-list{list-style:none;padding:0;margin:0}.m-list li{padding:.6em 0;border-bottom:1px solid var(--line)}
+.m-bars{display:flex;align-items:flex-end;gap:3px;height:120px}.m-bars i{flex:1;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px}
+main>section{scroll-margin-top:16px}
+main>section{animation:m-in .9s cubic-bezier(.2,.7,.2,1) both}@keyframes m-in{from{opacity:0;transform:translateY(8px)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#m-building{position:fixed;left:12px;bottom:12px;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;z-index:5}
+#m-building::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:m-pulse 1.2s ease-in-out infinite}
+@keyframes m-pulse{50%{opacity:.25}}
+.m-earlier{font-family:var(--font-mono);font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
+main{padding:0}main>section{min-height:88vh;padding:clamp(28px,7vw,110px) clamp(16px,6vw,96px);display:flex;flex-direction:column;justify-content:center}main>section:nth-child(even){background:var(--surface)}</style>
+<script>window.MOMENT={"live":"http://localhost:8788/live/-37.81,144.96","tz":"Australia/Melbourne","place":"Melbourne","eu":false};(()=>{const EU=false;let lastY=scrollY,lastT=performance.now(),speed=0,taps=0,idle=0,lastAct=performance.now(),hov=new Set(),bottom=false;
+const desc=e=>{const el=e.closest&&e.closest('[data-m],button,a,svg,canvas,table,li,figure,h2,h3');if(!el)return null;return(el.getAttribute('data-m')||el.tagName.toLowerCase()+(el.className&&typeof el.className==='string'?'.'+el.className.split(' ')[0]:'')).slice(0,40)};
+const act=()=>{lastAct=performance.now()};
+addEventListener('scroll',()=>{const t=performance.now(),dy=Math.abs(scrollY-lastY);speed=.7*speed+.3*(dy/Math.max(16,t-lastT)*1000);lastY=scrollY;lastT=t;act();const b=innerHeight+scrollY>=document.documentElement.scrollHeight-40;if(b&&!bottom){bottom=true;parent.postMessage({type:'moment:bottom'},'*')}},{passive:true});
+addEventListener('pointerover',e=>{if(EU)return;const d=desc(e.target);if(d&&hov.size<12)hov.add(d)},{passive:true});
+addEventListener('pointerdown',()=>{taps++;act()},{passive:true});addEventListener('keydown',act);
+const onScreen=()=>{let best=null,area=0;for(const s of document.querySelectorAll('main>section')){const r=s.getBoundingClientRect(),v=Math.max(0,Math.min(innerHeight,r.bottom)-Math.max(0,r.top));if(v>area){area=v;best=s.id||null}}return best};
+setInterval(()=>{idle=performance.now()-lastAct;if(EU)return;parent.postMessage({type:'moment:interaction',section:onScreen(),scrollSpeed:Math.round(speed),hovered:[...hov],taps,idleMs:Math.round(idle),atBottom:bottom},'*');hov.clear();speed*=.5},2000);
+})();</script>
+</head><body class="layout-full-bleed motion-gentle density-airy">
+<div id="m-building" role="status">Writing this page</div>
+<main>
+<section id="sky-now">
+<p class="m-kicker">Melbourne · Tuesday · 2:10 p.m.</p>
+<h1 class="m-big">Partly cloudy at 23°</h1>
+<p class="m-lead">The warm spell holds for a few more hours. The sky stays broken and bright until about 4 p.m.</p>
+<div class="sn-sky" aria-hidden="true">
+<svg viewBox="0 0 800 300" preserveAspectRatio="xMidYMid slice" role="img">
+<circle id="sn-sun" cx="560" cy="120" r="46" fill="var(--accent)"/>
+<g id="sn-c1" fill="var(--surface)" stroke="var(--line)"><ellipse cx="220" cy="130" rx="90" ry="26"/><ellipse cx="270" cy="112" rx="56" ry="26"/><ellipse cx="180" cy="116" rx="46" ry="20"/></g>
+<g id="sn-c2" fill="var(--surface)" stroke="var(--line)"><ellipse cx="600" cy="190" rx="110" ry="28"/><ellipse cx="650" cy="170" rx="60" ry="26"/><ellipse cx="548" cy="176" rx="50" ry="20"/></g>
+<line x1="0" y1="270" x2="800" y2="270" stroke="var(--line)"/>
+</svg>
+</div>
+<p class="sn-note">Rain chance stays under 20% each hour until 4 p.m. At 5 p.m. it jumps to 79%.</p>
+<style>
+#sky-now{min-height:90vh;display:flex;flex-direction:column;justify-content:center;gap:var(--gap);padding:clamp(1.5rem,6vw,5rem);background:var(--bg);color:var(--fg)}
+#sky-now .m-big{margin:0;font-size:clamp(2.6rem,9vw,7rem);line-height:1}
+#sky-now .m-lead{max-width:34ch;margin:0}
+#sky-now .sn-sky{width:100%;max-width:900px;border-top:1px solid var(--line)}
+#sky-now svg{width:100%;height:auto;max-height:44vh;display:block}
+#sky-now .sn-note{margin:0;max-width:44ch;color:var(--muted)}
+</style>
+</section><section id="rain-window">
+<p class="m-kicker">The next ten hours</p>
+<h2 class="m-big">Rain from <span class="m-accent">5 p.m.</span></h2>
+<p class="m-lead">Dry until 4 p.m., around 23°. At 5 p.m. the chance of rain jumps from 18% to 79%, and it stays high through 8 p.m.</p>
+<div class="rw-chart">
+<svg id="rw-svg" viewBox="0 0 720 260" role="img" aria-label="Hourly rain chance and temperature from 1 p.m. to 1 a.m.">
+<g id="rw-bars"></g>
+<polyline id="rw-temp" fill="none" stroke="var(--accent-2)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+<g id="rw-labels" class="m-mono"></g>
+</svg>
+<p class="m-muted m-mono rw-key"><span class="m-accent">Bars</span>: chance of rain &nbsp; <span class="m-accent-2">Line</span>: temperature</p>
+</div>
+<div class="m-row rw-stats">
+<div class="m-stat"><b>23°</b><span>at 4 p.m.</span></div>
+<div class="m-stat"><b>4.5 mm</b><span>forecast in the 5 p.m. hour</span></div>
+<div class="m-stat"><b>15°</b><span>by 1 a.m.</span></div>
+</div>
+<p class="m-muted">The rain clears by 9 p.m., when the chance drops to 3%. The air keeps cooling after it goes.</p>
+<style>
+#rain-window{padding:clamp(2rem,6vw,5rem) 0;display:flex;flex-direction:column;gap:var(--gap)}
+#rain-window h2{margin:0}
+#rain-window .rw-chart{width:100%;max-width:860px}
+#rain-window svg{width:100%;height:auto;display:block}
+#rain-window .rw-key{font-size:.8rem;margin:.5rem 0 0}
+#rain-window .rw-stats{gap:calc(var(--gap)*1.5)}
+#rain-window #rw-labels text{fill:var(--muted);font-size:11px;font-family:var(--font-mono)}
+#rain-window .rw-bar{fill:var(--accent);transform-box:fill-box;transform-origin:bottom}
+</style>
+</section><section id="evening-turn">
+<p class="m-kicker">Tonight, 5 p.m. to 1 a.m.</p>
+<h2 class="m-big">The cooler edge of the evening</h2>
+<p class="m-lead">Rain from 5 p.m. to 8 p.m., then clear air at 9 p.m. The temperature keeps going down after the rain does.</p>
+<div id="et-wrap">
+<svg id="et-svg" viewBox="0 0 600 200" preserveAspectRatio="none" role="img" aria-label="Temperature falling from 23 degrees at 4 p.m. to 15 degrees at 1 a.m., with the rain hours shaded">
+<rect id="et-rain" x="150" y="0" width="200" height="200" fill="var(--accent-2)" opacity="0.14"/>
+<path id="et-line" d="" fill="none" stroke="var(--accent)" stroke-width="3" vector-effect="non-scaling-stroke"/>
+</svg>
+<div class="et-axis m-mono m-muted"><span>4 p.m.</span><span>5 p.m. rain</span><span>9 p.m. clear</span><span>1 a.m.</span></div>
+</div>
+<div class="m-grid et-stats">
+<div class="m-stat"><b>23°</b><span>at 4 p.m., still warm</span></div>
+<div class="m-stat"><b>19°</b><span>at 8 p.m., last rainy hour</span></div>
+<div class="m-stat"><b>15°</b><span>at 1 a.m.</span></div>
+</div>
+<p class="m-muted et-note">Sunset is at 8:12 p.m. By then the rain has nearly finished. The 9 p.m. rain chance is 3%.</p>
+<style>
+#evening-turn{padding:12vh 6vw;min-height:90vh;background:var(--surface);display:flex;flex-direction:column;gap:var(--gap)}
+#evening-turn h2{margin:0;max-width:14ch;text-align:left}
+#evening-turn .m-lead{max-width:44ch;margin:0}
+#evening-turn #et-wrap{margin-top:2rem}
+#evening-turn #et-svg{width:100%;height:200px;display:block;border-bottom:1px solid var(--line)}
+#evening-turn .et-axis{display:flex;justify-content:space-between;gap:.5rem;font-size:.8rem;margin-top:.6rem;flex-wrap:wrap}
+#evening-turn .et-stats{margin-top:2rem}
+#evening-turn .et-note{max-width:50ch;margin:0}
+#evening-turn #et-line{stroke-dasharray:1;stroke-dashoffset:0}
+</style>
+</section></main>
+<style>#m-building{display:none}</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+<script>(()=>{try{
+(function(){
+var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(reduce||typeof anime==='undefined')return;
+anime({targets:'#sn-c1',translateX:[-30,30],duration:14000,easing:'easeInOutSine',direction:'alternate',loop:true});
+anime({targets:'#sn-c2',translateX:[24,-24],duration:18000,easing:'easeInOutSine',direction:'alternate',loop:true});
+anime({targets:'#sn-sun',opacity:[0.85,1],duration:6000,easing:'easeInOutSine',direction:'alternate',loop:true});
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var d=[
+["1p",22,7],["2p",23,19],["3p",23,9],["4p",23,18],["5p",22,79],["6p",22,82],["7p",20,77],["8p",19,73],["9p",18,3],["10p",17,11],["11p",17,12],["12a",17,11],["1a",15,6]
+];
+var ns="http://www.w3.org/2000/svg";
+var bars=document.getElementById("rw-bars");
+var labels=document.getElementById("rw-labels");
+var line=document.getElementById("rw-temp");
+var W=720,top=20,base=220,step=W/d.length,bw=step*0.56;
+var pts=[];
+d.forEach(function(r,i){
+var x=i*step+step/2;
+var h=(base-top)*r[2]/100;
+var rect=document.createElementNS(ns,"rect");
+rect.setAttribute("x",x-bw/2);rect.setAttribute("y",base-h);
+rect.setAttribute("width",bw);rect.setAttribute("height",Math.max(h,2));
+rect.setAttribute("rx",3);rect.setAttribute("class","rw-bar");
+rect.setAttribute("fill-opacity",r[2]>50?"0.9":"0.28");
+bars.appendChild(rect);
+var t=document.createElementNS(ns,"text");
+t.setAttribute("x",x);t.setAttribute("y",246);t.setAttribute("text-anchor","middle");
+t.textContent=r[0];labels.appendChild(t);
+var ty=top+(23-r[1])/(23-15)*120+10;
+pts.push(x.toFixed(1)+","+ty.toFixed(1));
+});
+line.setAttribute("points",pts.join(" "));
+var rm=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+if(!rm&&window.anime){
+anime({targets:"#rain-window .rw-bar",scaleY:[0,1],delay:anime.stagger(60),duration:900,easing:"easeOutCubic"});
+var len=line.getTotalLength();
+line.style.strokeDasharray=len;
+anime({targets:line,strokeDashoffset:[len,0],duration:1600,easing:"easeInOutSine"});
+}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var pts=[[0,23],[1,22],[2,22],[3,20],[4,19],[5,18],[6,17],[7,17],[8,17],[9,15]];
+var line=document.getElementById('et-line');
+if(!line)return;
+var d='';
+pts.forEach(function(p,i){
+var x=p[0]/9*600;
+var y=200-((p[1]-13)/(24-13))*180-10;
+d+=(i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1)+' ';
+});
+line.setAttribute('d',d);
+var rain=document.getElementById('et-rain');
+rain.setAttribute('x',(1/9*600).toFixed(1));
+rain.setAttribute('width',(4/9*600).toFixed(1));
+var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!reduce&&window.anime){
+line.setAttribute('pathLength','1');
+line.style.strokeDasharray='1';
+line.style.strokeDashoffset='1';
+var started=false;
+var run=function(){
+if(started)return;started=true;
+anime({targets:line,strokeDashoffset:[1,0],duration:3200,easing:'easeInOutSine'});
+};
+if('IntersectionObserver' in window){
+var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){run();io.disconnect();}},{threshold:0.3});
+io.observe(document.getElementById('et-svg'));
+}else run();
+}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>parent.postMessage({type:'moment:complete'},'*')</script>
+</body></html>

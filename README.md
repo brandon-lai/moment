@@ -22,9 +22,9 @@ Built from `Moment-System-Design.pdf` (system design, 2026-11-10). This repo cov
 | Sandbox on a separate origin, `sandbox="allow-scripts allow-popups"`, the PRD's CSP | **Live** |
 | Briefs for 92 metros, rebuilt every 4 hours; any other city compiled on first visit | **Live** (Open-Meteo, Nager.Date, computed sun/moon) |
 | How unusual today is (10-year climatology) | **Live** for warm metros; 8 metros filled per run until all are cached |
-| Country "trending" via Wikimedia most-read + safety gate 1 | Built; **passes nothing in production** because the classifier needs a model key. Gate 1 is fail-closed: unclassified terms never reach a brief. |
-| Router (Claude Haiku 5.5) + specificity judge + generator (Claude Sonnet 5.5) | Built and benchmarked locally; **off in production** (no `ANTHROPIC_API_KEY` set). |
-| Template generator (no model): 8 archetypes from the same brief, same section contract | **Live**: this is what production serves today, and it says so in each page footer |
+| Country "trending" via Wikimedia most-read + safety gate 1 | **Live**; the classifier runs nightly now that the key is set. Gate 1 is fail-closed: unclassified terms never reach a brief. |
+| Router (Claude Haiku 5.5) + specificity judge + generator (Claude Sonnet 5.5) | **Live** (key set 2026-11-10). Generation starts only after Turnstile passes; bots and failed challenges get an earlier page from the archive or the template engine |
+| Template generator (no model): 8 archetypes from the same brief, same section contract | **Live** as the fallback (no key, kill switch, spend cap with an empty archive); it says so in each page footer |
 | Moderation (gate 3): rules always, Haiku when a key exists; failure swaps in a fallback page | **Live** (rules) |
 | Feedback prompt (Yes/No + 280-char text), one vote per visit, Turnstile, rate-limited | **Live** |
 | Behaviour rewards (0.7 / 0.2), retry = 0, nightly Thompson-sampling bandit with parent borrowing | **Live** (nightly cron); priors stay flat until a bucket has 30 rewarded visits |
@@ -34,7 +34,7 @@ Built from `Moment-System-Design.pdf` (system design, 2026-11-10). This repo cov
 | Kill switch (all generation, model only, or per archetype) | **Live** (`POST /admin/kill`) |
 | Traces + `/stats` with the PRD's alert conditions | **Live**; alerts are reported in `/stats`, nothing pushes them anywhere yet |
 
-**Production is serving template pages, not model pages.** Every page built today says "Built by Moment's template engine from today's forecast, the sun and the calendar." The model path needs a funded key; see [Blocked on you](#blocked-on-you).
+**Production writes pages with Claude.** One thing was not verified by rendering in production: an automated browser (headless or a visible CDP-driven Chrome) fails Turnstile, so every probe got the archive page, as designed. The production trace shows the router running on the key (2.4 s, real token counts); the generator is the code the 50-brief run below exercised end to end. The first real visit in an ordinary browser is the first production model page; `/stats` and the footer (no "template engine" line) will show it.
 
 ## Phase 0: the latency gate
 
@@ -44,17 +44,22 @@ The PRD makes latency the first gate: *median time to first content under 3.5 s*
 |---|---|---|---|---|
 | Template engine, all 50 briefs | 0.34 s | 0.3–0.4 s | n/a | 0.34 s |
 | Model, v1 (one router call writing three plans) | — | — | **4.9–5.5 s**, over its 2.5 s budget, so every visit fell back | — |
-| Model, v2 (three parallel lanes + judge overlapped with section 1), 9 briefs | **3.65 s** | 2.8–4.8 s | 1.7–2.5 s | 12.7–25.3 s |
+| Model, v2, 9 briefs (key ran out of credit) | 3.65 s *(session clock; see below)* | 2.8–4.8 s | 1.7–2.5 s | 12.7–25.3 s |
+| **Model, v2, all 50 briefs, measured at the client** | **3.42 s** (p95 4.34 s) | 2.7–5.7 s | 2.23 s p50, 2.51 s max | 20.0 s p50, 25.5 s p95 |
 
-**The gate is not yet passed** (3.65 s against 3.5 s), and the sample is nine pages, because the key used for the benchmark ran out of credit mid-run. What the numbers say:
+**The gate passes, narrowly**: 3.42 s against 3.5 s, all 50 briefs written by the model, no failures, no moderation failures. Only 27 of 50 came in under 3.5 s, so the margin is thin: a six-brief check right after a prompt change (cold prompt cache) landed at 3.6 s. Results: `evals/results/model-2026-11-11T04-16-32.json` and the 50 pages beside it.
 
-- Haiku 5.5 streams about 200 tokens/s and Sonnet 5.5 about 160 tokens/s; Sonnet's first token arrives in about 0.8 s with the cached system prompt. Routing is now the larger share of the wait.
-- The first call with each router schema pays a one-off grammar compile. Warm runs are the ones that count.
-- Measured from the request reaching the edge, not from the iframe request.
+**The first full run found a real bug.** First byte equalled completion on every page: the visitor would have seen nothing for 15–25 s and then the whole page at once. The runtime gzips `text/html` when the browser accepts it, and a gzip stream holds a ~15 KB page in its buffer until the end. The earlier 3.65 s came from the session's own clock, which never saw the buffering. The page response now sends `content-encoding: identity` and `cache-control: no-store, no-transform` (production returns both, checked with curl), and the harness measures first content where the browser would.
 
-The next levers, in the order I would try them: precompute concept plans per warm cell and hour (the PRD's own mitigation for a slow generator) so the live router only re-ranks them; drop each lane's `intent` field; give the judge a shorter budget. All three are measurable with `node evals/run.mjs`.
+What the numbers say:
 
-**Design quality** (looked at, not scored): the model pages were genuinely good: specific, legible, varied, and correct on facts in the brief. Two problems came up, both fixed: (1) one page printed its JavaScript as body text, because the model put `<!--script-->` inside the section; the splitter now handles both placements, and there is a test. (2) Pages added true but out-of-brief background (the history of Armistice Day, the origin of Black Consciousness Day); the São Paulo one failed moderation on the word "death". The prompt now forbids background knowledge outright. Other visible issues (a stat row with crowded labels, a chart whose fill outran its line) are left to the review loop the PRD describes.
+- Routing is most of the wait: three parallel Haiku lanes at about 2.2 s, then Sonnet's first section token about 0.8 s later with the cached system prompt. Haiku streams about 200 tokens/s, Sonnet about 160.
+- Archetype mix over 50: ambient 19, countdown 11, tool 8, editorial 5, guide 5, dashboard 1, quiz 1, checklist 0. The playful lane leans on ambient; the bandit's exploration and priors are what should correct it once votes come in.
+- Each 50-brief run costs about $4 at current prices.
+
+The next levers, in the order I would try them: precompute concept plans per warm cell and hour (the PRD's own mitigation) so the live router only re-ranks them; drop each lane's `intent` field; give the judge a shorter budget. All three are measurable with `node evals/run.mjs`.
+
+**Design quality** (looked at, not scored): the model pages were genuinely good: specific, legible, varied, and correct on facts in the brief. Two problems came up, both fixed: (1) one page printed its JavaScript as body text, because the model put `<!--script-->` inside the section; the splitter now handles both placements, and there is a test. (2) Pages added true but out-of-brief background (the history of Armistice Day, the origin of Black Consciousness Day); the São Paulo one failed moderation on the word "death". The prompt now forbids background knowledge outright. Rendering the 50-brief pages found three more, all fixed: (3) a bento quiz set its answers in a 300 px tile at viewport-sized type, wrapping "5:58 p.m." over four lines and "None" as "No/ne"; every section is now a size container, the shared display classes and headings are capped by `cqi`, and the prompt asks for `cqi`, never `vw`; bento now spans its first tile across the page and pairs the rest. (4) That quiz printed its answers under the questions; quiz answers now stay hidden until picked. (5) Broadsheet split two-sentence intros across two narrow columns; columns now need an explicit `m-columns` wrapper. Still visible and left to the PRD's review loop: an SVG label clipped at the edge of a drawing, and a quiz numbering its sections inconsistently ("1 of 2", "3 of 3"), because each section is written separately. Pages in the harness also show live weather overwriting the brief's made-up conditions (Pasadena's "93°F" brief, tonight's real 69°F); in production both describe the same moment.
 
 ## Architecture
 
@@ -109,13 +114,13 @@ I made these calls without asking, as the build instructions direct.
 
 ## Blocked on you
 
-1. **A funded Anthropic API key, to turn on model pages.** The benchmark used the key from `smiski.world/.env.local` (local only; it never went to production), and that key ran out of credit after about $0.80 of this run. Spend is capped at $2/hour by default (`HOURLY_CAP_USD`).
+1. **A dedicated Anthropic key.** Production runs on the key from `smiski.world/.env.local`, reloaded 2026-11-10. That ties both projects' spend and rate limits together. To give Moment its own:
    ```bash
    cd ~/Documents/Dev/moment/edge
-   npx wrangler secret put ANTHROPIC_API_KEY        # paste the key
+   npx wrangler secret put ANTHROPIC_API_KEY        # paste the new key
    curl -s https://moment.flockfield-server.workers.dev/health   # "generator":"model"
    ```
-   To finish the Phase 0 gate on all 50 briefs (about $5): put the key in `edge/.dev.vars`, run `npm run dev` and `npm run dev:render` in `edge/`, then `node evals/run.mjs`.
+   Spend is capped at $2/hour (`HOURLY_CAP_USD`; lite mode at 80%, archive at 100%).
 2. **Deploys from GitHub.** No OAuth scope can mint a Cloudflare API token. Create one (template "Edit Cloudflare Workers", plus D1 edit), then:
    ```bash
    gh secret set CLOUDFLARE_API_TOKEN -R brandon-lai/moment

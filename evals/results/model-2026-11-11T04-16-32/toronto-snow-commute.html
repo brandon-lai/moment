@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Snow in Toronto, until midnight</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lato:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>:root{--bg:#0c0c0c;--fg:#f5f5f4;--muted:#a8a29e;--accent:#f05252;--accent-2:#fde047;--surface:#171717;--line:#292524;color-scheme:dark;--font-display:'Abril Fatface',serif;--font-body:'Lato',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;--radius:0px;--gap:1.35}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:18px;line-height:1.55;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.05;letter-spacing:-.01em;margin:0 0 calc(.5em*var(--gap));text-wrap:balance}
+h1{font-size:clamp(34px,6.4vw,84px)}h2{font-size:clamp(24px,3.6vw,44px)}h3{font-size:clamp(18px,2.2vw,24px)}
+p{margin:0 0 calc(1em*var(--gap));max-width:68ch;text-wrap:pretty}
+a{color:var(--accent);text-underline-offset:.18em}
+button{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--fg);border-radius:var(--radius);padding:.55em 1em;cursor:pointer}
+button:hover{background:var(--fg);color:var(--bg)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=range]{accent-color:var(--accent);width:100%}
+table{border-collapse:collapse;width:100%}td,th{padding:.45em .6em;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85em}
+svg{max-width:100%;height:auto}canvas{max-width:100%;display:block}
+img{max-width:100%}
+.m-kicker{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .9em}
+.m-big{font-family:var(--font-display);font-size:clamp(56px,13vw,170px);line-height:.88;letter-spacing:-.03em;font-weight:400}
+.m-lead{font-size:1.25em;line-height:1.4;max-width:40ch}
+.m-muted{color:var(--muted)}.m-accent{color:var(--accent)}.m-accent-2{color:var(--accent-2)}
+.m-mono{font-family:var(--font-mono)}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:calc(16px*var(--gap))}
+.m-row{display:flex;flex-wrap:wrap;gap:calc(12px*var(--gap));align-items:baseline}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:calc(18px*var(--gap))}
+.m-stat{display:flex;flex-direction:column;gap:.2em}.m-stat b{font-family:var(--font-display);font-size:clamp(28px,4.6vw,52px);line-height:1;font-weight:400}
+.m-rule{border:0;border-top:1px solid var(--line);margin:calc(24px*var(--gap)) 0}
+.m-chip{display:inline-block;font-family:var(--font-mono);font-size:.78rem;padding:.25em .6em;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.m-list{list-style:none;padding:0;margin:0}.m-list li{padding:.6em 0;border-bottom:1px solid var(--line)}
+.m-bars{display:flex;align-items:flex-end;gap:3px;height:120px}.m-bars i{flex:1;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px}
+main>section{scroll-margin-top:16px}
+main>section{animation:m-in .9s cubic-bezier(.2,.7,.2,1) both}@keyframes m-in{from{opacity:0;transform:translateY(8px)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#m-building{position:fixed;left:12px;bottom:12px;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;z-index:5}
+#m-building::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:m-pulse 1.2s ease-in-out infinite}
+@keyframes m-pulse{50%{opacity:.25}}
+.m-earlier{font-family:var(--font-mono);font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
+main{padding:0}main>section{min-height:88vh;padding:clamp(28px,7vw,110px) clamp(16px,6vw,96px);display:flex;flex-direction:column;justify-content:center}main>section:nth-child(even){background:var(--surface)}</style>
+<script>window.MOMENT={"live":"http://localhost:8788/live/43.65,-79.38","tz":"America/Toronto","place":"Toronto","eu":false};(()=>{const EU=false;let lastY=scrollY,lastT=performance.now(),speed=0,taps=0,idle=0,lastAct=performance.now(),hov=new Set(),bottom=false;
+const desc=e=>{const el=e.closest&&e.closest('[data-m],button,a,svg,canvas,table,li,figure,h2,h3');if(!el)return null;return(el.getAttribute('data-m')||el.tagName.toLowerCase()+(el.className&&typeof el.className==='string'?'.'+el.className.split(' ')[0]:'')).slice(0,40)};
+const act=()=>{lastAct=performance.now()};
+addEventListener('scroll',()=>{const t=performance.now(),dy=Math.abs(scrollY-lastY);speed=.7*speed+.3*(dy/Math.max(16,t-lastT)*1000);lastY=scrollY;lastT=t;act();const b=innerHeight+scrollY>=document.documentElement.scrollHeight-40;if(b&&!bottom){bottom=true;parent.postMessage({type:'moment:bottom'},'*')}},{passive:true});
+addEventListener('pointerover',e=>{if(EU)return;const d=desc(e.target);if(d&&hov.size<12)hov.add(d)},{passive:true});
+addEventListener('pointerdown',()=>{taps++;act()},{passive:true});addEventListener('keydown',act);
+const onScreen=()=>{let best=null,area=0;for(const s of document.querySelectorAll('main>section')){const r=s.getBoundingClientRect(),v=Math.max(0,Math.min(innerHeight,r.bottom)-Math.max(0,r.top));if(v>area){area=v;best=s.id||null}}return best};
+setInterval(()=>{idle=performance.now()-lastAct;if(EU)return;parent.postMessage({type:'moment:interaction',section:onScreen(),scrollSpeed:Math.round(speed),hovered:[...hov],taps,idleMs:Math.round(idle),atBottom:bottom},'*');hov.clear();speed*=.5},2000);
+})();</script>
+</head><body class="layout-full-bleed motion-gentle density-airy">
+<div id="m-building" role="status">Writing this page</div>
+<main>
+<section id="snowfall-now">
+<p class="m-kicker">Toronto · Monday, 5:15 p.m.</p>
+<h1 class="m-big" id="sn-temp">2°C</h1>
+<p class="m-lead">Snow is falling over Toronto. The sun set at 4:47 p.m., so this is the dark part of the evening. The snow keeps on until around midnight.</p>
+<div class="sn-stage"><canvas id="sn-canvas" aria-hidden="true"></canvas></div>
+<div class="m-row sn-facts">
+<div class="m-stat"><b>Midnight</b><span>when the snow stops</span></div>
+<div class="m-stat"><b>-5°C</b><span>overnight low</span></div>
+<div class="m-stat"><b>93%</b><span>snow chance at 7 p.m.</span></div>
+</div>
+<style>
+#snowfall-now{min-height:92vh;display:flex;flex-direction:column;justify-content:center;gap:var(--gap);padding:8vh 6vw;position:relative;overflow:hidden;background:var(--bg)}
+#snowfall-now .m-big{font-size:clamp(5rem,22vw,16rem);line-height:.9;margin:0;color:var(--fg)}
+#snowfall-now .m-lead{max-width:34em;margin:0}
+#snowfall-now .sn-stage{position:absolute;inset:0;pointer-events:none}
+#snowfall-now canvas{width:100%;height:100%;display:block}
+#snowfall-now>*:not(.sn-stage){position:relative;z-index:1}
+#snowfall-now .sn-facts{gap:2.5rem;margin-top:1rem}
+</style>
+</section><section id="clearing-overnight">
+<p class="m-kicker">After 11 p.m.</p>
+<h2 class="m-big">Clearing after midnight</h2>
+<p class="m-lead">The snow stops around midnight. By 1 a.m. it is -5°C and the sky is overcast but dry.</p>
+<div class="co-chart">
+<svg id="co-svg" viewBox="0 0 640 260" role="img" aria-label="Temperature from 5 p.m. to 4 a.m., falling from 2 degrees to minus 5, with snow ending at midnight">
+<line x1="0" y1="150" x2="640" y2="150" stroke="var(--line)" stroke-dasharray="4 6"/>
+<text x="6" y="143" fill="var(--muted)" font-family="var(--font-mono)" font-size="12">0°C</text>
+<rect id="co-snow" x="0" y="0" width="0" height="260" fill="var(--accent)" opacity="0.12"/>
+<polyline id="co-line" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linejoin="round" points=""/>
+<line x1="437" y1="20" x2="437" y2="240" stroke="var(--accent-2)" stroke-width="1.5"/>
+<text x="445" y="36" fill="var(--accent-2)" font-family="var(--font-mono)" font-size="12">snow stops, 12 a.m.</text>
+<g id="co-labels" fill="var(--muted)" font-family="var(--font-mono)" font-size="12"></g>
+</svg>
+</div>
+<div class="m-row co-stats">
+<div class="m-stat"><b>2°C</b><span>5 p.m.</span></div>
+<div class="m-stat"><b>-3°C</b><span>midnight</span></div>
+<div class="m-stat"><b class="m-accent">-5°C</b><span>1 a.m. onward</span></div>
+</div>
+<p class="m-muted">Below freezing from about 9 p.m. Wet sidewalks tonight will be slick by morning.</p>
+<style>
+#clearing-overnight{padding:12vh 6vw;background:var(--surface);min-height:90vh}
+#clearing-overnight h2{margin:.2em 0 .3em}
+#clearing-overnight .m-lead{max-width:34em}
+#clearing-overnight .co-chart{margin:6vh 0 4vh;max-width:900px}
+#clearing-overnight svg{width:100%;height:auto;display:block}
+#clearing-overnight .co-stats{gap:var(--gap);margin-bottom:3vh}
+</style>
+</section></main>
+<style>#m-building{display:none}</style>
+
+<script>(()=>{try{
+(function(){
+var root=document.getElementById('snowfall-now');
+var cv=document.getElementById('sn-canvas');
+var ctx=cv.getContext('2d');
+var still=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var w,h,flakes=[];
+var col=getComputedStyle(document.documentElement).getPropertyValue('--fg').trim()||'#fff';
+function size(){
+var r=root.getBoundingClientRect();
+var d=window.devicePixelRatio||1;
+w=r.width;h=r.height;
+cv.width=w*d;cv.height=h*d;
+ctx.setTransform(d,0,0,d,0,0);
+}
+size();
+window.addEventListener('resize',size);
+var n=Math.max(40,Math.min(140,Math.round(w/10)));
+for(var i=0;i<n;i++){
+flakes.push({x:Math.random()*w,y:Math.random()*h,r:0.8+Math.random()*2.4,v:0.25+Math.random()*0.7,p:Math.random()*6.28,a:0.25+Math.random()*0.5});
+}
+function draw(move){
+ctx.clearRect(0,0,w,h);
+ctx.fillStyle=col;
+for(var i=0;i<flakes.length;i++){
+var f=flakes[i];
+if(move){
+f.y+=f.v;f.p+=0.01;f.x+=Math.sin(f.p)*0.3;
+if(f.y>h+4){f.y=-4;f.x=Math.random()*w}
+}
+ctx.globalAlpha=f.a;
+ctx.beginPath();ctx.arc(f.x,f.y,f.r,0,6.283);ctx.fill();
+}
+ctx.globalAlpha=1;
+}
+if(still){draw(false);}
+else{
+(function loop(){draw(true);requestAnimationFrame(loop)})();
+}
+try{
+fetch(window.MOMENT.live+'/weather').then(function(r){return r.json()}).then(function(d){
+if(d&&d.now&&typeof d.now.temp_c==='number'){
+document.getElementById('sn-temp').textContent=Math.round(d.now.temp_c)+'°C';
+}
+}).catch(function(){});
+}catch(e){}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var sec=document.getElementById('clearing-overnight');
+var data=[["5 p.m.",2],["6",1],["7",1],["8",0],["9",-1],["10",-3],["11",-3],["12 a.m.",-3],["1",-5],["2",-5],["3",-5],["4",-5]];
+var x0=20,x1=620,yTop=40,yBot=230;
+function X(i){return x0+(x1-x0)*i/(data.length-1)}
+function Y(t){return 150-(t*(190/10))*0.5*1.0-0}
+var pts=data.map(function(d,i){return X(i).toFixed(1)+","+(150-d[1]*18).toFixed(1)});
+var line=document.getElementById('co-line');
+line.setAttribute('points',pts.join(' '));
+var g=document.getElementById('co-labels');
+[0,4,7,8,11].forEach(function(i){
+var t=document.createElementNS('http://www.w3.org/2000/svg','text');
+t.setAttribute('x',X(i)-12);t.setAttribute('y',252);
+t.textContent=data[i][0];g.appendChild(t);
+});
+var snow=document.getElementById('co-snow');
+var sw=X(7)-x0;
+snow.setAttribute('x',x0);
+var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var len=line.getTotalLength?line.getTotalLength():0;
+if(reduce||!len){snow.setAttribute('width',sw);return;}
+line.style.strokeDasharray=len;line.style.strokeDashoffset=len;
+var done=false;
+function run(){
+if(done)return;done=true;
+var s=null;
+function step(ts){
+if(!s)s=ts;
+var p=Math.min((ts-s)/2600,1);
+var e=1-Math.pow(1-p,3);
+line.style.strokeDashoffset=len*(1-e);
+snow.setAttribute('width',sw*e);
+if(p<1)requestAnimationFrame(step);
+}
+requestAnimationFrame(step);
+}
+if('IntersectionObserver' in window){
+var io=new IntersectionObserver(function(en){
+if(en[0].isIntersecting){run();io.disconnect();}
+},{threshold:0.3});
+io.observe(sec);
+}else run();
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>parent.postMessage({type:'moment:complete'},'*')</script>
+</body></html>

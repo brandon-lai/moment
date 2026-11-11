@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Clear Sunday Noon in Rome</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;700&family=Figtree:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>:root{--bg:#f3efe6;--fg:#12343b;--muted:#4c6b70;--accent:#c8553d;--accent-2:#2e7f87;--surface:#e8e1d1;--line:#d3c8b0;color-scheme:light;--font-display:'Bricolage Grotesque',sans-serif;--font-body:'Figtree',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;--radius:12px;--gap:0.7}
+@media (prefers-color-scheme:dark){:root{--bg:#071a2b;--fg:#e2eef8;--muted:#8fb0cb;--accent:#38bdf8;--accent-2:#fb923c;--surface:#0c2438;--line:#1b3a55;color-scheme:dark;}}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:15px;line-height:1.55;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;line-height:1.05;letter-spacing:-.01em;margin:0 0 calc(.5em*var(--gap));text-wrap:balance}
+h1{font-size:clamp(34px,6.4vw,84px)}h2{font-size:clamp(24px,3.6vw,44px)}h3{font-size:clamp(18px,2.2vw,24px)}
+p{margin:0 0 calc(1em*var(--gap));max-width:68ch;text-wrap:pretty}
+a{color:var(--accent);text-underline-offset:.18em}
+button{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--fg);border-radius:var(--radius);padding:.55em 1em;cursor:pointer}
+button:hover{background:var(--fg);color:var(--bg)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=range]{accent-color:var(--accent);width:100%}
+table{border-collapse:collapse;width:100%}td,th{padding:.45em .6em;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85em}
+svg{max-width:100%;height:auto}canvas{max-width:100%;display:block}
+img{max-width:100%}
+.m-kicker{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .9em}
+.m-big{font-family:var(--font-display);font-size:clamp(56px,13vw,170px);line-height:.88;letter-spacing:-.03em;font-weight:700}
+.m-lead{font-size:1.25em;line-height:1.4;max-width:40ch}
+.m-muted{color:var(--muted)}.m-accent{color:var(--accent)}.m-accent-2{color:var(--accent-2)}
+.m-mono{font-family:var(--font-mono)}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:calc(16px*var(--gap))}
+.m-row{display:flex;flex-wrap:wrap;gap:calc(12px*var(--gap));align-items:baseline}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:calc(18px*var(--gap))}
+.m-stat{display:flex;flex-direction:column;gap:.2em}.m-stat b{font-family:var(--font-display);font-size:clamp(28px,4.6vw,52px);line-height:1;font-weight:700}
+.m-rule{border:0;border-top:1px solid var(--line);margin:calc(24px*var(--gap)) 0}
+.m-chip{display:inline-block;font-family:var(--font-mono);font-size:.78rem;padding:.25em .6em;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.m-list{list-style:none;padding:0;margin:0}.m-list li{padding:.6em 0;border-bottom:1px solid var(--line)}
+.m-bars{display:flex;align-items:flex-end;gap:3px;height:120px}.m-bars i{flex:1;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px}
+main>section{scroll-margin-top:16px}
+main>section{animation:m-in .5s cubic-bezier(.2,.7,.2,1) both}@keyframes m-in{from{opacity:0;transform:translateY(18px)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#m-building{position:fixed;left:12px;bottom:12px;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;z-index:5}
+#m-building::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:m-pulse 1.2s ease-in-out infinite}
+@keyframes m-pulse{50%{opacity:.25}}
+.m-earlier{font-family:var(--font-mono);font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
+main{padding:0}@media(min-width:900px){main{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr)}main>section:first-child{position:sticky;top:0;height:100vh;grid-row:1/span 50;border-right:1px solid var(--line);overflow:auto}main>section{grid-column:2}main>section:first-child{grid-column:1}}main>section{padding:clamp(24px,5vw,64px)}main>section+section{border-top:1px solid var(--line)}</style>
+<script>window.MOMENT={"live":"http://localhost:8788/live/41.90,12.50","tz":"Europe/Rome","place":"Rome","eu":true};(()=>{const EU=true;let lastY=scrollY,lastT=performance.now(),speed=0,taps=0,idle=0,lastAct=performance.now(),hov=new Set(),bottom=false;
+const desc=e=>{const el=e.closest&&e.closest('[data-m],button,a,svg,canvas,table,li,figure,h2,h3');if(!el)return null;return(el.getAttribute('data-m')||el.tagName.toLowerCase()+(el.className&&typeof el.className==='string'?'.'+el.className.split(' ')[0]:'')).slice(0,40)};
+const act=()=>{lastAct=performance.now()};
+addEventListener('scroll',()=>{const t=performance.now(),dy=Math.abs(scrollY-lastY);speed=.7*speed+.3*(dy/Math.max(16,t-lastT)*1000);lastY=scrollY;lastT=t;act();const b=innerHeight+scrollY>=document.documentElement.scrollHeight-40;if(b&&!bottom){bottom=true;parent.postMessage({type:'moment:bottom'},'*')}},{passive:true});
+addEventListener('pointerover',e=>{if(EU)return;const d=desc(e.target);if(d&&hov.size<12)hov.add(d)},{passive:true});
+addEventListener('pointerdown',()=>{taps++;act()},{passive:true});addEventListener('keydown',act);
+const onScreen=()=>{let best=null,area=0;for(const s of document.querySelectorAll('main>section')){const r=s.getBoundingClientRect(),v=Math.max(0,Math.min(innerHeight,r.bottom)-Math.max(0,r.top));if(v>area){area=v;best=s.id||null}}return best};
+setInterval(()=>{idle=performance.now()-lastAct;if(EU)return;parent.postMessage({type:'moment:interaction',section:onScreen(),scrollSpeed:Math.round(speed),hovered:[...hov],taps,idleMs:Math.round(idle),atBottom:bottom},'*');hov.clear();speed*=.5},2000);
+})();</script>
+</head><body class="layout-split motion-lively density-dense">
+<div id="m-building" role="status">Writing this page</div>
+<main>
+<section id="the-light-now">
+<p class="m-kicker">Rome · Sunday · 12:40 p.m.</p>
+<h2 class="m-big">19°C, and not a cloud.</h2>
+<p class="m-lead">The sky is clear and has been all morning. Sunrise was at 7:09. Sunset is at 4:45 p.m., so the light you have now is most of what you get.</p>
+<svg id="tln-arc" viewBox="0 0 320 150" role="img" aria-label="Sun path from sunrise at 7:09 a.m. to sunset at 4:45 p.m., with the sun now near the middle">
+<line x1="10" y1="120" x2="310" y2="120" stroke="var(--line)" stroke-width="1.5"/>
+<path id="tln-path" d="M30 120 Q160 -30 290 120" fill="none" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="3 5"/>
+<circle id="tln-sun" r="9" fill="var(--accent)"/>
+<text x="30" y="140" font-size="10" fill="var(--muted)" font-family="var(--font-mono)" text-anchor="middle">7:09</text>
+<text x="290" y="140" font-size="10" fill="var(--muted)" font-family="var(--font-mono)" text-anchor="middle">4:45</text>
+</svg>
+<div class="m-row tln-stats">
+<div class="m-stat"><b>19°C</b><span>right now</span></div>
+<div class="m-stat"><b>13–20°</b><span>next 12 hours</span></div>
+<div class="m-stat"><b>0 mm</b><span>rain expected</span></div>
+</div>
+<p class="m-muted">The warmest hour is 3 p.m., at 20°C. By 8 p.m. it is 16°C.</p>
+<style>
+#the-light-now{padding:var(--gap) 0}
+#the-light-now h2{margin:.2em 0 .3em;line-height:.95}
+#the-light-now svg{display:block;width:100%;max-width:420px;margin:var(--gap) 0}
+#the-light-now .tln-stats{gap:var(--gap);margin-bottom:var(--gap)}
+#the-light-now .m-stat b{color:var(--accent)}
+</style>
+</section><section id="the-hours-ahead">
+<p class="m-kicker">12:40 p.m. to midnight</p>
+<h2>The hours ahead</h2>
+<p class="m-lead">The range is 13° to 20°, and almost all of it is the drop after dark. Between now and the 4:45 p.m. sunset it barely moves.</p>
+
+<div class="m-row" style="margin:var(--gap) 0">
+<div class="m-stat"><b>20°C</b><span>peak, at 3:00 p.m.</span></div>
+<div class="m-stat"><b>18°C</b><span>at 6:00 p.m.</span></div>
+<div class="m-stat"><b>15°C</b><span>at 9:00 p.m.</span></div>
+</div>
+
+<figure id="hours-chart-wrap" style="margin:0">
+<svg id="hours-chart" viewBox="0 0 640 260" width="100%" role="img" aria-label="Hourly temperature from 11:00 a.m. to 11:00 p.m., peaking at 20°C at 3:00 p.m. and falling to 14°C by 11:00 p.m.">
+<line id="hc-sun" x1="0" y1="20" x2="0" y2="220" stroke="var(--accent-2)" stroke-dasharray="3 4"/>
+<text id="hc-sunl" x="0" y="14" fill="var(--accent-2)" font-family="var(--font-mono)" font-size="11">sunset 4:45 p.m.</text>
+<path id="hc-line" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linejoin="round"/>
+<g id="hc-dots"></g>
+<g id="hc-axis"></g>
+<text id="hc-read" x="8" y="250" fill="var(--fg)" font-family="var(--font-mono)" font-size="13">Tap or hover an hour</text>
+</svg>
+</figure>
+
+<p class="m-muted">Rain chance stays at or under 18% all evening, and no rain is forecast in any hour. Take a layer for after 8:00 p.m., when it goes from 18° to 16° and keeps falling.</p>
+
+<style>
+#the-hours-ahead h2{font-family:var(--font-display);font-size:clamp(2rem,5vw,3.2rem);line-height:1.05;margin:.2em 0 .4em}
+#the-hours-ahead #hours-chart{display:block;max-width:100%;height:auto;overflow:visible}
+#the-hours-ahead .hc-hit{fill:transparent;cursor:pointer}
+#the-hours-ahead .hc-dot{fill:var(--bg);stroke:var(--accent);stroke-width:2.5}
+#the-hours-ahead .hc-dot.on{fill:var(--accent)}
+</style>
+</section><section id="a-sunday-shape">
+<p class="m-kicker">12:40 p.m. · Sunday · Rome</p>
+<h2>Shaping a Sunday afternoon</h2>
+<p class="m-lead">Dry, mild and clear until midnight. Nothing in the forecast asks you to plan around it.</p>
+
+<div class="ss-wrap">
+<p class="ss-note">Drag to move through the afternoon. Light is the only thing that sets a deadline.</p>
+<svg id="ss-svg" viewBox="0 0 600 150" role="img" aria-label="Daylight from 7:09 a.m. to 4:45 p.m. with the chosen hour marked">
+<line x1="20" y1="120" x2="580" y2="120" stroke="var(--line)" stroke-width="1"/>
+<rect id="ss-day" x="20" y="108" width="0" height="24" rx="12" fill="var(--accent)"/>
+<rect id="ss-dusk" x="20" y="108" width="0" height="24" rx="12" fill="var(--accent-2)" opacity=".35"/>
+<line id="ss-pin" x1="0" y1="60" x2="0" y2="120" stroke="var(--fg)" stroke-width="1.5"/>
+<circle id="ss-dot" cx="0" cy="52" r="9" fill="var(--fg)"/>
+<text x="20" y="148" fill="var(--muted)" font-size="11" font-family="var(--font-mono)">7:09 a.m.</text>
+<text x="580" y="148" fill="var(--muted)" font-size="11" font-family="var(--font-mono)" text-anchor="end">midnight</text>
+</svg>
+<input id="ss-range" type="range" min="12" max="23" step="1" value="13" aria-label="Hour of the day">
+<div class="ss-read">
+<span class="m-big" id="ss-time">1:00 p.m.</span>
+<span id="ss-line" class="m-muted"></span>
+</div>
+</div>
+
+<p class="ss-close">A long lunch fits. So does a walk that ends after the light has gone gold. Leave the umbrella; bring a layer for the evening.</p>
+
+<style>
+#a-sunday-shape h2{margin:.2em 0 .3em}
+#a-sunday-shape .ss-wrap{margin:var(--gap) 0;padding:var(--gap) 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+#a-sunday-shape .ss-note{color:var(--muted);margin:0 0 .75rem}
+#a-sunday-shape svg{width:100%;height:auto;display:block}
+#a-sunday-shape input[type=range]{width:100%;accent-color:var(--accent);margin:.75rem 0}
+#a-sunday-shape .ss-read{display:flex;flex-wrap:wrap;align-items:baseline;gap:.5rem 1.25rem}
+#a-sunday-shape .ss-read .m-big{font-size:clamp(2.2rem,6vw,3.6rem);line-height:1}
+#a-sunday-shape .ss-close{max-width:34em}
+</style>
+</section></main>
+<style>#m-building{display:none}</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+<script>(()=>{try{
+(function(){
+var path=document.getElementById('tln-path');
+var sun=document.getElementById('tln-sun');
+if(!path||!sun)return;
+var rise=7*60+9, set=16*60+45, now=12*60+40;
+var f=(now-rise)/(set-rise);
+function place(t){
+var p=path.getPointAtLength(path.getTotalLength()*t);
+sun.setAttribute('cx',p.x);sun.setAttribute('cy',p.y);
+}
+var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(reduce||typeof anime==='undefined'){place(f);return;}
+var o={t:0};
+place(0);
+anime({targets:o,t:f,duration:1800,easing:'easeOutCubic',update:function(){place(o.t);}});
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var data=[["11 a.m.",18],["12 p.m.",19],["1 p.m.",19],["2 p.m.",19],["3 p.m.",20],["4 p.m.",19],["5 p.m.",18],["6 p.m.",18],["7 p.m.",18],["8 p.m.",16],["9 p.m.",15],["10 p.m.",15],["11 p.m.",14]];
+var svg=document.getElementById('hours-chart');
+if(!svg)return;
+var NS='http://www.w3.org/2000/svg';
+var x0=30,x1=610,yTop=40,yBot=210,tMin=13,tMax=21;
+function X(i){return x0+(x1-x0)*i/(data.length-1);}
+function Y(t){return yBot-(yBot-yTop)*(t-tMin)/(tMax-tMin);}
+var d='';
+data.forEach(function(p,i){d+=(i?'L':'M')+X(i).toFixed(1)+' '+Y(p[1]).toFixed(1);});
+var line=document.getElementById('hc-line');
+line.setAttribute('d',d);
+var sx=X(5+45/60);
+var sun=document.getElementById('hc-sun');
+sun.setAttribute('x1',sx);sun.setAttribute('x2',sx);
+var sl=document.getElementById('hc-sunl');
+sl.setAttribute('x',sx+6);
+var dots=document.getElementById('hc-dots'),axis=document.getElementById('hc-axis');
+var read=document.getElementById('hc-read');
+var els=[];
+function sel(i){
+els.forEach(function(c,j){c.classList.toggle('on',j===i);});
+read.textContent=data[i][0]+': '+data[i][1]+'°C';
+}
+data.forEach(function(p,i){
+var c=document.createElementNS(NS,'circle');
+c.setAttribute('cx',X(i));c.setAttribute('cy',Y(p[1]));c.setAttribute('r',5);
+c.setAttribute('class','hc-dot');dots.appendChild(c);els.push(c);
+var h=document.createElementNS(NS,'rect');
+h.setAttribute('x',X(i)-20);h.setAttribute('y',20);h.setAttribute('width',40);h.setAttribute('height',200);
+h.setAttribute('class','hc-hit');
+h.addEventListener('mouseenter',function(){sel(i);});
+h.addEventListener('click',function(){sel(i);});
+dots.appendChild(h);
+if(i%2===0){
+var t=document.createElementNS(NS,'text');
+t.setAttribute('x',X(i));t.setAttribute('y',236);t.setAttribute('text-anchor','middle');
+t.setAttribute('fill','var(--muted)');t.setAttribute('font-size','10');t.setAttribute('font-family','var(--font-mono)');
+t.textContent=p[0].replace(' ','').replace('.m.','m').replace('.','');
+axis.appendChild(t);
+}
+});
+sel(4);
+var still=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(window.anime&&!still){
+var len=line.getTotalLength();
+line.style.strokeDasharray=len;line.style.strokeDashoffset=len;
+anime({targets:line,strokeDashoffset:0,duration:1800,easing:'easeInOutQuad'});
+anime({targets:'#hc-dots .hc-dot',opacity:[0,1],delay:anime.stagger(100),duration:400,easing:'easeOutQuad'});
+}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var H=[{h:12,t:19},{h:13,t:19},{h:14,t:19},{h:15,t:20},{h:16,t:19},{h:17,t:18},{h:18,t:18},{h:19,t:18},{h:20,t:16},{h:21,t:15},{h:22,t:15},{h:23,t:14}];
+var r=document.getElementById('ss-range'),tm=document.getElementById('ss-time'),ln=document.getElementById('ss-line');
+var pin=document.getElementById('ss-pin'),dot=document.getElementById('ss-dot'),day=document.getElementById('ss-day'),dusk=document.getElementById('ss-dusk');
+var start=7.15,end=24,x0=20,x1=580;
+function X(h){return x0+(h-start)/(end-start)*(x1-x0)}
+var sx=X(16.75);
+day.setAttribute('width',sx-x0);
+dusk.setAttribute('x',sx);dusk.setAttribute('width',x1-sx);
+function label(h){var s=h>=12?'p.m.':'a.m.';var n=h%12||12;return n+':00 '+s}
+function upd(){
+var h=+r.value,d=H.filter(function(o){return o.h===h})[0];
+var x=X(h);
+pin.setAttribute('x1',x);pin.setAttribute('x2',x);dot.setAttribute('cx',x);
+tm.textContent=label(h);
+var light=h<16?'Full daylight.':(h===16?'The sun sets at 4:45 p.m.':'After sunset.');
+ln.textContent=d.t+'°C, clear. '+light;
+}
+r.addEventListener('input',upd);
+upd();
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>parent.postMessage({type:'moment:complete'},'*')</script>
+</body></html>

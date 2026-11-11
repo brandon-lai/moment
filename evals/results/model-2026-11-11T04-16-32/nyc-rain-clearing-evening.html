@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rain clears in Brooklyn after 8 p.m.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Instrument+Sans:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>:root{--bg:#0a0f0a;--fg:#c8f7c5;--muted:#7fa77b;--accent:#5cff3a;--accent-2:#ffd166;--surface:#101810;--line:#1f2e1f;color-scheme:dark;--font-display:'Instrument Serif',serif;--font-body:'Instrument Sans',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;--radius:12px;--gap:0.7}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:15px;line-height:1.55;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.05;letter-spacing:-.01em;margin:0 0 calc(.5em*var(--gap));text-wrap:balance}
+h1{font-size:clamp(34px,6.4vw,84px)}h2{font-size:clamp(24px,3.6vw,44px)}h3{font-size:clamp(18px,2.2vw,24px)}
+p{margin:0 0 calc(1em*var(--gap));max-width:68ch;text-wrap:pretty}
+a{color:var(--accent);text-underline-offset:.18em}
+button{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--fg);border-radius:var(--radius);padding:.55em 1em;cursor:pointer}
+button:hover{background:var(--fg);color:var(--bg)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=range]{accent-color:var(--accent);width:100%}
+table{border-collapse:collapse;width:100%}td,th{padding:.45em .6em;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85em}
+svg{max-width:100%;height:auto}canvas{max-width:100%;display:block}
+img{max-width:100%}
+.m-kicker{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .9em}
+.m-big{font-family:var(--font-display);font-size:clamp(56px,13vw,170px);line-height:.88;letter-spacing:-.03em;font-weight:400}
+.m-lead{font-size:1.25em;line-height:1.4;max-width:40ch}
+.m-muted{color:var(--muted)}.m-accent{color:var(--accent)}.m-accent-2{color:var(--accent-2)}
+.m-mono{font-family:var(--font-mono)}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:calc(16px*var(--gap))}
+.m-row{display:flex;flex-wrap:wrap;gap:calc(12px*var(--gap));align-items:baseline}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:calc(18px*var(--gap))}
+.m-stat{display:flex;flex-direction:column;gap:.2em}.m-stat b{font-family:var(--font-display);font-size:clamp(28px,4.6vw,52px);line-height:1;font-weight:400}
+.m-rule{border:0;border-top:1px solid var(--line);margin:calc(24px*var(--gap)) 0}
+.m-chip{display:inline-block;font-family:var(--font-mono);font-size:.78rem;padding:.25em .6em;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.m-list{list-style:none;padding:0;margin:0}.m-list li{padding:.6em 0;border-bottom:1px solid var(--line)}
+.m-bars{display:flex;align-items:flex-end;gap:3px;height:120px}.m-bars i{flex:1;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px}
+main>section{scroll-margin-top:16px}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#m-building{position:fixed;left:12px;bottom:12px;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;z-index:5}
+#m-building::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:m-pulse 1.2s ease-in-out infinite}
+@keyframes m-pulse{50%{opacity:.25}}
+.m-earlier{font-family:var(--font-mono);font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
+main{padding:0 clamp(16px,5vw,72px) 64px}main>section:first-child{min-height:96vh;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:clamp(24px,6vw,80px)}main>section:first-child h1{font-size:clamp(48px,12vw,180px);line-height:.9;max-width:14ch}main>section{padding:clamp(24px,5vw,64px) 0;max-width:60rem}</style>
+<script>window.MOMENT={"live":"http://localhost:8788/live/40.71,-74.01","tz":"America/New_York","place":"Brooklyn","eu":false};(()=>{const EU=false;let lastY=scrollY,lastT=performance.now(),speed=0,taps=0,idle=0,lastAct=performance.now(),hov=new Set(),bottom=false;
+const desc=e=>{const el=e.closest&&e.closest('[data-m],button,a,svg,canvas,table,li,figure,h2,h3');if(!el)return null;return(el.getAttribute('data-m')||el.tagName.toLowerCase()+(el.className&&typeof el.className==='string'?'.'+el.className.split(' ')[0]:'')).slice(0,40)};
+const act=()=>{lastAct=performance.now()};
+addEventListener('scroll',()=>{const t=performance.now(),dy=Math.abs(scrollY-lastY);speed=.7*speed+.3*(dy/Math.max(16,t-lastT)*1000);lastY=scrollY;lastT=t;act();const b=innerHeight+scrollY>=document.documentElement.scrollHeight-40;if(b&&!bottom){bottom=true;parent.postMessage({type:'moment:bottom'},'*')}},{passive:true});
+addEventListener('pointerover',e=>{if(EU)return;const d=desc(e.target);if(d&&hov.size<12)hov.add(d)},{passive:true});
+addEventListener('pointerdown',()=>{taps++;act()},{passive:true});addEventListener('keydown',act);
+const onScreen=()=>{let best=null,area=0;for(const s of document.querySelectorAll('main>section')){const r=s.getBoundingClientRect(),v=Math.max(0,Math.min(innerHeight,r.bottom)-Math.max(0,r.top));if(v>area){area=v;best=s.id||null}}return best};
+setInterval(()=>{idle=performance.now()-lastAct;if(EU)return;parent.postMessage({type:'moment:interaction',section:onScreen(),scrollSpeed:Math.round(speed),hovered:[...hov],taps,idleMs:Math.round(idle),atBottom:bottom},'*');hov.clear();speed*=.5},2000);
+})();</script>
+</head><body class="layout-poster motion-still density-dense">
+<div id="m-building" role="status">Writing this page</div>
+<main>
+<section id="clearing-time">
+<p class="m-kicker">Brooklyn · Tuesday · 6:12 p.m.</p>
+<h2 class="ct-head">When the rain stops</h2>
+<p class="m-lead ct-lead">The light rain stops around 8 p.m. tonight.</p>
+<div class="ct-poster">
+<div class="ct-big m-big m-accent"><span id="ct-count">1 h 48 min</span></div>
+<p class="ct-until m-mono m-muted">until 8:00 p.m.</p>
+</div>
+<div class="ct-grid">
+<div class="m-stat"><b>52°F</b><span>now, 11°C, light rain</span></div>
+<div class="m-stat"><b>40°F</b><span>low around 3 a.m., 5°C</span></div>
+<div class="m-stat"><b>72%</b><span>rain chance at 7 p.m.</span></div>
+<div class="m-stat"><b>19%</b><span>rain chance at 8 p.m.</span></div>
+</div>
+<p class="ct-note">The last real rain falls in the 7 o'clock hour, about 1.5 mm. By 8 the sky goes to cloud, then thins out. After that it stays dry through the night while the temperature slides to 40°F (5°C).</p>
+<style>
+#clearing-time{min-height:92vh;display:flex;flex-direction:column;justify-content:center;padding:clamp(1rem,4vw,3rem) 0}
+#clearing-time .ct-head{font-family:var(--font-display);font-size:clamp(1.1rem,2vw,1.5rem);margin:.25rem 0 .5rem;color:var(--muted);font-weight:500}
+#clearing-time .ct-lead{max-width:30ch;margin:0 0 clamp(1rem,4vw,3rem)}
+#clearing-time .ct-poster{margin-left:clamp(0rem,12vw,10rem);margin-bottom:clamp(1.5rem,4vw,3rem)}
+#clearing-time .ct-big{font-size:clamp(3.4rem,15vw,12rem);line-height:.9;letter-spacing:-.04em;display:block;overflow-wrap:anywhere}
+#clearing-time .ct-until{margin:.75rem 0 0;font-size:clamp(.9rem,1.6vw,1.2rem);text-transform:uppercase;letter-spacing:.12em}
+#clearing-time .ct-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:var(--gap);border-top:1px solid var(--line);padding-top:var(--gap);max-width:900px}
+#clearing-time .ct-note{max-width:56ch;margin-top:var(--gap);color:var(--muted)}
+</style>
+</section><section id="dry-window">
+<h2 class="m-big dw-title">The dry hours ahead</h2>
+<p class="m-lead dw-lead">From 8 p.m. the rain chance drops to 19%. By midnight it is 1%. Overnight it never climbs past 15%.</p>
+<div class="dw-chart" role="img" aria-label="Hourly rain chance and temperature from 5 p.m. to 5 a.m.">
+<svg id="dw-svg" viewBox="0 0 600 200" preserveAspectRatio="none" width="100%" height="200">
+<g id="dw-bars"></g>
+<polyline id="dw-line" fill="none" stroke="var(--accent-2)" stroke-width="2" vector-effect="non-scaling-stroke"></polyline>
+</svg>
+<div class="dw-axis m-mono m-muted"><span>5 p.m.</span><span>8 p.m.</span><span>11 p.m.</span><span>2 a.m.</span><span>5 a.m.</span></div>
+<p class="m-muted dw-key"><span class="m-accent">Bars</span> are rain chance. <span class="m-accent-2">The line</span> is temperature.</p>
+</div>
+<div class="m-grid dw-stats">
+<div class="m-stat"><b>8 p.m.</b><span>50°F (10°C), rain chance 19%</span></div>
+<div class="m-stat"><b>Midnight</b><span>42°F (6°C), rain chance 1%</span></div>
+<div class="m-stat"><b>3 a.m.</b><span>40°F (5°C), the low</span></div>
+</div>
+<style>
+#dry-window{padding:var(--gap) 0;border-left:4px solid var(--accent);padding-left:var(--gap)}
+#dry-window .dw-title{font-size:clamp(2rem,6vw,3.5rem);margin:0 0 .5rem;line-height:1}
+#dry-window .dw-lead{max-width:34rem;margin:0 0 1.5rem}
+#dry-window .dw-chart{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:1rem;margin-bottom:1.5rem}
+#dry-window svg{display:block}
+#dry-window .dw-axis{display:flex;justify-content:space-between;font-size:.75rem;margin-top:.5rem}
+#dry-window .dw-key{font-size:.85rem;margin:.75rem 0 0}
+#dry-window .dw-stats{gap:var(--gap)}
+</style>
+</section><section id="tomorrow-holiday">
+<p class="m-kicker">Wednesday, November 11</p>
+<h2 class="th-title">Veterans Day is tomorrow</h2>
+<p class="m-lead">It lands on a Wednesday, and the rain will be long gone by then.</p>
+<div class="th-grid">
+<div class="m-stat th-a"><b>1</b><span>day until Veterans Day</span></div>
+<div class="m-stat th-b"><b>16</b><span>days until Thanksgiving</span></div>
+</div>
+<svg class="th-line" viewBox="0 0 600 70" role="img" aria-label="Timeline from today to Thanksgiving, 16 days, with Veterans Day one day out">
+<line x1="20" y1="35" x2="580" y2="35" stroke="var(--line)" stroke-width="2"/>
+<circle cx="20" cy="35" r="6" fill="var(--fg)"/>
+<circle cx="55" cy="35" r="6" fill="var(--accent)"/>
+<circle cx="580" cy="35" r="6" fill="var(--accent-2)"/>
+<text x="20" y="60" fill="var(--muted)" font-size="12" font-family="var(--font-mono)">Tue</text>
+<text x="55" y="14" fill="var(--accent)" font-size="12" font-family="var(--font-mono)">Veterans Day</text>
+<text x="580" y="60" text-anchor="end" fill="var(--accent-2)" font-size="12" font-family="var(--font-mono)">Thanksgiving</text>
+</svg>
+<p class="th-note">Check ahead if you need anything open tomorrow. Hours on a holiday can differ from a regular Wednesday. Tonight, the rain stops around 8 p.m. and the sky stays dry through the small hours.</p>
+</section></main>
+<style>#m-building{display:none}</style>
+
+<script>(()=>{try{
+(function(){
+var el=document.getElementById('ct-count');
+if(!el)return;
+var start=new Date();
+var base=108;
+function render(){
+var elapsed=Math.floor((new Date()-start)/60000);
+var m=base-elapsed;
+if(m<=0){el.textContent='now';return;}
+var h=Math.floor(m/60),r=m%60;
+el.textContent=h>0?h+' h '+(r<10?'0':'')+r+' min':r+' min';
+}
+render();
+setInterval(render,30000);
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var hours=[
+{r:78,t:55},{r:84,t:52},{r:72,t:52},{r:19,t:50},{r:20,t:47},{r:10,t:46},{r:6,t:44},{r:1,t:42},{r:4,t:43},{r:11,t:41},{r:4,t:40},{r:9,t:41},{r:15,t:42}
+];
+var bars=document.getElementById('dw-bars');
+var line=document.getElementById('dw-line');
+if(!bars||!line)return;
+var ns='http://www.w3.org/2000/svg';
+var w=600,h=200,n=hours.length,step=w/n,bw=step*0.62;
+var tmin=38,tmax=57;
+var pts=[];
+hours.forEach(function(d,i){
+var x=i*step+(step-bw)/2;
+var bh=Math.max(2,d.r/100*h);
+var rect=document.createElementNS(ns,'rect');
+rect.setAttribute('x',x);
+rect.setAttribute('y',h-bh);
+rect.setAttribute('width',bw);
+rect.setAttribute('height',bh);
+rect.setAttribute('fill',d.r>50?'var(--accent)':'color-mix(in srgb, var(--accent) 35%, transparent)');
+bars.appendChild(rect);
+var y=h-((d.t-tmin)/(tmax-tmin))*(h-20)-10;
+pts.push((i*step+step/2).toFixed(1)+','+y.toFixed(1));
+});
+line.setAttribute('points',pts.join(' '));
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>parent.postMessage({type:'moment:complete'},'*')</script>
+</body></html>

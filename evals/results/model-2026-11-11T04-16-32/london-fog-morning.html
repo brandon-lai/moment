@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>When the fog lifts over London this morning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;700&family=Albert+Sans:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>:root{--bg:#e9e8df;--fg:#22231b;--muted:#5d5e4f;--accent:#5d6b14;--accent-2:#8c3b2a;--surface:#dedcd0;--line:#c9c6b5;color-scheme:light;--font-display:'Bodoni Moda',serif;--font-body:'Albert Sans',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;--radius:18px;--gap:1.35}
+@media (prefers-color-scheme:dark){:root{--bg:#1c1d1f;--fg:#ececec;--muted:#a3a3a3;--accent:#a3e635;--accent-2:#60a5fa;--surface:#242528;--line:#36383c;color-scheme:dark;}}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:18px;line-height:1.55;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;line-height:1.05;letter-spacing:-.01em;margin:0 0 calc(.5em*var(--gap));text-wrap:balance}
+h1{font-size:clamp(34px,6.4vw,84px)}h2{font-size:clamp(24px,3.6vw,44px)}h3{font-size:clamp(18px,2.2vw,24px)}
+p{margin:0 0 calc(1em*var(--gap));max-width:68ch;text-wrap:pretty}
+a{color:var(--accent);text-underline-offset:.18em}
+button{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--fg);border-radius:var(--radius);padding:.55em 1em;cursor:pointer}
+button:hover{background:var(--fg);color:var(--bg)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=range]{accent-color:var(--accent);width:100%}
+table{border-collapse:collapse;width:100%}td,th{padding:.45em .6em;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85em}
+svg{max-width:100%;height:auto}canvas{max-width:100%;display:block}
+img{max-width:100%}
+.m-kicker{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .9em}
+.m-big{font-family:var(--font-display);font-size:clamp(56px,13vw,170px);line-height:.88;letter-spacing:-.03em;font-weight:700}
+.m-lead{font-size:1.25em;line-height:1.4;max-width:40ch}
+.m-muted{color:var(--muted)}.m-accent{color:var(--accent)}.m-accent-2{color:var(--accent-2)}
+.m-mono{font-family:var(--font-mono)}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:calc(16px*var(--gap))}
+.m-row{display:flex;flex-wrap:wrap;gap:calc(12px*var(--gap));align-items:baseline}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:calc(18px*var(--gap))}
+.m-stat{display:flex;flex-direction:column;gap:.2em}.m-stat b{font-family:var(--font-display);font-size:clamp(28px,4.6vw,52px);line-height:1;font-weight:700}
+.m-rule{border:0;border-top:1px solid var(--line);margin:calc(24px*var(--gap)) 0}
+.m-chip{display:inline-block;font-family:var(--font-mono);font-size:.78rem;padding:.25em .6em;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.m-list{list-style:none;padding:0;margin:0}.m-list li{padding:.6em 0;border-bottom:1px solid var(--line)}
+.m-bars{display:flex;align-items:flex-end;gap:3px;height:120px}.m-bars i{flex:1;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px}
+main>section{scroll-margin-top:16px}
+main>section{animation:m-in .9s cubic-bezier(.2,.7,.2,1) both}@keyframes m-in{from{opacity:0;transform:translateY(8px)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#m-building{position:fixed;left:12px;bottom:12px;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;z-index:5}
+#m-building::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:m-pulse 1.2s ease-in-out infinite}
+@keyframes m-pulse{50%{opacity:.25}}
+.m-earlier{font-family:var(--font-mono);font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
+main{padding:0}main>section{min-height:88vh;padding:clamp(28px,7vw,110px) clamp(16px,6vw,96px);display:flex;flex-direction:column;justify-content:center}main>section:nth-child(even){background:var(--surface)}</style>
+<script>window.MOMENT={"live":"http://localhost:8788/live/51.51,-0.13","tz":"Europe/London","place":"London","eu":true};(()=>{const EU=true;let lastY=scrollY,lastT=performance.now(),speed=0,taps=0,idle=0,lastAct=performance.now(),hov=new Set(),bottom=false;
+const desc=e=>{const el=e.closest&&e.closest('[data-m],button,a,svg,canvas,table,li,figure,h2,h3');if(!el)return null;return(el.getAttribute('data-m')||el.tagName.toLowerCase()+(el.className&&typeof el.className==='string'?'.'+el.className.split(' ')[0]:'')).slice(0,40)};
+const act=()=>{lastAct=performance.now()};
+addEventListener('scroll',()=>{const t=performance.now(),dy=Math.abs(scrollY-lastY);speed=.7*speed+.3*(dy/Math.max(16,t-lastT)*1000);lastY=scrollY;lastT=t;act();const b=innerHeight+scrollY>=document.documentElement.scrollHeight-40;if(b&&!bottom){bottom=true;parent.postMessage({type:'moment:bottom'},'*')}},{passive:true});
+addEventListener('pointerover',e=>{if(EU)return;const d=desc(e.target);if(d&&hov.size<12)hov.add(d)},{passive:true});
+addEventListener('pointerdown',()=>{taps++;act()},{passive:true});addEventListener('keydown',act);
+const onScreen=()=>{let best=null,area=0;for(const s of document.querySelectorAll('main>section')){const r=s.getBoundingClientRect(),v=Math.max(0,Math.min(innerHeight,r.bottom)-Math.max(0,r.top));if(v>area){area=v;best=s.id||null}}return best};
+setInterval(()=>{idle=performance.now()-lastAct;if(EU)return;parent.postMessage({type:'moment:interaction',section:onScreen(),scrollSpeed:Math.round(speed),hovered:[...hov],taps,idleMs:Math.round(idle),atBottom:bottom},'*');hov.clear();speed*=.5},2000);
+})();</script>
+</head><body class="layout-full-bleed motion-gentle density-airy">
+<div id="m-building" role="status">Writing this page</div>
+<main>
+<section id="fog-now">
+<p class="m-kicker">London · Thursday · 8:05 a.m.</p>
+<h2 class="fn-title">Fog now, 5°C</h2>
+<p class="m-lead fn-lead">Thick fog is sitting over London this morning. The sky codes hold at fog through 9:00 a.m., then shift to overcast at 10:00 and mostly clear by noon.</p>
+<div class="fn-stage">
+<svg class="fn-art" viewBox="0 0 600 200" role="img" aria-label="Layers of fog thinning toward the top of the frame">
+<line x1="0" y1="170" x2="600" y2="170" stroke="var(--line)" stroke-width="2"/>
+<rect x="60" y="100" width="26" height="70" fill="var(--muted)" opacity=".45"/>
+<rect x="100" y="80" width="34" height="90" fill="var(--muted)" opacity=".45"/>
+<rect x="150" y="115" width="22" height="55" fill="var(--muted)" opacity=".45"/>
+<rect x="260" y="70" width="40" height="100" fill="var(--muted)" opacity=".45"/>
+<rect x="320" y="95" width="28" height="75" fill="var(--muted)" opacity=".45"/>
+<rect x="430" y="85" width="36" height="85" fill="var(--muted)" opacity=".45"/>
+<rect x="490" y="110" width="24" height="60" fill="var(--muted)" opacity=".45"/>
+<rect class="fn-band" x="-40" y="40" width="680" height="34" rx="17" fill="var(--bg)" opacity=".85"/>
+<rect class="fn-band" x="-40" y="90" width="680" height="40" rx="20" fill="var(--bg)" opacity=".9"/>
+<rect class="fn-band" x="-40" y="140" width="680" height="34" rx="17" fill="var(--bg)" opacity=".85"/>
+</svg>
+</div>
+<div class="m-row fn-stats">
+<div class="m-stat"><b>5°C</b><span>right now</span></div>
+<div class="m-stat"><b>9:00 a.m.</b><span>last hour of fog</span></div>
+<div class="m-stat"><b>9°C</b><span>by midday</span></div>
+<div class="m-stat"><b>7:26 a.m.</b><span>sunrise, already up</span></div>
+</div>
+<p class="m-muted fn-note">No rain expected in the next 12 hours. Rain chances stay at 20% or less, with 0 mm each hour.</p>
+<style>
+#fog-now{min-height:90vh;padding:clamp(40px,8vw,110px) clamp(20px,6vw,90px);background:var(--bg);color:var(--fg);display:flex;flex-direction:column;justify-content:center;gap:var(--gap)}
+#fog-now .fn-title{font-family:var(--font-display);font-size:clamp(3rem,11vw,9rem);line-height:.95;margin:0;letter-spacing:-.02em;color:var(--fg)}
+#fog-now .fn-lead{max-width:34ch;margin:0}
+#fog-now .fn-stage{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;max-width:720px}
+#fog-now .fn-art{display:block;width:100%;height:auto}
+#fog-now .fn-stats{gap:clamp(20px,4vw,56px)}
+#fog-now .fn-note{margin:0;max-width:48ch}
+@media (prefers-reduced-motion:reduce){#fog-now .fn-band{animation:none!important}}
+</style>
+</section><section id="clearing-window">
+<p class="m-kicker">Thursday, 19 November</p>
+<h2>Fog until about 10, clear by noon.</h2>
+<p class="m-lead">Fog is still the sky code at 9:00 a.m. By 10:00 it has thinned to overcast, and from 12:00 the forecast reads mostly clear. The temperature climbs from 5° to 9° as it goes.</p>
+
+<div class="cw-track" aria-label="Sky and temperature from 7 a.m. to 7 p.m.">
+<svg id="cw-svg" viewBox="0 0 600 150" role="img" aria-label="Timeline: fog 7 to 10 a.m., overcast 10 to noon, mostly clear from noon">
+<rect x="0" y="30" width="150" height="34" fill="var(--muted)" opacity="0.45"/>
+<rect x="150" y="30" width="100" height="34" fill="var(--muted)" opacity="0.2"/>
+<rect x="250" y="30" width="350" height="34" fill="var(--accent)" opacity="0.28"/>
+<text x="6" y="52" class="cw-t">fog</text>
+<text x="156" y="52" class="cw-t">overcast</text>
+<text x="256" y="52" class="cw-t">mostly clear</text>
+<polyline id="cw-line" fill="none" stroke="var(--accent)" stroke-width="3" points="25,126 75,118 125,110 175,102 225,102 275,86 325,86 375,86 425,86 475,86 525,94 575,102"/>
+<g id="cw-dots"></g>
+<line id="cw-now" x1="50" x2="50" y1="20" y2="140" stroke="var(--fg)" stroke-width="1.5" stroke-dasharray="3 3"/>
+<text x="56" y="16" class="cw-t">8:05 now</text>
+<text x="25" y="146" class="cw-t" text-anchor="middle">7</text>
+<text x="175" y="146" class="cw-t" text-anchor="middle">10</text>
+<text x="275" y="146" class="cw-t" text-anchor="middle">12</text>
+<text x="425" y="146" class="cw-t" text-anchor="middle">3 p.m.</text>
+<text x="575" y="146" class="cw-t" text-anchor="middle">7</text>
+</svg>
+</div>
+
+<div class="m-row cw-stats">
+<div class="m-stat"><b>5°C</b><span>now, 8:05 a.m.</span></div>
+<div class="m-stat"><b>10:00</b><span>fog gives way to overcast</span></div>
+<div class="m-stat"><b>12:00</b><span>mostly clear sets in</span></div>
+<div class="m-stat"><b>9°C</b><span>from noon to 5 p.m.</span></div>
+</div>
+
+<p class="m-muted">Sunset is at 4:08 p.m., so the clear stretch is mostly daylight until then.</p>
+
+<style>
+#clearing-window .cw-track{margin:var(--gap) 0;max-width:720px}
+#clearing-window svg{width:100%;height:auto;display:block}
+#clearing-window .cw-t{font-family:var(--font-mono);font-size:11px;fill:var(--fg)}
+#clearing-window .cw-stats{gap:var(--gap);margin-bottom:var(--gap)}
+</style>
+</section><section id="dry-hours">
+<p class="m-kicker">Noon to dusk</p>
+<h2 class="m-big">Hours worth planning around</h2>
+<p class="m-lead">From 12:00 the sky reads mostly clear, 9°C holds until 5 p.m., and no hour carries more than 0 mm of rain. The catch is daylight: the sun sets at 4:08 p.m.</p>
+<div id="dh-strip" class="dh-strip" role="img" aria-label="Daytime bar from 8 a.m. to 7 p.m. showing fog until 10, overcast to noon, mostly clear after, with sunset at 4:08 p.m.">
+<div class="dh-seg dh-fog" style="flex:2"><span>8–10</span><em>fog</em></div>
+<div class="dh-seg dh-ovc" style="flex:2"><span>10–12</span><em>overcast</em></div>
+<div class="dh-seg dh-clr" style="flex:4"><span>12–4:08</span><em>clear, daylight</em></div>
+<div class="dh-seg dh-dusk" style="flex:3"><span>4:08–7</span><em>clear, dark</em></div>
+</div>
+<div class="m-grid dh-notes">
+<div class="m-stat"><b>12:00</b><span>first mostly clear hour</span></div>
+<div class="m-stat"><b>4 hrs</b><span>clear and still light, noon to sunset</span></div>
+<div class="m-stat"><b>9°C</b><span>steady from noon to 5 p.m.</span></div>
+</div>
+<p class="dh-line">If you have one thing to do outside, put it between 12:00 and 4:00 p.m. The mornings are for staying in; the evening is clear but dark, easing to 8°C at 6 p.m. and 7°C at 7 p.m.</p>
+<style>
+#dry-hours .dh-strip{display:flex;gap:4px;margin:var(--gap) 0;min-height:96px}
+#dry-hours .dh-seg{display:flex;flex-direction:column;justify-content:flex-end;padding:10px 12px;border-radius:var(--radius);font-family:var(--font-mono);font-size:.8rem;min-width:0;border:1px solid var(--line)}
+#dry-hours .dh-seg em{font-style:normal;color:var(--muted);font-family:var(--font-body)}
+#dry-hours .dh-fog{background:color-mix(in srgb,var(--muted) 22%,var(--bg))}
+#dry-hours .dh-ovc{background:color-mix(in srgb,var(--muted) 10%,var(--bg))}
+#dry-hours .dh-clr{background:color-mix(in srgb,var(--accent) 28%,var(--bg));border-color:var(--accent)}
+#dry-hours .dh-dusk{background:color-mix(in srgb,var(--fg) 12%,var(--bg))}
+#dry-hours .dh-notes{margin-bottom:var(--gap)}
+#dry-hours .dh-line{max-width:46ch;font-size:1.1rem}
+@media(max-width:480px){#dry-hours .dh-strip{flex-direction:column}#dry-hours .dh-seg{flex:none!important;min-height:56px}}
+</style>
+</section></main>
+<style>#m-building{display:none}</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+<script>(()=>{try{
+(function(){
+var sec=document.getElementById('fog-now');
+if(!sec||typeof anime==='undefined')return;
+if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+anime({targets:'#fog-now .fn-band',translateX:function(el,i){return i%2?[-30,30]:[30,-30]},duration:9000,easing:'easeInOutSine',direction:'alternate',loop:true});
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var line=document.getElementById('cw-line');
+var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!line||reduce||!window.anime)return;
+var len=line.getTotalLength();
+line.style.strokeDasharray=len;
+line.style.strokeDashoffset=len;
+anime({targets:line,strokeDashoffset:[len,0],duration:1800,easing:'easeInOutSine'});
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>parent.postMessage({type:'moment:complete'},'*')</script>
+</body></html>
