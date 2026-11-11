@@ -31,8 +31,8 @@
  },
  {
   "id": "broadsheet",
-  "describe": "A newspaper broadsheet. A masthead first section, then sections set in columns separated by thin rules, with small caps kickers and dense type.",
-  "css": "main{max-width:1240px;margin:0 auto;padding:clamp(16px,3vw,40px)}main>section:first-child{border-bottom:3px double var(--fg);padding-bottom:18px}main>section{padding:clamp(18px,3vw,32px) 0;border-bottom:1px solid var(--line)}@media(min-width:900px){main>section .m-columns,main>section>p{column-count:2;column-gap:40px;column-rule:1px solid var(--line)}}"
+  "describe": "A newspaper broadsheet. A masthead first section, then sections separated by thin rules, with small caps kickers and dense type. To set three or more paragraphs in newspaper columns, wrap them in <div class=\"m-columns\">; keep short intros as a single paragraph.",
+  "css": "main{max-width:1240px;margin:0 auto;padding:clamp(16px,3vw,40px)}main>section:first-child{border-bottom:3px double var(--fg);padding-bottom:18px}main>section{padding:clamp(18px,3vw,32px) 0;border-bottom:1px solid var(--line)}@media(min-width:900px){main>section .m-columns{column-count:2;column-gap:40px;column-rule:1px solid var(--line)}}"
  },
  {
   "id": "card-stack",
