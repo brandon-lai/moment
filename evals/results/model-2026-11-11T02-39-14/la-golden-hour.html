@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sunset in 38 minutes over Los Angeles</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>:root{--bg:#0f2747;--fg:#e6eefb;--muted:#9fb6d9;--accent:#fde047;--accent-2:#fca5a5;--surface:#143057;--line:#24467a;color-scheme:dark;--font-display:'Bebas Neue',sans-serif;--font-body:'Barlow',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;--radius:0px;--gap:1}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:16.5px;line-height:1.55;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.05;letter-spacing:-.01em;margin:0 0 calc(.5em*var(--gap));text-wrap:balance}
+h1{font-size:clamp(34px,6.4vw,84px)}h2{font-size:clamp(24px,3.6vw,44px)}h3{font-size:clamp(18px,2.2vw,24px)}
+p{margin:0 0 calc(1em*var(--gap));max-width:68ch;text-wrap:pretty}
+a{color:var(--accent);text-underline-offset:.18em}
+button{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--fg);border-radius:var(--radius);padding:.55em 1em;cursor:pointer}
+button:hover{background:var(--fg);color:var(--bg)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=range]{accent-color:var(--accent);width:100%}
+table{border-collapse:collapse;width:100%}td,th{padding:.45em .6em;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85em}
+svg{max-width:100%;height:auto}canvas{max-width:100%;display:block}
+img{max-width:100%}
+.m-kicker{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .9em}
+.m-big{font-family:var(--font-display);font-size:clamp(56px,13vw,170px);line-height:.88;letter-spacing:-.03em;font-weight:400}
+.m-lead{font-size:1.25em;line-height:1.4;max-width:40ch}
+.m-muted{color:var(--muted)}.m-accent{color:var(--accent)}.m-accent-2{color:var(--accent-2)}
+.m-mono{font-family:var(--font-mono)}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:calc(16px*var(--gap))}
+.m-row{display:flex;flex-wrap:wrap;gap:calc(12px*var(--gap));align-items:baseline}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:calc(18px*var(--gap))}
+.m-stat{display:flex;flex-direction:column;gap:.2em}.m-stat b{font-family:var(--font-display);font-size:clamp(28px,4.6vw,52px);line-height:1;font-weight:400}
+.m-rule{border:0;border-top:1px solid var(--line);margin:calc(24px*var(--gap)) 0}
+.m-chip{display:inline-block;font-family:var(--font-mono);font-size:.78rem;padding:.25em .6em;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.m-list{list-style:none;padding:0;margin:0}.m-list li{padding:.6em 0;border-bottom:1px solid var(--line)}
+.m-bars{display:flex;align-items:flex-end;gap:3px;height:120px}.m-bars i{flex:1;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px}
+main>section{scroll-margin-top:16px}
+main>section{animation:m-in .9s cubic-bezier(.2,.7,.2,1) both}@keyframes m-in{from{opacity:0;transform:translateY(8px)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#m-building{position:fixed;left:12px;bottom:12px;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;z-index:5}
+#m-building::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:m-pulse 1.2s ease-in-out infinite}
+@keyframes m-pulse{50%{opacity:.25}}
+.m-earlier{font-family:var(--font-mono);font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
+main{padding:0}main>section{min-height:88vh;padding:clamp(28px,7vw,110px) clamp(16px,6vw,96px);display:flex;flex-direction:column;justify-content:center}main>section:nth-child(even){background:var(--surface)}</style>
+<script>window.MOMENT={"live":"http://localhost:8788/live/34.05,-118.24","tz":"America/Los_Angeles","place":"Los Angeles","eu":false};(()=>{const EU=false;let lastY=scrollY,lastT=performance.now(),speed=0,taps=0,idle=0,lastAct=performance.now(),hov=new Set(),bottom=false;
+const desc=e=>{const el=e.closest&&e.closest('[data-m],button,a,svg,canvas,table,li,figure,h2,h3');if(!el)return null;return(el.getAttribute('data-m')||el.tagName.toLowerCase()+(el.className&&typeof el.className==='string'?'.'+el.className.split(' ')[0]:'')).slice(0,40)};
+const act=()=>{lastAct=performance.now()};
+addEventListener('scroll',()=>{const t=performance.now(),dy=Math.abs(scrollY-lastY);speed=.7*speed+.3*(dy/Math.max(16,t-lastT)*1000);lastY=scrollY;lastT=t;act();const b=innerHeight+scrollY>=document.documentElement.scrollHeight-40;if(b&&!bottom){bottom=true;parent.postMessage({type:'moment:bottom'},'*')}},{passive:true});
+addEventListener('pointerover',e=>{if(EU)return;const d=desc(e.target);if(d&&hov.size<12)hov.add(d)},{passive:true});
+addEventListener('pointerdown',()=>{taps++;act()},{passive:true});addEventListener('keydown',act);
+const onScreen=()=>{let best=null,area=0;for(const s of document.querySelectorAll('main>section')){const r=s.getBoundingClientRect(),v=Math.max(0,Math.min(innerHeight,r.bottom)-Math.max(0,r.top));if(v>area){area=v;best=s.id||null}}return best};
+setInterval(()=>{idle=performance.now()-lastAct;if(EU)return;parent.postMessage({type:'moment:interaction',section:onScreen(),scrollSpeed:Math.round(speed),hovered:[...hov],taps,idleMs:Math.round(idle),atBottom:bottom},'*');hov.clear();speed*=.5},2000);
+})();</script>
+</head><body class="layout-full-bleed motion-gentle density-balanced">
+<div id="m-building" role="status">Writing this page</div>
+<main>
+<section id="sunset-countdown">
+<p class="m-kicker">Los Angeles · Thursday, November 12</p>
+<h1 class="m-big">Sunset in <span class="m-accent" id="sc-min">38</span> minutes</h1>
+<p class="m-lead">The sun goes down at 4:52 p.m. It is 4:15 now, and the sky is clear.</p>
+<svg id="sc-arc" viewBox="0 0 800 200" role="img" aria-label="The sun's path across the sky, near the end of its arc">
+<line x1="20" y1="170" x2="780" y2="170" stroke="var(--line)" stroke-width="2"/>
+<path d="M20 170 Q400 -90 780 170" fill="none" stroke="var(--line)" stroke-width="2" stroke-dasharray="3 9"/>
+<circle id="sc-sun" cx="700" cy="110" r="13" fill="var(--accent)"/>
+</svg>
+<div class="m-row sc-times">
+<span class="m-mono">Sunrise 6:24 a.m.</span>
+<span class="m-mono m-accent">Sunset 4:52 p.m.</span>
+</div>
+<p class="m-muted sc-note">Last light fades a little after that. Nothing is in the way: no cloud, no rain, 75°F (24°C).</p>
+<style>
+#sunset-countdown{min-height:92vh;display:flex;flex-direction:column;justify-content:center;gap:var(--gap);padding:8vh 6vw;background:var(--bg);color:var(--fg)}
+#sunset-countdown .m-big{font-size:clamp(3rem,10vw,8rem);line-height:.95;margin:0;max-width:12ch}
+#sunset-countdown .m-lead{max-width:34ch;margin:0}
+#sunset-countdown svg{width:100%;max-width:760px;height:auto;display:block}
+#sunset-countdown .sc-times{justify-content:space-between;max-width:760px;gap:1rem}
+#sunset-countdown .sc-note{max-width:44ch;margin:0}
+</style>
+<!--script-->
+(function(){
+var el=document.getElementById('sc-min');
+var sun=document.getElementById('sc-sun');
+var start=Date.now();
+var base=38;
+function tick(){
+var left=Math.max(0,base-Math.floor((Date.now()-start)/60000));
+el.textContent=left;
+}
+setInterval(tick,15000);
+var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!reduce&&window.anime){
+anime({targets:sun,r:[13,16],direction:'alternate',loop:true,easing:'easeInOutSine',duration:3600});
+}
+})();</section><section id="light-now">
+<p class="m-kicker">4:15 p.m. · Thursday</p>
+<h2 class="m-big">Clear sky, <span class="m-accent">75°F</span> now</h2>
+<p class="m-lead">24°C, and nothing overhead. The sun is low enough that every wall, windshield and palm trunk gets the long, warm side of it.</p>
+<div class="lnw-stage">
+<svg id="lnw-svg" viewBox="0 0 600 180" role="img" aria-label="Sun position along its arc between sunrise at 6:24 a.m. and sunset at 4:52 p.m.">
+<line x1="20" y1="150" x2="580" y2="150" stroke="var(--line)" stroke-width="1"/>
+<path id="lnw-arc" d="M40 150 Q300 -60 560 150" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="3 6"/>
+<circle id="lnw-sun" r="11" fill="var(--accent)"/>
+<text x="40" y="172" fill="var(--muted)" font-size="11" font-family="var(--font-mono)" text-anchor="start">6:24 a.m.</text>
+<text x="560" y="172" fill="var(--muted)" font-size="11" font-family="var(--font-mono)" text-anchor="end">4:52 p.m.</text>
+</svg>
+</div>
+<div class="lnw-facts m-row">
+<div class="m-stat"><b>75°F</b><span>now, 24°C</span></div>
+<div class="m-stat"><b>75°F</b><span>still at 6 p.m. mark: 74°F</span></div>
+<div class="m-stat"><b>63°F</b><span>low by 3 a.m.</span></div>
+</div>
+<p class="m-muted lnw-note">Rain chance stays under 20% for the rest of the night, and none is expected to fall.</p>
+<style>
+#light-now{min-height:90vh;display:flex;flex-direction:column;justify-content:center;gap:var(--gap);background:var(--surface);padding:clamp(2rem,6vw,5rem) clamp(1.25rem,5vw,4rem)}
+#light-now h2{margin:0;line-height:.95}
+#light-now .m-lead{max-width:36ch;margin:0}
+#light-now .lnw-stage{width:100%;max-width:720px}
+#light-now svg{width:100%;height:auto;display:block;overflow:visible}
+#light-now .lnw-facts{gap:clamp(1.5rem,4vw,3.5rem);margin-top:.5rem}
+#light-now .lnw-note{margin:0;max-width:44ch}
+</style>
+</section><section id="evening-ahead">
+<p class="m-kicker">Next twelve hours</p>
+<h2 class="m-big">Clear through tonight</h2>
+<p class="m-lead">It starts at 75°F (24°C) and slides to 63°F (17°C) by 3 a.m. That is twelve degrees over twelve hours, and no rain in any of them.</p>
+<div class="ea-chart-wrap">
+<svg id="ea-svg" viewBox="0 0 720 260" role="img" aria-label="Temperature from 3 p.m. to 3 a.m., falling from 75 to 63 degrees Fahrenheit" preserveAspectRatio="xMidYMid meet">
+<line x1="40" y1="40" x2="700" y2="40" stroke="var(--line)" stroke-width="1"/>
+<line x1="40" y1="200" x2="700" y2="200" stroke="var(--line)" stroke-width="1"/>
+<text x="0" y="44" class="ea-t">75°</text>
+<text x="0" y="204" class="ea-t">63°</text>
+<line id="ea-sun-line" x1="0" y1="24" x2="0" y2="216" stroke="var(--accent)" stroke-width="1" stroke-dasharray="3 4"/>
+<text id="ea-sun-lbl" x="0" y="16" class="ea-t" fill="var(--accent)">sunset 4:52</text>
+<path id="ea-path" d="" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="ea-dots"></g>
+<g id="ea-xl"></g>
+</svg>
+</div>
+<div class="m-row ea-facts">
+<div class="m-stat"><b>74°F</b><span>at 6 p.m., after dark begins</span></div>
+<div class="m-stat"><b>68°F</b><span>at 10 p.m.</span></div>
+<div class="m-stat"><b>64°F</b><span>from midnight to 2 a.m.</span></div>
+</div>
+<p class="m-muted ea-note">Rain chance never passes 20%, and no rain is forecast for any hour. Take a light layer after dark and leave the umbrella.</p>
+<style>
+#evening-ahead{padding:clamp(48px,9vh,110px) clamp(20px,6vw,80px);background:var(--surface);min-height:80vh}
+#evening-ahead h2{margin:.1em 0 .25em;line-height:.95}
+#evening-ahead .m-lead{max-width:36em}
+#evening-ahead .ea-chart-wrap{margin:clamp(24px,5vh,56px) 0 8px;max-width:960px}
+#evening-ahead svg{width:100%;height:auto;display:block;overflow:visible}
+#evening-ahead .ea-t{font-family:var(--font-mono);font-size:12px;fill:var(--muted)}
+#evening-ahead .ea-facts{gap:clamp(20px,4vw,56px);margin-top:24px}
+#evening-ahead .ea-note{max-width:36em;margin-top:24px}
+</style>
+<!--script-->
+(function(){
+var pts=[["3p",75],["4p",75],["5p",75],["6p",74],["7p",73],["8p",71],["9p",70],["10p",68],["11p",66],["12a",64],["1a",64],["2a",64],["3a",63]];
+var x0=40,x1=700,yT=40,yB=200,min=63,max=75;
+var X=function(i){return x0+(x1-x0)*i/(pts.length-1)};
+var Y=function(v){return yB-(yB-yT)*(v-min)/(max-min)};
+var d="";
+pts.forEach(function(p,i){d+=(i?"L":"M")+X(i).toFixed(1)+" "+Y(p[1]).toFixed(1)+" "});
+var path=document.getElementById("ea-path");
+path.setAttribute("d",d);
+var NS="http://www.w3.org/2000/svg";
+var dots=document.getElementById("ea-dots"),xl=document.getElementById("ea-xl");
+pts.forEach(function(p,i){
+var c=document.createElementNS(NS,"circle");
+c.setAttribute("cx",X(i));c.setAttribute("cy",Y(p[1]));c.setAttribute("r",3.5);
+c.setAttribute("fill","var(--bg)");c.setAttribute("stroke","var(--accent)");c.setAttribute("stroke-width",2);
+dots.appendChild(c);
+if(i%2===0){
+var t=document.createElementNS(NS,"text");
+t.setAttribute("x",X(i));t.setAttribute("y",240);t.setAttribute("text-anchor","middle");
+t.setAttribute("class","ea-t");t.textContent=p[0];xl.appendChild(t);
+}
+});
+var sx=X(1)+(X(2)-X(1))*(52/60);
+var sl=document.getElementById("ea-sun-line");
+sl.setAttribute("x1",sx);sl.setAttribute("x2",sx);
+var lb=document.getElementById("ea-sun-lbl");
+lb.setAttribute("x",sx+6);
+var reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+if(!reduce&&window.anime){
+var len=path.getTotalLength();
+path.style.strokeDasharray=len;path.style.strokeDashoffset=len;
+var done=false;
+var run=function(){
+if(done)return;done=true;
+anime({targets:path,strokeDashoffset:[len,0],duration:3200,easing:"easeInOutSine"});
+anime({targets:"#ea-dots circle",opacity:[0,1],delay:anime.stagger(240),duration:600,easing:"easeOutQuad"});
+};
+if("IntersectionObserver" in window){
+var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){run();io.disconnect()}},{threshold:.3});
+io.observe(document.getElementById("ea-svg"));
+}else run();
+}
+})();</section></main>
+<style>#m-building{display:none}</style>
+
+<script>(()=>{try{
+(function(){
+var sun=document.getElementById('lnw-sun');
+var arc=document.getElementById('lnw-arc');
+if(!sun||!arc)return;
+var rise=6*60+24,set=16*60+52,now=16*60+15;
+var f=(now-rise)/(set-rise);
+var len=arc.getTotalLength();
+var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function place(p){var pt=arc.getPointAtLength(len*p);sun.setAttribute('cx',pt.x);sun.setAttribute('cy',pt.y);}
+place(f);
+if(!reduce){
+var t0=null;
+function tick(ts){
+if(t0===null)t0=ts;
+var k=(ts-t0)/4000;
+var p=f+Math.sin(k)*0.004;
+place(p);
+sun.setAttribute('r',11+Math.sin(k*1.3)*0.8);
+requestAnimationFrame(tick);
+}
+requestAnimationFrame(tick);
+}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>parent.postMessage({type:'moment:complete'},'*')</script>
+</body></html>

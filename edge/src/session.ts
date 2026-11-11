@@ -109,7 +109,7 @@ export class Session extends DurableObject<Env> {
       if (p === "/vote" && req.method === "POST") return this.onVote((await req.json()) as { vote: string; text?: string });
       if (p === "/end" && req.method === "POST") return this.onEnd((await req.json()) as { dwellMs: number; interacted: boolean });
       if (p === "/retry" && req.method === "POST") return this.onRetry();
-      if (p === "/state") return json({ plan: this.routeResult?.plan ?? null, mode: this.mode, finished: this.finished, moderation: this.moderation, art: this.art ? artSummary(this.art) : null, firstContentMs: this.firstContentAt ? this.firstContentAt - (this.init?.createdAt ?? 0) : null, completeMs: this.completeAt ? this.completeAt - (this.init?.createdAt ?? 0) : null, routerMs: this.routeResult?.routerMs ?? null, how: this.routeResult?.how ?? null, usage: this.usage, error: this.errorText });
+      if (p === "/state") return json({ plan: this.routeResult?.plan ?? null, routeError: this.routeResult?.error ?? null, mode: this.mode, finished: this.finished, moderation: this.moderation, art: this.art ? artSummary(this.art) : null, firstContentMs: this.firstContentAt ? this.firstContentAt - (this.init?.createdAt ?? 0) : null, completeMs: this.completeAt ? this.completeAt - (this.init?.createdAt ?? 0) : null, routerMs: this.routeResult?.routerMs ?? null, judgeMs: this.routeResult?.judgeMs ?? null, judged: this.routeResult?.judged ?? null, how: this.routeResult?.how ?? null, usage: this.usage, error: this.errorText });
       return new Response("not found", { status: 404 });
     } catch (err) {
       console.error("session", p, err);
@@ -280,7 +280,7 @@ export class Session extends DurableObject<Env> {
   private async generate(): Promise<void> {
     const init = this.init!;
     const r = await this.routed!;
-    const plan = r.plan;
+    let plan = r.plan;
     // Wait up to 300 ms for client signals, then proceed without them.
     await withTimeout(this.clientPosted!, CLIENT_SIGNAL_WAIT_MS);
 
@@ -300,13 +300,35 @@ export class Session extends DurableObject<Env> {
       // Turnstile must pass before the generator starts (model mode only:
       // the template engine costs nothing to run).
       const ts = await withTimeout(this.turnstilePromise!, TURNSTILE_WAIT_MS);
-      const g = await this.governor("/check", { ip: init.ipHash, count: ts === true }).catch(() => null);
-      if (ts !== true || !g?.ipAllowed || g?.level === "archive") {
-        const why = ts !== true ? "turnstile" : !g?.ipAllowed ? "per-ip limit" : "spend cap";
+      const g = await this.governor("/check", { ip: init.ipHash, count: ts === true && !init.evalMode }).catch(() => null);
+      // The local Phase 0 harness sends every brief from one address.
+      const ipAllowed = init.evalMode ? true : g?.ipAllowed;
+      if (ts !== true || !ipAllowed || g?.level === "archive") {
+        const why = ts !== true ? "turnstile" : !ipAllowed ? "per-ip limit" : "spend cap";
         this.errorText = `model skipped: ${why}`;
         const served = await this.serveArchive(null, true);
         if (served) return;
         useModel = false;
+      }
+    }
+
+    // Section 1 of the provisional pick starts now, while the judge scores
+    // the candidates. If the judge changes the pick, it is thrown away.
+    let first: { ch: Channel; scripts: string[]; abort: AbortController } | null = null;
+    if (useModel && r.confirm) {
+      first = this.streamSection(plan, 0, [], new AbortController());
+      const c = await r.confirm;
+      this.usage.push(...c.usage);
+      if (c.usage.length) this.spend(usageCost(c.usage));
+      r.specificity = c.specificity;
+      r.judged = c.judged;
+      r.judgeMs = c.judgeMs;
+      if (c.index !== r.picked) {
+        first.abort.abort();
+        first = null;
+        r.picked = c.index;
+        r.plan = plan = r.candidates[c.index];
+        this.emit("plan", { title: plan.title, archetype: plan.archetype, how: r.how, judged: true });
       }
     }
 
@@ -320,7 +342,7 @@ export class Session extends DurableObject<Env> {
 
     const scripts: string[] = [];
     try {
-      if (useModel) await this.generateWithModel(plan, scripts);
+      if (useModel) await this.generateWithModel(plan, scripts, first);
       else this.generateWithTemplates(plan, scripts);
     } catch (err) {
       this.errorText = String(err).slice(0, 300);
@@ -355,45 +377,52 @@ export class Session extends DurableObject<Env> {
     });
   }
 
-  private async generateWithModel(plan: Plan, scripts: string[]): Promise<void> {
-    const sections = plan.sections;
-    const channels: Channel[] = [];
-    const texts: string[] = [];
-    const startSection = (i: number) => {
-      const ch = new Channel();
-      channels[i] = ch;
-      const sp = new SectionSplitter();
-      const user = this.sectionPrompt(plan, i, texts);
-      const run = async () => {
-        try {
-          for await (const t of generateSection(this.env, user, this.abort.signal, (u) => { this.usage.push(u); this.spend(costMicros(u)); })) ch.push(sp.push(t));
-          ch.push(sp.finish());
-          scripts[i] = sp.scripts.join("\n;\n");
-          ch.end();
-        } catch (err) {
-          ch.push(sp.finish());
-          ch.end(err);
-        }
-      };
-      this.ctx.waitUntil(run());
+  // One generator call for one section, streamed through the splitter into a
+  // channel that the writer drains in order.
+  private streamSection(plan: Plan, i: number, texts: string[], abort: AbortController): { ch: Channel; scripts: string[]; abort: AbortController } {
+    const ch = new Channel();
+    const sp = new SectionSplitter();
+    const user = this.sectionPrompt(plan, i, texts);
+    const onParent = () => abort.abort();
+    this.abort.signal.addEventListener("abort", onParent);
+    const run = async () => {
+      try {
+        for await (const t of generateSection(this.env, user, abort.signal, (u) => { this.usage.push(u); this.spend(costMicros(u)); })) ch.push(sp.push(t));
+        ch.push(sp.finish());
+        ch.end();
+      } catch (err) {
+        ch.push(sp.finish());
+        ch.end(err);
+      } finally {
+        this.abort.signal.removeEventListener("abort", onParent);
+      }
     };
+    this.ctx.waitUntil(run());
+    return { ch, scripts: sp.scripts, abort };
+  }
+
+  private async generateWithModel(plan: Plan, scripts: string[], first: { ch: Channel; scripts: string[] } | null): Promise<void> {
+    const sections = plan.sections;
+    const streams: { ch: Channel; scripts: string[] }[] = [];
+    const texts: string[] = [];
+    streams[0] = first ?? this.streamSection(plan, 0, texts, new AbortController());
     // Section 2 is written from the plan alone, so it starts alongside
     // section 1 and is held until section 1 has finished streaming.
-    startSection(0);
-    if (sections.length > 1) startSection(1);
+    if (sections.length > 1) streams[1] = this.streamSection(plan, 1, texts, new AbortController());
     for (let i = 0; i < sections.length; i++) {
-      if (!channels[i]) startSection(i); // section 3 onward also sees how the visitor used the ones before
+      // Section 3 onward also sees how the visitor used the ones before.
+      streams[i] ??= this.streamSection(plan, i, texts, new AbortController());
       let text = "";
-      for await (const chunk of channels[i]) {
+      for await (const chunk of streams[i].ch) {
         this.write(chunk);
         text += chunk;
         if (/<\/?[a-z]/i.test(chunk) && visibleText(text).length > 20) this.markFirstContent();
       }
       if (!text.trim()) throw new Error(`section ${i + 1} produced no markup`);
       texts[i] = visibleText(text);
+      scripts.push(...streams[i].scripts);
       this.emit("section", { i: i + 1, n: sections.length, id: sections[i].id });
     }
-    scripts.splice(0, scripts.length, ...scripts.filter(Boolean));
   }
 
   private sectionPrompt(plan: Plan, i: number, texts: string[]): string {

@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Before Veterans Day Tomorrow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:wght@400;700&family=Public+Sans:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>:root{--bg:#1c1512;--fg:#efe6dd;--muted:#b3a395;--accent:#d4a373;--accent-2:#93c5fd;--surface:#261d18;--line:#3a2d26;color-scheme:dark;--font-display:'Newsreader',serif;--font-body:'Public Sans',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;--radius:2px;--gap:0.7}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:15px;line-height:1.55;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;line-height:1.05;letter-spacing:-.01em;margin:0 0 calc(.5em*var(--gap));text-wrap:balance}
+h1{font-size:clamp(34px,6.4vw,84px)}h2{font-size:clamp(24px,3.6vw,44px)}h3{font-size:clamp(18px,2.2vw,24px)}
+p{margin:0 0 calc(1em*var(--gap));max-width:68ch;text-wrap:pretty}
+a{color:var(--accent);text-underline-offset:.18em}
+button{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--fg);border-radius:var(--radius);padding:.55em 1em;cursor:pointer}
+button:hover{background:var(--fg);color:var(--bg)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=range]{accent-color:var(--accent);width:100%}
+table{border-collapse:collapse;width:100%}td,th{padding:.45em .6em;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85em}
+svg{max-width:100%;height:auto}canvas{max-width:100%;display:block}
+img{max-width:100%}
+.m-kicker{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .9em}
+.m-big{font-family:var(--font-display);font-size:clamp(56px,13vw,170px);line-height:.88;letter-spacing:-.03em;font-weight:700}
+.m-lead{font-size:1.25em;line-height:1.4;max-width:40ch}
+.m-muted{color:var(--muted)}.m-accent{color:var(--accent)}.m-accent-2{color:var(--accent-2)}
+.m-mono{font-family:var(--font-mono)}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:calc(16px*var(--gap))}
+.m-row{display:flex;flex-wrap:wrap;gap:calc(12px*var(--gap));align-items:baseline}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:calc(18px*var(--gap))}
+.m-stat{display:flex;flex-direction:column;gap:.2em}.m-stat b{font-family:var(--font-display);font-size:clamp(28px,4.6vw,52px);line-height:1;font-weight:700}
+.m-rule{border:0;border-top:1px solid var(--line);margin:calc(24px*var(--gap)) 0}
+.m-chip{display:inline-block;font-family:var(--font-mono);font-size:.78rem;padding:.25em .6em;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.m-list{list-style:none;padding:0;margin:0}.m-list li{padding:.6em 0;border-bottom:1px solid var(--line)}
+.m-bars{display:flex;align-items:flex-end;gap:3px;height:120px}.m-bars i{flex:1;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px}
+main>section{scroll-margin-top:16px}
+main>section{animation:m-in .5s cubic-bezier(.2,.7,.2,1) both}@keyframes m-in{from{opacity:0;transform:translateY(18px)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#m-building{position:fixed;left:12px;bottom:12px;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;z-index:5}
+#m-building::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:m-pulse 1.2s ease-in-out infinite}
+@keyframes m-pulse{50%{opacity:.25}}
+.m-earlier{font-family:var(--font-mono);font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
+main{max-width:1240px;margin:0 auto;padding:clamp(16px,3vw,40px)}main>section:first-child{border-bottom:3px double var(--fg);padding-bottom:18px}main>section{padding:clamp(18px,3vw,32px) 0;border-bottom:1px solid var(--line)}@media(min-width:900px){main>section .m-columns,main>section>p{column-count:2;column-gap:40px;column-rule:1px solid var(--line)}}</style>
+<script>window.MOMENT={"live":"http://localhost:8788/live/40.71,-74.01","tz":"America/New_York","place":"Brooklyn","eu":false};(()=>{const EU=false;let lastY=scrollY,lastT=performance.now(),speed=0,taps=0,idle=0,lastAct=performance.now(),hov=new Set(),bottom=false;
+const desc=e=>{const el=e.closest&&e.closest('[data-m],button,a,svg,canvas,table,li,figure,h2,h3');if(!el)return null;return(el.getAttribute('data-m')||el.tagName.toLowerCase()+(el.className&&typeof el.className==='string'?'.'+el.className.split(' ')[0]:'')).slice(0,40)};
+const act=()=>{lastAct=performance.now()};
+addEventListener('scroll',()=>{const t=performance.now(),dy=Math.abs(scrollY-lastY);speed=.7*speed+.3*(dy/Math.max(16,t-lastT)*1000);lastY=scrollY;lastT=t;act();const b=innerHeight+scrollY>=document.documentElement.scrollHeight-40;if(b&&!bottom){bottom=true;parent.postMessage({type:'moment:bottom'},'*')}},{passive:true});
+addEventListener('pointerover',e=>{if(EU)return;const d=desc(e.target);if(d&&hov.size<12)hov.add(d)},{passive:true});
+addEventListener('pointerdown',()=>{taps++;act()},{passive:true});addEventListener('keydown',act);
+const onScreen=()=>{let best=null,area=0;for(const s of document.querySelectorAll('main>section')){const r=s.getBoundingClientRect(),v=Math.max(0,Math.min(innerHeight,r.bottom)-Math.max(0,r.top));if(v>area){area=v;best=s.id||null}}return best};
+setInterval(()=>{idle=performance.now()-lastAct;if(EU)return;parent.postMessage({type:'moment:interaction',section:onScreen(),scrollSpeed:Math.round(speed),hovered:[...hov],taps,idleMs:Math.round(idle),atBottom:bottom},'*');hov.clear();speed*=.5},2000);
+})();</script>
+</head><body class="layout-broadsheet motion-lively density-dense">
+<div id="m-building" role="status">Writing this page</div>
+<main>
+<section id="holiday-tomorrow">
+<p class="m-kicker">Brooklyn · Tuesday, November 10, 2026 · 6:12 p.m.</p>
+<h1 class="ht-title">Veterans Day is tomorrow</h1>
+<p class="m-lead ht-lead">Veterans Day is tomorrow, and the rain clears around 8 p.m. tonight. Tonight is the night to sort out the day ahead.</p>
+<div class="ht-cols">
+<div class="ht-col">
+<p class="m-kicker">The holiday</p>
+<p>Tomorrow is Wednesday, November 11. It is a federal holiday, and that shapes how the day runs for a lot of people.</p>
+<p>Federal offices and post offices are generally closed. Many schools and banks are closed too, but not all. Check the ones you actually depend on before you go to bed, not after you have walked there.</p>
+</div>
+<div class="ht-col">
+<p class="m-kicker">The schedule</p>
+<p>Expect weekend-style service on the subway and buses. Some places keep regular hours anyway, and others run a shorter day. If you have a plan that needs a counter or a clerk, confirm it tonight.</p>
+<p>Thanksgiving is 16 days out, so tomorrow also works as an early look at what you need to get done before then.</p>
+</div>
+<div class="ht-col">
+<p class="m-kicker">The weather</p>
+<p>It is light rain and 52°F (11°C) right now. The rain stops around 8 p.m. and the sky clears after that.</p>
+<p>Overnight it drops to about 40°F (5°C). The sun set at 4:44 p.m. and rises tomorrow at 6:38 a.m.</p>
+</div>
+</div>
+<div class="ht-strip m-mono">
+<span><b>8 p.m.</b> rain stops</span>
+<span><b>40°F</b> overnight low</span>
+<span><b>6:38 a.m.</b> sunrise</span>
+</div>
+<style>
+#holiday-tomorrow{padding:calc(var(--gap)*1.5) 0;border-top:3px double var(--line)}
+#holiday-tomorrow .ht-title{font-family:var(--font-display);font-size:clamp(2.4rem,8vw,5.5rem);line-height:.98;margin:.2em 0 .3em;letter-spacing:-.02em;color:var(--fg)}
+#holiday-tomorrow .ht-lead{max-width:46ch;margin:0 0 calc(var(--gap)*1.2)}
+#holiday-tomorrow .ht-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+#holiday-tomorrow .ht-col{padding:var(--gap);border-left:1px solid var(--line)}
+#holiday-tomorrow .ht-col:first-child{border-left:0;padding-left:0}
+#holiday-tomorrow .ht-col p{margin:.5em 0;line-height:1.5}
+#holiday-tomorrow .ht-col .m-kicker{color:var(--accent)}
+#holiday-tomorrow .ht-strip{display:flex;flex-wrap:wrap;gap:var(--gap);padding-top:var(--gap);color:var(--muted);font-size:.9rem}
+#holiday-tomorrow .ht-strip b{color:var(--accent-2);font-weight:700}
+#holiday-tomorrow .ht-title,#holiday-tomorrow .ht-lead,#holiday-tomorrow .ht-col,#holiday-tomorrow .ht-strip{opacity:0;transform:translateY(8px);animation:ht-in .7s ease forwards}
+#holiday-tomorrow .ht-lead{animation-delay:.1s}
+#holiday-tomorrow .ht-col:nth-child(1){animation-delay:.2s}
+#holiday-tomorrow .ht-col:nth-child(2){animation-delay:.3s}
+#holiday-tomorrow .ht-col:nth-child(3){animation-delay:.4s}
+#holiday-tomorrow .ht-strip{animation-delay:.5s}
+@keyframes ht-in{to{opacity:1;transform:none}}
+@media (max-width:640px){
+#holiday-tomorrow .ht-col{border-left:0;border-top:1px solid var(--line);padding-left:0;padding-right:0}
+#holiday-tomorrow .ht-col:first-child{border-top:0}
+}
+@media (prefers-reduced-motion:reduce){
+#holiday-tomorrow .ht-title,#holiday-tomorrow .ht-lead,#holiday-tomorrow .ht-col,#holiday-tomorrow .ht-strip{animation:none;opacity:1;transform:none}
+}
+</style>
+</section><section id="tonight-steps">
+<p class="m-kicker">Section II &middot; Tuesday evening, 6:12 p.m.</p>
+<h2>Tonight's steps before bed</h2>
+<p class="m-lead">It's 52°F (11°C) and raining in Brooklyn. The rain stops around 8 p.m. Do the indoor jobs now and the outdoor ones after.</p>
+
+<div class="ts-cols">
+<div class="ts-col">
+<p class="m-kicker m-accent">Now &middot; while it rains</p>
+<ul class="ts-list" id="ts-now">
+<li><label><input type="checkbox"><span>Check your mail slot or inbox for anything due before the holiday.</span></label></li>
+<li><label><input type="checkbox"><span>Charge your phone and anything else you carry.</span></label></li>
+<li><label><input type="checkbox"><span>Pick out tomorrow's clothes. Low of 40°F (5°C) overnight, so add a layer.</span></label></li>
+<li><label><input type="checkbox"><span>Look up which places you need are open tomorrow. Holiday hours differ.</span></label></li>
+</ul>
+</div>
+<div class="ts-col">
+<p class="m-kicker m-accent-2">After 8 p.m. &middot; once it clears</p>
+<ul class="ts-list" id="ts-later">
+<li><label><input type="checkbox"><span>Run the errand you were putting off. Rain chance drops to 19% at 8 p.m.</span></label></li>
+<li><label><input type="checkbox"><span>Take out the trash and recycling on dry pavement.</span></label></li>
+<li><label><input type="checkbox"><span>Set the umbrella by the door to dry.</span></label></li>
+<li><label><input type="checkbox"><span>Sleep. Skies stay partly cloudy to morning.</span></label></li>
+</ul>
+</div>
+</div>
+
+<div class="ts-rain">
+<p class="m-kicker">Rain chance, hour by hour</p>
+<svg id="ts-chart" viewBox="0 0 360 110" role="img" aria-label="Rain chance by hour from 5 p.m. to 11 p.m.">
+<g id="ts-bars"></g>
+</svg>
+<p class="m-muted ts-note">Dry from 8 p.m. on.</p>
+</div>
+
+<p class="ts-count m-mono"><span id="ts-done">0</span> of 8 done</p>
+
+<style>
+#tonight-steps{border-top:3px double var(--line);padding:var(--gap) 0}
+#tonight-steps h2{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.05;margin:.2em 0 .4em}
+#tonight-steps .ts-cols{display:grid;grid-template-columns:1fr;gap:var(--gap);margin-top:var(--gap)}
+@media(min-width:700px){#tonight-steps .ts-cols{grid-template-columns:1fr 1fr}#tonight-steps .ts-col+.ts-col{border-left:1px solid var(--line);padding-left:var(--gap)}}
+#tonight-steps .ts-list{list-style:none;margin:0;padding:0}
+#tonight-steps .ts-list li{border-bottom:1px solid var(--line);padding:.7em 0}
+#tonight-steps label{display:flex;gap:.7em;align-items:flex-start;cursor:pointer;font-family:var(--font-body);line-height:1.4}
+#tonight-steps input[type=checkbox]{margin-top:.25em;accent-color:var(--accent);width:1.1em;height:1.1em;flex:none}
+#tonight-steps input:checked+span{text-decoration:line-through;color:var(--muted)}
+#tonight-steps .ts-rain{margin-top:var(--gap);border-top:1px solid var(--line);padding-top:var(--gap)}
+#tonight-steps svg{width:100%;max-width:520px;height:auto;display:block}
+#tonight-steps .ts-note{margin:.4em 0 0}
+#tonight-steps .ts-count{margin-top:var(--gap);color:var(--accent)}
+</style>
+</section><section id="clear-morning">
+<p class="m-kicker">Section III · Wednesday, November 11</p>
+<h2>Use the clear hours</h2>
+<p class="m-lead">The rain is done by 8 p.m. tonight. Tomorrow starts dry, with a sky that stays mostly clear through the early hours.</p>
+
+<div class="cm-cols">
+<div class="cm-col">
+<p class="m-kicker m-accent">The overnight run</p>
+<p>The forecast has no rain chance above 20% from 8 p.m. onward. Overnight it cools from 50°F (10°C) at 8 p.m. to 40°F (5°C) around 3 a.m., then creeps up to 42°F (5°C) by 5 a.m. Streets will be wet at first and drying after.</p>
+<p>Sunrise is at 6:38 a.m. Sunset tomorrow comes in the mid-4 p.m. range, so the daylight window is short. Plan the outdoor part of the holiday for the middle of the day.</p>
+</div>
+<div class="cm-col">
+<p class="m-kicker m-accent">Drag to read the hour</p>
+<svg id="cm-chart" viewBox="0 0 320 120" role="img" aria-label="Rain chance by hour from 5 p.m. to 5 a.m.">
+<line x1="0" y1="100" x2="320" y2="100" stroke="var(--line)"/>
+<g id="cm-bars"></g>
+<line id="cm-cursor" x1="0" y1="8" x2="0" y2="100" stroke="var(--accent)" stroke-width="1"/>
+</svg>
+<input id="cm-range" type="range" min="0" max="12" value="3" aria-label="Hour">
+<p class="m-mono" id="cm-readout"></p>
+</div>
+<div class="cm-col">
+<p class="m-kicker m-accent">Cues for the morning</p>
+<ul class="m-list">
+<li>Dry at sunrise: errands and a walk are fine before the day warms.</li>
+<li>Start cold, around 42°F (6°C) early. A jacket for the first hour.</li>
+<li>Check the live line below before you head out.</li>
+</ul>
+<p class="m-muted m-mono" id="cm-live">Live: now 52°F (11°C), light rain.</p>
+</div>
+</div>
+<p class="m-rule"></p>
+<p class="m-muted">That is the list. Rain first, then a clear night, then a holiday.</p>
+
+<style>
+#clear-morning .cm-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--gap);margin-top:var(--gap)}
+#clear-morning .cm-col{padding:0 var(--gap) 0 0;border-right:1px solid var(--line)}
+#clear-morning .cm-col:last-child{border-right:0}
+#clear-morning .cm-col p{margin:0 0 .8em}
+#clear-morning svg{width:100%;height:auto;display:block}
+#clear-morning input[type=range]{width:100%;accent-color:var(--accent)}
+#clear-morning #cm-readout{margin:.5em 0 0;color:var(--fg)}
+@media(max-width:700px){#clear-morning .cm-col{border-right:0;border-bottom:1px solid var(--line);padding:0 0 var(--gap)}#clear-morning .cm-col:last-child{border-bottom:0}}
+</style>
+</section></main>
+<style>#m-building{display:none}</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+<script>(()=>{try{
+(function(){
+var sec=document.getElementById('tonight-steps');
+var data=[["5p",78],["6p",84],["7p",72],["8p",19],["9p",20],["10p",10],["11p",6]];
+var g=document.getElementById('ts-bars');
+var ns='http://www.w3.org/2000/svg';
+var bw=36,gap=14,x0=8;
+data.forEach(function(d,i){
+var h=d[1]*0.75;
+var x=x0+i*(bw+gap);
+var r=document.createElementNS(ns,'rect');
+r.setAttribute('x',x);r.setAttribute('width',bw);
+r.setAttribute('y',90-h);r.setAttribute('height',h);
+r.setAttribute('fill',d[1]>50?'var(--accent)':'var(--accent-2)');
+r.setAttribute('opacity',d[1]>50?'0.95':'0.7');
+g.appendChild(r);
+var t=document.createElementNS(ns,'text');
+t.setAttribute('x',x+bw/2);t.setAttribute('y',104);
+t.setAttribute('text-anchor','middle');t.setAttribute('font-size','10');
+t.setAttribute('fill','var(--muted)');t.setAttribute('font-family','var(--font-mono)');
+t.textContent=d[0];g.appendChild(t);
+var p=document.createElementNS(ns,'text');
+p.setAttribute('x',x+bw/2);p.setAttribute('y',90-h-4);
+p.setAttribute('text-anchor','middle');p.setAttribute('font-size','9');
+p.setAttribute('fill','var(--fg)');p.setAttribute('font-family','var(--font-mono)');
+p.textContent=d[1]+'%';g.appendChild(p);
+if(window.anime&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+r.style.transformOrigin=x+'px 90px';
+}
+});
+if(window.anime&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+anime({targets:'#tonight-steps #ts-bars rect',scaleY:[0,1],delay:anime.stagger(70),duration:700,easing:'easeOutCubic'});
+anime({targets:'#tonight-steps .ts-list li',opacity:[0,1],translateY:[8,0],delay:anime.stagger(60),duration:500,easing:'easeOutQuad'});
+}
+var boxes=sec.querySelectorAll('input[type=checkbox]');
+var out=document.getElementById('ts-done');
+function upd(){var n=0;boxes.forEach(function(b){if(b.checked)n++});out.textContent=n}
+boxes.forEach(function(b){b.addEventListener('change',upd)});
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var data=[
+["5 p.m.","55°F (13°C)",78],["6 p.m.","52°F (11°C)",84],["7 p.m.","52°F (11°C)",72],
+["8 p.m.","50°F (10°C)",19],["9 p.m.","47°F (9°C)",20],["10 p.m.","46°F (8°C)",10],
+["11 p.m.","44°F (7°C)",6],["12 a.m.","42°F (6°C)",1],["1 a.m.","43°F (6°C)",4],
+["2 a.m.","41°F (5°C)",11],["3 a.m.","40°F (5°C)",4],["4 a.m.","41°F (5°C)",9],["5 a.m.","42°F (5°C)",15]];
+var g=document.getElementById('cm-bars'),ns='http://www.w3.org/2000/svg',w=320/13;
+data.forEach(function(d,i){
+var r=document.createElementNS(ns,'rect');
+var h=Math.max(2,d[2]*0.9);
+r.setAttribute('x',i*w+4);r.setAttribute('width',w-8);
+r.setAttribute('y',100-h);r.setAttribute('height',h);
+r.setAttribute('fill',d[2]>50?'var(--accent-2)':'var(--muted)');
+g.appendChild(r);});
+var rng=document.getElementById('cm-range'),cur=document.getElementById('cm-cursor'),out=document.getElementById('cm-readout');
+function upd(){
+var i=+rng.value,d=data[i],x=i*w+w/2;
+cur.setAttribute('x1',x);cur.setAttribute('x2',x);
+out.textContent=d[0]+" · "+d[1]+" · rain chance "+d[2]+"%";}
+rng.addEventListener('input',upd);upd();
+try{
+fetch(window.MOMENT.live+'/weather').then(function(r){return r.json()}).then(function(j){
+if(j&&j.now&&typeof j.now.temp_c==='number'){
+var f=Math.round(j.now.temp_c*9/5+32);
+document.getElementById('cm-live').textContent="Live: now "+f+"°F ("+Math.round(j.now.temp_c)+"°C), "+(j.now.desc||'').toLowerCase()+".";}
+}).catch(function(){});
+}catch(e){}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>parent.postMessage({type:'moment:complete'},'*')</script>
+</body></html>

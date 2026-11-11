@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Snow stops at 10 p.m. in Chicago</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&family=Karla:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>:root{--bg:#f7f9fb;--fg:#16212b;--muted:#52606d;--accent:#2563eb;--accent-2:#9f1239;--surface:#edf1f5;--line:#d5dde5;color-scheme:light;--font-display:'EB Garamond',serif;--font-body:'Karla',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;--radius:0px;--gap:0.7}
+@media (prefers-color-scheme:dark){:root{--bg:#1c1d1f;--fg:#ececec;--muted:#a3a3a3;--accent:#a3e635;--accent-2:#60a5fa;--surface:#242528;--line:#36383c;color-scheme:dark;}}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:15px;line-height:1.55;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;line-height:1.05;letter-spacing:-.01em;margin:0 0 calc(.5em*var(--gap));text-wrap:balance}
+h1{font-size:clamp(34px,6.4vw,84px)}h2{font-size:clamp(24px,3.6vw,44px)}h3{font-size:clamp(18px,2.2vw,24px)}
+p{margin:0 0 calc(1em*var(--gap));max-width:68ch;text-wrap:pretty}
+a{color:var(--accent);text-underline-offset:.18em}
+button{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--fg);border-radius:var(--radius);padding:.55em 1em;cursor:pointer}
+button:hover{background:var(--fg);color:var(--bg)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=range]{accent-color:var(--accent);width:100%}
+table{border-collapse:collapse;width:100%}td,th{padding:.45em .6em;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85em}
+svg{max-width:100%;height:auto}canvas{max-width:100%;display:block}
+img{max-width:100%}
+.m-kicker{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .9em}
+.m-big{font-family:var(--font-display);font-size:clamp(56px,13vw,170px);line-height:.88;letter-spacing:-.03em;font-weight:700}
+.m-lead{font-size:1.25em;line-height:1.4;max-width:40ch}
+.m-muted{color:var(--muted)}.m-accent{color:var(--accent)}.m-accent-2{color:var(--accent-2)}
+.m-mono{font-family:var(--font-mono)}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:calc(16px*var(--gap))}
+.m-row{display:flex;flex-wrap:wrap;gap:calc(12px*var(--gap));align-items:baseline}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:calc(18px*var(--gap))}
+.m-stat{display:flex;flex-direction:column;gap:.2em}.m-stat b{font-family:var(--font-display);font-size:clamp(28px,4.6vw,52px);line-height:1;font-weight:700}
+.m-rule{border:0;border-top:1px solid var(--line);margin:calc(24px*var(--gap)) 0}
+.m-chip{display:inline-block;font-family:var(--font-mono);font-size:.78rem;padding:.25em .6em;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.m-list{list-style:none;padding:0;margin:0}.m-list li{padding:.6em 0;border-bottom:1px solid var(--line)}
+.m-bars{display:flex;align-items:flex-end;gap:3px;height:120px}.m-bars i{flex:1;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px}
+main>section{scroll-margin-top:16px}
+main>section{animation:m-in .9s cubic-bezier(.2,.7,.2,1) both}@keyframes m-in{from{opacity:0;transform:translateY(8px)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#m-building{position:fixed;left:12px;bottom:12px;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;z-index:5}
+#m-building::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:m-pulse 1.2s ease-in-out infinite}
+@keyframes m-pulse{50%{opacity:.25}}
+.m-earlier{font-family:var(--font-mono);font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
+main{padding:0}@media(min-width:900px){main{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr)}main>section:first-child{position:sticky;top:0;height:100vh;grid-row:1/span 50;border-right:1px solid var(--line);overflow:auto}main>section{grid-column:2}main>section:first-child{grid-column:1}}main>section{padding:clamp(24px,5vw,64px)}main>section+section{border-top:1px solid var(--line)}</style>
+<script>window.MOMENT={"live":"http://localhost:8788/live/41.88,-87.63","tz":"America/Chicago","place":"Chicago","eu":false};(()=>{const EU=false;let lastY=scrollY,lastT=performance.now(),speed=0,taps=0,idle=0,lastAct=performance.now(),hov=new Set(),bottom=false;
+const desc=e=>{const el=e.closest&&e.closest('[data-m],button,a,svg,canvas,table,li,figure,h2,h3');if(!el)return null;return(el.getAttribute('data-m')||el.tagName.toLowerCase()+(el.className&&typeof el.className==='string'?'.'+el.className.split(' ')[0]:'')).slice(0,40)};
+const act=()=>{lastAct=performance.now()};
+addEventListener('scroll',()=>{const t=performance.now(),dy=Math.abs(scrollY-lastY);speed=.7*speed+.3*(dy/Math.max(16,t-lastT)*1000);lastY=scrollY;lastT=t;act();const b=innerHeight+scrollY>=document.documentElement.scrollHeight-40;if(b&&!bottom){bottom=true;parent.postMessage({type:'moment:bottom'},'*')}},{passive:true});
+addEventListener('pointerover',e=>{if(EU)return;const d=desc(e.target);if(d&&hov.size<12)hov.add(d)},{passive:true});
+addEventListener('pointerdown',()=>{taps++;act()},{passive:true});addEventListener('keydown',act);
+const onScreen=()=>{let best=null,area=0;for(const s of document.querySelectorAll('main>section')){const r=s.getBoundingClientRect(),v=Math.max(0,Math.min(innerHeight,r.bottom)-Math.max(0,r.top));if(v>area){area=v;best=s.id||null}}return best};
+setInterval(()=>{idle=performance.now()-lastAct;if(EU)return;parent.postMessage({type:'moment:interaction',section:onScreen(),scrollSpeed:Math.round(speed),hovered:[...hov],taps,idleMs:Math.round(idle),atBottom:bottom},'*');hov.clear();speed*=.5},2000);
+})();</script>
+</head><body class="layout-split motion-gentle density-dense">
+<div id="m-building" role="status">Writing this page</div>
+<main>
+<section id="snow-clears">
+<p class="m-kicker">Chicago · Tuesday · 3:20 p.m.</p>
+<h1>Time until the snow stops</h1>
+<p class="m-lead">It's snowing at 37°F (3°C). The snow stops around 10 p.m.</p>
+<div class="sc-clock" aria-live="off">
+<span class="m-big m-accent" id="sc-h">6</span><span class="sc-u">h</span>
+<span class="m-big m-accent" id="sc-m">40</span><span class="sc-u">min</span>
+</div>
+<p class="m-muted" id="sc-sub">until the first dry hour, 10 p.m.</p>
+<svg id="sc-chart" viewBox="0 0 320 90" role="img" aria-label="Chance of snow by hour from 2 p.m. to 2 a.m." preserveAspectRatio="none"></svg>
+<div class="sc-axis m-mono"><span>2 p.m.</span><span>10 p.m.</span><span>2 a.m.</span></div>
+<p class="sc-note">Snow chance holds between 71% and 95% every hour until 9 p.m. At 10 p.m. it drops to 12%.</p>
+<style>
+#snow-clears{display:flex;flex-direction:column;gap:12px}
+#snow-clears h1{font-family:var(--font-display);font-size:clamp(1.6rem,3.2vw,2.4rem);line-height:1.05;margin:0}
+#snow-clears .sc-clock{display:flex;align-items:baseline;gap:8px;margin-top:8px;flex-wrap:wrap}
+#snow-clears .m-big{font-size:clamp(4rem,11vw,7.5rem);line-height:.9;font-variant-numeric:tabular-nums}
+#snow-clears .sc-u{font-family:var(--font-mono);color:var(--muted);margin-right:14px}
+#snow-clears #sc-chart{width:100%;height:90px;display:block;border-bottom:1px solid var(--line);margin-top:10px}
+#snow-clears .sc-axis{display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted)}
+#snow-clears .sc-note{margin:0;max-width:34ch}
+</style>
+</section><section id="sunset-cold">
+<h2 class="m-kicker">Sunset and the overnight drop</h2>
+<p class="m-lead">Sunset is at 4:25 p.m., about an hour from now. Snow keeps falling through it, so the light goes gray before it goes dark.</p>
+<div class="m-grid sc-stats">
+<div class="m-stat"><b>4:25 p.m.</b><span>Sunset</span></div>
+<div class="m-stat"><b>32°F (0°C)</b><span>Freezing, around 8 p.m.</span></div>
+<div class="m-stat"><b>23°F (-5°C)</b><span>Low by 2 a.m.</span></div>
+</div>
+<figure class="sc-fig">
+<svg id="sc-chart" viewBox="0 0 600 220" role="img" aria-label="Temperature from 2 p.m. to 2 a.m., falling from 37°F to 23°F, with sunset at 4 p.m. hour and freezing line at 32°F">
+<rect id="sc-night" x="0" y="0" width="0" height="220" fill="var(--fg)" opacity=".07"></rect>
+<line x1="0" x2="600" y1="0" y2="0" id="sc-frz" stroke="var(--accent-2)" stroke-dasharray="4 4"></line>
+<text id="sc-frzt" x="596" y="0" text-anchor="end" fill="var(--accent-2)" font-size="12" font-family="var(--font-mono)">32°F</text>
+<polyline id="sc-line" fill="none" stroke="var(--accent)" stroke-width="3" points=""></polyline>
+<g id="sc-dots"></g>
+</svg>
+<figcaption class="m-muted m-mono">Hourly temperature, 2 p.m. to 2 a.m. Shaded: after sunset.</figcaption>
+</figure>
+<p>Snow turns to dry, cloudy air at 10 p.m., right when it is 28°F. That is when wet roads start to glaze. Expect slick spots on sidewalks and side streets after dark.</p>
+<style>
+#sunset-cold .sc-stats{margin:var(--gap) 0}
+#sunset-cold .sc-fig{margin:var(--gap) 0;padding:0}
+#sunset-cold svg{width:100%;height:auto;display:block;border-bottom:1px solid var(--line)}
+#sunset-cold figcaption{font-size:.8rem;margin-top:.5rem}
+</style>
+<!--script-->
+(function(){
+var t=[37,37,36,36,35,33,32,30,28,25,26,24,23];
+var labels=['2p','3p','4p','5p','6p','7p','8p','9p','10p','11p','12a','1a','2a'];
+var min=20,max=40,W=600,H=220,pad=24;
+function x(i){return pad+i*(W-2*pad)/12}
+function y(v){return H-pad-(v-min)/(max-min)*(H-2*pad)}
+var pts=t.map(function(v,i){return x(i)+','+y(v)}).join(' ');
+var line=document.getElementById('sc-line');
+line.setAttribute('points',pts);
+var fy=y(32);
+var f=document.getElementById('sc-frz');f.setAttribute('y1',fy);f.setAttribute('y2',fy);
+document.getElementById('sc-frzt').setAttribute('y',fy-5);
+var nx=x(2.42);
+var n=document.getElementById('sc-night');n.setAttribute('x',nx);n.setAttribute('width',W-nx);
+var g=document.getElementById('sc-dots');
+var ns='http://www.w3.org/2000/svg';
+[0,2,4,6,8,10,12].forEach(function(i){
+var c=document.createElementNS(ns,'circle');
+c.setAttribute('cx',x(i));c.setAttribute('cy',y(t[i]));c.setAttribute('r',4);c.setAttribute('fill','var(--accent)');g.appendChild(c);
+var a=document.createElementNS(ns,'text');
+a.setAttribute('x',x(i));a.setAttribute('y',H-6);a.setAttribute('text-anchor','middle');a.setAttribute('font-size','11');a.setAttribute('font-family','var(--font-mono)');a.setAttribute('fill','var(--muted)');a.textContent=labels[i];g.appendChild(a);
+var b=document.createElementNS(ns,'text');
+b.setAttribute('x',x(i));b.setAttribute('y',y(t[i])-10);b.setAttribute('text-anchor','middle');b.setAttribute('font-size','12');b.setAttribute('font-family','var(--font-mono)');b.setAttribute('fill','var(--fg)');b.textContent=t[i]+'°';g.appendChild(b);
+});
+if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches&&window.anime){
+var len=line.getTotalLength();
+line.style.strokeDasharray=len;
+anime({targets:line,strokeDashoffset:[len,0],duration:1600,easing:'easeOutQuad'});
+}
+})();</section><section id="thanksgiving-week">
+<p class="m-kicker">The calendar</p>
+<h2 class="m-big">Thursday.</h2>
+<p class="m-lead">Thanksgiving is this Thursday, November 26. That is two days after tonight's snow ends.</p>
+<div class="tg-days" id="tg-days">
+<div class="tg-day tg-now"><span class="m-mono">Tue 24</span><b>Today</b><em>Snow until 10 p.m.</em></div>
+<div class="tg-day"><span class="m-mono">Wed 25</span><b>Tomorrow</b><em>Starts after a 23°F (-5°C) night</em></div>
+<div class="tg-day tg-hit"><span class="m-mono">Thu 26</span><b>Thanksgiving</b><em>The fixed date</em></div>
+</div>
+<p>What the brief can say about Wednesday and Thursday weather is nothing yet. What it can say is where tonight leaves you: a dry sky from 10 p.m. and temperatures near 23°F by 2 a.m. Anything wet on the ground by then will be ice by morning.</p>
+<p class="m-muted">If you are driving anywhere this week, the road you will meet tomorrow is the one that freezes tonight.</p>
+<style>
+#thanksgiving-week .tg-days{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));border-top:2px solid var(--fg);margin:var(--gap) 0}
+#thanksgiving-week .tg-day{padding:14px 14px 16px 0;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:4px}
+#thanksgiving-week .tg-day b{font-family:var(--font-display);font-size:1.4rem;line-height:1.1}
+#thanksgiving-week .tg-day em{font-style:normal;color:var(--muted);font-size:.9rem}
+#thanksgiving-week .tg-day span{color:var(--muted);font-size:.8rem}
+#thanksgiving-week .tg-hit b{color:var(--accent)}
+#thanksgiving-week .tg-hit{border-bottom:3px solid var(--accent)}
+#thanksgiving-week .tg-now{opacity:.75}
+</style>
+</section></main>
+<style>#m-building{display:none}</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+<script>(()=>{try{
+(function(){
+var el=document.getElementById('snow-clears');
+var pop=[91,83,89,71,75,79,95,89,12,12,4,11,6];
+var svg=document.getElementById('sc-chart');
+var w=320,h=90,n=pop.length,bw=w/n,out='';
+for(var i=0;i<n;i++){
+var bh=Math.max(2,pop[i]/100*(h-6));
+var wet=i<8+1&&i<8;
+var col=i<8?'var(--accent)':'var(--accent-2)';
+out+='<rect x="'+(i*bw+3)+'" y="'+(h-bh)+'" width="'+(bw-6)+'" height="'+bh+'" fill="'+col+'" opacity="'+(i<8?0.9:0.5)+'"/>';
+}
+svg.innerHTML=out;
+function tick(){
+var d=new Date();
+var t=new Date(d);t.setHours(22,0,0,0);
+var ms=t-d;
+var hh=document.getElementById('sc-h'),mm=document.getElementById('sc-m'),sub=document.getElementById('sc-sub');
+if(ms<=0){hh.textContent='0';mm.textContent='0';sub.textContent='the snow should be done for tonight';return;}
+var mins=Math.floor(ms/60000);
+hh.textContent=Math.floor(mins/60);
+mm.textContent=mins%60;
+}
+tick();setInterval(tick,30000);
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var el=document.getElementById('tg-days');
+if(!el||typeof anime==='undefined')return;
+if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+anime({targets:el.querySelectorAll('.tg-day'),opacity:[0,1],translateY:[8,0],delay:anime.stagger(120),duration:600,easing:'easeOutQuad'});
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>parent.postMessage({type:'moment:complete'},'*')</script>
+</body></html>

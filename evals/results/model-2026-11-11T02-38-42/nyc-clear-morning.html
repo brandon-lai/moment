@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Clear Friday Morning, New York</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:wght@400;700&family=Public+Sans:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>:root{--bg:#f2efe8;--fg:#111111;--muted:#555049;--accent:#b91c1c;--accent-2:#1f3a5f;--surface:#e7e2d8;--line:#cfc8ba;color-scheme:light;--font-display:'Newsreader',serif;--font-body:'Public Sans',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;--radius:6px;--gap:1.35}
+@media (prefers-color-scheme:dark){:root{--bg:#0f2747;--fg:#e6eefb;--muted:#9fb6d9;--accent:#fde047;--accent-2:#fca5a5;--surface:#143057;--line:#24467a;color-scheme:dark;}}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:18px;line-height:1.55;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;line-height:1.05;letter-spacing:-.01em;margin:0 0 calc(.5em*var(--gap));text-wrap:balance}
+h1{font-size:clamp(34px,6.4vw,84px)}h2{font-size:clamp(24px,3.6vw,44px)}h3{font-size:clamp(18px,2.2vw,24px)}
+p{margin:0 0 calc(1em*var(--gap));max-width:68ch;text-wrap:pretty}
+a{color:var(--accent);text-underline-offset:.18em}
+button{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--fg);border-radius:var(--radius);padding:.55em 1em;cursor:pointer}
+button:hover{background:var(--fg);color:var(--bg)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=range]{accent-color:var(--accent);width:100%}
+table{border-collapse:collapse;width:100%}td,th{padding:.45em .6em;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85em}
+svg{max-width:100%;height:auto}canvas{max-width:100%;display:block}
+img{max-width:100%}
+.m-kicker{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .9em}
+.m-big{font-family:var(--font-display);font-size:clamp(56px,13vw,170px);line-height:.88;letter-spacing:-.03em;font-weight:700}
+.m-lead{font-size:1.25em;line-height:1.4;max-width:40ch}
+.m-muted{color:var(--muted)}.m-accent{color:var(--accent)}.m-accent-2{color:var(--accent-2)}
+.m-mono{font-family:var(--font-mono)}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:calc(16px*var(--gap))}
+.m-row{display:flex;flex-wrap:wrap;gap:calc(12px*var(--gap));align-items:baseline}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:calc(18px*var(--gap))}
+.m-stat{display:flex;flex-direction:column;gap:.2em}.m-stat b{font-family:var(--font-display);font-size:clamp(28px,4.6vw,52px);line-height:1;font-weight:700}
+.m-rule{border:0;border-top:1px solid var(--line);margin:calc(24px*var(--gap)) 0}
+.m-chip{display:inline-block;font-family:var(--font-mono);font-size:.78rem;padding:.25em .6em;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.m-list{list-style:none;padding:0;margin:0}.m-list li{padding:.6em 0;border-bottom:1px solid var(--line)}
+.m-bars{display:flex;align-items:flex-end;gap:3px;height:120px}.m-bars i{flex:1;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px}
+main>section{scroll-margin-top:16px}
+main>section{animation:m-in .9s cubic-bezier(.2,.7,.2,1) both}@keyframes m-in{from{opacity:0;transform:translateY(8px)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#m-building{position:fixed;left:12px;bottom:12px;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;z-index:5}
+#m-building::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:m-pulse 1.2s ease-in-out infinite}
+@keyframes m-pulse{50%{opacity:.25}}
+.m-earlier{font-family:var(--font-mono);font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
+main{padding:0}main>section{min-height:88vh;padding:clamp(28px,7vw,110px) clamp(16px,6vw,96px);display:flex;flex-direction:column;justify-content:center}main>section:nth-child(even){background:var(--surface)}</style>
+<script>window.MOMENT={"live":"http://localhost:8788/live/40.71,-74.01","tz":"America/New_York","place":"New York","eu":false};(()=>{const EU=false;let lastY=scrollY,lastT=performance.now(),speed=0,taps=0,idle=0,lastAct=performance.now(),hov=new Set(),bottom=false;
+const desc=e=>{const el=e.closest&&e.closest('[data-m],button,a,svg,canvas,table,li,figure,h2,h3');if(!el)return null;return(el.getAttribute('data-m')||el.tagName.toLowerCase()+(el.className&&typeof el.className==='string'?'.'+el.className.split(' ')[0]:'')).slice(0,40)};
+const act=()=>{lastAct=performance.now()};
+addEventListener('scroll',()=>{const t=performance.now(),dy=Math.abs(scrollY-lastY);speed=.7*speed+.3*(dy/Math.max(16,t-lastT)*1000);lastY=scrollY;lastT=t;act();const b=innerHeight+scrollY>=document.documentElement.scrollHeight-40;if(b&&!bottom){bottom=true;parent.postMessage({type:'moment:bottom'},'*')}},{passive:true});
+addEventListener('pointerover',e=>{if(EU)return;const d=desc(e.target);if(d&&hov.size<12)hov.add(d)},{passive:true});
+addEventListener('pointerdown',()=>{taps++;act()},{passive:true});addEventListener('keydown',act);
+const onScreen=()=>{let best=null,area=0;for(const s of document.querySelectorAll('main>section')){const r=s.getBoundingClientRect(),v=Math.max(0,Math.min(innerHeight,r.bottom)-Math.max(0,r.top));if(v>area){area=v;best=s.id||null}}return best};
+setInterval(()=>{idle=performance.now()-lastAct;if(EU)return;parent.postMessage({type:'moment:interaction',section:onScreen(),scrollSpeed:Math.round(speed),hovered:[...hov],taps,idleMs:Math.round(idle),atBottom:bottom},'*');hov.clear();speed*=.5},2000);
+})();</script>
+</head><body class="layout-full-bleed motion-gentle density-airy">
+<div id="m-building" role="status">Writing this page</div>
+<main>
+<section id="sky-now">
+<p class="m-kicker">New York · Friday · 7:40 a.m.</p>
+<h2 class="sn-title">Clear sky at 41°F</h2>
+<p class="m-lead">Not a cloud on the board. It's 5°C out, the sun came up at 6:41 a.m., and the day warms from here.</p>
+<div class="sn-stage">
+<svg id="sn-svg" viewBox="0 0 800 300" preserveAspectRatio="xMidYMax slice" role="img" aria-label="A low sun over a city skyline in a clear sky">
+<defs>
+<linearGradient id="sn-sky" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="var(--bg)"/>
+<stop offset="1" stop-color="color-mix(in srgb, var(--accent-2) 30%, var(--bg))"/>
+</linearGradient>
+</defs>
+<rect width="800" height="300" fill="url(#sn-sky)"/>
+<g id="sn-rays" stroke="var(--accent-2)" stroke-width="1.5" opacity=".35">
+<line x1="560" y1="170" x2="560" y2="60"/><line x1="560" y1="170" x2="620" y2="78"/><line x1="560" y1="170" x2="660" y2="120"/><line x1="560" y1="170" x2="500" y2="78"/><line x1="560" y1="170" x2="460" y2="120"/>
+</g>
+<circle id="sn-sun" cx="560" cy="170" r="34" fill="var(--accent-2)"/>
+<path d="M0 300V232h38v-40h30v28h26v-60h34v72h28v-36h32v50h30v-84h36v84h30v-44h34v58h28v-70h40v70h30v-34h34v50h28v-64h36v64h30v-40h34v40h30v-52h36v52h28V300z" fill="var(--fg)" opacity=".88"/>
+</svg>
+</div>
+<div class="m-row sn-facts">
+<div class="m-stat"><b>41°F</b><span>right now (5°C)</span></div>
+<div class="m-stat"><b>6:41 a.m.</b><span>sunrise</span></div>
+<div class="m-stat"><b>4:41 p.m.</b><span>sunset</span></div>
+</div>
+<style>
+#sky-now{padding:clamp(2rem,6vw,5rem) clamp(1rem,5vw,4rem);min-height:90vh;display:flex;flex-direction:column;justify-content:center;gap:var(--gap)}
+#sky-now .sn-title{font-family:var(--font-display);font-size:clamp(2.6rem,9vw,7rem);line-height:.95;margin:0;max-width:12ch}
+#sky-now .m-lead{max-width:34ch;margin:0}
+#sky-now .sn-stage{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);max-height:42vh}
+#sky-now .sn-stage svg{display:block;width:100%;height:auto;min-height:160px}
+#sky-now .sn-facts{gap:calc(var(--gap)*1.5)}
+</style>
+</section><section id="day-arc">
+<p class="m-kicker">7:40 a.m. to evening</p>
+<h2 class="m-big">The next twelve hours</h2>
+<p class="m-lead">It starts at 40° and climbs a little at a time. The high is 49°, reached around 2 p.m. After that it eases back to 47°.</p>
+<div class="arc-wrap">
+<svg id="arc-svg" viewBox="0 0 600 260" role="img" aria-label="Temperature line from 39°F at 6 a.m. to a peak of 49°F at 2 p.m., then 47°F at 6 p.m.">
+<line x1="30" y1="200" x2="570" y2="200" stroke="var(--line)" stroke-width="1"/>
+<path id="arc-area" fill="color-mix(in srgb, var(--accent) 14%, transparent)" d=""/>
+<path id="arc-line" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d=""/>
+<g id="arc-dots"></g>
+<g id="arc-labels" font-family="var(--font-mono)" font-size="11" fill="var(--muted)"></g>
+</svg>
+</div>
+<div class="m-row arc-stats">
+<div class="m-stat"><b>41°F</b><span>7:40 a.m., now</span></div>
+<div class="m-stat"><b>49°F</b><span>2 p.m., the high</span></div>
+<div class="m-stat"><b>47°F</b><span>6 p.m.</span></div>
+</div>
+<p class="m-muted">Clear all the way through. No rain in the numbers.</p>
+<style>
+#day-arc{padding:clamp(2rem,6vw,5rem) 0}
+#day-arc .arc-wrap{margin:var(--gap) 0;max-width:760px}
+#day-arc svg{width:100%;height:auto;display:block;overflow:visible}
+#day-arc .arc-stats{gap:calc(var(--gap)*1.5);margin-bottom:var(--gap)}
+</style>
+<!--script-->
+(function(){
+var pts=[[6,39],[7,40],[8,41],[9,43],[10,45],[11,46],[12,46],[13,48],[14,49],[15,47],[16,48],[17,47],[18,47]];
+var x=function(h){return 30+(h-6)/12*540};
+var y=function(t){return 200-(t-38)/12*150};
+var d="";
+pts.forEach(function(p,i){d+=(i?"L":"M")+x(p[0]).toFixed(1)+" "+y(p[1]).toFixed(1)});
+var line=document.getElementById("arc-line");
+line.setAttribute("d",d);
+document.getElementById("arc-area").setAttribute("d",d+"L"+x(18)+" 200L"+x(6)+" 200Z");
+var NS="http://www.w3.org/2000/svg";
+var dots=document.getElementById("arc-dots");
+var labels=document.getElementById("arc-labels");
+function mk(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);return e}
+[[8,41,"now"],[14,49,"49°"]].forEach(function(p){
+dots.appendChild(mk("circle",{cx:x(p[0]),cy:y(p[1]),r:5,fill:"var(--accent)"}));
+var t=mk("text",{x:x(p[0]),y:y(p[1])-14,"text-anchor":"middle"});
+t.textContent=p[2];t.setAttribute("fill","var(--fg)");labels.appendChild(t);
+});
+[[6,"6 a.m."],[9,"9"],[12,"noon"],[15,"3"],[18,"6 p.m."]].forEach(function(p){
+var t=mk("text",{x:x(p[0]),y:222,"text-anchor":"middle"});
+t.textContent=p[1];labels.appendChild(t);
+});
+var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+if(!reduce&&window.anime){
+var len=line.getTotalLength();
+line.style.strokeDasharray=len;
+line.style.strokeDashoffset=len;
+anime({targets:line,strokeDashoffset:0,duration:2400,easing:"easeInOutSine"});
+}
+})();
+</section></main>
+<style>#m-building{display:none}</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+<script>(()=>{try{
+(function(){
+var sun=document.getElementById('sn-sun');
+var rays=document.getElementById('sn-rays');
+if(!sun||!rays)return;
+if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+if(window.anime){
+anime({targets:sun,r:[34,37],duration:4000,easing:'easeInOutSine',direction:'alternate',loop:true});
+anime({targets:rays,opacity:[0.2,0.45],duration:4000,easing:'easeInOutSine',direction:'alternate',loop:true});
+}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>parent.postMessage({type:'moment:complete'},'*')</script>
+</body></html>

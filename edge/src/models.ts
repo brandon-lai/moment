@@ -78,9 +78,12 @@ async function structured<T>(env: Env, system: string, user: string, schema: obj
   }
 }
 
-export async function routeWithModel(env: Env, input: object, timeoutMs: number): Promise<{ candidates: Plan[]; usage: Usage }> {
-  const { data, usage } = await structured<{ candidates: Plan[] }>(env, ROUTER_SYSTEM, JSON.stringify(input), ROUTER_SCHEMA, 2500, timeoutMs);
-  return { candidates: data.candidates, usage };
+export type RouterCandidate = Plan & { could_exist_tomorrow: boolean; could_exist_elsewhere: boolean };
+
+export async function routeLane(env: Env, input: object, archetypes: string[], timeoutMs: number): Promise<{ candidate: RouterCandidate; usage: Usage }> {
+  const user = JSON.stringify({ ...input, choose_archetype_from: archetypes });
+  const { data, usage } = await structured<RouterCandidate>(env, ROUTER_SYSTEM, user, { ...ROUTER_SCHEMA, properties: { ...ROUTER_SCHEMA.properties, archetype: { type: "string", enum: archetypes } } }, 700, timeoutMs);
+  return { candidate: data, usage };
 }
 
 export async function judgeWithModel(env: Env, candidates: Plan[], place: string, when: string, timeoutMs: number) {

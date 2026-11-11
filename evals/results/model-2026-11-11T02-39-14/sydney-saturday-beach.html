@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sydney at midday, clear skies and 27 degrees</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700&family=Manrope:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>:root{--bg:#0f2747;--fg:#e6eefb;--muted:#9fb6d9;--accent:#fde047;--accent-2:#fca5a5;--surface:#143057;--line:#24467a;color-scheme:dark;--font-display:'Syne',sans-serif;--font-body:'Manrope',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;--radius:2px;--gap:0.7}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:15px;line-height:1.55;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;line-height:1.05;letter-spacing:-.01em;margin:0 0 calc(.5em*var(--gap));text-wrap:balance}
+h1{font-size:clamp(34px,6.4vw,84px)}h2{font-size:clamp(24px,3.6vw,44px)}h3{font-size:clamp(18px,2.2vw,24px)}
+p{margin:0 0 calc(1em*var(--gap));max-width:68ch;text-wrap:pretty}
+a{color:var(--accent);text-underline-offset:.18em}
+button{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--fg);border-radius:var(--radius);padding:.55em 1em;cursor:pointer}
+button:hover{background:var(--fg);color:var(--bg)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=range]{accent-color:var(--accent);width:100%}
+table{border-collapse:collapse;width:100%}td,th{padding:.45em .6em;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85em}
+svg{max-width:100%;height:auto}canvas{max-width:100%;display:block}
+img{max-width:100%}
+.m-kicker{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .9em}
+.m-big{font-family:var(--font-display);font-size:clamp(56px,13vw,170px);line-height:.88;letter-spacing:-.03em;font-weight:700}
+.m-lead{font-size:1.25em;line-height:1.4;max-width:40ch}
+.m-muted{color:var(--muted)}.m-accent{color:var(--accent)}.m-accent-2{color:var(--accent-2)}
+.m-mono{font-family:var(--font-mono)}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:calc(16px*var(--gap))}
+.m-row{display:flex;flex-wrap:wrap;gap:calc(12px*var(--gap));align-items:baseline}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:calc(18px*var(--gap))}
+.m-stat{display:flex;flex-direction:column;gap:.2em}.m-stat b{font-family:var(--font-display);font-size:clamp(28px,4.6vw,52px);line-height:1;font-weight:700}
+.m-rule{border:0;border-top:1px solid var(--line);margin:calc(24px*var(--gap)) 0}
+.m-chip{display:inline-block;font-family:var(--font-mono);font-size:.78rem;padding:.25em .6em;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.m-list{list-style:none;padding:0;margin:0}.m-list li{padding:.6em 0;border-bottom:1px solid var(--line)}
+.m-bars{display:flex;align-items:flex-end;gap:3px;height:120px}.m-bars i{flex:1;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px}
+main>section{scroll-margin-top:16px}
+main>section{animation:m-in .5s cubic-bezier(.2,.7,.2,1) both}@keyframes m-in{from{opacity:0;transform:translateY(18px)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#m-building{position:fixed;left:12px;bottom:12px;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;z-index:5}
+#m-building::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:m-pulse 1.2s ease-in-out infinite}
+@keyframes m-pulse{50%{opacity:.25}}
+.m-earlier{font-family:var(--font-mono);font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
+main{max-width:1200px;margin:0 auto;padding:clamp(20px,4vw,56px)}main>section{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:clamp(12px,2vw,28px);padding:clamp(28px,5vw,72px) 0;border-top:1px solid var(--line)}main>section>*{grid-column:1/-1}@media(min-width:860px){main>section>p,main>section>.m-body{grid-column:1/span 7}main>section>aside{grid-column:9/span 4;grid-row:span 3}}</style>
+<script>window.MOMENT={"live":"http://localhost:8788/live/-33.87,151.21","tz":"Australia/Sydney","place":"Sydney","eu":false};(()=>{const EU=false;let lastY=scrollY,lastT=performance.now(),speed=0,taps=0,idle=0,lastAct=performance.now(),hov=new Set(),bottom=false;
+const desc=e=>{const el=e.closest&&e.closest('[data-m],button,a,svg,canvas,table,li,figure,h2,h3');if(!el)return null;return(el.getAttribute('data-m')||el.tagName.toLowerCase()+(el.className&&typeof el.className==='string'?'.'+el.className.split(' ')[0]:'')).slice(0,40)};
+const act=()=>{lastAct=performance.now()};
+addEventListener('scroll',()=>{const t=performance.now(),dy=Math.abs(scrollY-lastY);speed=.7*speed+.3*(dy/Math.max(16,t-lastT)*1000);lastY=scrollY;lastT=t;act();const b=innerHeight+scrollY>=document.documentElement.scrollHeight-40;if(b&&!bottom){bottom=true;parent.postMessage({type:'moment:bottom'},'*')}},{passive:true});
+addEventListener('pointerover',e=>{if(EU)return;const d=desc(e.target);if(d&&hov.size<12)hov.add(d)},{passive:true});
+addEventListener('pointerdown',()=>{taps++;act()},{passive:true});addEventListener('keydown',act);
+const onScreen=()=>{let best=null,area=0;for(const s of document.querySelectorAll('main>section')){const r=s.getBoundingClientRect(),v=Math.max(0,Math.min(innerHeight,r.bottom)-Math.max(0,r.top));if(v>area){area=v;best=s.id||null}}return best};
+setInterval(()=>{idle=performance.now()-lastAct;if(EU)return;parent.postMessage({type:'moment:interaction',section:onScreen(),scrollSpeed:Math.round(speed),hovered:[...hov],taps,idleMs:Math.round(idle),atBottom:bottom},'*');hov.clear();speed*=.5},2000);
+})();</script>
+</head><body class="layout-editorial-grid motion-lively density-dense">
+<div id="m-building" role="status">Writing this page</div>
+<main>
+<section id="the-light-now">
+<p class="m-kicker">Saturday, 11:30 a.m. · Sydney</p>
+<h2>The light at midday</h2>
+<p class="m-lead">It is 27°C and mostly clear. The sun is close to its highest point, so shadows are short and the glare comes straight down.</p>
+<div class="tln-grid">
+<div class="tln-body">
+<p>Sunrise was at 5:45 a.m. Sunset is at 7:35 p.m. That is nearly fourteen hours of daylight, and you are standing in the middle of it.</p>
+<p>The sky code at 11:00 a.m. reads mostly clear, and at noon it reads clear. Rain chance sits at 11% for the hour that just passed, and no rain is forecast at any hour through 10 p.m.</p>
+<p class="m-muted">Hard overhead light flattens everything. Water goes bright, walls go white, and the colours that look good at 8 a.m. look washed out now.</p>
+</div>
+<figure class="tln-fig">
+<svg id="tln-svg" viewBox="0 0 400 200" role="img" aria-label="Sun arc from sunrise at 5:45 a.m. to sunset at 7:35 p.m., with the sun near the top at 11:30 a.m.">
+<line x1="20" y1="170" x2="380" y2="170" stroke="var(--line)" stroke-width="1"/>
+<path id="tln-arc" d="M20 170 Q200 -50 380 170" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="3 5"/>
+<path id="tln-done" d="M20 170 Q200 -50 380 170" fill="none" stroke="var(--accent)" stroke-width="2.5" pathLength="100" stroke-dasharray="0 100"/>
+<circle id="tln-sun" cx="20" cy="170" r="9" fill="var(--accent)"/>
+<text x="20" y="190" fill="var(--muted)" font-size="11" font-family="var(--font-mono)">5:45 a.m.</text>
+<text x="380" y="190" text-anchor="end" fill="var(--muted)" font-size="11" font-family="var(--font-mono)">7:35 p.m.</text>
+</svg>
+<figcaption class="m-mono m-muted">Sun position, sunrise to sunset</figcaption>
+</figure>
+</div>
+</div>
+<style>
+#the-light-now h2{font-family:var(--font-display);font-size:clamp(2.4rem,7vw,5rem);line-height:1;margin:.2em 0 .4em;max-width:14ch}
+#the-light-now .m-lead{max-width:34em}
+#the-light-now .tln-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gap);margin-top:2rem;align-items:start}
+#the-light-now .tln-body{grid-column:1 / span 7}
+#the-light-now .tln-fig{grid-column:8 / span 5;margin:0}
+#the-light-now .tln-fig svg{width:100%;height:auto;display:block;overflow:visible}
+@media (max-width:720px){
+#the-light-now .tln-body,#the-light-now .tln-fig{grid-column:1 / -1}
+}
+</style>
+<!--script-->
+(function(){
+var sec=document.getElementById('the-light-now');
+var path=document.getElementById('tln-arc');
+var done=document.getElementById('tln-done');
+var sun=document.getElementById('tln-sun');
+if(!path||!sun)return;
+var rise=5*60+45,set=19*60+35,now=11*60+30;
+var frac=(now-rise)/(set-rise);
+var len=path.getTotalLength();
+function place(f){
+var p=path.getPointAtLength(len*f);
+sun.setAttribute('cx',p.x);sun.setAttribute('cy',p.y);
+done.setAttribute('stroke-dasharray',(f*100)+' 100');
+}
+var still=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(still||typeof anime==='undefined'){place(frac);return;}
+var o={f:0};
+anime({targets:o,f:frac,duration:2200,easing:'easeOutCubic',update:function(){place(o.f)}});
+anime({targets:sun,r:[9,12,9],duration:2400,loop:true,easing:'easeInOutSine'});
+})();</section><section id="the-warm-stretch">
+<p class="m-kicker">11:30 a.m. to 10 p.m.</p>
+<h2>Warm through the afternoon</h2>
+<p class="m-lead">It is 27°C now. By 1 p.m. it reaches 29°C, and it holds there until 6 p.m.</p>
+<div class="ws-body">
+<p>The brief's range is 23° to 29°, but the day itself sits at the top of it. After 6 p.m. the air eases to 27°C at 7, then 26°C at 8 and 9, and 25°C by 10 p.m. Sunset is at 7:35 p.m., so the first cooler hour arrives just as the light goes.</p>
+<p class="m-muted">Rain chance never rises above 19% in any hour, and no rain is forecast to fall. Hover or tap the curve to read an hour.</p>
+</div>
+<div class="ws-chart m-card">
+<svg id="ws-svg" viewBox="0 0 640 260" role="img" aria-label="Hourly temperature in Sydney from 10 a.m. to 10 p.m., peaking at 29 degrees from 1 p.m. to 6 p.m."></svg>
+<div class="ws-read m-mono" id="ws-read">1:00 p.m. · 29°C</div>
+</div>
+<style>
+#the-warm-stretch{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gap);padding:calc(var(--gap)*2) 0}
+#the-warm-stretch>*{grid-column:1/-1;margin:0}
+#the-warm-stretch h2{font-family:var(--font-display);font-size:clamp(2.2rem,6vw,4.5rem);line-height:1;color:var(--fg)}
+#the-warm-stretch .ws-body{grid-column:1/span 7;display:grid;gap:1em}
+#the-warm-stretch .ws-body p{margin:0}
+#the-warm-stretch .ws-chart{padding:var(--gap)}
+#the-warm-stretch svg{width:100%;height:auto;display:block;overflow:visible}
+#the-warm-stretch .ws-read{margin-top:.6em;color:var(--accent);font-size:.95rem}
+#the-warm-stretch .ws-dot{cursor:pointer}
+@media(max-width:720px){#the-warm-stretch .ws-body{grid-column:1/-1}}
+</style>
+</section><section id="m-cut"><p class="m-muted">This page stopped partway through. Try another guess.</p></section></main>
+<style>#m-building{display:none}</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+<script>(()=>{try{
+(function(){
+var data=[["10:00 a.m.",28],["11:00 a.m.",27],["12:00 p.m.",28],["1:00 p.m.",29],["2:00 p.m.",29],["3:00 p.m.",29],["4:00 p.m.",29],["5:00 p.m.",29],["6:00 p.m.",29],["7:00 p.m.",27],["8:00 p.m.",26],["9:00 p.m.",26],["10:00 p.m.",25]];
+var svg=document.getElementById('ws-svg'),read=document.getElementById('ws-read');
+var ns='http://www.w3.org/2000/svg',W=640,H=260,px=30,top=30,bot=40;
+var min=24,max=30;
+function X(i){return px+i*(W-2*px)/(data.length-1)}
+function Y(v){return top+(max-v)*(H-top-bot)/(max-min)}
+function el(n,a){var e=document.createElementNS(ns,n);for(var k in a)e.setAttribute(k,a[k]);svg.appendChild(e);return e}
+[25,27,29].forEach(function(v){
+el('line',{x1:px,x2:W-px,y1:Y(v),y2:Y(v),stroke:'var(--line)','stroke-width':1});
+var t=el('text',{x:px,y:Y(v)-6,fill:'var(--muted)','font-size':11,'font-family':'var(--font-mono)'});t.textContent=v+'°';
+});
+var d='M'+data.map(function(p,i){return X(i)+','+Y(p[1])}).join(' L');
+el('path',{d:d+' L'+X(data.length-1)+','+(H-bot)+' L'+X(0)+','+(H-bot)+' Z',fill:'color-mix(in srgb, var(--accent) 14%, transparent)'});
+var line=el('path',{d:d,fill:'none',stroke:'var(--accent)','stroke-width':3,'stroke-linejoin':'round','stroke-linecap':'round'});
+var sx=X(9.5);
+el('line',{x1:sx,x2:sx,y1:top,y2:H-bot,stroke:'var(--accent-2)','stroke-width':1.5,'stroke-dasharray':'4 4'});
+var st=el('text',{x:sx+6,y:top+10,fill:'var(--accent-2)','font-size':11,'font-family':'var(--font-mono)'});st.textContent='sunset 7:35';
+data.forEach(function(p,i){
+if(i%3==0||i==data.length-1){var l=el('text',{x:X(i),y:H-14,fill:'var(--muted)','font-size':11,'text-anchor':'middle','font-family':'var(--font-mono)'});l.textContent=p[0].replace(':00 ','').replace('.m.','').replace('.m.','');}
+});
+var dots=data.map(function(p,i){
+var c=el('circle',{cx:X(i),cy:Y(p[1]),r:5,fill:'var(--bg)',stroke:'var(--accent)','stroke-width':2,'class':'ws-dot'});
+function show(){read.textContent=p[0]+' · '+p[1]+'°C';dots.forEach(function(o){o.setAttribute('fill','var(--bg)')});c.setAttribute('fill','var(--accent)')}
+c.addEventListener('mouseenter',show);c.addEventListener('click',show);c.addEventListener('touchstart',show,{passive:true});
+return c;
+});
+var still=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!still&&window.anime){
+var len=line.getTotalLength();
+line.style.strokeDasharray=len;line.style.strokeDashoffset=len;
+anime({targets:line,strokeDashoffset:[len,0],duration:1800,easing:'easeInOutSine'});
+anime({targets:dots,opacity:[0,1],delay:anime.stagger(90),duration:400,easing:'easeOutQuad'});
+}
+fetch(window.MOMENT.live+'/weather').then(function(r){return r.json()}).then(function(j){
+if(j&&j.now&&typeof j.now.temp_c==='number'){var t=document.createElement('span');}
+}).catch(function(){});
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>parent.postMessage({type:'moment:complete'},'*')</script>
+</body></html>

@@ -12,7 +12,7 @@ export function defang(html: string): string {
 
 export class SectionSplitter {
   private buf = "";
-  private state: "before" | "markup" | "inscript" | "after" | "tailscript" = "before";
+  private state: "before" | "markup" | "inscript" | "innerscript" | "after" | "tailscript" = "before";
   private scriptBuf = "";
   readonly scripts: string[] = [];
   markupChars = 0;
@@ -31,6 +31,14 @@ export class SectionSplitter {
       if (this.state === "markup") {
         const scr = this.buf.search(/<script\b/i);
         const end = this.buf.search(/<\/section>/i);
+        // Models sometimes put the script marker inside the section.
+        const mark = this.buf.indexOf("<!--script-->");
+        if (mark >= 0 && (end < 0 || mark < end) && (scr < 0 || mark < scr)) {
+          out += this.buf.slice(0, mark);
+          this.buf = this.buf.slice(mark + "<!--script-->".length);
+          this.state = "innerscript";
+          continue;
+        }
         if (scr >= 0 && (end < 0 || scr < end)) {
           out += this.buf.slice(0, scr);
           const close = this.buf.indexOf(">", scr);
@@ -62,6 +70,17 @@ export class SectionSplitter {
         this.state = "markup";
         continue;
       }
+      if (this.state === "innerscript") {
+        const end = this.buf.search(/<\/section>/i);
+        if (end < 0) { this.scriptBuf += this.buf.slice(0, Math.max(0, this.buf.length - 10)); this.buf = this.buf.slice(Math.max(0, this.buf.length - 10)); break; }
+        this.scriptBuf += this.buf.slice(0, end);
+        this.scripts.push(this.scriptBuf.trim());
+        this.scriptBuf = "";
+        out += "</section>";
+        this.buf = this.buf.slice(end + "</section>".length);
+        this.state = "after";
+        continue;
+      }
       if (this.state === "after") {
         const m = this.buf.indexOf("<!--script-->");
         if (m >= 0) { this.buf = this.buf.slice(m + "<!--script-->".length); this.state = "tailscript"; continue; }
@@ -86,7 +105,8 @@ export class SectionSplitter {
       out = defang(this.buf) + "</section>";
       this.markupChars += out.length;
     }
-    if (this.state === "tailscript" || this.state === "inscript") {
+    if (this.state === "innerscript") out += "</section>";
+    if (this.state === "tailscript" || this.state === "inscript" || this.state === "innerscript") {
       const js = this.scriptBuf.replace(/^\s*```(?:js|javascript)?\s*/i, "").replace(/```\s*$/, "").trim();
       if (js) this.scripts.push(js);
     }

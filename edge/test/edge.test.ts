@@ -68,6 +68,17 @@ describe("section splitter (model output is untrusted)", () => {
     const out = sp.push(bad) + sp.finish();
     expect(out).not.toMatch(/<meta|<iframe|<form|javascript:/i);
   });
+  it("handles the script marker placed inside the section", () => {
+    const text = `<section id="d"><p>Hi</p><style>#d p{}</style>\n<!--script-->\n(function(){var a=1;})();\n</section>`;
+    for (const step of [text.length, 1, 7]) {
+      const sp = new SectionSplitter();
+      let out = "";
+      for (let i = 0; i < text.length; i += step) out += sp.push(text.slice(i, i + step));
+      out += sp.finish();
+      expect(out).toBe(`<section id="d"><p>Hi</p><style>#d p{}</style>\n</section>`);
+      expect(sp.scripts).toEqual(["(function(){var a=1;})();"]);
+    }
+  });
   it("closes a section the model never finished", () => {
     const sp = new SectionSplitter();
     expect(sp.push(`<section id="c"><p>cut off`) + sp.finish()).toBe(`<section id="c"><p>cut off</section>`);

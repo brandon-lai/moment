@@ -6,13 +6,16 @@ import type { Env } from "./env";
 import type { Layer1, Plan } from "./types";
 import { ARCHETYPES } from "./types";
 import type { MomentView } from "./moment";
-import { costMicros, hasModel, judgeWithModel, routeWithModel, type Usage } from "./models";
+import { costMicros, hasModel, judgeWithModel, routeLane, type RouterCandidate, type Usage } from "./models";
+import { LANES } from "./prompts";
 import { templateCandidates, type TemplateCtx } from "./templates";
 import { sampleBeta, type Arm } from "../../ingest/src/learner";
 
 export const EXPLORE_RATE = 0.15;
 export const ROUTER_BUDGET_MS = 2500;
-export const JUDGE_BUDGET_MS = 1200;
+// The judge runs after the router, on the critical path, so it gets a hard
+// budget; when it misses, the router's own specificity self-check stands in.
+export const JUDGE_BUDGET_MS = 900;
 
 export interface RouteResult {
   plan: Plan;
@@ -22,8 +25,13 @@ export interface RouteResult {
   how: "model" | "template" | "prior-fallback";
   explored: boolean;
   routerMs: number;
+  judgeMs?: number;
+  judged?: boolean;
   usage: Usage[];
   error?: string;
+  // Model routing only: settles once the judge has scored the candidates (or
+  // missed its budget). The plan above is provisional until then.
+  confirm?: Promise<{ index: number; specificity: number[]; judged: boolean; judgeMs: number; usage: Usage[] }>;
 }
 
 export interface RouteInput {
@@ -64,7 +72,6 @@ export function routerPayload(r: RouteInput, prior: Record<string, number>) {
     },
     learned_archetype_success: prior,
     exclude_archetypes: [...r.exclude, ...r.killed],
-    live_data_available: v.coords ? ["weather"] : [],
     constraints: r.lite ? "Budget mode: propose simple archetypes (editorial, checklist, countdown, dashboard) with at most 3 sections." : null,
   };
 }
@@ -82,16 +89,30 @@ export function heuristicSpecificity(p: Plan, v: MomentView): number {
   return Math.max(0, Math.min(1, s));
 }
 
-export function choose(cands: Plan[], spec: number[], arms: Record<string, Arm>, rand: () => number): { index: number; explored: boolean } {
-  if (cands.length === 1) return { index: 0, explored: false };
-  if (rand() < EXPLORE_RATE) return { index: Math.floor(rand() * cands.length), explored: true };
+// The random part of a pick (Thompson samples, the exploration roll) is drawn
+// once, so the same draw can be re-scored when the judge's verdict arrives.
+export interface Draw { samples: number[]; explore: boolean; exploreIndex: number }
+
+export function drawFor(cands: Plan[], arms: Record<string, Arm>, rand: () => number): Draw {
+  const explore = rand() < EXPLORE_RATE;
+  const exploreIndex = Math.floor(rand() * cands.length);
+  return { samples: cands.map((c) => sampleBeta(arms[c.archetype] ?? [1, 1], rand)), explore, exploreIndex };
+}
+
+export function pick(d: Draw, spec: number[]): number {
+  if (d.explore) return d.exploreIndex;
   let best = -1, bi = 0;
-  cands.forEach((c, i) => {
-    const arm = arms[c.archetype] ?? [1, 1];
-    const w = sampleBeta(arm, rand) * (0.4 + 0.6 * (spec[i] ?? 0.5));
+  d.samples.forEach((s, i) => {
+    const w = s * (0.4 + 0.6 * (spec[i] ?? 0.5));
     if (w > best) { best = w; bi = i; }
   });
-  return { index: bi, explored: false };
+  return bi;
+}
+
+export function choose(cands: Plan[], spec: number[], arms: Record<string, Arm>, rand: () => number): { index: number; explored: boolean } {
+  if (cands.length === 1) return { index: 0, explored: false };
+  const d = drawFor(cands, arms, rand);
+  return { index: pick(d, spec), explored: d.explore };
 }
 
 export function highestPrior(cands: Plan[], arms: Record<string, Arm>): number {
@@ -139,32 +160,42 @@ export async function route(r: RouteInput): Promise<RouteResult> {
   };
 
   if (!r.templateOnly && hasModel(r.env)) {
-    try {
-      const res = await routeWithModel(r.env, routerPayload(r, prior), ROUTER_BUDGET_MS);
-      usage.push(res.usage);
-      const cands = res.candidates.map(sanitizePlan).filter((p): p is Plan => !!p && !exclude.includes(p.archetype)).slice(0, 3);
-      if (cands.length === 0) throw new Error("router returned no usable candidates");
-      const routerMs = Date.now() - t0;
-      let spec = cands.map((c) => heuristicSpecificity(c, r.view));
-      try {
-        const j = await judgeWithModel(r.env, cands, r.view.place || r.l1.country, `${r.view.local.weekday} ${r.view.local.clock}`, JUDGE_BUDGET_MS);
-        usage.push(j.usage);
-        spec = cands.map((_, i) => {
-          const v = j.data.verdicts.find((x) => x.index === i);
-          return v ? 1 - (v.could_exist_tomorrow ? 0.4 : 0) - (v.could_exist_elsewhere ? 0.4 : 0) : spec[i];
-        });
-      } catch (err) {
-        console.warn("judge skipped", String(err));
-      }
-      const { index, explored } = choose(cands, spec, r.arms, r.rand);
-      return { plan: cands[index], candidates: cands, specificity: spec, picked: index, how: "model", explored, routerMs, usage };
-    } catch (err) {
+    const budget = Number(r.env.ROUTER_BUDGET_MS) || ROUTER_BUDGET_MS;
+    const payload = routerPayload(r, prior);
+    const lanes = LANES.map((l) => ({ ...l, archetypes: l.archetypes.filter((a) => !exclude.includes(a) && (!r.lite || ["guide", "checklist", "dashboard", "editorial", "countdown", "quiz"].includes(a))) })).filter((l) => l.archetypes.length);
+    const settled = await Promise.allSettled(lanes.map((l) => routeLane(r.env, payload, l.archetypes, budget)));
+    const raw: RouterCandidate[] = [];
+    for (const x of settled) if (x.status === "fulfilled") { raw.push(x.value.candidate); usage.push(x.value.usage); }
+    const cands = raw.map((c) => sanitizePlan({ ...c, signals_used: [], live_data: r.view.coords ? ["weather"] : [] } as Plan)).filter((p): p is Plan => !!p);
+    const routerMs = Date.now() - t0;
+    if (cands.length === 0) {
       // Router slower than 2.5 s or failing: code picks the archetype with
       // the highest prior and proceeds (PRD: Retries and fallbacks).
-      const cands = fallbackTemplates();
-      const idx = highestPrior(cands, r.arms);
-      return { plan: cands[idx], candidates: cands, specificity: cands.map((c) => heuristicSpecificity(c, r.view)), picked: idx, how: "prior-fallback", explored: false, routerMs: Date.now() - t0, usage, error: String(err) };
+      const fb = fallbackTemplates();
+      const idx = highestPrior(fb, r.arms);
+      const why = settled.map((x) => (x.status === "rejected" ? String(x.reason).slice(0, 80) : "")).filter(Boolean).join("; ");
+      return { plan: fb[idx], candidates: fb, specificity: fb.map((c) => heuristicSpecificity(c, r.view)), picked: idx, how: "prior-fallback", explored: false, routerMs, usage, error: why || "router returned nothing" };
     }
+    const self = raw.map((c) => 1 - (c.could_exist_tomorrow ? 0.4 : 0) - (c.could_exist_elsewhere ? 0.4 : 0));
+    const draw = drawFor(cands, r.arms, r.rand);
+    const provisional = pick(draw, self);
+    const judgeBudget = Number(r.env.JUDGE_BUDGET_MS) || JUDGE_BUDGET_MS;
+    const tj = Date.now();
+    const confirm = (async () => {
+      if (cands.length < 2) return { index: 0, specificity: self, judged: false, judgeMs: 0, usage: [] as Usage[] };
+      try {
+        const j = await judgeWithModel(r.env, cands, r.view.place || r.l1.country, `${r.view.local.weekday} ${r.view.local.clock}`, judgeBudget);
+        const spec = cands.map((_, i) => {
+          const v = j.data.verdicts.find((x) => x.index === i);
+          return v ? 1 - (v.could_exist_tomorrow ? 0.4 : 0) - (v.could_exist_elsewhere ? 0.4 : 0) : self[i];
+        });
+        return { index: pick(draw, spec), specificity: spec, judged: true, judgeMs: Date.now() - tj, usage: [j.usage] };
+      } catch {
+        // The judge missed its budget: the router's own self-check stands in.
+        return { index: provisional, specificity: self, judged: false, judgeMs: Date.now() - tj, usage: [] as Usage[] };
+      }
+    })();
+    return { plan: cands[provisional], candidates: cands, specificity: self, picked: provisional, how: "model", explored: draw.explore, routerMs, usage, confirm };
   }
 
   const all = fallbackTemplates();

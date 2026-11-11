@@ -13,5 +13,7 @@ export interface Env {
   RENDER_ORIGIN: string;             // sandbox origin, e.g. https://moment-render.x.workers.dev
   MAIN_ORIGIN: string;
   HOURLY_CAP_USD?: string;           // spend cap per hour, default 2
+  ROUTER_BUDGET_MS?: string;          // default 2500 (PRD: router slower than 2.5 s falls back)
+  JUDGE_BUDGET_MS?: string;           // default 900
   DEV_EVALS?: string;                // "1" enables /eval/<id> brief injection (local only)
 }

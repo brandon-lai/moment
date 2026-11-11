@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fog at Eight in London, and When It Lifts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Jost:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>:root{--bg:#e9ecec;--fg:#1f2a2e;--muted:#56656b;--accent:#2f6a8c;--accent-2:#8a6d3b;--surface:#dde2e3;--line:#c5cdcf;color-scheme:light;--font-display:'Cormorant Garamond',serif;--font-body:'Jost',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;--radius:18px;--gap:1.35}
+@media (prefers-color-scheme:dark){:root{--bg:#0f2747;--fg:#e6eefb;--muted:#9fb6d9;--accent:#fde047;--accent-2:#fca5a5;--surface:#143057;--line:#24467a;color-scheme:dark;}}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:18px;line-height:1.55;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;line-height:1.05;letter-spacing:-.01em;margin:0 0 calc(.5em*var(--gap));text-wrap:balance}
+h1{font-size:clamp(34px,6.4vw,84px)}h2{font-size:clamp(24px,3.6vw,44px)}h3{font-size:clamp(18px,2.2vw,24px)}
+p{margin:0 0 calc(1em*var(--gap));max-width:68ch;text-wrap:pretty}
+a{color:var(--accent);text-underline-offset:.18em}
+button{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--fg);border-radius:var(--radius);padding:.55em 1em;cursor:pointer}
+button:hover{background:var(--fg);color:var(--bg)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=range]{accent-color:var(--accent);width:100%}
+table{border-collapse:collapse;width:100%}td,th{padding:.45em .6em;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85em}
+svg{max-width:100%;height:auto}canvas{max-width:100%;display:block}
+img{max-width:100%}
+.m-kicker{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .9em}
+.m-big{font-family:var(--font-display);font-size:clamp(56px,13vw,170px);line-height:.88;letter-spacing:-.03em;font-weight:700}
+.m-lead{font-size:1.25em;line-height:1.4;max-width:40ch}
+.m-muted{color:var(--muted)}.m-accent{color:var(--accent)}.m-accent-2{color:var(--accent-2)}
+.m-mono{font-family:var(--font-mono)}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:calc(16px*var(--gap))}
+.m-row{display:flex;flex-wrap:wrap;gap:calc(12px*var(--gap));align-items:baseline}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:calc(18px*var(--gap))}
+.m-stat{display:flex;flex-direction:column;gap:.2em}.m-stat b{font-family:var(--font-display);font-size:clamp(28px,4.6vw,52px);line-height:1;font-weight:700}
+.m-rule{border:0;border-top:1px solid var(--line);margin:calc(24px*var(--gap)) 0}
+.m-chip{display:inline-block;font-family:var(--font-mono);font-size:.78rem;padding:.25em .6em;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.m-list{list-style:none;padding:0;margin:0}.m-list li{padding:.6em 0;border-bottom:1px solid var(--line)}
+.m-bars{display:flex;align-items:flex-end;gap:3px;height:120px}.m-bars i{flex:1;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px}
+main>section{scroll-margin-top:16px}
+main>section{animation:m-in .9s cubic-bezier(.2,.7,.2,1) both}@keyframes m-in{from{opacity:0;transform:translateY(8px)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#m-building{position:fixed;left:12px;bottom:12px;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;z-index:5}
+#m-building::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:m-pulse 1.2s ease-in-out infinite}
+@keyframes m-pulse{50%{opacity:.25}}
+.m-earlier{font-family:var(--font-mono);font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
+main{padding:0}@media(min-width:900px){main{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr)}main>section:first-child{position:sticky;top:0;height:100vh;grid-row:1/span 50;border-right:1px solid var(--line);overflow:auto}main>section{grid-column:2}main>section:first-child{grid-column:1}}main>section{padding:clamp(24px,5vw,64px)}main>section+section{border-top:1px solid var(--line)}</style>
+<script>window.MOMENT={"live":"http://localhost:8788/live/51.51,-0.13","tz":"Europe/London","place":"London","eu":true};(()=>{const EU=true;let lastY=scrollY,lastT=performance.now(),speed=0,taps=0,idle=0,lastAct=performance.now(),hov=new Set(),bottom=false;
+const desc=e=>{const el=e.closest&&e.closest('[data-m],button,a,svg,canvas,table,li,figure,h2,h3');if(!el)return null;return(el.getAttribute('data-m')||el.tagName.toLowerCase()+(el.className&&typeof el.className==='string'?'.'+el.className.split(' ')[0]:'')).slice(0,40)};
+const act=()=>{lastAct=performance.now()};
+addEventListener('scroll',()=>{const t=performance.now(),dy=Math.abs(scrollY-lastY);speed=.7*speed+.3*(dy/Math.max(16,t-lastT)*1000);lastY=scrollY;lastT=t;act();const b=innerHeight+scrollY>=document.documentElement.scrollHeight-40;if(b&&!bottom){bottom=true;parent.postMessage({type:'moment:bottom'},'*')}},{passive:true});
+addEventListener('pointerover',e=>{if(EU)return;const d=desc(e.target);if(d&&hov.size<12)hov.add(d)},{passive:true});
+addEventListener('pointerdown',()=>{taps++;act()},{passive:true});addEventListener('keydown',act);
+const onScreen=()=>{let best=null,area=0;for(const s of document.querySelectorAll('main>section')){const r=s.getBoundingClientRect(),v=Math.max(0,Math.min(innerHeight,r.bottom)-Math.max(0,r.top));if(v>area){area=v;best=s.id||null}}return best};
+setInterval(()=>{idle=performance.now()-lastAct;if(EU)return;parent.postMessage({type:'moment:interaction',section:onScreen(),scrollSpeed:Math.round(speed),hovered:[...hov],taps,idleMs:Math.round(idle),atBottom:bottom},'*');hov.clear();speed*=.5},2000);
+})();</script>
+</head><body class="layout-split motion-gentle density-airy">
+<div id="m-building" role="status">Writing this page</div>
+<main>
+<section id="fog-now">
+<p class="m-kicker">London · Thursday, 8:05 a.m.</p>
+<h2>Fog over the city this morning</h2>
+<p class="m-lead">It is 5° and foggy. The sun came up at 7:26 a.m., but you would not know it from the street.</p>
+<div class="fog-stage" aria-hidden="true">
+<svg viewBox="0 0 400 160" preserveAspectRatio="xMidYMid slice" role="img">
+<rect width="400" height="160" fill="var(--surface)"/>
+<g fill="var(--fg)">
+<rect x="20" y="70" width="26" height="90" opacity=".9"/>
+<rect x="60" y="40" width="30" height="120" opacity=".7"/>
+<rect x="105" y="85" width="22" height="75" opacity=".55"/>
+<rect x="145" y="25" width="34" height="135" opacity=".4"/>
+<rect x="200" y="60" width="28" height="100" opacity=".28"/>
+<rect x="245" y="35" width="32" height="125" opacity=".18"/>
+<rect x="295" y="75" width="26" height="85" opacity=".12"/>
+<rect x="340" y="50" width="30" height="110" opacity=".07"/>
+</g>
+<rect id="fog-band1" x="-80" y="40" width="300" height="46" rx="23" fill="var(--bg)" opacity=".75"/>
+<rect id="fog-band2" x="180" y="90" width="320" height="50" rx="25" fill="var(--bg)" opacity=".8"/>
+</svg>
+</div>
+<p>Fog narrows the world. Buildings a few streets away fade first, then the far end of your own street. Sound carries oddly. Everything looks closer to grey than to any colour.</p>
+<div class="m-row fog-stats">
+<div class="m-stat"><b>5°</b><span>right now</span></div>
+<div class="m-stat"><b>6°</b><span>at 9 a.m.</span></div>
+<div class="m-stat"><b>7°</b><span>at 10 a.m.</span></div>
+</div>
+<p>The first hour is the thickest. The forecast still lists fog at 9:00, and it eases to cloud by 10:00. Dry throughout: the rain chance stays low all morning, so this is damp air, not a downpour.</p>
+<p class="m-muted">Give the commute a few extra minutes and keep lights on if you are driving or cycling.</p>
+<style>
+#fog-now h2{font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);line-height:1.05;margin:.3em 0 .5em}
+#fog-now .fog-stage{margin:1.5rem 0;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+#fog-now .fog-stage svg{display:block;width:100%;height:auto;max-height:220px}
+#fog-now .fog-stats{gap:var(--gap);margin:1.5rem 0}
+#fog-now p{max-width:52ch}
+</style>
+</section><section id="clearing">
+<p class="m-kicker">Next 12 hours</p>
+<h2>When the sky should open up</h2>
+<p class="m-lead">The fog holds through 9 a.m. By 10 it has thinned to cloud, and by noon the sky is clear.</p>
+<div class="clr-chart">
+<svg id="clr-svg" viewBox="0 0 600 220" role="img" aria-label="Hourly temperature from 7 a.m. to 7 p.m., rising from 4 degrees to 9 degrees by noon">
+<g id="clr-fog"></g>
+<path id="clr-line" fill="none" stroke="var(--accent)" stroke-width="2.5"></path>
+<g id="clr-dots"></g>
+<g id="clr-labels"></g>
+</svg>
+<div class="clr-key m-mono m-muted"><span>fog</span><span>cloud</span><span>clear</span></div>
+</div>
+<div class="m-row clr-stats">
+<div class="m-stat"><b>5°</b><span>now, 8:05 a.m.</span></div>
+<div class="m-stat"><b>9°</b><span>from noon to 5 p.m.</span></div>
+<div class="m-stat"><b>4:08 p.m.</b><span>sunset</span></div>
+</div>
+<p>Rain is not a factor. Every hour on the forecast shows 0 mm. Temperatures hold at 9° through the afternoon, then ease to 7° by 7 p.m.</p>
+<p class="m-muted">The sun rose at 7:26 a.m. It is up there. You just cannot see it yet.</p>
+<style>
+#clearing{padding:var(--gap) 0}
+#clearing h2{font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);line-height:1.05;margin:.2em 0 .5em}
+#clearing .clr-chart{margin:2rem 0 1.5rem}
+#clearing svg{width:100%;height:auto;display:block}
+#clearing .clr-key{display:flex;justify-content:space-between;font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;margin-top:.4rem}
+#clearing .clr-stats{gap:2rem;margin:1.5rem 0}
+#clearing .m-stat b{font-family:var(--font-display)}
+#clearing text{font-family:var(--font-mono);font-size:11px;fill:var(--muted)}
+</style>
+</section><section id="plan-the-day">
+<p class="m-kicker">The rest of Thursday</p>
+<h2>Making the most of a clearing day</h2>
+<p class="m-lead">Do the indoor things while the fog holds. Save the outdoor ones for noon, when the sky is clear and it is 9°.</p>
+
+<ol class="pd-plan">
+<li><span class="m-mono m-accent">Until 9 a.m.</span><p>Fog. Stay in, or keep to short, familiar routes. Views are poor and nothing is worth a detour yet.</p></li>
+<li><span class="m-mono m-accent">10 a.m. to noon</span><p>Cloud thinning to clear. Good for errands, a long coffee, or whatever you would put off for a better view.</p></li>
+<li><span class="m-mono m-accent">Noon to 4 p.m.</span><p>Clear and 9°, with no rain on the forecast. This is the stretch to spend outside. A walk by the river or across a park will look nothing like this morning.</p></li>
+<li><span class="m-mono m-accent">4:08 p.m.</span><p>Sunset. The light goes early in November, so the best of the daylight is the afternoon, not the evening.</p></li>
+</ol>
+
+<p class="pd-note">A clear sky in mid-November also means the evening cools off: 8° at 6 p.m., 7° by 7. Take a layer if you are out past sunset.</p>
+
+<style>
+#plan-the-day{padding:var(--gap) 0}
+#plan-the-day h2{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.05;margin:.3em 0 .5em}
+#plan-the-day .pd-plan{list-style:none;margin:2rem 0 1.5rem;padding:0;border-top:1px solid var(--line)}
+#plan-the-day .pd-plan li{display:grid;grid-template-columns:minmax(0,9.5rem) 1fr;gap:1rem;padding:1.1rem 0;border-bottom:1px solid var(--line);opacity:.35;transition:opacity .8s ease}
+#plan-the-day .pd-plan li.pd-in{opacity:1}
+#plan-the-day .pd-plan p{margin:0;color:var(--fg)}
+#plan-the-day .pd-note{color:var(--muted);border-left:3px solid var(--accent);padding-left:1rem;margin:0;max-width:40rem}
+@media (max-width:480px){#plan-the-day .pd-plan li{grid-template-columns:1fr;gap:.25rem}}
+@media (prefers-reduced-motion:reduce){#plan-the-day .pd-plan li{transition:none;opacity:1}}
+</style>
+</section></main>
+<style>#m-building{display:none}</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+<script>(()=>{try{
+(function(){
+var a=document.getElementById('fog-band1'),b=document.getElementById('fog-band2');
+if(!a||!b||!window.anime)return;
+if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+anime({targets:a,translateX:60,duration:14000,easing:'easeInOutSine',direction:'alternate',loop:true});
+anime({targets:b,translateX:-70,duration:18000,easing:'easeInOutSine',direction:'alternate',loop:true});
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var d=[[7,4,45],[8,5,45],[9,6,45],[10,7,3],[11,7,3],[12,9,1],[13,9,1],[14,9,1],[15,9,1],[16,9,1],[17,9,1],[18,8,1],[19,7,1]];
+var svg=document.getElementById('clr-svg');
+var NS='http://www.w3.org/2000/svg';
+var x=function(i){return 30+i*(540/12)};
+var y=function(t){return 170-(t-3)*(130/7)};
+var fog=document.getElementById('clr-fog');
+d.forEach(function(p,i){
+var r=document.createElementNS(NS,'rect');
+r.setAttribute('x',x(i)-22);r.setAttribute('width',45);r.setAttribute('y',10);r.setAttribute('height',165);
+var op=p[2]==45?0.28:p[2]==3?0.12:0;
+r.setAttribute('fill','var(--muted)');r.setAttribute('opacity',op);
+fog.appendChild(r);
+});
+var path='';
+d.forEach(function(p,i){path+=(i?'L':'M')+x(i)+','+y(p[1])});
+var line=document.getElementById('clr-line');
+line.setAttribute('d',path);
+var dots=document.getElementById('clr-dots'),labs=document.getElementById('clr-labels');
+d.forEach(function(p,i){
+var c=document.createElementNS(NS,'circle');
+c.setAttribute('cx',x(i));c.setAttribute('cy',y(p[1]));c.setAttribute('r',i==1?5:3.5);
+c.setAttribute('fill',i==1?'var(--accent-2)':'var(--accent)');
+dots.appendChild(c);
+var h=p[0]>12?p[0]-12:p[0];
+var t=document.createElementNS(NS,'text');
+t.setAttribute('x',x(i));t.setAttribute('y',200);t.setAttribute('text-anchor','middle');
+t.textContent=h+(p[0]<12?'a':'p');
+labs.appendChild(t);
+if(i%3==1||i==5){
+var v=document.createElementNS(NS,'text');
+v.setAttribute('x',x(i));v.setAttribute('y',y(p[1])-12);v.setAttribute('text-anchor','middle');
+v.textContent=p[1]+'°';labs.appendChild(v);
+}
+});
+var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!reduce&&window.anime){
+var len=line.getTotalLength();
+line.style.strokeDasharray=len;line.style.strokeDashoffset=len;
+anime({targets:line,strokeDashoffset:[len,0],duration:1800,easing:'easeInOutSine'});
+}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var items=document.querySelectorAll('#plan-the-day .pd-plan li');
+if(!('IntersectionObserver' in window)){items.forEach(function(i){i.classList.add('pd-in')});return;}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('pd-in');io.unobserve(e.target);}})},{threshold:.4});
+items.forEach(function(i){io.observe(i)});
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>parent.postMessage({type:'moment:complete'},'*')</script>
+</body></html>

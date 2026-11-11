@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Storm Over Houston, Clearing at Eleven</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lato:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>:root{--bg:#0c0c0c;--fg:#f5f5f4;--muted:#a8a29e;--accent:#f05252;--accent-2:#fde047;--surface:#171717;--line:#292524;color-scheme:dark;--font-display:'Abril Fatface',serif;--font-body:'Lato',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;--radius:6px;--gap:1.35}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:18px;line-height:1.55;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.05;letter-spacing:-.01em;margin:0 0 calc(.5em*var(--gap));text-wrap:balance}
+h1{font-size:clamp(34px,6.4vw,84px)}h2{font-size:clamp(24px,3.6vw,44px)}h3{font-size:clamp(18px,2.2vw,24px)}
+p{margin:0 0 calc(1em*var(--gap));max-width:68ch;text-wrap:pretty}
+a{color:var(--accent);text-underline-offset:.18em}
+button{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--fg);border-radius:var(--radius);padding:.55em 1em;cursor:pointer}
+button:hover{background:var(--fg);color:var(--bg)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=range]{accent-color:var(--accent);width:100%}
+table{border-collapse:collapse;width:100%}td,th{padding:.45em .6em;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85em}
+svg{max-width:100%;height:auto}canvas{max-width:100%;display:block}
+img{max-width:100%}
+.m-kicker{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .9em}
+.m-big{font-family:var(--font-display);font-size:clamp(56px,13vw,170px);line-height:.88;letter-spacing:-.03em;font-weight:400}
+.m-lead{font-size:1.25em;line-height:1.4;max-width:40ch}
+.m-muted{color:var(--muted)}.m-accent{color:var(--accent)}.m-accent-2{color:var(--accent-2)}
+.m-mono{font-family:var(--font-mono)}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:calc(16px*var(--gap))}
+.m-row{display:flex;flex-wrap:wrap;gap:calc(12px*var(--gap));align-items:baseline}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:calc(18px*var(--gap))}
+.m-stat{display:flex;flex-direction:column;gap:.2em}.m-stat b{font-family:var(--font-display);font-size:clamp(28px,4.6vw,52px);line-height:1;font-weight:400}
+.m-rule{border:0;border-top:1px solid var(--line);margin:calc(24px*var(--gap)) 0}
+.m-chip{display:inline-block;font-family:var(--font-mono);font-size:.78rem;padding:.25em .6em;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.m-list{list-style:none;padding:0;margin:0}.m-list li{padding:.6em 0;border-bottom:1px solid var(--line)}
+.m-bars{display:flex;align-items:flex-end;gap:3px;height:120px}.m-bars i{flex:1;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px}
+main>section{scroll-margin-top:16px}
+main>section{animation:m-in .5s cubic-bezier(.2,.7,.2,1) both}@keyframes m-in{from{opacity:0;transform:translateY(18px)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#m-building{position:fixed;left:12px;bottom:12px;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;z-index:5}
+#m-building::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:m-pulse 1.2s ease-in-out infinite}
+@keyframes m-pulse{50%{opacity:.25}}
+.m-earlier{font-family:var(--font-mono);font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
+main{padding:0}main>section{min-height:88vh;padding:clamp(28px,7vw,110px) clamp(16px,6vw,96px);display:flex;flex-direction:column;justify-content:center}main>section:nth-child(even){background:var(--surface)}</style>
+<script>window.MOMENT={"live":"http://localhost:8788/live/29.76,-95.37","tz":"America/Chicago","place":"Houston","eu":false};(()=>{const EU=false;let lastY=scrollY,lastT=performance.now(),speed=0,taps=0,idle=0,lastAct=performance.now(),hov=new Set(),bottom=false;
+const desc=e=>{const el=e.closest&&e.closest('[data-m],button,a,svg,canvas,table,li,figure,h2,h3');if(!el)return null;return(el.getAttribute('data-m')||el.tagName.toLowerCase()+(el.className&&typeof el.className==='string'?'.'+el.className.split(' ')[0]:'')).slice(0,40)};
+const act=()=>{lastAct=performance.now()};
+addEventListener('scroll',()=>{const t=performance.now(),dy=Math.abs(scrollY-lastY);speed=.7*speed+.3*(dy/Math.max(16,t-lastT)*1000);lastY=scrollY;lastT=t;act();const b=innerHeight+scrollY>=document.documentElement.scrollHeight-40;if(b&&!bottom){bottom=true;parent.postMessage({type:'moment:bottom'},'*')}},{passive:true});
+addEventListener('pointerover',e=>{if(EU)return;const d=desc(e.target);if(d&&hov.size<12)hov.add(d)},{passive:true});
+addEventListener('pointerdown',()=>{taps++;act()},{passive:true});addEventListener('keydown',act);
+const onScreen=()=>{let best=null,area=0;for(const s of document.querySelectorAll('main>section')){const r=s.getBoundingClientRect(),v=Math.max(0,Math.min(innerHeight,r.bottom)-Math.max(0,r.top));if(v>area){area=v;best=s.id||null}}return best};
+setInterval(()=>{idle=performance.now()-lastAct;if(EU)return;parent.postMessage({type:'moment:interaction',section:onScreen(),scrollSpeed:Math.round(speed),hovered:[...hov],taps,idleMs:Math.round(idle),atBottom:bottom},'*');hov.clear();speed*=.5},2000);
+})();</script>
+</head><body class="layout-full-bleed motion-lively density-airy">
+<div id="m-building" role="status">Writing this page</div>
+<main>
+<section id="storm-now">
+<p class="m-kicker">Houston · Thursday, 7:10 p.m.</p>
+<h1 class="m-big">Thunderstorms.<br><span class="m-accent">75°F</span> <span class="m-muted">(24°C)</span></h1>
+<p class="m-lead">The sun set at 5:33 p.m., so this is full dark with weather on top of it. Rain chances sit between 71% and 85% through 10 p.m. The storm stops around 11 p.m.</p>
+<div class="sn-stage">
+<svg id="sn-svg" viewBox="0 0 800 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Animated rain falling under a dark storm cloud with occasional lightning">
+<defs><clipPath id="sn-clip"><rect width="800" height="300"/></clipPath></defs>
+<g clip-path="url(#sn-clip)">
+<rect id="sn-flash" width="800" height="300" fill="var(--accent-2)" opacity="0"/>
+<g id="sn-rain"></g>
+<g fill="var(--surface)" stroke="var(--line)" stroke-width="2">
+<ellipse cx="230" cy="62" rx="150" ry="42"/>
+<ellipse cx="400" cy="42" rx="190" ry="50"/>
+<ellipse cx="590" cy="64" rx="160" ry="42"/>
+</g>
+<path id="sn-bolt" d="M410 80 L385 150 L412 150 L392 225 L448 132 L418 132 L440 80 Z" fill="var(--accent-2)" opacity="0"/>
+</g>
+</svg>
+</div>
+<div class="m-row sn-stats">
+<div class="m-stat"><b>81%</b><span>rain chance at 7 p.m.</span></div>
+<div class="m-stat"><b>85%</b><span>peak, at 9 p.m.</span></div>
+<div class="m-stat"><b>71°F</b><span>(22°C) by 9 p.m.</span></div>
+</div>
+<style>
+#storm-now{min-height:92vh;display:flex;flex-direction:column;justify-content:center;gap:var(--gap);padding:clamp(1.5rem,5vw,4rem)}
+#storm-now .m-big{margin:0;line-height:.95}
+#storm-now .m-lead{max-width:38rem;margin:0}
+#storm-now .sn-stage{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--bg);max-height:340px}
+#storm-now svg{display:block;width:100%;height:auto;min-height:200px}
+#storm-now .sn-stats{gap:calc(var(--gap)*1.5)}
+</style>
+</section><section id="clearing-window">
+<p class="m-kicker">Thursday night, Houston</p>
+<h2 class="cw-title">The sky clears after eleven</h2>
+<p class="m-lead">The rain stops around 11 p.m. By midnight it is 66°F (19°C), and it holds there until about 4 a.m., when it dips to 64°F (18°C).</p>
+<div class="cw-stage">
+<svg id="cw-chart" viewBox="0 0 800 260" role="img" aria-label="Rain chance by hour from 6 p.m. to 6 a.m., falling from 85 percent to near zero at 11 p.m.">
+<line id="cw-base" x1="0" y1="230" x2="800" y2="230" stroke="var(--line)" stroke-width="1"/>
+<g id="cw-bars"></g>
+<line id="cw-cut" x1="0" y1="10" x2="0" y2="230" stroke="var(--accent)" stroke-width="2" stroke-dasharray="4 5"/>
+<text id="cw-cut-label" x="0" y="252" fill="var(--accent)" font-family="var(--font-mono)" font-size="13">11 p.m.</text>
+</svg>
+</div>
+<p class="m-muted cw-note">Bar height is the chance of rain each hour, 6 p.m. to 6 a.m. Tap or hover a bar to read the hour.</p>
+<p class="cw-read m-mono" id="cw-read">11 p.m. &middot; 13% rain &middot; 68°F (20°C)</p>
+<style>
+#clearing-window{padding:12vh 6vw;min-height:90vh;background:var(--surface);display:flex;flex-direction:column;justify-content:center;gap:var(--gap)}
+#clearing-window .cw-title{font-family:var(--font-display);font-size:clamp(2.4rem,7vw,5.5rem);line-height:1;margin:0;color:var(--fg);max-width:14ch}
+#clearing-window .m-lead{max-width:44ch;margin:0}
+#clearing-window .cw-stage{width:100%;max-width:960px}
+#clearing-window svg{width:100%;height:auto;display:block;overflow:visible}
+#clearing-window .cw-bar{cursor:pointer;transition:opacity .2s}
+#clearing-window .cw-note{margin:0;font-size:.9rem}
+#clearing-window .cw-read{margin:0;color:var(--accent-2);min-height:1.5em}
+</style>
+</section></main>
+<style>#m-building{display:none}</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+<script>(()=>{try{
+(function(){
+var svg=document.getElementById('sn-svg');
+var g=document.getElementById('sn-rain');
+var ns='http://www.w3.org/2000/svg';
+var drops=[];
+for(var i=0;i<70;i++){
+var l=document.createElementNS(ns,'line');
+var x=Math.random()*820;
+var y=Math.random()*300;
+var len=10+Math.random()*14;
+l.setAttribute('x1',x);l.setAttribute('y1',y);
+l.setAttribute('x2',x-len*0.25);l.setAttribute('y2',y+len);
+l.setAttribute('stroke','var(--accent)');
+l.setAttribute('stroke-width',1+Math.random());
+l.setAttribute('opacity',(0.25+Math.random()*0.5).toFixed(2));
+g.appendChild(l);
+drops.push({el:l,x:x,y:y,len:len,v:2+Math.random()*3});
+}
+var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(reduce)return;
+function tick(){
+for(var i=0;i<drops.length;i++){
+var d=drops[i];
+d.y+=d.v;d.x-=d.v*0.25;
+if(d.y>310){d.y=-20;d.x=Math.random()*860;}
+d.el.setAttribute('x1',d.x);d.el.setAttribute('y1',d.y);
+d.el.setAttribute('x2',d.x-d.len*0.25);d.el.setAttribute('y2',d.y+d.len);
+}
+requestAnimationFrame(tick);
+}
+requestAnimationFrame(tick);
+var flash=document.getElementById('sn-flash');
+var bolt=document.getElementById('sn-bolt');
+function strike(){
+var steps=[[0.18,0.9],[0.04,0],[0.12,0.7],[0,0]];
+var n=0;
+function step(){
+if(n>=steps.length)return;
+flash.setAttribute('opacity',steps[n][0]);
+bolt.setAttribute('opacity',steps[n][1]);
+n++;
+setTimeout(step,70);
+}
+step();
+setTimeout(strike,3500+Math.random()*5000);
+}
+setTimeout(strike,2000);
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var root=document.getElementById('clearing-window');
+if(!root)return;
+var data=[
+["6 p.m.",71,"77°F (25°C)"],["7 p.m.",81,"75°F (24°C)"],["8 p.m.",78,"74°F (23°C)"],["9 p.m.",85,"71°F (22°C)"],["10 p.m.",77,"69°F (20°C)"],["11 p.m.",13,"68°F (20°C)"],["midnight",5,"66°F (19°C)"],["1 a.m.",17,"66°F (19°C)"],["2 a.m.",1,"66°F (19°C)"],["3 a.m.",4,"65°F (18°C)"],["4 a.m.",12,"64°F (18°C)"],["5 a.m.",3,"66°F (19°C)"],["6 a.m.",8,"65°F (18°C)"]
+];
+var NS="http://www.w3.org/2000/svg";
+var g=document.getElementById('cw-bars');
+var read=document.getElementById('cw-read');
+var step=800/data.length,bw=step*0.62,rects=[];
+var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+data.forEach(function(d,i){
+var h=Math.max(3,d[1]/100*210);
+var r=document.createElementNS(NS,'rect');
+r.setAttribute('class','cw-bar');
+r.setAttribute('x',i*step+(step-bw)/2);
+r.setAttribute('width',bw);
+r.setAttribute('rx',3);
+r.setAttribute('fill',i<5?'var(--accent-2)':'var(--accent)');
+r.setAttribute('opacity',i<5?0.85:0.55);
+r.setAttribute('y',reduce?230-h:230);
+r.setAttribute('height',reduce?h:0);
+r.dataset.h=h;
+function show(){read.textContent=d[0]+' \u00b7 '+d[1]+'% rain \u00b7 '+d[2];}
+r.addEventListener('mouseenter',show);
+r.addEventListener('click',show);
+g.appendChild(r);rects.push(r);
+});
+var cutX=5*step+step/2-step/2;
+var cut=document.getElementById('cw-cut');
+var lab=document.getElementById('cw-cut-label');
+cut.setAttribute('x1',cutX);cut.setAttribute('x2',cutX);
+lab.setAttribute('x',cutX+8);
+if(!reduce&&window.anime){
+anime({targets:rects.map(function(r){return r;}),y:function(el){return 230-parseFloat(el.dataset.h);},height:function(el){return parseFloat(el.dataset.h);},delay:anime.stagger(70),duration:900,easing:'easeOutCubic'});
+anime({targets:cut,opacity:[0,1],duration:1200,delay:600,easing:'linear'});
+}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>parent.postMessage({type:'moment:complete'},'*')</script>
+</body></html>

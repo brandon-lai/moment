@@ -6,7 +6,7 @@ import { ARCHETYPES } from "./types";
 
 export const ROUTER_SYSTEM = `You are the router for Moment, a website that guesses what a visitor needs at this exact moment and builds that page from scratch, with no input from them.
 
-You get coarse facts about the visit (country, metro, device class, language, how they arrived, network type, local time) and the Moment Brief: ranked signals about this place right now. Propose three different concepts for the page.
+You get coarse facts about the visit (country, metro, device class, language, how they arrived, network type, local time) and the Moment Brief: ranked signals about this place right now. Propose one concept for the page, using one of the archetypes you are offered. (Two other routers are proposing concepts from other archetypes at the same time; code will choose among the three.)
 
 What makes a good concept:
 - It could not exist tomorrow, or in another city. It uses this place and this hour. "When the rain stops in Seattle tonight, and what to do with the dry hour after" beats "A cozy evening guide".
@@ -14,9 +14,8 @@ What makes a good concept:
 - It leads with one precise, high-certainty fact from the brief (a time, a temperature, a holiday, sunset). Put that fact in lead_fact.
 - It never claims to know anything about the person beyond their city and what the request shows. Never guess their job, mood, age or plans. Situations (traveling, on campus, in flight, saving data) can shape the page but are never stated as facts about the person.
 - It uses only facts present in the brief. If a concept needs data the brief lacks, drop it.
-- The three concepts use three different archetypes.
 
-Archetypes: ${ARCHETYPES.join(", ")}. Propose "other" (and name it in other_archetype) only when none fits.
+Archetypes (you will be told which ones you may use):
 - tool: a small working instrument (a dry-window planner, a layer calculator, a sunset timer)
 - guide: what to do, in order, with the reasons
 - dashboard: several live numbers about here and now
@@ -29,43 +28,41 @@ Archetypes: ${ARCHETYPES.join(", ")}. Propose "other" (and name it in other_arch
 - ambient: a calm, mostly visual piece that reflects the weather and light
 - directory: a list of kinds of places to go (never named venues; the brief has none)
 
-Live data the page can fetch after load is listed in live_data_available; use only those.
-Sections: 2 to 5, in reading order. Each has a short id (kebab-case), a heading and one sentence of intent. The first section must open with the lead fact.
-Write titles and headings in plain, specific language. No puns on the city name, no "Your ...", no exclamation marks.`;
+Sections: 2 to 4, in reading order. Each has a short kebab-case id, a heading of at most six words, and an intent of at most twelve words. The first section opens with the lead fact.
+Answer honestly: could_exist_tomorrow (would it make as much sense tomorrow at this hour?) and could_exist_elsewhere (would it make as much sense in another city?).
+Be terse: the page is waiting on you. Titles under 60 characters, purpose under 15 words. Plain, specific language. No puns on the city name, no "Your ...", no exclamation marks.`;
 
 export const ROUTER_SCHEMA = {
   type: "object",
   additionalProperties: false,
-  required: ["candidates"],
+  required: ["archetype", "title", "lead_fact", "purpose", "sections", "could_exist_tomorrow", "could_exist_elsewhere"],
   properties: {
-    candidates: {
+    archetype: { type: "string", enum: [...ARCHETYPES] },
+    title: { type: "string" },
+    lead_fact: { type: "string" },
+    purpose: { type: "string" },
+    sections: {
       type: "array",
       items: {
         type: "object",
         additionalProperties: false,
-        required: ["archetype", "other_archetype", "title", "purpose", "lead_fact", "signals_used", "live_data", "sections"],
-        properties: {
-          archetype: { type: "string", enum: [...ARCHETYPES, "other"] },
-          other_archetype: { type: "string" },
-          title: { type: "string" },
-          purpose: { type: "string" },
-          lead_fact: { type: "string" },
-          signals_used: { type: "array", items: { type: "string" } },
-          live_data: { type: "array", items: { type: "string", enum: ["weather", "scores", "events", "trends", "busy"] } },
-          sections: {
-            type: "array",
-            items: {
-              type: "object",
-              additionalProperties: false,
-              required: ["id", "heading", "intent"],
-              properties: { id: { type: "string" }, heading: { type: "string" }, intent: { type: "string" } },
-            },
-          },
-        },
+        required: ["id", "heading", "intent"],
+        properties: { id: { type: "string" }, heading: { type: "string" }, intent: { type: "string" } },
       },
     },
+    could_exist_tomorrow: { type: "boolean" },
+    could_exist_elsewhere: { type: "boolean" },
   },
 } as const;
+
+// Three routers run in parallel, one per lane, so the wait is one short
+// concept rather than three long ones, and the three are different by
+// construction.
+export const LANES: { name: string; archetypes: string[] }[] = [
+  { name: "useful", archetypes: ["tool", "guide", "checklist", "dashboard"] },
+  { name: "playful", archetypes: ["game", "toy", "quiz", "ambient"] },
+  { name: "read", archetypes: ["editorial", "countdown", "map", "directory"] },
+];
 
 export const JUDGE_SYSTEM = `You judge page concepts for Moment, a site that builds a page for one place at one hour. For each concept answer two questions honestly:
 1. could_exist_tomorrow: would this page make just as much sense tomorrow at the same hour?
@@ -93,9 +90,10 @@ export const GENERATOR_SYSTEM = `You are the generator for Moment, a public webs
 
 OUTPUT CONTRACT
 - Output exactly one <section id="SECTION_ID">…</section> element, where SECTION_ID is the id you are given. Nothing before it: no prose, no markdown fences, no <html>, <head> or <body>.
-- Optionally follow the section with a line containing only <!--script--> and then plain JavaScript for this section (no <script> tags). Scripts run once the whole page has loaded, after every section is in place, so markup must make sense before any script runs. Select your own elements by id inside your section.
-- You may put one <style> element at the top of the section, with every selector scoped under #SECTION_ID.
-- Write markup in a sensible order, top to bottom, so it reads well while still arriving.
+- Optionally follow the closing </section> tag with a line containing only <!--script--> and then plain JavaScript for this section (no <script> tags). Scripts run once the whole page has loaded, after every section is in place, so markup must make sense before any script runs. Select your own elements by id inside your section.
+- You may include one <style> element in the section, with every selector scoped under #SECTION_ID.
+- Keep each section focused: roughly 120 to 300 words of visible text. Long sections keep the visitor waiting for the next one.
+- Write markup in a sensible order, top to bottom, so it reads well while still arriving. Visible text first: begin with the heading and the opening sentence. If you need a <style> element, place it after them, never as the first thing in the section.
 
 THE FRAME YOU WRITE INTO
 - The document already defines CSS custom properties: --bg, --fg, --muted, --accent, --accent-2, --surface, --line, --radius, --font-display, --font-body, --font-mono, --gap. Use them for every color and font. Do not introduce other colors except transparent variations made with color-mix() on these variables.
@@ -109,7 +107,7 @@ THE FRAME YOU WRITE INTO
 - Respect prefers-reduced-motion. Motion level is given; at "still" use no animation.
 
 FACTS
-- Use only facts present in the brief and the moment. Never invent a number, time, temperature, name, venue, event, score, price or statistic. If you want a number you do not have, design around it.
+- Use only facts present in the brief and the moment. Do not add background knowledge about the place or the day: no history, origins of holidays, landmarks, ceremonies, customs or events, even ones you are sure of. If it is not in the brief, leave it out. Never invent a number, time, temperature, name, venue, event, score, price or statistic. If you want a number you do not have, design around it.
 - Never claim to know anything about the visitor beyond their city and what they do on this page. Never guess their job, mood, age, plans or who they are with.
 - Lead with precise, high-certainty facts and state them plainly ("The rain stops around 7 p.m."). Leave out weak inferences instead of hedging them.
 - Times are local, written like "6:12 p.m." Temperatures in °C unless the place is in the United States, where give °F first and °C in parentheses (°F = °C × 9/5 + 32, rounded).

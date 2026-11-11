@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>New York at 7:40 a.m. on a clear Friday</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Schibsted+Grotesk:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>:root{--bg:#eef4f8;--fg:#102a43;--muted:#486581;--accent:#0b69a3;--accent-2:#b5501d;--surface:#e1ebf2;--line:#c8d7e3;color-scheme:light;--font-display:'Gloock',serif;--font-body:'Schibsted Grotesk',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;--radius:6px;--gap:1.35}
+@media (prefers-color-scheme:dark){:root{--bg:#0f2747;--fg:#e6eefb;--muted:#9fb6d9;--accent:#fde047;--accent-2:#fca5a5;--surface:#143057;--line:#24467a;color-scheme:dark;}}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:18px;line-height:1.55;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.05;letter-spacing:-.01em;margin:0 0 calc(.5em*var(--gap));text-wrap:balance}
+h1{font-size:clamp(34px,6.4vw,84px)}h2{font-size:clamp(24px,3.6vw,44px)}h3{font-size:clamp(18px,2.2vw,24px)}
+p{margin:0 0 calc(1em*var(--gap));max-width:68ch;text-wrap:pretty}
+a{color:var(--accent);text-underline-offset:.18em}
+button{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--fg);border-radius:var(--radius);padding:.55em 1em;cursor:pointer}
+button:hover{background:var(--fg);color:var(--bg)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=range]{accent-color:var(--accent);width:100%}
+table{border-collapse:collapse;width:100%}td,th{padding:.45em .6em;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85em}
+svg{max-width:100%;height:auto}canvas{max-width:100%;display:block}
+img{max-width:100%}
+.m-kicker{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .9em}
+.m-big{font-family:var(--font-display);font-size:clamp(56px,13vw,170px);line-height:.88;letter-spacing:-.03em;font-weight:400}
+.m-lead{font-size:1.25em;line-height:1.4;max-width:40ch}
+.m-muted{color:var(--muted)}.m-accent{color:var(--accent)}.m-accent-2{color:var(--accent-2)}
+.m-mono{font-family:var(--font-mono)}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:calc(16px*var(--gap))}
+.m-row{display:flex;flex-wrap:wrap;gap:calc(12px*var(--gap));align-items:baseline}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:calc(18px*var(--gap))}
+.m-stat{display:flex;flex-direction:column;gap:.2em}.m-stat b{font-family:var(--font-display);font-size:clamp(28px,4.6vw,52px);line-height:1;font-weight:400}
+.m-rule{border:0;border-top:1px solid var(--line);margin:calc(24px*var(--gap)) 0}
+.m-chip{display:inline-block;font-family:var(--font-mono);font-size:.78rem;padding:.25em .6em;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.m-list{list-style:none;padding:0;margin:0}.m-list li{padding:.6em 0;border-bottom:1px solid var(--line)}
+.m-bars{display:flex;align-items:flex-end;gap:3px;height:120px}.m-bars i{flex:1;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px}
+main>section{scroll-margin-top:16px}
+main>section{animation:m-in .5s cubic-bezier(.2,.7,.2,1) both}@keyframes m-in{from{opacity:0;transform:translateY(18px)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#m-building{position:fixed;left:12px;bottom:12px;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;z-index:5}
+#m-building::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:m-pulse 1.2s ease-in-out infinite}
+@keyframes m-pulse{50%{opacity:.25}}
+.m-earlier{font-family:var(--font-mono);font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
+main{padding:0 clamp(16px,5vw,72px) 64px}main>section:first-child{min-height:96vh;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:clamp(24px,6vw,80px)}main>section:first-child h1{font-size:clamp(48px,12vw,180px);line-height:.9;max-width:14ch}main>section{padding:clamp(24px,5vw,64px) 0;max-width:60rem}</style>
+<script>window.MOMENT={"live":"http://localhost:8788/live/40.71,-74.01","tz":"America/New_York","place":"New York","eu":false};(()=>{const EU=false;let lastY=scrollY,lastT=performance.now(),speed=0,taps=0,idle=0,lastAct=performance.now(),hov=new Set(),bottom=false;
+const desc=e=>{const el=e.closest&&e.closest('[data-m],button,a,svg,canvas,table,li,figure,h2,h3');if(!el)return null;return(el.getAttribute('data-m')||el.tagName.toLowerCase()+(el.className&&typeof el.className==='string'?'.'+el.className.split(' ')[0]:'')).slice(0,40)};
+const act=()=>{lastAct=performance.now()};
+addEventListener('scroll',()=>{const t=performance.now(),dy=Math.abs(scrollY-lastY);speed=.7*speed+.3*(dy/Math.max(16,t-lastT)*1000);lastY=scrollY;lastT=t;act();const b=innerHeight+scrollY>=document.documentElement.scrollHeight-40;if(b&&!bottom){bottom=true;parent.postMessage({type:'moment:bottom'},'*')}},{passive:true});
+addEventListener('pointerover',e=>{if(EU)return;const d=desc(e.target);if(d&&hov.size<12)hov.add(d)},{passive:true});
+addEventListener('pointerdown',()=>{taps++;act()},{passive:true});addEventListener('keydown',act);
+const onScreen=()=>{let best=null,area=0;for(const s of document.querySelectorAll('main>section')){const r=s.getBoundingClientRect(),v=Math.max(0,Math.min(innerHeight,r.bottom)-Math.max(0,r.top));if(v>area){area=v;best=s.id||null}}return best};
+setInterval(()=>{idle=performance.now()-lastAct;if(EU)return;parent.postMessage({type:'moment:interaction',section:onScreen(),scrollSpeed:Math.round(speed),hovered:[...hov],taps,idleMs:Math.round(idle),atBottom:bottom},'*');hov.clear();speed*=.5},2000);
+})();</script>
+</head><body class="layout-poster motion-lively density-airy">
+<div id="m-building" role="status">Writing this page</div>
+<main>
+<section id="now-conditions">
+<p class="m-kicker">Right now · Friday, 7:40 a.m.</p>
+<h1 class="nc-big m-big" id="nc-temp">41°F</h1>
+<p class="m-lead nc-lead">Clear sky over New York. 5°C on the thermometer, and no cloud to speak of.</p>
+<div class="nc-facts m-row">
+<div class="m-stat"><b id="nc-sunrise">6:41 a.m.</b><span>Sunrise, already up</span></div>
+<div class="m-stat"><b>49°F</b><span>Today's high, around 2 p.m.</b></span></div>
+<div class="m-stat"><b id="nc-sunset">4:41 p.m.</b><span>Sunset</span></div>
+</div>
+<svg class="nc-sun" id="nc-sun" viewBox="0 0 120 120" aria-hidden="true">
+<circle cx="60" cy="60" r="22" fill="var(--accent)"/>
+<g id="nc-rays" stroke="var(--accent)" stroke-width="3" stroke-linecap="round">
+<line x1="60" y1="14" x2="60" y2="26"/><line x1="60" y1="94" x2="60" y2="106"/>
+<line x1="14" y1="60" x2="26" y2="60"/><line x1="94" y1="60" x2="106" y2="60"/>
+<line x1="27" y1="27" x2="35" y2="35"/><line x1="85" y1="85" x2="93" y2="93"/>
+<line x1="93" y1="27" x2="85" y2="35"/><line x1="35" y1="85" x2="27" y2="93"/>
+</g>
+</svg>
+<style>
+#now-conditions{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:calc(var(--gap)*2) var(--gap);overflow:hidden}
+#now-conditions .nc-big{font-size:clamp(7rem,32vw,26rem);line-height:.82;margin:.1em 0 .15em;margin-left:clamp(0px,8vw,140px);color:var(--fg);letter-spacing:-.04em}
+#now-conditions .nc-lead{max-width:30ch;margin-left:clamp(0px,8vw,140px);margin-bottom:calc(var(--gap)*1.5)}
+#now-conditions .nc-facts{gap:calc(var(--gap)*1.5);margin-left:clamp(0px,8vw,140px);padding-top:var(--gap);border-top:1px solid var(--line);max-width:720px}
+#now-conditions .nc-sun{position:absolute;top:var(--gap);right:var(--gap);width:clamp(64px,12vw,140px);height:auto}
+#now-conditions #nc-rays{transform-origin:60px 60px}
+@media (max-width:480px){#now-conditions .nc-big{margin-left:0}#now-conditions .nc-lead,#now-conditions .nc-facts{margin-left:0}}
+</style>
+</section><section id="next-twelve-hours">
+<h2 class="m-big" style="font-family:var(--font-display);margin:0 0 .2em">Next twelve hours</h2>
+<p class="m-lead">It starts at 40°F (5°C) at 7 a.m. and peaks at 49°F (10°C) at 2 p.m. After that it slips back to 47°F (8°C) by 6 p.m.</p>
+
+<div class="nt-wrap">
+<svg id="nt-chart" viewBox="0 0 600 220" role="img" aria-label="Hourly temperature from 7 a.m. to 6 p.m., rising from 40 to 49 degrees Fahrenheit and easing back to 47">
+<line class="nt-grid" x1="30" x2="580" y1="40" y2="40"/>
+<line class="nt-grid" x1="30" x2="580" y1="100" y2="100"/>
+<line class="nt-grid" x1="30" x2="580" y1="160" y2="160"/>
+<text class="nt-ax" x="0" y="44">49°</text>
+<text class="nt-ax" x="0" y="104">45°</text>
+<text class="nt-ax" x="0" y="164">41°</text>
+<path id="nt-area" fill="color-mix(in srgb, var(--accent) 14%, transparent)" d=""/>
+<path id="nt-line" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d=""/>
+<g id="nt-dots"></g>
+<g id="nt-labels"></g>
+</svg>
+</div>
+
+<p class="nt-readout m-mono" id="nt-readout">Tap or hover an hour to read it.</p>
+
+<div class="m-row nt-stats">
+<div class="m-stat"><b>40°F</b><span>7 a.m., the low of this stretch</span></div>
+<div class="m-stat"><b>49°F</b><span>2 p.m., the high</span></div>
+<div class="m-stat"><b>0 mm</b><span>rain in every hour listed</span></div>
+</div>
+
+<style>
+#next-twelve-hours .nt-wrap{margin:var(--gap) 0 .5rem;width:100%}
+#next-twelve-hours svg{width:100%;height:auto;display:block;overflow:visible}
+#next-twelve-hours .nt-grid{stroke:var(--line);stroke-width:1;stroke-dasharray:3 5}
+#next-twelve-hours .nt-ax{fill:var(--muted);font-family:var(--font-mono);font-size:11px}
+#next-twelve-hours .nt-lb{fill:var(--muted);font-family:var(--font-mono);font-size:10px;text-anchor:middle}
+#next-twelve-hours .nt-dot{fill:var(--bg);stroke:var(--accent);stroke-width:2;cursor:pointer;transition:r .15s}
+#next-twelve-hours .nt-dot.on{fill:var(--accent);r:7}
+#next-twelve-hours .nt-hit{fill:transparent;cursor:pointer}
+#next-twelve-hours .nt-readout{min-height:1.6em;margin:.25rem 0 var(--gap);color:var(--accent-2)}
+#next-twelve-hours .nt-stats{gap:var(--gap)}
+</style>
+
+<!--script-->
+(function(){
+var sec=document.getElementById('next-twelve-hours');
+var data=[
+["7 a.m.",40,5],["8 a.m.",41,5],["9 a.m.",43,6],["10 a.m.",45,7],["11 a.m.",46,8],["Noon",46,8],
+["1 p.m.",48,9],["2 p.m.",49,10],["3 p.m.",47,9],["4 p.m.",48,9],["5 p.m.",47,8],["6 p.m.",47,8]
+];
+var x0=40,x1=570,yTop=40,yBot=160,min=41,max=49;
+function X(i){return x0+(x1-x0)*i/(data.length-1)}
+function Y(v){return yBot-(yBot-yTop)*(v-min)/(max-min)}
+var pts=data.map(function(d,i){return [X(i),Y(d[1])]});
+var line="M"+pts.map(function(p){return p[0].toFixed(1)+","+p[1].toFixed(1)}).join(" L");
+var ln=document.getElementById('nt-line');
+ln.setAttribute('d',line);
+document.getElementById('nt-area').setAttribute('d',line+" L"+x1+",200 L"+x0+",200 Z");
+var ns="http://www.w3.org/2000/svg";
+var dots=document.getElementById('nt-dots'),labs=document.getElementById('nt-labels');
+var readout=document.getElementById('nt-readout');
+var circles=[];
+data.forEach(function(d,i){
+var c=document.createElementNS(ns,'circle');
+c.setAttribute('class','nt-dot');c.setAttribute('cx',pts[i][0]);c.setAttribute('cy',pts[i][1]);c.setAttribute('r',4.5);
+dots.appendChild(c);circles.push(c);
+var h=document.createElementNS(ns,'rect');
+h.setAttribute('class','nt-hit');h.setAttribute('x',pts[i][0]-22);h.setAttribute('y',20);h.setAttribute('width',44);h.setAttribute('height',190);
+dots.appendChild(h);
+function pick(){
+circles.forEach(function(k){k.classList.remove('on')});c.classList.add('on');
+readout.textContent=d[0]+": "+d[1]+"°F ("+d[2]+"°C), clear, 0 mm rain";
+}
+h.addEventListener('mouseenter',pick);h.addEventListener('click',pick);h.addEventListener('touchstart',pick,{passive:true});
+if(i%2===0||i===data.length-1){
+var t=document.createElementNS(ns,'text');
+t.setAttribute('class','nt-lb');t.setAttribute('x',pts[i][0]);t.setAttribute('y',200);
+t.textContent=d[0].replace(' a.m.','a').replace(' p.m.','p');
+labs.appendChild(t);
+}
+});
+var still=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(window.anime&&!still){
+var len=ln.getTotalLength();
+ln.style.strokeDasharray=len;ln.style.strokeDashoffset=len;
+anime({targets:ln,strokeDashoffset:[len,0],duration:1600,easing:'easeInOutCubic'});
+anime({targets:circles,opacity:[0,1],delay:anime.stagger(110),duration:400,easing:'easeOutQuad'});
+}
+fetch(window.MOMENT.live+'/weather').then(function(r){return r.json()}).then(function(w){
+if(w&&w.now&&typeof w.now.temp_c==='number'){
+var f=Math.round(w.now.temp_c*9/5+32);
+var p=document.createElement('p');
+p.className='m-muted m-mono';
+p.textContent='Live reading: '+f+'°F ('+Math.round(w.now.temp_c)+'°C)';
+sec.appendChild(p);
+}
+}).catch(function(){});
+})();</section><section id="friday-context">
+<p class="m-kicker">About this Friday</p>
+<h2 class="fc-title">A weekday, and a short one for daylight.</h2>
+<p class="m-lead">It's Friday, November 13. The sun came up at 6:41 a.m. and goes down at 4:41 p.m. That leaves ten hours of light, and most of it is clear.</p>
+<div class="fc-body">
+<div class="fc-bar" aria-hidden="true">
+<svg viewBox="0 0 400 40" preserveAspectRatio="none" width="100%" height="40" role="img">
+<rect x="0" y="14" width="400" height="12" fill="color-mix(in srgb, var(--fg) 12%, transparent)"/>
+<rect id="fc-day" x="110" y="14" width="167" height="12" fill="var(--accent)"/>
+<line id="fc-now" x1="157" x2="157" y1="4" y2="36" stroke="var(--fg)" stroke-width="2"/>
+</svg>
+<div class="fc-ticks m-mono m-muted"><span>12 a.m.</span><span>6 a.m.</span><span>12 p.m.</span><span>6 p.m.</span><span>12 a.m.</span></div>
+</div>
+<p>The bar is the whole day, midnight to midnight. The colored stretch is daylight, 6:41 a.m. to 4:41 p.m. The line is 7:40 a.m., about an hour in.</p>
+<p>The hourly numbers hold no rain, so nothing in the sky changes the plan for the morning. It's a cool start that warms up by early afternoon.</p>
+<p class="m-muted">Friday is the last weekday of the week. Daylight is the part you can see coming, and it ends before 5 p.m.</p>
+</div>
+<style>
+#friday-context{padding:calc(var(--gap)*2) 0;max-width:640px}
+#friday-context .fc-title{font-family:var(--font-display);font-size:clamp(1.8rem,5vw,3rem);line-height:1.05;margin:.4em 0 .5em}
+#friday-context .fc-body{margin-top:var(--gap)}
+#friday-context .fc-bar{margin:calc(var(--gap)*1.2) 0 var(--gap)}
+#friday-context .fc-ticks{display:flex;justify-content:space-between;font-size:.72rem;margin-top:4px}
+#friday-context p{max-width:56ch}
+</style>
+</section></main>
+<style>#m-building{display:none}</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+<script>(()=>{try{
+(function(){
+var rays=document.getElementById('nc-rays');
+var still=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(rays&&!still&&window.anime){
+anime({targets:rays,rotate:360,duration:40000,easing:'linear',loop:true});
+anime({targets:'#nc-temp',translateY:[24,0],opacity:[0,1],duration:1100,easing:'easeOutExpo'});
+}
+try{
+fetch(window.MOMENT.live+'/weather').then(function(r){return r.ok?r.json():null}).then(function(d){
+if(!d||!d.now||typeof d.now.temp_c!=='number')return;
+var f=Math.round(d.now.temp_c*9/5+32);
+var el=document.getElementById('nc-temp');
+if(el)el.textContent=f+'°F';
+}).catch(function(){});
+}catch(e){}
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>(()=>{try{
+(function(){
+var sec=document.getElementById('friday-context');
+if(!sec)return;
+var now=sec.querySelector('#fc-now');
+var day=sec.querySelector('#fc-day');
+if(!now||!day)return;
+var W=400/1440;
+var sr=6*60+41, ss=16*60+41;
+day.setAttribute('x',(sr*W).toFixed(1));
+day.setAttribute('width',((ss-sr)*W).toFixed(1));
+var x=(7*60+40)*W;
+now.setAttribute('x1',x.toFixed(1));
+now.setAttribute('x2',x.toFixed(1));
+})();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>parent.postMessage({type:'moment:complete'},'*')</script>
+</body></html>

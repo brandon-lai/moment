@@ -9,3 +9,4 @@ node_modules
 /evals/results/*.json
 !/evals/results/.gitkeep
 .DS_Store
+.admin-token
