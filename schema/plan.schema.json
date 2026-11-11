@@ -1,0 +1,25 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://moment/schema/plan.json",
+ "title": "Concept plan",
+ "description": "What the router proposes. Three of these come back per visit; code picks one.",
+ "type": "object",
+ "required": ["archetype", "title", "purpose", "signals_used", "live_data", "sections"],
+ "additionalProperties": false,
+ "properties": {
+  "archetype": {"enum": ["tool", "guide", "dashboard", "game", "toy", "editorial", "map", "countdown", "checklist", "quiz", "ambient", "directory", "other"]},
+  "other_archetype": {"type": "string", "description": "Name of the proposed archetype when archetype is 'other'"},
+  "title": {"type": "string", "maxLength": 80},
+  "purpose": {"type": "string", "maxLength": 200},
+  "lead_fact": {"type": "string", "maxLength": 140, "description": "The one precise, high-certainty fact the page opens with"},
+  "signals_used": {"type": "array", "items": {"type": "string"}},
+  "live_data": {"type": "array", "items": {"enum": ["weather", "scores", "events", "trends", "busy"]}},
+  "sections": {
+   "type": "array", "minItems": 2, "maxItems": 5,
+   "items": {
+    "type": "object", "required": ["id", "heading", "intent"], "additionalProperties": false,
+    "properties": {"id": {"type": "string"}, "heading": {"type": "string"}, "intent": {"type": "string"}}
+   }
+  }
+ }
+}

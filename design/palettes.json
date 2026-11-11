@@ -1,0 +1,845 @@
+[
+ {
+  "id": "paper-ink",
+  "scheme": "light",
+  "bg": "#f4f1ea",
+  "fg": "#1b1a17",
+  "muted": "#5f5a50",
+  "accent": "#c2410c",
+  "accent2": "#1d4ed8",
+  "surface": "#ebe6db",
+  "line": "#d6cfbf",
+  "weather": [
+   "clear",
+   "cloudy",
+   "fog",
+   "rain",
+   "snow",
+   "storm"
+  ],
+  "dayparts": [
+   "morning",
+   "midday",
+   "afternoon"
+  ]
+ },
+ {
+  "id": "fog-morning",
+  "scheme": "light",
+  "bg": "#e9ecec",
+  "fg": "#1f2a2e",
+  "muted": "#56656b",
+  "accent": "#2f6a8c",
+  "accent2": "#8a6d3b",
+  "surface": "#dde2e3",
+  "line": "#c5cdcf",
+  "weather": [
+   "fog",
+   "cloudy",
+   "rain"
+  ],
+  "dayparts": [
+   "morning",
+   "midday",
+   "afternoon"
+  ]
+ },
+ {
+  "id": "citrus-noon",
+  "scheme": "light",
+  "bg": "#fff8e6",
+  "fg": "#2a1f00",
+  "muted": "#6b5a2e",
+  "accent": "#c2410c",
+  "accent2": "#2b7a3a",
+  "surface": "#fdefc8",
+  "line": "#ecd9a0",
+  "weather": [
+   "clear"
+  ],
+  "dayparts": [
+   "midday",
+   "afternoon"
+  ]
+ },
+ {
+  "id": "beach-salt",
+  "scheme": "light",
+  "bg": "#f3efe6",
+  "fg": "#12343b",
+  "muted": "#4c6b70",
+  "accent": "#c8553d",
+  "accent2": "#2e7f87",
+  "surface": "#e8e1d1",
+  "line": "#d3c8b0",
+  "weather": [
+   "clear"
+  ],
+  "dayparts": [
+   "midday",
+   "afternoon"
+  ]
+ },
+ {
+  "id": "snow-light",
+  "scheme": "light",
+  "bg": "#f7f9fb",
+  "fg": "#16212b",
+  "muted": "#52606d",
+  "accent": "#2563eb",
+  "accent2": "#9f1239",
+  "surface": "#edf1f5",
+  "line": "#d5dde5",
+  "weather": [
+   "snow",
+   "cloudy",
+   "fog",
+   "clear"
+  ],
+  "dayparts": [
+   "morning",
+   "midday",
+   "afternoon"
+  ]
+ },
+ {
+  "id": "newsprint",
+  "scheme": "light",
+  "bg": "#f2efe8",
+  "fg": "#111111",
+  "muted": "#555049",
+  "accent": "#b91c1c",
+  "accent2": "#1f3a5f",
+  "surface": "#e7e2d8",
+  "line": "#cfc8ba",
+  "weather": [
+   "clear",
+   "cloudy",
+   "fog",
+   "rain",
+   "snow",
+   "storm"
+  ],
+  "dayparts": [
+   "morning",
+   "midday",
+   "afternoon"
+  ]
+ },
+ {
+  "id": "sage-garden",
+  "scheme": "light",
+  "bg": "#eef1e8",
+  "fg": "#1e2a1e",
+  "muted": "#55634f",
+  "accent": "#4d7c0f",
+  "accent2": "#a16207",
+  "surface": "#e2e8d9",
+  "line": "#c9d2bd",
+  "weather": [
+   "clear",
+   "cloudy"
+  ],
+  "dayparts": [
+   "morning",
+   "midday",
+   "afternoon"
+  ]
+ },
+ {
+  "id": "blush-dusk",
+  "scheme": "light",
+  "bg": "#f6ebe7",
+  "fg": "#2b1b1e",
+  "muted": "#6e5459",
+  "accent": "#b8304f",
+  "accent2": "#5b4a8a",
+  "surface": "#efdcd6",
+  "line": "#e0c4bc",
+  "weather": [
+   "clear",
+   "cloudy"
+  ],
+  "dayparts": [
+   "afternoon",
+   "evening"
+  ]
+ },
+ {
+  "id": "rain-slate",
+  "scheme": "light",
+  "bg": "#e6e9ed",
+  "fg": "#1c2430",
+  "muted": "#525e6e",
+  "accent": "#0f6a86",
+  "accent2": "#a8500a",
+  "surface": "#d9dee5",
+  "line": "#c1c9d3",
+  "weather": [
+   "rain",
+   "storm",
+   "cloudy"
+  ],
+  "dayparts": [
+   "morning",
+   "midday",
+   "afternoon"
+  ]
+ },
+ {
+  "id": "terracotta",
+  "scheme": "light",
+  "bg": "#f5ece1",
+  "fg": "#2d1a10",
+  "muted": "#6f5443",
+  "accent": "#a94a26",
+  "accent2": "#2f5d62",
+  "surface": "#ecdccb",
+  "line": "#dcc4ab",
+  "weather": [
+   "clear",
+   "cloudy"
+  ],
+  "dayparts": [
+   "afternoon",
+   "evening"
+  ]
+ },
+ {
+  "id": "mint-lab",
+  "scheme": "light",
+  "bg": "#effaf6",
+  "fg": "#0f2a22",
+  "muted": "#45685c",
+  "accent": "#047857",
+  "accent2": "#b5400b",
+  "surface": "#e1f3ec",
+  "line": "#c6e2d7",
+  "weather": [
+   "clear",
+   "cloudy"
+  ],
+  "dayparts": [
+   "morning",
+   "midday"
+  ]
+ },
+ {
+  "id": "butter-print",
+  "scheme": "light",
+  "bg": "#fbf6e9",
+  "fg": "#1d1b16",
+  "muted": "#625b4a",
+  "accent": "#1e40af",
+  "accent2": "#a8500a",
+  "surface": "#f3ead2",
+  "line": "#e2d5b2",
+  "weather": [
+   "clear",
+   "cloudy",
+   "fog",
+   "rain",
+   "snow",
+   "storm"
+  ],
+  "dayparts": [
+   "morning",
+   "midday",
+   "afternoon"
+  ]
+ },
+ {
+  "id": "concrete",
+  "scheme": "light",
+  "bg": "#e8e6e3",
+  "fg": "#1a1a1a",
+  "muted": "#5a5753",
+  "accent": "#c8102e",
+  "accent2": "#0e6a80",
+  "surface": "#dddad5",
+  "line": "#c7c3bc",
+  "weather": [
+   "cloudy",
+   "rain",
+   "fog",
+   "storm"
+  ],
+  "dayparts": [
+   "morning",
+   "midday",
+   "afternoon"
+  ]
+ },
+ {
+  "id": "gallery-white",
+  "scheme": "light",
+  "bg": "#fafafa",
+  "fg": "#0a0a0a",
+  "muted": "#5c5c5c",
+  "accent": "#d93f00",
+  "accent2": "#0040e0",
+  "surface": "#f0f0f0",
+  "line": "#dcdcdc",
+  "weather": [
+   "clear",
+   "cloudy",
+   "fog",
+   "rain",
+   "snow",
+   "storm"
+  ],
+  "dayparts": [
+   "morning",
+   "midday",
+   "afternoon"
+  ]
+ },
+ {
+  "id": "autumn-ledger",
+  "scheme": "light",
+  "bg": "#f4eadc",
+  "fg": "#2a1d12",
+  "muted": "#6b5640",
+  "accent": "#9a3412",
+  "accent2": "#3f6212",
+  "surface": "#eadbc6",
+  "line": "#d8c3a3",
+  "weather": [
+   "clear",
+   "cloudy",
+   "fog",
+   "rain",
+   "snow",
+   "storm"
+  ],
+  "dayparts": [
+   "afternoon",
+   "evening"
+  ]
+ },
+ {
+  "id": "ice-blue",
+  "scheme": "light",
+  "bg": "#eef4f8",
+  "fg": "#102a43",
+  "muted": "#486581",
+  "accent": "#0b69a3",
+  "accent2": "#b5501d",
+  "surface": "#e1ebf2",
+  "line": "#c8d7e3",
+  "weather": [
+   "snow",
+   "clear",
+   "cloudy"
+  ],
+  "dayparts": [
+   "morning",
+   "midday"
+  ]
+ },
+ {
+  "id": "clay-pink",
+  "scheme": "light",
+  "bg": "#f7efe9",
+  "fg": "#2c1810",
+  "muted": "#6e5246",
+  "accent": "#a33b5b",
+  "accent2": "#2f6f5e",
+  "surface": "#efe1d8",
+  "line": "#dfc9bc",
+  "weather": [
+   "clear",
+   "cloudy"
+  ],
+  "dayparts": [
+   "midday",
+   "afternoon"
+  ]
+ },
+ {
+  "id": "overcast-olive",
+  "scheme": "light",
+  "bg": "#e9e8df",
+  "fg": "#22231b",
+  "muted": "#5d5e4f",
+  "accent": "#5d6b14",
+  "accent2": "#8c3b2a",
+  "surface": "#dedcd0",
+  "line": "#c9c6b5",
+  "weather": [
+   "cloudy",
+   "fog",
+   "rain"
+  ],
+  "dayparts": [
+   "morning",
+   "midday",
+   "afternoon"
+  ]
+ },
+ {
+  "id": "pool-day",
+  "scheme": "light",
+  "bg": "#eaf6f7",
+  "fg": "#082f37",
+  "muted": "#3f6870",
+  "accent": "#0e7490",
+  "accent2": "#c4512f",
+  "surface": "#d9eef0",
+  "line": "#bfdfe3",
+  "weather": [
+   "clear"
+  ],
+  "dayparts": [
+   "midday",
+   "afternoon"
+  ]
+ },
+ {
+  "id": "lavender-ledger",
+  "scheme": "light",
+  "bg": "#f1eef6",
+  "fg": "#221c2e",
+  "muted": "#5f5670",
+  "accent": "#0f766e",
+  "accent2": "#9d174d",
+  "surface": "#e6e1ee",
+  "line": "#d2cadf",
+  "weather": [
+   "cloudy",
+   "fog",
+   "clear"
+  ],
+  "dayparts": [
+   "morning",
+   "midday",
+   "afternoon"
+  ]
+ },
+ {
+  "id": "midnight-ink",
+  "scheme": "dark",
+  "bg": "#0e1116",
+  "fg": "#e8e6e1",
+  "muted": "#9aa0a8",
+  "accent": "#f59e0b",
+  "accent2": "#60a5fa",
+  "surface": "#161b22",
+  "line": "#2a313b",
+  "weather": [
+   "clear",
+   "cloudy",
+   "fog",
+   "rain",
+   "snow",
+   "storm"
+  ],
+  "dayparts": [
+   "evening",
+   "night"
+  ]
+ },
+ {
+  "id": "rain-night",
+  "scheme": "dark",
+  "bg": "#0f1720",
+  "fg": "#dfe7ee",
+  "muted": "#8fa1b3",
+  "accent": "#5eead4",
+  "accent2": "#fbbf24",
+  "surface": "#16212d",
+  "line": "#263545",
+  "weather": [
+   "rain",
+   "storm",
+   "cloudy",
+   "fog"
+  ],
+  "dayparts": [
+   "evening",
+   "night"
+  ]
+ },
+ {
+  "id": "neon-wet",
+  "scheme": "dark",
+  "bg": "#0b0d10",
+  "fg": "#f1f5f9",
+  "muted": "#94a3b8",
+  "accent": "#f472b6",
+  "accent2": "#22d3ee",
+  "surface": "#13171c",
+  "line": "#252b33",
+  "weather": [
+   "rain",
+   "clear",
+   "cloudy"
+  ],
+  "dayparts": [
+   "night"
+  ]
+ },
+ {
+  "id": "ember",
+  "scheme": "dark",
+  "bg": "#1a0f0a",
+  "fg": "#f5e6da",
+  "muted": "#b89c8a",
+  "accent": "#fb923c",
+  "accent2": "#fcd34d",
+  "surface": "#24150e",
+  "line": "#3b2618",
+  "weather": [
+   "clear",
+   "cloudy"
+  ],
+  "dayparts": [
+   "evening",
+   "night"
+  ]
+ },
+ {
+  "id": "deep-forest",
+  "scheme": "dark",
+  "bg": "#0d1a14",
+  "fg": "#e3efe7",
+  "muted": "#93ab9c",
+  "accent": "#86efac",
+  "accent2": "#fcd34d",
+  "surface": "#14251c",
+  "line": "#22392c",
+  "weather": [
+   "clear",
+   "cloudy",
+   "fog",
+   "rain",
+   "snow",
+   "storm"
+  ],
+  "dayparts": [
+   "evening",
+   "night"
+  ]
+ },
+ {
+  "id": "terminal-green",
+  "scheme": "dark",
+  "bg": "#0a0f0a",
+  "fg": "#c8f7c5",
+  "muted": "#7fa77b",
+  "accent": "#5cff3a",
+  "accent2": "#ffd166",
+  "surface": "#101810",
+  "line": "#1f2e1f",
+  "weather": [
+   "clear",
+   "cloudy",
+   "fog",
+   "rain",
+   "snow",
+   "storm"
+  ],
+  "dayparts": [
+   "morning",
+   "midday",
+   "afternoon",
+   "evening",
+   "night"
+  ]
+ },
+ {
+  "id": "storm-steel",
+  "scheme": "dark",
+  "bg": "#111418",
+  "fg": "#e6e9ec",
+  "muted": "#9199a3",
+  "accent": "#facc15",
+  "accent2": "#38bdf8",
+  "surface": "#191d23",
+  "line": "#2b3139",
+  "weather": [
+   "storm",
+   "rain",
+   "cloudy"
+  ],
+  "dayparts": [
+   "morning",
+   "midday",
+   "afternoon",
+   "evening",
+   "night"
+  ]
+ },
+ {
+  "id": "snow-night",
+  "scheme": "dark",
+  "bg": "#101826",
+  "fg": "#eef3f9",
+  "muted": "#9fb0c6",
+  "accent": "#93c5fd",
+  "accent2": "#fca5a5",
+  "surface": "#172235",
+  "line": "#273650",
+  "weather": [
+   "snow",
+   "clear",
+   "cloudy"
+  ],
+  "dayparts": [
+   "evening",
+   "night"
+  ]
+ },
+ {
+  "id": "velvet",
+  "scheme": "dark",
+  "bg": "#1b1020",
+  "fg": "#f3e8f5",
+  "muted": "#b39cba",
+  "accent": "#f0abfc",
+  "accent2": "#fde68a",
+  "surface": "#251729",
+  "line": "#3a2740",
+  "weather": [
+   "clear",
+   "cloudy"
+  ],
+  "dayparts": [
+   "night"
+  ]
+ },
+ {
+  "id": "cinema",
+  "scheme": "dark",
+  "bg": "#0c0c0c",
+  "fg": "#f5f5f4",
+  "muted": "#a8a29e",
+  "accent": "#f05252",
+  "accent2": "#fde047",
+  "surface": "#171717",
+  "line": "#292524",
+  "weather": [
+   "clear",
+   "cloudy",
+   "fog",
+   "rain",
+   "snow",
+   "storm"
+  ],
+  "dayparts": [
+   "evening",
+   "night"
+  ]
+ },
+ {
+  "id": "harbor-dusk",
+  "scheme": "dark",
+  "bg": "#13202b",
+  "fg": "#e8eef2",
+  "muted": "#9db0bf",
+  "accent": "#f4a261",
+  "accent2": "#7dd3fc",
+  "surface": "#1a2a37",
+  "line": "#2a3d4d",
+  "weather": [
+   "clear",
+   "cloudy",
+   "fog",
+   "rain",
+   "snow",
+   "storm"
+  ],
+  "dayparts": [
+   "evening"
+  ]
+ },
+ {
+  "id": "espresso",
+  "scheme": "dark",
+  "bg": "#1c1512",
+  "fg": "#efe6dd",
+  "muted": "#b3a395",
+  "accent": "#d4a373",
+  "accent2": "#93c5fd",
+  "surface": "#261d18",
+  "line": "#3a2d26",
+  "weather": [
+   "rain",
+   "cloudy",
+   "fog"
+  ],
+  "dayparts": [
+   "morning",
+   "evening",
+   "night"
+  ]
+ },
+ {
+  "id": "aurora-dark",
+  "scheme": "dark",
+  "bg": "#07141a",
+  "fg": "#e0f2f1",
+  "muted": "#8ab3b0",
+  "accent": "#2dd4bf",
+  "accent2": "#a3e635",
+  "surface": "#0d1f27",
+  "line": "#1b3540",
+  "weather": [
+   "clear",
+   "snow"
+  ],
+  "dayparts": [
+   "night"
+  ]
+ },
+ {
+  "id": "sodium-lamp",
+  "scheme": "dark",
+  "bg": "#16120a",
+  "fg": "#f8ecd0",
+  "muted": "#bba57a",
+  "accent": "#fbbf24",
+  "accent2": "#fb7185",
+  "surface": "#201a0f",
+  "line": "#3a301c",
+  "weather": [
+   "rain",
+   "fog",
+   "cloudy"
+  ],
+  "dayparts": [
+   "night"
+  ]
+ },
+ {
+  "id": "blueprint",
+  "scheme": "dark",
+  "bg": "#0f2747",
+  "fg": "#e6eefb",
+  "muted": "#9fb6d9",
+  "accent": "#fde047",
+  "accent2": "#fca5a5",
+  "surface": "#143057",
+  "line": "#24467a",
+  "weather": [
+   "clear",
+   "cloudy",
+   "fog",
+   "rain",
+   "snow",
+   "storm"
+  ],
+  "dayparts": [
+   "morning",
+   "midday",
+   "afternoon",
+   "evening",
+   "night"
+  ]
+ },
+ {
+  "id": "graphite",
+  "scheme": "dark",
+  "bg": "#1c1d1f",
+  "fg": "#ececec",
+  "muted": "#a3a3a3",
+  "accent": "#a3e635",
+  "accent2": "#60a5fa",
+  "surface": "#242528",
+  "line": "#36383c",
+  "weather": [
+   "clear",
+   "cloudy",
+   "fog",
+   "rain",
+   "snow",
+   "storm"
+  ],
+  "dayparts": [
+   "morning",
+   "midday",
+   "afternoon",
+   "evening",
+   "night"
+  ]
+ },
+ {
+  "id": "dawn-mist",
+  "scheme": "light",
+  "bg": "#f0ece6",
+  "fg": "#22201c",
+  "muted": "#605a51",
+  "accent": "#b45309",
+  "accent2": "#2563eb",
+  "surface": "#e6e0d7",
+  "line": "#d2c9bb",
+  "weather": [
+   "fog",
+   "cloudy",
+   "clear"
+  ],
+  "dayparts": [
+   "morning"
+  ]
+ },
+ {
+  "id": "sunset-dark",
+  "scheme": "dark",
+  "bg": "#1f1418",
+  "fg": "#fbe9e3",
+  "muted": "#c0a39b",
+  "accent": "#ff7a59",
+  "accent2": "#ffd27a",
+  "surface": "#2a1b20",
+  "line": "#43303a",
+  "weather": [
+   "clear"
+  ],
+  "dayparts": [
+   "evening"
+  ]
+ },
+ {
+  "id": "pine-snow",
+  "scheme": "light",
+  "bg": "#f4f6f3",
+  "fg": "#17241c",
+  "muted": "#536557",
+  "accent": "#166534",
+  "accent2": "#b91c1c",
+  "surface": "#e8ece6",
+  "line": "#cdd6ce",
+  "weather": [
+   "snow",
+   "cloudy",
+   "clear"
+  ],
+  "dayparts": [
+   "morning",
+   "midday",
+   "afternoon"
+  ]
+ },
+ {
+  "id": "ocean-night",
+  "scheme": "dark",
+  "bg": "#071a2b",
+  "fg": "#e2eef8",
+  "muted": "#8fb0cb",
+  "accent": "#38bdf8",
+  "accent2": "#fb923c",
+  "surface": "#0c2438",
+  "line": "#1b3a55",
+  "weather": [
+   "clear",
+   "cloudy",
+   "fog",
+   "rain",
+   "snow",
+   "storm"
+  ],
+  "dayparts": [
+   "night"
+  ]
+ }
+]

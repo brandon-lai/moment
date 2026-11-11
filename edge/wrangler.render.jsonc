@@ -1,0 +1,20 @@
+// The sandbox origin: generated pages and the live data API. A separate
+// worker on a separate hostname, so generated code can never read the main
+// site's storage. It reaches the session objects owned by the `moment` worker.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "moment-render",
+  "main": "src/render.ts",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "preview_urls": false,
+  "durable_objects": {
+    "bindings": [{ "name": "SESSION", "class_name": "Session", "script_name": "moment" }]
+  },
+  "vars": {
+    "MAIN_ORIGIN": "https://moment.flockfield-server.workers.dev",
+    "RENDER_ORIGIN": "https://moment-render.flockfield-server.workers.dev"
+  },
+  "observability": { "enabled": true }
+}

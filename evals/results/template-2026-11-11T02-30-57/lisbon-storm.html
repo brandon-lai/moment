@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Find the dry hours in Lisbon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>:root{--bg:#e6e9ed;--fg:#1c2430;--muted:#525e6e;--accent:#0f6a86;--accent-2:#a8500a;--surface:#d9dee5;--line:#c1c9d3;color-scheme:light;--font-display:'Chakra Petch',sans-serif;--font-body:'JetBrains Mono',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;--radius:6px;--gap:0.7}
+@media (prefers-color-scheme:dark){:root{--bg:#071a2b;--fg:#e2eef8;--muted:#8fb0cb;--accent:#38bdf8;--accent-2:#fb923c;--surface:#0c2438;--line:#1b3a55;color-scheme:dark;}}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:15px;line-height:1.55;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;line-height:1.05;letter-spacing:-.01em;margin:0 0 calc(.5em*var(--gap));text-wrap:balance}
+h1{font-size:clamp(34px,6.4vw,84px)}h2{font-size:clamp(24px,3.6vw,44px)}h3{font-size:clamp(18px,2.2vw,24px)}
+p{margin:0 0 calc(1em*var(--gap));max-width:68ch;text-wrap:pretty}
+a{color:var(--accent);text-underline-offset:.18em}
+button{font:inherit;color:var(--fg);background:transparent;border:1px solid var(--fg);border-radius:var(--radius);padding:.55em 1em;cursor:pointer}
+button:hover{background:var(--fg);color:var(--bg)}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+input[type=range]{accent-color:var(--accent);width:100%}
+table{border-collapse:collapse;width:100%}td,th{padding:.45em .6em;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85em}
+svg{max-width:100%;height:auto}canvas{max-width:100%;display:block}
+img{max-width:100%}
+.m-kicker{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 .9em}
+.m-big{font-family:var(--font-display);font-size:clamp(56px,13vw,170px);line-height:.88;letter-spacing:-.03em;font-weight:700}
+.m-lead{font-size:1.25em;line-height:1.4;max-width:40ch}
+.m-muted{color:var(--muted)}.m-accent{color:var(--accent)}.m-accent-2{color:var(--accent-2)}
+.m-mono{font-family:var(--font-mono)}
+.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:calc(16px*var(--gap))}
+.m-row{display:flex;flex-wrap:wrap;gap:calc(12px*var(--gap));align-items:baseline}
+.m-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:calc(18px*var(--gap))}
+.m-stat{display:flex;flex-direction:column;gap:.2em}.m-stat b{font-family:var(--font-display);font-size:clamp(28px,4.6vw,52px);line-height:1;font-weight:700}
+.m-rule{border:0;border-top:1px solid var(--line);margin:calc(24px*var(--gap)) 0}
+.m-chip{display:inline-block;font-family:var(--font-mono);font-size:.78rem;padding:.25em .6em;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.m-list{list-style:none;padding:0;margin:0}.m-list li{padding:.6em 0;border-bottom:1px solid var(--line)}
+.m-bars{display:flex;align-items:flex-end;gap:3px;height:120px}.m-bars i{flex:1;background:var(--accent);border-radius:2px 2px 0 0;min-height:2px}
+main>section{scroll-margin-top:16px}
+main>section{animation:m-in .5s cubic-bezier(.2,.7,.2,1) both}@keyframes m-in{from{opacity:0;transform:translateY(18px)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#m-building{position:fixed;left:12px;bottom:12px;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;z-index:5}
+#m-building::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:m-pulse 1.2s ease-in-out infinite}
+@keyframes m-pulse{50%{opacity:.25}}
+.m-earlier{font-family:var(--font-mono);font-size:12px;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line)}
+main{max-width:1240px;margin:0 auto;padding:clamp(16px,3vw,40px)}main>section:first-child{border-bottom:3px double var(--fg);padding-bottom:18px}main>section{padding:clamp(18px,3vw,32px) 0;border-bottom:1px solid var(--line)}@media(min-width:900px){main>section .m-columns,main>section>p{column-count:2;column-gap:40px;column-rule:1px solid var(--line)}}</style>
+<script>window.MOMENT={"live":"http://localhost:8788/live/38.72,-9.14","tz":"Europe/Lisbon","place":"Lisbon","eu":true};(()=>{const EU=true;let lastY=scrollY,lastT=performance.now(),speed=0,taps=0,idle=0,lastAct=performance.now(),hov=new Set(),bottom=false;
+const desc=e=>{const el=e.closest&&e.closest('[data-m],button,a,svg,canvas,table,li,figure,h2,h3');if(!el)return null;return(el.getAttribute('data-m')||el.tagName.toLowerCase()+(el.className&&typeof el.className==='string'?'.'+el.className.split(' ')[0]:'')).slice(0,40)};
+const act=()=>{lastAct=performance.now()};
+addEventListener('scroll',()=>{const t=performance.now(),dy=Math.abs(scrollY-lastY);speed=.7*speed+.3*(dy/Math.max(16,t-lastT)*1000);lastY=scrollY;lastT=t;act();const b=innerHeight+scrollY>=document.documentElement.scrollHeight-40;if(b&&!bottom){bottom=true;parent.postMessage({type:'moment:bottom'},'*')}},{passive:true});
+addEventListener('pointerover',e=>{if(EU)return;const d=desc(e.target);if(d&&hov.size<12)hov.add(d)},{passive:true});
+addEventListener('pointerdown',()=>{taps++;act()},{passive:true});addEventListener('keydown',act);
+const onScreen=()=>{let best=null,area=0;for(const s of document.querySelectorAll('main>section')){const r=s.getBoundingClientRect(),v=Math.max(0,Math.min(innerHeight,r.bottom)-Math.max(0,r.top));if(v>area){area=v;best=s.id||null}}return best};
+setInterval(()=>{idle=performance.now()-lastAct;if(EU)return;parent.postMessage({type:'moment:interaction',section:onScreen(),scrollSpeed:Math.round(speed),hovered:[...hov],taps,idleMs:Math.round(idle),atBottom:bottom},'*');hov.clear();speed*=.5},2000);
+})();</script>
+</head><body class="layout-broadsheet motion-lively density-dense">
+<div id="m-building" role="status">Writing this page</div>
+<main>
+<section id="planner"><p class="m-kicker">Wednesday · 1:20 p.m. · Lisbon</p><h1>Find the dry hours in Lisbon</h1>
+<label for="need" class="m-kicker" style="display:block">I need <b id="need-v">1 hour</b> outside</label>
+<input id="need" type="range" min="1" max="4" step="1" value="1" data-m="need-slider">
+<p class="m-lead" id="answer" aria-live="polite" style="margin-top:1em"></p></section>
+<section id="timeline"><h2>The hours</h2><ul class="m-list" id="tl"><li class="m-row" style="justify-content:space-between;padding-inline:.5em"><span class="m-mono">1 p.m.</span><span>thunderstorms</span><span>18° · 90%</span></li><li class="m-row" style="justify-content:space-between;padding-inline:.5em"><span class="m-mono">2 p.m.</span><span>thunderstorms</span><span>19° · 76%</span></li><li class="m-row" style="justify-content:space-between;padding-inline:.5em"><span class="m-mono">3 p.m.</span><span>rain</span><span>19° · 85%</span></li><li class="m-row" style="justify-content:space-between;padding-inline:.5em"><span class="m-mono">4 p.m.</span><span>rain</span><span>18° · 88%</span></li><li class="m-row" style="justify-content:space-between;padding-inline:.5em"><span class="m-mono">5 p.m.</span><span>overcast</span><span>18° · 12%</span></li><li class="m-row" style="justify-content:space-between;padding-inline:.5em"><span class="m-mono">6 p.m.</span><span>overcast <span class="m-chip">dark</span></span><span>17° · 7%</span></li><li class="m-row" style="justify-content:space-between;padding-inline:.5em"><span class="m-mono">7 p.m.</span><span>overcast <span class="m-chip">dark</span></span><span>17° · 14%</span></li><li class="m-row" style="justify-content:space-between;padding-inline:.5em"><span class="m-mono">8 p.m.</span><span>overcast <span class="m-chip">dark</span></span><span>16° · 6%</span></li><li class="m-row" style="justify-content:space-between;padding-inline:.5em"><span class="m-mono">9 p.m.</span><span>overcast <span class="m-chip">dark</span></span><span>15° · 1%</span></li><li class="m-row" style="justify-content:space-between;padding-inline:.5em"><span class="m-mono">10 p.m.</span><span>overcast <span class="m-chip">dark</span></span><span>13° · 15%</span></li><li class="m-row" style="justify-content:space-between;padding-inline:.5em"><span class="m-mono">11 p.m.</span><span>overcast <span class="m-chip">dark</span></span><span>13° · 6%</span></li><li class="m-row" style="justify-content:space-between;padding-inline:.5em"><span class="m-mono">midnight</span><span>overcast <span class="m-chip">dark</span></span><span>12° · 9%</span></li></ul><p class="m-kicker" style="margin-top:2.5em">Built by Moment's template engine from today's forecast, the sun and the calendar.</p></section>
+</main>
+<style>#m-building{display:none}</style>
+
+<script>(()=>{try{
+const H=[{"t":"1 p.m.","temp":"18°","c":18.1,"pop":90,"wet":true,"light":true,"desc":"thunderstorms"},{"t":"2 p.m.","temp":"19°","c":18.7,"pop":76,"wet":true,"light":true,"desc":"thunderstorms"},{"t":"3 p.m.","temp":"19°","c":18.5,"pop":85,"wet":true,"light":true,"desc":"rain"},{"t":"4 p.m.","temp":"18°","c":17.9,"pop":88,"wet":true,"light":true,"desc":"rain"},{"t":"5 p.m.","temp":"18°","c":18.1,"pop":12,"wet":false,"light":true,"desc":"overcast"},{"t":"6 p.m.","temp":"17°","c":17.3,"pop":7,"wet":false,"light":false,"desc":"overcast"},{"t":"7 p.m.","temp":"17°","c":16.9,"pop":14,"wet":false,"light":false,"desc":"overcast"},{"t":"8 p.m.","temp":"16°","c":15.6,"pop":6,"wet":false,"light":false,"desc":"overcast"},{"t":"9 p.m.","temp":"15°","c":15.1,"pop":1,"wet":false,"light":false,"desc":"overcast"},{"t":"10 p.m.","temp":"13°","c":13,"pop":15,"wet":false,"light":false,"desc":"overcast"},{"t":"11 p.m.","temp":"13°","c":12.6,"pop":6,"wet":false,"light":false,"desc":"overcast"},{"t":"midnight","temp":"12°","c":11.6,"pop":9,"wet":false,"light":false,"desc":"overcast"}];const sc=h=>(h.wet?0:1)*(100-h.pop)+(h.light?25:0)-Math.abs(h.c-18);const run=()=>{const n=+document.getElementById('need').value;document.getElementById('need-v').textContent=n+(n===1?' hour':' hours');let best=-1,bi=-1;for(let i=0;i+n<=H.length;i++){const w=H.slice(i,i+n);if(w.some(h=>h.wet))continue;const s=w.reduce((a,h)=>a+sc(h),0)/n;if(s>best){best=s;bi=i}}const a=document.getElementById('answer');if(bi<0){a.textContent='No dry stretch that long in the next twelve hours. The driest single hour is '+H.reduce((m,h)=>h.pop<m.pop?h:m).t+'.';}else{const w=H.slice(bi,bi+n);a.textContent='Best window: '+w[0].t+(n>1?' to '+(H[bi+n]?H[bi+n].t:'the end of the forecast'):'')+'. '+w.map(h=>h.desc).filter((v,i,x)=>x.indexOf(v)===i).join(', ')+', '+w[0].temp+(w.every(h=>h.light)?', in daylight.':'.');}document.querySelectorAll('#tl li').forEach((li,i)=>{li.style.background=bi>=0&&i>=bi&&i<bi+n?'var(--surface)':''})};document.getElementById('need').addEventListener('input',run);run();
+}catch(e){console.error('moment section script',e)}})();</script>
+<script>parent.postMessage({type:'moment:complete'},'*')</script>
+</body></html>

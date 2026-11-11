@@ -1,0 +1,44 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://moment/schema/brief.json",
+ "title": "Moment Brief",
+ "description": "The compiled record the edge reads for one geo cell, about 2 KB.",
+ "type": "object",
+ "required": ["cell", "label", "built_at", "local", "signals", "priors"],
+ "properties": {
+  "cell": {"type": "string", "examples": ["US/NY/501", "GB/ENG/London", "FR", "global"]},
+  "label": {"type": "string"},
+  "built_at": {"type": "string", "format": "date-time"},
+  "coords": {"type": "object", "properties": {"lat": {"type": "number"}, "lon": {"type": "number"}}},
+  "country": {"type": "string"},
+  "local": {
+   "type": "object",
+   "required": ["tz"],
+   "properties": {
+    "tz": {"type": "string"},
+    "weekday": {"type": "string"},
+    "daypart": {"enum": ["morning", "midday", "afternoon", "evening", "night"]},
+    "holiday": {"type": ["string", "null"]}
+   }
+  },
+  "weather": {
+   "type": ["object", "null"],
+   "properties": {
+    "now": {"type": "string"},
+    "bucket": {"enum": ["clear", "cloudy", "fog", "rain", "snow", "storm"]},
+    "temp_c": {"type": "number"},
+    "next_12h": {"type": "string"},
+    "sunrise": {"type": "string"},
+    "sunset": {"type": "string"},
+    "unusual": {"type": ["string", "null"]},
+    "hourly": {"type": "array", "items": {"type": "object"}}
+   }
+  },
+  "signals": {"type": "array", "maxItems": 14, "items": {"$ref": "https://moment/schema/signal.json"}},
+  "priors": {
+   "type": "object",
+   "properties": {"archetypes": {"type": "object", "additionalProperties": {"type": "number"}}}
+  },
+  "sources": {"type": "array", "items": {"type": "string"}, "description": "Which pollers contributed, for the privacy page and debugging"}
+ }
+}

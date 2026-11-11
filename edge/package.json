@@ -1,0 +1,25 @@
+{
+  "name": "moment-edge",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "wrangler dev --port 8787",
+    "dev:render": "wrangler dev --config wrangler.render.jsonc --port 8788",
+    "typecheck": "tsc -p .",
+    "test": "vitest run",
+    "db:migrate:local": "wrangler d1 migrations apply moment --local",
+    "db:migrate": "wrangler d1 migrations apply moment --remote",
+    "deploy:edge": "wrangler deploy",
+    "deploy:render": "wrangler deploy --config wrangler.render.jsonc"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "1.8.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "5.20261110.1",
+    "typescript": "7.0.2",
+    "vitest": "5.1.0",
+    "wrangler": "4.160.0"
+  },
+  "private": true,
+  "type": "module"
+}

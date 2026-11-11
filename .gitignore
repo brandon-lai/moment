@@ -1,0 +1,11 @@
+node_modules
+.wrangler
+.dev.vars
+.dev.vars.*
+.env
+.env.*
+!.env.example
+*.log
+/evals/results/*.json
+!/evals/results/.gitkeep
+.DS_Store

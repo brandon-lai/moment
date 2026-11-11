@@ -1,0 +1,16 @@
+{
+ "patterns": [
+  "Purple or violet gradients, and gradient text of any color",
+  "A hero followed by a row of three feature cards",
+  "Emoji used as icons or bullet points",
+  "Glassmorphism: frosted translucent panels, backdrop blur",
+  "Centering everything; keep text left-aligned unless a single short statement is deliberately centered",
+  "Generic stock phrases: 'Welcome to', 'Discover', 'Unlock', 'Elevate', 'Seamless', 'Your journey'",
+  "Drop shadows stacked on rounded cards on every element",
+  "Lorem ipsum, placeholder images, or fake testimonials",
+  "Neon glow on text",
+  "Inventing numbers, names, venues, or events that are not in the brief"
+ ],
+ "motion": ["still", "gentle", "lively"],
+ "density": ["airy", "balanced", "dense"]
+}

@@ -1,0 +1,18 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://moment/schema/signal.json",
+ "title": "Signal",
+ "description": "One normalized fact about a place. Every source is reduced to this shape before the brief compiler sees it; the model never sees raw feeds.",
+ "type": "object",
+ "required": ["kind", "label", "category", "score"],
+ "additionalProperties": false,
+ "properties": {
+  "kind": {"enum": ["weather", "unusual", "sun", "sky", "holiday", "trend", "event", "rhythm", "busy", "calendar"]},
+  "label": {"type": "string", "maxLength": 120},
+  "category": {"enum": ["food", "sports", "entertainment", "arts", "technology", "travel", "weather", "shopping", "hobbies", "games", "science", "calendar", "sky"]},
+  "score": {"type": "number", "minimum": 0, "maximum": 1},
+  "lift": {"type": "number", "minimum": 0},
+  "at": {"type": "string", "description": "ISO time the fact refers to, when it refers to one"},
+  "source": {"type": "string"}
+ }
+}

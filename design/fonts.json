@@ -1,0 +1,534 @@
+[
+ {
+  "id": "fraunces-inter",
+  "display": "Fraunces",
+  "displayWeights": [
+   400,
+   700
+  ],
+  "body": "Inter",
+  "bodyWeights": [
+   400,
+   700
+  ],
+  "mono": "JetBrains Mono",
+  "tags": [
+   "serif",
+   "warm"
+  ]
+ },
+ {
+  "id": "playfair-source",
+  "display": "Playfair Display",
+  "displayWeights": [
+   400,
+   700
+  ],
+  "body": "Source Sans 3",
+  "bodyWeights": [
+   400,
+   700
+  ],
+  "mono": "JetBrains Mono",
+  "tags": [
+   "serif",
+   "classic"
+  ]
+ },
+ {
+  "id": "dmserif-dmsans",
+  "display": "DM Serif Display",
+  "displayWeights": [
+   400
+  ],
+  "body": "DM Sans",
+  "bodyWeights": [
+   400,
+   700
+  ],
+  "mono": "JetBrains Mono",
+  "tags": [
+   "serif",
+   "soft"
+  ]
+ },
+ {
+  "id": "spacegrotesk-plex",
+  "display": "Space Grotesk",
+  "displayWeights": [
+   400,
+   700
+  ],
+  "body": "IBM Plex Sans",
+  "bodyWeights": [
+   400,
+   700
+  ],
+  "mono": "IBM Plex Mono",
+  "tags": [
+   "grotesk",
+   "technical"
+  ]
+ },
+ {
+  "id": "syne-manrope",
+  "display": "Syne",
+  "displayWeights": [
+   400,
+   700
+  ],
+  "body": "Manrope",
+  "bodyWeights": [
+   400,
+   700
+  ],
+  "mono": "JetBrains Mono",
+  "tags": [
+   "grotesk",
+   "loud"
+  ]
+ },
+ {
+  "id": "instrument",
+  "display": "Instrument Serif",
+  "displayWeights": [
+   400
+  ],
+  "body": "Instrument Sans",
+  "bodyWeights": [
+   400,
+   700
+  ],
+  "mono": "JetBrains Mono",
+  "tags": [
+   "serif",
+   "quiet"
+  ]
+ },
+ {
+  "id": "bricolage-figtree",
+  "display": "Bricolage Grotesque",
+  "displayWeights": [
+   400,
+   700
+  ],
+  "body": "Figtree",
+  "bodyWeights": [
+   400,
+   700
+  ],
+  "mono": "JetBrains Mono",
+  "tags": [
+   "grotesk",
+   "friendly"
+  ]
+ },
+ {
+  "id": "caslon-work",
+  "display": "Libre Caslon Text",
+  "displayWeights": [
+   400,
+   700
+  ],
+  "body": "Work Sans",
+  "bodyWeights": [
+   400,
+   700
+  ],
+  "mono": "JetBrains Mono",
+  "tags": [
+   "serif",
+   "bookish"
+  ]
+ },
+ {
+  "id": "garamond-karla",
+  "display": "EB Garamond",
+  "displayWeights": [
+   400,
+   700
+  ],
+  "body": "Karla",
+  "bodyWeights": [
+   400,
+   700
+  ],
+  "mono": "JetBrains Mono",
+  "tags": [
+   "serif",
+   "bookish"
+  ]
+ },
+ {
+  "id": "cormorant-jost",
+  "display": "Cormorant Garamond",
+  "displayWeights": [
+   400,
+   700
+  ],
+  "body": "Jost",
+  "bodyWeights": [
+   400,
+   700
+  ],
+  "mono": "JetBrains Mono",
+  "tags": [
+   "serif",
+   "elegant"
+  ]
+ },
+ {
+  "id": "archivoblack-archivo",
+  "display": "Archivo Black",
+  "displayWeights": [
+   400
+  ],
+  "body": "Archivo",
+  "bodyWeights": [
+   400,
+   700
+  ],
+  "mono": "JetBrains Mono",
+  "tags": [
+   "grotesk",
+   "poster"
+  ]
+ },
+ {
+  "id": "bebas-barlow",
+  "display": "Bebas Neue",
+  "displayWeights": [
+   400
+  ],
+  "body": "Barlow",
+  "bodyWeights": [
+   400,
+   700
+  ],
+  "mono": "JetBrains Mono",
+  "tags": [
+   "condensed",
+   "poster",
+   "sport"
+  ]
+ },
+ {
+  "id": "unbounded-onest",
+  "display": "Unbounded",
+  "displayWeights": [
+   400,
+   700
+  ],
+  "body": "Onest",
+  "bodyWeights": [
+   400,
+   700
+  ],
+  "mono": "JetBrains Mono",
+  "tags": [
+   "grotesk",
+   "loud"
+  ]
+ },
+ {
+  "id": "newsreader-public",
+  "display": "Newsreader",
+  "displayWeights": [
+   400,
+   700
+  ],
+  "body": "Public Sans",
+  "bodyWeights": [
+   400,
+   700
+  ],
+  "mono": "JetBrains Mono",
+  "tags": [
+   "serif",
+   "news"
+  ]
+ },
+ {
+  "id": "young-jakarta",
+  "display": "Young Serif",
+  "displayWeights": [
+   400
+  ],
+  "body": "Plus Jakarta Sans",
+  "bodyWeights": [
+   400,
+   700
+  ],
+  "mono": "JetBrains Mono",
+  "tags": [
+   "serif",
+   "friendly"
+  ]
+ },
+ {
+  "id": "abril-lato",
+  "display": "Abril Fatface",
+  "displayWeights": [
+   400
+  ],
+  "body": "Lato",
+  "bodyWeights": [
+   400,
+   700
+  ],
+  "mono": "JetBrains Mono",
+  "tags": [
+   "serif",
+   "poster"
+  ]
+ },
+ {
+  "id": "spectral-rubik",
+  "display": "Spectral",
+  "displayWeights": [
+   400,
+   700
+  ],
+  "body": "Rubik",
+  "bodyWeights": [
+   400,
+   700
+  ],
+  "mono": "JetBrains Mono",
+  "tags": [
+   "serif",
+   "calm"
+  ]
+ },
+ {
+  "id": "literata-atkinson",
+  "display": "Literata",
+  "displayWeights": [
+   400,
+   700
+  ],
+  "body": "Atkinson Hyperlegible",
+  "bodyWeights": [
+   400,
+   700
+  ],
+  "mono": "JetBrains Mono",
+  "tags": [
+   "serif",
+   "legible"
+  ]
+ },
+ {
+  "id": "bigshoulders-chivo",
+  "display": "Big Shoulders Display",
+  "displayWeights": [
+   400,
+   700
+  ],
+  "body": "Chivo",
+  "bodyWeights": [
+   400,
+   700
+  ],
+  "mono": "JetBrains Mono",
+  "tags": [
+   "condensed",
+   "sport",
+   "civic"
+  ]
+ },
+ {
+  "id": "anton-hanken",
+  "display": "Anton",
+  "displayWeights": [
+   400
+  ],
+  "body": "Hanken Grotesk",
+  "bodyWeights": [
+   400,
+   700
+  ],
+  "mono": "JetBrains Mono",
+  "tags": [
+   "condensed",
+   "poster"
+  ]
+ },
+ {
+  "id": "rozha-nunito",
+  "display": "Rozha One",
+  "displayWeights": [
+   400
+  ],
+  "body": "Nunito Sans",
+  "bodyWeights": [
+   400,
+   700
+  ],
+  "mono": "JetBrains Mono",
+  "tags": [
+   "serif",
+   "warm"
+  ]
+ },
+ {
+  "id": "gloock-schibsted",
+  "display": "Gloock",
+  "displayWeights": [
+   400
+  ],
+  "body": "Schibsted Grotesk",
+  "bodyWeights": [
+   400,
+   700
+  ],
+  "mono": "JetBrains Mono",
+  "tags": [
+   "serif",
+   "news"
+  ]
+ },
+ {
+  "id": "bodoni-albert",
+  "display": "Bodoni Moda",
+  "displayWeights": [
+   400,
+   700
+  ],
+  "body": "Albert Sans",
+  "bodyWeights": [
+   400,
+   700
+  ],
+  "mono": "JetBrains Mono",
+  "tags": [
+   "serif",
+   "fashion"
+  ]
+ },
+ {
+  "id": "chakra-jetbrains",
+  "display": "Chakra Petch",
+  "displayWeights": [
+   400,
+   700
+  ],
+  "body": "JetBrains Mono",
+  "bodyWeights": [
+   400,
+   700
+  ],
+  "mono": "JetBrains Mono",
+  "tags": [
+   "terminal",
+   "technical"
+  ]
+ },
+ {
+  "id": "vt323-plexmono",
+  "display": "VT323",
+  "displayWeights": [
+   400
+  ],
+  "body": "IBM Plex Mono",
+  "bodyWeights": [
+   400,
+   700
+  ],
+  "mono": "IBM Plex Mono",
+  "tags": [
+   "terminal",
+   "retro"
+  ]
+ },
+ {
+  "id": "spacemono-grotesk",
+  "display": "Space Mono",
+  "displayWeights": [
+   400,
+   700
+  ],
+  "body": "Space Grotesk",
+  "bodyWeights": [
+   400,
+   700
+  ],
+  "mono": "Space Mono",
+  "tags": [
+   "terminal",
+   "technical"
+  ]
+ },
+ {
+  "id": "zilla-mulish",
+  "display": "Zilla Slab",
+  "displayWeights": [
+   400,
+   700
+  ],
+  "body": "Mulish",
+  "bodyWeights": [
+   400,
+   700
+  ],
+  "mono": "JetBrains Mono",
+  "tags": [
+   "slab",
+   "friendly"
+  ]
+ },
+ {
+  "id": "alegreya",
+  "display": "Alegreya",
+  "displayWeights": [
+   400,
+   700
+  ],
+  "body": "Alegreya Sans",
+  "bodyWeights": [
+   400,
+   700
+  ],
+  "mono": "JetBrains Mono",
+  "tags": [
+   "serif",
+   "literary"
+  ]
+ },
+ {
+  "id": "crimson-redhat",
+  "display": "Crimson Pro",
+  "displayWeights": [
+   400,
+   700
+  ],
+  "body": "Red Hat Text",
+  "bodyWeights": [
+   400,
+   700
+  ],
+  "mono": "JetBrains Mono",
+  "tags": [
+   "serif",
+   "calm"
+  ]
+ },
+ {
+  "id": "sora-lora",
+  "display": "Sora",
+  "displayWeights": [
+   400,
+   700
+  ],
+  "body": "Lora",
+  "bodyWeights": [
+   400,
+   700
+  ],
+  "mono": "JetBrains Mono",
+  "tags": [
+   "grotesk",
+   "calm"
+  ]
+ }
+]

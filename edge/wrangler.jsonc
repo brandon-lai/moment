@@ -1,0 +1,29 @@
+// The edge worker: shell, session Durable Object, governor, scheduled ingest.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "moment",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "preview_urls": false,
+  "kv_namespaces": [{ "binding": "BRIEFS", "id": "a514b2359c274e5ba1609454729d27b5" }],
+  "d1_databases": [{ "binding": "DB", "database_name": "moment", "database_id": "3beecc6a-d7ba-47bc-97c1-a9b88d0d2d95", "migrations_dir": "../infra/migrations" }],
+  "durable_objects": {
+    "bindings": [
+      { "name": "SESSION", "class_name": "Session" },
+      { "name": "GOVERNOR", "class_name": "Governor" }
+    ]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["Session", "Governor"] }],
+  // Briefs every four hours (each carries a 30-hour hourly series, so the edge
+  // re-derives "now" at request time); trends, the learner and retention daily.
+  "triggers": { "crons": ["7 */4 * * *", "23 6 * * *"] },
+  "vars": {
+    "MAIN_ORIGIN": "https://moment.flockfield-server.workers.dev",
+    "RENDER_ORIGIN": "https://moment-render.flockfield-server.workers.dev",
+    "HOURLY_CAP_USD": "2",
+    "GEN_EFFORT": "medium"
+  },
+  "observability": { "enabled": true }
+}
