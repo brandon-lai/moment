@@ -477,7 +477,7 @@ const quiz: Template = {
         script: `let right=0,done=0;document.querySelectorAll('#questions [data-q]').forEach(card=>{card.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(card.dataset.done)return;card.dataset.done='1';done++;const ok=b.dataset.ok==='true';if(ok)right++;b.style.background=ok?'var(--accent)':'var(--surface)';b.style.color=ok?'var(--bg)':'';card.querySelector('[data-ok="true"]').style.outline='2px solid var(--accent)';card.querySelector('p[hidden]').hidden=false;const s=document.getElementById('tally');if(s)s.textContent=right+' of '+done;}))});`,
       };
     }
-    return { html: `<section id="score"><h2>${e(s.heading)}</h2><div class="m-accent" id="tally" style="font-family:var(--font-display);font-size:clamp(40px,7vw,88px);line-height:1;white-space:nowrap">0 of 0</div>${footer()}</section>` };
+    return { html: `<section id="score"><h2>${e(s.heading)}</h2><div class="m-accent" id="tally" style="font-family:var(--font-display);font-size:clamp(40px,12cqi,88px);line-height:1;white-space:nowrap">0 of 0</div>${footer()}</section>` };
   },
 };
 

@@ -24,7 +24,7 @@ Archetypes (you will be told which ones you may use):
 - map: spatial, drawn with SVG (no map tiles are available)
 - countdown: to something specific and soon
 - checklist: steps to get through or make the most of the next hours
-- quiz: a few questions tied to the moment
+- quiz: a few questions tied to the moment; each answer stays hidden until the visitor picks or reveals it
 - ambient: a calm, mostly visual piece that reflects the weather and light
 - directory: a list of kinds of places to go (never named venues; the brief has none)
 
@@ -99,7 +99,7 @@ THE FRAME YOU WRITE INTO
 - The document already defines CSS custom properties: --bg, --fg, --muted, --accent, --accent-2, --surface, --line, --radius, --font-display, --font-body, --font-mono, --gap. Use them for every color and font. Do not introduce other colors except transparent variations made with color-mix() on these variables.
 - Layout, fonts and palette were chosen by code. Follow the layout description you are given; do not fight it.
 - Utility classes are available: m-kicker (small uppercase label), m-big (huge number or word), m-lead (larger intro text), m-muted, m-accent, m-accent-2, m-mono, m-grid (responsive grid), m-row (wrapping row), m-card, m-stat (with <b> for the number and <span> for its label), m-rule, m-chip, m-list, m-bars (with <i style="height:NN%"> children).
-- The page must work from 320px wide phones to wide desktops. No fixed widths over 320px. No horizontal scrolling.
+- The page must work from 320px wide phones to wide desktops. No fixed widths over 320px. No horizontal scrolling. A section can be a narrow tile or column, so size large type relative to the section, not the viewport: every section is a size container, so use cqi units (for example font-size:clamp(2.5rem,16cqi,8rem)), never vw.
 - Draw illustrations, charts and maps with inline SVG or <canvas>. There are no images.
 - Libraries: if allowed_libs lists them, you may use anime (anime.js 3.2), d3 (d3 v7) or THREE (three.js r128); they are loaded before your script. Otherwise use plain JavaScript.
 - Live data: window.MOMENT.live is the base URL of Moment's live data API. GET window.MOMENT.live + '/weather' returns {now:{temp_c,desc,code}, hourly:[{t,temp,pop,mm,code}], sunrise, sunset} for this place. Only endpoints listed in live_data_available exist. Always render the brief's values first and treat live data as an update; handle a failed fetch silently.

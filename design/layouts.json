@@ -11,8 +11,8 @@
  },
  {
   "id": "bento",
-  "describe": "A bento box of tiles in a dense grid. Each section is a tile; the first tile is large. Tiles have the surface color and a hairline border, not shadows.",
-  "css": "main{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));grid-auto-flow:dense;gap:clamp(10px,1.4vw,16px);padding:clamp(12px,2vw,24px);max-width:1320px;margin:0 auto}main>section{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(18px,2.4vw,28px);min-width:0}@media(min-width:700px){main>section:first-child{grid-column:span 2;grid-row:span 2}}"
+  "describe": "A bento box of tiles. Each section is a tile with the surface color and a hairline border, not shadows. The first tile spans the full width; the rest sit two to a row on desktop and match heights, so later sections are roughly half the page wide.",
+  "css": "main{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr));gap:clamp(10px,1.4vw,16px);padding:clamp(12px,2vw,24px);max-width:1320px;margin:0 auto}main>section{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(18px,2.4vw,28px);min-width:0}main>section:first-child{grid-column:1/-1}"
  },
  {
   "id": "full-bleed",
