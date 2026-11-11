@@ -105,7 +105,7 @@ let tsWidget=null,tsReady=null;function loadTurnstile(){if(!C.ts)return Promise.
 function turnstileToken(){if(!C.ts)return Promise.resolve(null);return loadTurnstile().then(w=>new Promise(res=>{try{turnstile.reset(w);turnstile.execute(w,{callback:t=>res(t),'error-callback':()=>res(null)})}catch{res(null)}setTimeout(()=>res(null),8000)}))}
 async function start(again){events();
  if(!C.eu){post('/signals',{vw:innerWidth,vh:innerHeight,dark:matchMedia('(prefers-color-scheme: dark)').matches,reducedMotion:matchMedia('(prefers-reduced-motion: reduce)').matches,touch:matchMedia('(pointer: coarse)').matches,connection:(navigator.connection&&navigator.connection.effectiveType)||null,tz:Intl.DateTimeFormat().resolvedOptions().timeZone})}
- if(C.ts){turnstileToken().then(t=>{if(t)post('/turnstile',{token:t})})}
+ if(C.ts){turnstileToken().then(t=>post('/turnstile',{token:t}))}
  // A tab opened in the background routes, but asks for its page only once someone looks at it.
  if(document.visibilityState==='visible')attach();else document.addEventListener('visibilitychange',function v(){if(document.visibilityState==='visible'){document.removeEventListener('visibilitychange',v);attach()}});}
 addEventListener('pagehide',()=>{if(C.eu)return;const dwell=Math.round(performance.now()-t0);navigator.sendBeacon&&navigator.sendBeacon('/s/'+sid+'/end',new Blob([JSON.stringify({dwellMs:dwell,interacted})],{type:'application/json'}))});

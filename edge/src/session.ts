@@ -461,7 +461,7 @@ export class Session extends DurableObject<Env> {
     } else {
       const when = new Date(row.created_at);
       const lp = localParts(when, this.view?.tz ?? init.l1.tz);
-      const text = label ?? `An earlier guess for this place, from ${lp.weekday} ${lp.hour % 12 || 12}${lp.hour < 12 ? " a.m." : " p.m."}.`;
+      const text = label ?? `An earlier guess for this place, from ${lp.weekday} ${lp.hour % 12 || 12}${lp.hour < 12 ? " a.m." : " p.m."}`;
       this.write(labelEarlier(row.html, text));
       this.mode = "archive";
     }

@@ -36,7 +36,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const chrome = spawn(
   CHROME,
   [
-    "--headless=new",
+    ...(process.env.HEADFUL ? [] : ["--headless=new"]),
     /*
      * Headless Chrome has no GPU, and --disable-gpu turns WebGL off entirely:
      * three.js throws "Error creating WebGL context" and the page never
