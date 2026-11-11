@@ -177,7 +177,8 @@ export default {
       const kill = await env.BRIEFS.get<{ all?: boolean }>(KV.kill, { type: "json", cacheTtl: 30 }).catch(() => null);
       void kill; // the session decides what to serve when generation is off
       const s = await openSession(req, env, ctx, t0);
-      return html(shellHtml({ sid: s.sid, render: env.RENDER_ORIGIN, eu: s.l1.eu, firstLine: s.firstLine, turnstileSiteKey: hasModel(env) && env.TURNSTILE_SECRET ? env.TURNSTILE_SITE_KEY ?? null : null }), {
+      return html(shellHtml({ sid: s.sid, render: env.RENDER_ORIGIN, eu: s.l1.eu, firstLine: s.firstLine, // Votes always need a Turnstile token; generation needs one only in model mode.
+        turnstileSiteKey: env.TURNSTILE_SECRET ? env.TURNSTILE_SITE_KEY ?? null : null }), {
         "content-security-policy": shellCsp(env), "server-timing": `shell;dur=${Date.now() - t0}`,
       });
     }

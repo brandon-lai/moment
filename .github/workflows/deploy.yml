@@ -1,0 +1,40 @@
+# Every push to main is tested; once the CLOUDFLARE_API_TOKEN and
+# CLOUDFLARE_ACCOUNT_ID repository secrets exist, it is also deployed, so the
+# pushed main is what runs in production.
+name: test-and-deploy
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults: { run: { working-directory: edge } }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm, cache-dependency-path: edge/package-lock.json }
+      - run: npm ci
+      - run: npx tsc -p .
+      - run: npx vitest run
+
+  deploy:
+    needs: test
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    defaults: { run: { working-directory: edge } }
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm, cache-dependency-path: edge/package-lock.json }
+      - run: npm ci
+      - name: Deploy (skipped until the Cloudflare token secret exists)
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then echo "No CLOUDFLARE_API_TOKEN secret; skipping deploy."; exit 0; fi
+          npx wrangler d1 migrations apply moment --remote
+          npx wrangler deploy --message "git ${GITHUB_SHA::7}"
+          npx wrangler deploy --config wrangler.render.jsonc --message "git ${GITHUB_SHA::7}"

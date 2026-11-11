@@ -10,7 +10,7 @@ const SKIP = /^(Main_Page|Special:|Wikipedia:|File:|Portal:|Help:|Category:|Temp
 export async function fetchTopPerCountry(country: string, isoDate: string, fetcher: typeof fetch = fetch): Promise<RawTrend[]> {
   const [y, m, d] = isoDate.split("-");
   const url = `https://wikimedia.org/api/rest_v1/metrics/pageviews/top-per-country/${country}/all-access/${y}/${m}/${d}`;
-  const res = await fetcher(url, { headers: { "user-agent": "Moment/0.1 (zero-input generative website; brief compiler)" } });
+  const res = await fetcher(url, { headers: { "user-agent": "Moment/0.1 (https://github.com/brandon-lai/moment; brief compiler)" } });
   if (res.status === 404) return [];
   if (!res.ok) throw new Error(`wikimedia ${country} ${res.status}`);
   const body = (await res.json()) as { items?: { articles: { article: string; project: string; views_ceil: number; rank: number }[] }[] };

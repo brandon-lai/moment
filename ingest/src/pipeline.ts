@@ -147,9 +147,21 @@ export async function refreshTrends(env: Env, now = new Date()): Promise<{ count
   const day = new Date(now.getTime() - 86400000).toISOString().slice(0, 10);
   const countries = [...new Set(METROS.map((m) => m.country))];
   const raw = new Map<string, { term: string; rank: number; views: number }[]>();
+  // Wikimedia rate-limits bursts: pace requests and retry a 429 once, within
+  // the free plan's 50 subrequests per invocation.
+  let retries = 6;
   for (const cc of countries) {
-    const items = await fetchTopPerCountry(cc, day).catch((err) => { errors.push(`wiki ${cc}: ${String(err)}`); return []; });
-    raw.set(cc, items.filter((t) => !blocked(t.term)));
+    let items: Awaited<ReturnType<typeof fetchTopPerCountry>> | null = null;
+    for (let attempt = 0; attempt < 2 && items == null; attempt++) {
+      items = await fetchTopPerCountry(cc, day).catch((err) => {
+        if (attempt === 0 && /429/.test(String(err)) && retries-- > 0) return null;
+        errors.push(`wiki ${cc}: ${String(err)}`);
+        return [];
+      });
+      if (items == null) await new Promise((r) => setTimeout(r, 2500));
+    }
+    raw.set(cc, (items ?? []).filter((t) => !blocked(t.term)));
+    await new Promise((r) => setTimeout(r, 350));
   }
   const allTerms = [...new Set([...raw.values()].flat().map((t) => t.term))];
   const verdicts = await loadVerdicts(env, allTerms);
