@@ -477,7 +477,7 @@ const quiz: Template = {
         script: `let right=0,done=0;document.querySelectorAll('#questions [data-q]').forEach(card=>{card.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(card.dataset.done)return;card.dataset.done='1';done++;const ok=b.dataset.ok==='true';if(ok)right++;b.style.background=ok?'var(--accent)':'var(--surface)';b.style.color=ok?'var(--bg)':'';card.querySelector('[data-ok="true"]').style.outline='2px solid var(--accent)';card.querySelector('p[hidden]').hidden=false;const s=document.getElementById('tally');if(s)s.textContent=right+' of '+done;}))});`,
       };
     }
-    return { html: `<section id="score"><h2>${e(s.heading)}</h2><div class="m-big m-accent" id="tally">0 of 0</div>${footer()}</section>` };
+    return { html: `<section id="score"><h2>${e(s.heading)}</h2><div class="m-accent" id="tally" style="font-family:var(--font-display);font-size:clamp(40px,7vw,88px);line-height:1;white-space:nowrap">0 of 0</div>${footer()}</section>` };
   },
 };
 
@@ -495,7 +495,8 @@ function questions(c: TemplateCtx): { q: string; options: string[]; answer: numb
       return clock12(Math.floor(m / 60) % 24, ((m % 60) + 60) % 60);
     });
     const r = rot(opts, 1, set.minute);
-    out.push({ q: "What time does the sun set today?", ...r, fact: `${localClock(c, st.sunset)}.${st.goldenEveningStart ? ` Golden hour starts at ${localClock(c, st.goldenEveningStart)}.` : ""}` });
+    const past = st.sunset.getTime() < c.now.getTime();
+    out.push({ q: past ? "What time did the sun set today?" : "What time does the sun set today?", ...r, fact: `${localClock(c, st.sunset)}.${st.goldenEveningStart ? ` Golden hour starts at ${localClock(c, st.goldenEveningStart)}.` : ""}` });
   }
   const hs = ahead(c, 4);
   const rainSoon = hs.slice(1).some((h) => isWet(h.code) && h.pop >= 50);
