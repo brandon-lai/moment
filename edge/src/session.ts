@@ -232,7 +232,7 @@ export class Session extends DurableObject<Env> {
       this.started = true;
       this.ctx.waitUntil(this.generate().catch((err) => console.error("generate", err)));
     }
-    return new Response(ts.readable, { headers: { "content-type": "text/html; charset=utf-8", "cache-control": "no-store" } });
+    return new Response(ts.readable, { headers: { "content-type": "text/html; charset=utf-8", "cache-control": "no-store, no-transform" } });
   }
 
   private write(s: string): void {
@@ -259,7 +259,7 @@ export class Session extends DurableObject<Env> {
     const ping = setInterval(() => {
       w.write(enc.encode(`: ping\n\n`)).catch(() => { clearInterval(ping); this.sse = this.sse.filter((x) => x !== w); });
     }, 15000);
-    return new Response(ts.readable, { headers: { "content-type": "text/event-stream", "cache-control": "no-store" } });
+    return new Response(ts.readable, { headers: { "content-type": "text/event-stream", "cache-control": "no-store, no-transform" } });
   }
 
   private emit(event: string, data: unknown): void {
@@ -484,7 +484,7 @@ export class Session extends DurableObject<Env> {
   private async onArchive(): Promise<Response> {
     const row = await this.findArchive();
     const html = row ? labelEarlier(row.html, "An earlier guess for this place and time of day.") : fallbackPage("This page could not be written. Try another guess.");
-    return new Response(html, { headers: { "content-type": "text/html; charset=utf-8", "cache-control": "no-store" } });
+    return new Response(html, { headers: { "content-type": "text/html; charset=utf-8", "cache-control": "no-store, no-transform" } });
   }
 
   private async afterComplete(plan: Plan): Promise<void> {

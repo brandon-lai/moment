@@ -30,7 +30,11 @@ function page(body: BodyInit | null, env: RenderEnv, status = 200): Response {
     status,
     headers: {
       "content-type": "text/html; charset=utf-8",
-      "cache-control": "no-store",
+      // Never compress: a gzip stream holds a ~15 KB page in its buffer until the
+      // end, so the visitor saw nothing for 15-25 s, then the whole page.
+      // identity is what stops the runtime; no-transform asks the edge.
+      "cache-control": "no-store, no-transform",
+      "content-encoding": "identity",
       "content-security-policy": csp(env),
       "x-content-type-options": "nosniff",
       "referrer-policy": "no-referrer",
