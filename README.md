@@ -22,9 +22,9 @@ Built from `Moment-System-Design.pdf` (system design, 2026-11-10). This repo cov
 | Sandbox on a separate origin, `sandbox="allow-scripts allow-popups"`, the PRD's CSP | **Live** |
 | Briefs for 92 metros, rebuilt every 4 hours; any other city compiled on first visit | **Live** (Open-Meteo, Nager.Date, computed sun/moon) |
 | How unusual today is (10-year climatology) | **Live** for warm metros; 8 metros filled per run until all are cached |
-| Country "trending" via Wikimedia most-read + safety gate 1 | **Live**; the classifier runs nightly now that the key is set. Gate 1 is fail-closed: unclassified terms never reach a brief. |
-| Router (Claude Haiku 5.5) + specificity judge + generator (Claude Sonnet 5.5) | **Live** (key set 2026-11-10). Generation starts only after Turnstile passes; bots and failed challenges get an earlier page from the archive or the template engine |
-| Template generator (no model): 8 archetypes from the same brief, same section contract | **Live** as the fallback (no key, kill switch, spend cap with an empty archive); it says so in each page footer |
+| Country "trending" via Wikimedia most-read + safety gate 1 | Built; **passes nothing while the key is off**, because the classifier needs it. Gate 1 is fail-closed: unclassified terms never reach a brief. |
+| Router (Claude Haiku 5.5) + specificity judge + generator (Claude Sonnet 5.5) Built, benchmarked, and run in production on 2026-11-10; **switched off** the same night at the owner's request (key removed). With a key, generation starts only after Turnstile passes |
+| Template generator (no model): 8 archetypes from the same brief, same section contract | **Live**: what production serves while the key is off, and the fallback otherwise; it says so in each page footer |
 | Moderation (gate 3): rules always, Haiku when a key exists; failure swaps in a fallback page | **Live** (rules) |
 | Feedback prompt (Yes/No + 280-char text), one vote per visit, Turnstile, rate-limited | **Live** |
 | Behaviour rewards (0.7 / 0.2), retry = 0, nightly Thompson-sampling bandit with parent borrowing | **Live** (nightly cron); priors stay flat until a bucket has 30 rewarded visits |
@@ -34,7 +34,7 @@ Built from `Moment-System-Design.pdf` (system design, 2026-11-10). This repo cov
 | Kill switch (all generation, model only, or per archetype) | **Live** (`POST /admin/kill`) |
 | Traces + `/stats` with the PRD's alert conditions | **Live**; alerts are reported in `/stats`, nothing pushes them anywhere yet |
 
-**Production writes pages with Claude.** One thing was not verified by rendering in production: an automated browser (headless or a visible CDP-driven Chrome) fails Turnstile, so every probe got the archive page, as designed. The production trace shows the router running on the key (2.4 s, real token counts); the generator is the code the 50-brief run below exercised end to end. The first real visit in an ordinary browser is the first production model page; `/stats` and the footer (no "template engine" line) will show it.
+**Model mode is switched off for now** (2026-11-10, owner's call): production serves template pages and spends nothing. To turn it back on: `cd edge && npx wrangler secret put ANTHROPIC_API_KEY`. While it was on: One thing was not verified by rendering in production: an automated browser (headless or a visible CDP-driven Chrome) fails Turnstile, so every probe got the archive page, as designed. The production trace shows the router running on the key (2.4 s, real token counts); the generator is the code the 50-brief run below exercised end to end. The first real visit in an ordinary browser is the first production model page; `/stats` and the footer (no "template engine" line) will show it.
 
 ## Phase 0: the latency gate
 
