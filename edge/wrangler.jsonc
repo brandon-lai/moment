@@ -5,7 +5,7 @@
   "main": "src/index.ts",
   "compatibility_date": "2026-10-01",
   "compatibility_flags": ["nodejs_compat"],
-  "workers_dev": true,
+  "workers_dev": false, // OFF since 2026-11-12 (shut off by the owner); set true to bring it back
   "preview_urls": false,
   "kv_namespaces": [{ "binding": "BRIEFS", "id": "a514b2359c274e5ba1609454729d27b5" }],
   "d1_databases": [{ "binding": "DB", "database_name": "moment", "database_id": "3beecc6a-d7ba-47bc-97c1-a9b88d0d2d95", "migrations_dir": "../infra/migrations" }],
@@ -18,7 +18,8 @@
   "migrations": [{ "tag": "v1", "new_sqlite_classes": ["Session", "Governor"] }],
   // Briefs every four hours (each carries a 30-hour hourly series, so the edge
   // re-derives "now" at request time); trends, the learner and retention daily.
-  "triggers": { "crons": ["7 */4 * * *", "23 6 * * *"] },
+  // Off since 2026-11-12. To restore: ["7 */4 * * *", "23 6 * * *"]
+  "triggers": { "crons": [] },
   "vars": {
     "MAIN_ORIGIN": "https://moment.flockfield-server.workers.dev",
     "RENDER_ORIGIN": "https://moment-render.flockfield-server.workers.dev",

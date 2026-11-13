@@ -4,7 +4,9 @@
 
 It reads coarse facts from the request (city, time zone, device, language, where the link came from, kind of network) and a precompiled brief about the place right now (the weather hour by hour, how unusual today is, the sun and moon, holidays, what the country is reading). Then it streams a one-off page into a sandboxed iframe while the visitor watches it build.
 
-- **Live:** https://moment.flockfield-server.workers.dev
+> **Offline since 2026-11-12 (owner's call).** Both workers have their workers.dev URLs turned off and the scheduled ingest is stopped, so nothing runs and no KV writes happen. The workers, KV briefs, D1 data and Durable Objects are kept. To bring it back: in `edge/wrangler.jsonc` and `edge/wrangler.render.jsonc` set `"workers_dev": true`, restore the crons in `edge/wrangler.jsonc` (`["7 */4 * * *", "23 6 * * *"]`), commit, push and deploy both workers. The four-hourly ingest wrote about 650 KV entries a day against the free plan's 1,000; refreshing every 8 hours (with a longer brief TTL) would halve that.
+
+- **Live (offline, see above):** https://moment.flockfield-server.workers.dev
 - **Sandbox origin (generated pages, live data API):** https://moment-render.flockfield-server.workers.dev
 - **What Moment reads:** https://moment.flockfield-server.workers.dev/what-moment-reads
 - **Metrics:** https://moment.flockfield-server.workers.dev/stats

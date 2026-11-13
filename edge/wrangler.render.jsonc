@@ -7,7 +7,7 @@
   "main": "src/render.ts",
   "compatibility_date": "2026-10-01",
   "compatibility_flags": ["nodejs_compat"],
-  "workers_dev": true,
+  "workers_dev": false, // OFF since 2026-11-12 (shut off by the owner); set true to bring it back
   "preview_urls": false,
   "durable_objects": {
     "bindings": [{ "name": "SESSION", "class_name": "Session", "script_name": "moment" }]
